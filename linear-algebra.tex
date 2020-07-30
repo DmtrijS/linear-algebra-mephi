@@ -1,0 +1,647 @@
+\documentclass[12pt, a4paper]{report}
+\usepackage[cm]{fullpage}
+%--------------------------------------------------------------------------------------------------------------------------
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{csquotes}
+\usepackage{hyphenat}
+\hyphenation{ма-те-ма-ти-ка вос-ста-нав-ли-вать}
+%--------------------------------------------------------------------------------------------------------------------------
+\usepackage[hidelinks]{hyperref}
+\usepackage[intoc, russian]{nomencl}
+\makenomenclature
+\usepackage{graphicx}
+\graphicspath{ {d:/texstudio-pics/} }
+\usepackage[dvipsnames]{xcolor}
+\usepackage{amssymb}
+\usepackage[f]{esvect}
+\usepackage{mathtools}
+\usepackage[makeroom]{cancel}
+\usepackage{upgreek}
+\usepackage{enumerate}
+%--------------------------------------------------------------------------------------------------------------------------
+\usepackage{collectbox}
+\makeatletter
+\newcommand{\sqbox}{%
+	\collectbox{%
+		\setlength{\fboxsep}{2pt}%
+		\fbox{\BOXCONTENT}%
+	}%
+}
+\makeatother
+
+\makeatletter
+\newenvironment{union}{%
+	\matrix@check\union\env@union
+}{%
+	\endarray\right.%
+}
+\def\env@union{%
+	\let\@ifnextchar\new@ifnextchar
+	\left\lbrack
+	\def\arraystretch{1.2}%
+	\array{@{}l@{\quad}l@{}}%
+}
+\makeatother
+%--------------------------------------------------------------------------------------------------------------------------
+\usepackage{tikz}
+	\usetikzlibrary{cd, matrix, fit}
+\newcommand\encircle[1]{\tikz[baseline=(X.base)]\node(X)[draw, shape=circle, inner sep=1pt] {#1};}
+\newcommand{\tikzmark}[2]{\tikz[remember picture,baseline=-2pt]\node[circle, dashed,black,draw,text=black,anchor=center,inner sep=1pt] (#1) {$#2$};}
+\newcommand{\tikzmarkempty}[2]{\tikz[overlay,remember picture,baseline=-2pt] \node [anchor=center, inner sep=0] (#1) {$#2$};}
+%--------------------------------------------------------------------------------------------------------------------------
+\newcommand{\df}[1][]{\begin{flushleft}\textbf{\underline{Опр} \textcolor{Plum}{#1}}\end{flushleft}}
+\newcommand{\ex}{\begin{flushleft}\textbf{\underline{Пр}}\end{flushleft}}
+\newcommand{\lm}[1][]{\begin{flushleft}\textbf{\sqbox{Л} \textcolor{Blue}{#1}}\end{flushleft}}
+\newcommand{\tm}[1][]{\begin{flushleft}\textbf{\encircle{Th} \textcolor{Red}{#1}}\end{flushleft}}
+\newcommand{\inlineperm}[3][i]{{#1}_{#2}\dotsb{#1}_{#3}}
+\usepackage{calc}
+\definecolor{MMagenta}{rgb}{1.0, 0.0, 1.0}
+\newcommand{\oversymbol}[2]{\mathop{\overset{\textcolor{MMagenta}{\textbf{\textit{#1}}}}{\resizebox{\widthof{#1}}{\heightof{#2}}{#2}}}}
+%--------------------------------------------------------------------------------------------------------------------------
+\let\oldexists\exists
+\renewcommand{\exists}{\oldexists\,}
+\newcommand{\existsone}{\ensuremath{\oldexists!}}
+\let\oldforall\forall
+\renewcommand{\forall}{\oldforall\,}
+\let\oldnexists\nexists
+\renewcommand{\nexists}{\oldnexists\,}
+%--------------------------------------------------------------------------------------------------------------------------
+\DeclareSymbolFont{extraup}          {U}{zavm}{m}{n}
+\DeclareMathSymbol{\skull}{\mathalpha}{extraup}{119}
+%--------------------------------------------------------------------------------------------------------------------------
+
+\begin{document}
+	\title{
+		\centering \vfill
+		\vspace*{0.5cm}
+		\textbf{\huge Линейная алгебра} \\\bigskip
+		\large Конспект лекций Баскакова А.В.\\\smallskip
+		1 --- 2 семестры\\
+		\vspace*{2.5cm}
+		\includegraphics[keepaspectratio=true, scale=0.75]{mephi_logo.pdf}\vfill
+	}
+	\author{НИЯУ \textquote{МИФИ}}
+	\date{2020 г.}
+	
+	\maketitle
+	
+	\begin{abstract}
+		
+		Данное пособие предназначено для студентов первого курса (в основном второго семестра) \textbf{ИЯФиТ}.
+		
+		Конспект представляет собой ответы на экзаменационные вопросы (касающиеся линейной алгебры) по курсу лекций \textbf{Баскакова Алексея Викторовича}, которые были предложены студентам в 2019--2020-х годах при подготовке к сдаче экзамена по \textit{аналитической геометрии} и \textit{линейной алгебре} в первом и втором семестрах соответственно.
+		
+		Хочется особенно подчеркнуть, что данный сборник предназначен исключительно для ревизии вопросов линейной алгебры первого курса нашего университета, поскольку автор не ставит своей задачей превзойти лекции по содержанию или же по форме изложения материала.
+		
+		Таким образом, \textbf{пособие не может заменить ваши собственные конспекты лекций}.
+		
+		Сам же курс лектора, по его собственным словам, основывается на учебнике \textquote{Линейная алгебра и некоторые её приложения}, 1985 г. под авторством Головиной Л.И.
+	\end{abstract}
+
+	\nomenclature[01]{\textbf{\underline{Опр}}}{Определение}
+	\nomenclature[02]{\textbf{\underline{Пр}}}{Пример}
+	\nomenclature[03]{\textbf{\sqbox{Л}}}{Лемма}
+	\nomenclature[04]{\textbf{\encircle{Th}}}{Теорема}
+	\nomenclature[05]{$\square$}{Начало доказательства}
+	\nomenclature[06]{$\blacksquare$}{Конец доказательства}
+	\nomenclature[07]{$\mathbb{N}$}{Множество натуральных чисел}
+	\nomenclature[08]{$\mathbb{Z}$}{Множество целых чисел}
+	\nomenclature[09]{$\mathbb{R}$}{Множество действительных чисел}
+	\nomenclature[10]{$\forall$}{Квантор всеобщности (любой, все)}
+	\nomenclature[11]{$\exists$}{Квантор существования (существует)}
+	\nomenclature[12]{$\nexists$}{Не существует}
+	\nomenclature[13]{$\existsone$}{Существует, причём единственный}
+	\nomenclature[14]{$\in$}{Элемент принадлежит множеству}
+	\nomenclature[15]{$\subset$}{Множество содержится во множестве}
+	\nomenclature[16]{$\cup$}{Объединение множеств}
+	\nomenclature[17]{$\cap$}{Пересечение множеств}
+	\nomenclature[18]{$\displaystyle\sum_{\mathfrak{A}}^{\mathfrak{B}}$}{Сумма по элементам $\mathfrak{AB}$}
+	\nomenclature[19]{$\displaystyle\prod_{\mathfrak{A}}^{\mathfrak{B}}$}{Произведение по элементам $\mathfrak{AB}$}
+	\nomenclature[20]{$\overline{a,b}$}{Целые числа на отрезке $\left[a;b\right]$}
+	\nomenclature[21]{$\skull$}{Противоречие}
+	\nomenclature[22]{$\left\langle\dotsb\right\rangle$}{Комментарий}
+	
+	\tableofcontents
+	\printnomenclature
+	
+	% cd /d d:\texstudio-projects\
+	% makeindex "Linear Algebra notes.nlo" -s nomencl.ist -o "Linear Algebra notes.nls"
+	
+	\chapter{Перестановки}
+	\section{Чётность перестановки}
+	\subsection{Перестановка}
+	\df[Перестановка]
+	
+	Расставим числа $1,2,3,\dots ,n$ в каком-то порядке, тогда (для $n=5$):
+		\begin{align*}
+		&\begin{pmatrix}3&4&1&5&2\end{pmatrix}\text{ --- \underline{перестановка}}\\		
+		&\begin{pmatrix}1&2&3&4&5\end{pmatrix}\text{ --- \underline{единичная перестановка}}
+		\end{align*}
+		
+	Для $n$ элементов существует $n!$ перестановок 
+	\[\begin{pmatrix}i_1&i_2&i_3&\dotsb&i_n\end{pmatrix}\]
+	\subsection{Чётность}
+	\df[Инверсия]
+	
+	В перестановке $\begin{pmatrix} i_1&i_2&\cdots&i_n \end{pmatrix}$ элементы $i_k$ и $i_p$ образуют инверсию, если $k<p$, но $i_k>i_p$
+	\df[Чётность]
+	
+	Чётностью перестановки называется чётность числа инверсий.
+	\section{Изменение чётности перестановки при транспозиции}
+	\subsection{Транспозиции}
+	\df[Транспозиция]
+	
+	Транспозицией перестановки называется перемена местами любых двух элементов перестановки.
+	\df[Элементарная транспозиция (ЭТ)]
+	
+	Перемена местами двух соседних элементов перестановки --- элементарная транспозиция (ЭТ).
+	
+	\newpage\lm[При элементарной транспозиции чётность перестановки меняется]
+	
+	$\square$
+	\[
+	\begin{gathered}
+	\begin{pmatrix}i_1&i_2&i_3&\cdots&i_k&i_{k+1}&\cdots&i_n\end{pmatrix}\\
+	\big\Downarrow\\
+	\begin{pmatrix}i_1&i_2&i_3&\cdots&i_{k+1}&i_{k}&\cdots&i_n\end{pmatrix}
+	\end{gathered}
+	\]
+	
+	Инверсии, которые $i_k$ и $i_{k+1}$ составляли с остальными элементами, сохранились. Инверсия, связанная с перестановкой $i_k$ и $i_{k+1}$ либо появилась, либо исчезла. 
+	
+	Таким образом, количество инверсий изменилось на $1$, следовательно, чётность перестановки изменилась $\blacksquare$
+	\subsection{Изменение чётности}
+	\tm[При любой транспозиции чётность перестановки меняется]
+	
+	$\square$
+	\[
+	\begin{pmatrix} i_1&i_2&\cdots&\tikzmark{a}{i_k}&i_{k+1}&\cdots&i_{l-1}&\tikzmark{b}{i_l}&\cdots&i_n\end{pmatrix}
+	\begin{tikzpicture}[overlay, remember picture]
+		\draw[<->, black] (a) to [out=340, in=200](b);
+	\end{tikzpicture}
+	\]
+	
+	Переставим элемент $i_k$ со впереди стоящим элементом вплоть до места с номером $l$ (всего $[l-k]$ ЭТ).
+	
+	Элемент $i_l$ оказался на $(l-1)$-ом месте. Перемещаем его элементарными транспозициями на $k$-ое место (всего $[l-1-k]$ ЭТ).
+	
+	Свели транспозицию к $\left[(l-k)+(l-1-k)\right] = \left[2(l-k)-1\right]$ --- нечётному числу ЭТ $\implies$\\$\implies$ сменили чётность нечётное число раз $\implies$ чётность изменилась $\blacksquare$
+	\section{Обратная перестановка}
+	\subsection{Обратная перестановка}
+	\df[Обратная перестановка]
+	
+	Пусть переставили элементы $\left\{1;2;3;\dotsb;n\right\}$:
+	\[\begin{pmatrix} 1\\i_1\end{pmatrix}\begin{pmatrix} 2\\i_2\end{pmatrix}\dotsb\begin{pmatrix} n\\i_n\end{pmatrix}\]
+	
+	Переставим столбцы так, чтобы нижняя строка превратилась в единичную перестановку:
+	\[\begin{pmatrix} j_1\\1\end{pmatrix}\begin{pmatrix} j_2\\2\end{pmatrix}\cdots\begin{pmatrix} j_n\\n\end{pmatrix}\]
+	
+	Получим перестановку $\begin{pmatrix} j_1&j_2&\cdots&j_n\end{pmatrix}$, называемую обратной к перестановке $\begin{pmatrix} i_1&i_2&\cdots&i_n\end{pmatrix}$.
+	\subsection{Чётность обратной перестановки}
+	\tm[Чётность прямой и обратной перестановок совпадает]
+	
+	$\square$ При перестановке столбцов совершается одинаковое число транспозиций над верхней и нижней перестановками $\blacksquare$
+	\chapter{Определитель матрицы}
+	\section{Определение определителя матрицы}
+	\df[Определитель матрицы]
+	
+	Для матрицы $M$ размером $n\times n$: 
+	\[
+	|M|\equiv \det M = \sum_{\left(i_1\,\inlineperm{2}{n}\right)} \left(-1\right)^{\upsigma\left(\inlineperm{1}{n}\right)} a_{1i_1}a_{2i_2}\dotsm a_{ni_n}\,,
+	\]
+	
+	где $\upsigma(\inlineperm{1}{n})$ --- дефект перестановки $\begin{pmatrix} i_1&i_2&\cdots&i_n\end{pmatrix}$, численно равный количеству инверсий этой перестановки.
+	\ex
+	
+	Пусть дана $\underset{2\times 2}{M}=\begin{pmatrix} a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix}$. 
+	
+	\medskip Тогда её определитель $\displaystyle \det\underset{2\times 2}{M}=\sum_{\substack{(1\,\,2)\\(2\,\,1)}}(-1)^{\upsigma(i_1\,\,i_2)}a_{1i_1}a_{2i_2}=(-1)^{\upsigma(1\,\,2)}a_{11}a_{22}+(-1)^{\upsigma(2\,\,1)}a_{12}a_{21}=\\=a_{11}a_{22}-a_{12}a_{21}$
+	\section{Теорема об определителе транспонированной матрицы}
+	\subsection{Транспонированная матрица}
+	\df[Транспонированная матрица]
+	
+	Матрица $\underset{n\times n}{B}$ является транспонированной матрицей $\underset{n\times n}{A}$:
+	\[
+	\underset{n\times n}{B} = \underset{n\times n}{A^{\mathrm{T}}}\text{\,, если} \left(\forall i\leq j,\,j\leq n\right) b_{ij}=a_{ji}
+	\]
+	\ex
+	
+	$A=\begin{pmatrix} a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix}\implies A^{\mathrm{T}}=\begin{pmatrix} a_{11}&a_{21}\\a_{12}&a_{22}\end{pmatrix}$
+	\subsection{Теорема об определителе транспонированной матрицы}
+	\tm[Если для матрицы $A$ матрица $B=A^{\mathrm{T}}$, то $|B|=|A|$, т.е. $\left|A^{\mathrm{T}}\right|=|A|$]
+	
+	$\square$ 
+	\[
+	|B| = \sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}b_{1i_1}b_{2i_2}\dotsm b_{ni_n}=\sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}a_{i_1 1}a_{i_2 2}\dotsm a_{i_n n}=\dotso
+	\]
+	
+	Выставляя элементы $a_{i_k k}$ в порядке возрастания первых индексов, получим перестановку $\begin{pmatrix} j_1&j_2&\cdots&j_n\end{pmatrix}$, обратную к $\begin{pmatrix} i_1&i_2&\cdots&i_n\end{pmatrix}$. Причём, $\upsigma(\inlineperm[j]{1}{n}) = \upsigma(\inlineperm{1}{n})$
+	
+	\[
+	\dotso = \sum_{(\inlineperm[j]{1}{n})}(-1)^{\upsigma(\inlineperm[j]{1}{n})}a_{1j_1}a_{2j_2}\dotsm a_{n j_n} = |A|
+	\]
+	
+	Таким образом, $\left|A^{\mathrm{T}}\right| = |A|$ $\blacksquare$
+	\section{Влияние элементарных преобразований на определитель матрицы}
+	\df[Умножение строки/столбца матрицы на число]
+	\lm[Если для матриц $A\left\{a_{ij}\right\}_{i,j=1}^{n}$ и $B\left\{b_{ij}\right\}_{i,j=1}^{n}$ на фиксированной строке $l$: $\begin{cases}
+	a_{lj}=\uplambda b_{lj},&j=\overline{1,n}
+	\medskip\\a_{ij}=b_{ij},&\begin{cases}i\neq l,\\i=\overline{1,n}\end{cases}\!\!\!\!\!\!\!,\,j=\overline{1,n}
+	\end{cases}$\,, то $|A|=\uplambda \left|B\right|$]
+	
+	$\square$
+	\begin{align*} 
+	|A|&=\sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}a_{1i_1}\dotsm a_{li_l}\dotsm a_{ni_n}=
+	\\[5pt]&=\sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}a_{1i_1}\dotsm \uplambda b_{li_l}\dotsm a_{ni_n}=
+	\\[5pt]&=\uplambda\cdot\smashoperator[l]{\sum_{(\inlineperm{1}{n})}}(-1)^{\upsigma(\inlineperm{1}{n})}b_{1i_1}\dotsm b_{li_l}\dotsm b_{ni_n}=
+	\\[5pt]&=\uplambda \left|B\right|
+	\end{align*}
+	
+	$\blacksquare$
+	\smallskip
+	
+	Поскольку $|A|=\left|A^{\mathrm{T}}\right|$, то свойство верно и для столбцов.
+	\df[Перестановка строки/столбца матрицы]
+	\lm[Если для матриц $A\left\{a_{ij}\right\}_{i,j=1}^{n}$ и $B\left\{b_{ij}\right\}_{i,j=1}^{n}$ на фиксированных строках $k$ и $l$: $b_{ij}=\begin{cases}
+	a_{ij},&i\neq k,\,i\neq l
+	\\a_{kj},&\text{строка }l
+	\\a_{lj},&\text{строка }k
+	\end{cases}$\,, то $|A|=-|B|$]
+	
+	$\square$
+	\begin{align*}
+	|B|&=\sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{l}\,\inlineperm{k}{n})}b_{1i_1}\cdots b_{li_l}b_{ki_k}\cdots b_{ni_n}=
+	\\[5pt]&=\sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{l}\,\inlineperm{k}{n})}a_{1i_1}\cdots a_{ki_l}a_{li_k}\cdots a_{ni_n}
+	\\[25pt]
+	|A|&=\sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{k}\,\inlineperm{l}{n})}a_{1i_1}\cdots a_{ki_l}a_{li_k}\cdots a_{ni_n}=
+	\\[5pt]&=\sum_{(\inlineperm{1}{n})}(-1)\cdot (-1)^{\upsigma(\inlineperm{1}{l}\,\inlineperm{k}{n})}a_{1i_1}\cdots a_{ki_l}a_{li_k}\cdots a_{ni_n}=
+	\\[5pt]&=-|B|
+	\end{align*}
+	
+	$\blacksquare$
+	\smallskip
+	
+	Поскольку $|A|=\left|A^{\mathrm{T}}\right|$, то свойство верно и для столбцов.
+	\df[Прибавление строк/столбцов другой матрицы]
+	\lm[Если для матриц $A\left\{a_{ij}\right\}_{i,j=1}^{n}$, $B\left\{b_{ij}\right\}_{i,j=1}^{n}$, $C\left\{c_{ij}\right\}_{i,j=1}^{n}$ на фиксированной строке $l$:
+	\smallskip\\$a_{ij}=\begin{cases}
+	b_{ij}=c_{ij},&i\neq l,\,j=\overline{1,n}
+	\smallskip\\b_{lj}+c_{lj},&\text{строка }l,\,j=\overline{1,n}
+	\end{cases}$\,, то $|A|=|B|+|C|$]
+	
+	$\square$
+	\begin{align*}
+	|A| &= \sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}a_{1i_1}\cdots a_{li_l}\cdots a_{ni_n}=
+	\\[5pt]&=\sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}a_{1i_1}\cdots (b_{li_l}+c_{li_l})\cdots a_{ni_n}=
+	\\[5pt]&=\sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}b_{1i_1}\cdots b_{li_l}\cdots b_{ni_n} + \sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}c_{1i_1}\cdots c_{li_l}\cdots c_{ni_n}=
+	\\[5pt]&=|B|+|C|
+	\end{align*}
+	
+	$\blacksquare$
+	\smallskip
+	
+	Поскольку $|A|=\left|A^{\mathrm{T}}\right|$, то свойство верно и для столбцов.
+	\section{Вычисление определителя треугольной матрицы}
+	\subsection{Треугольный вид матрицы}
+	\df[Верхнетреугольная матрица]
+	
+	Матрица $A\left\{a_{ij}\right\}_{i,j=1}^{n}$ имеет верхнетреугольный вид, если $\left(\forall j =\overline{1,n},\, \forall i =\overline{2,n}: i>j\right) a_{ij} = 0$
+	\[
+	\begin{pmatrix} 
+	a_{11}&a_{12}&\dotsb&a_{1(n-1)}&a_{1n}\\
+	0&a_{22}&\cdots&a_{2(n-1)}&a_{2n}\\
+	0&0&\cdots&a_{3(n-1)}&a_{3n}\\
+	\vdots&\vdots&\ddots&\vdots&\vdots\\
+	0&0&\cdots&0&a_{nn}
+	\end{pmatrix}
+	\]
+	\lm[Определитель верхнетреугольной матрицы равен $\displaystyle |A|=\prod_{i=1}^{n}a_{ii}$]
+	
+	$\square$
+	
+	\[
+	|A| = \sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}a_{1i_1}a_{2i_2}\cdots a_{ni_n}=\dotso
+	\]
+	
+	Заметим, что любая не единичная перестановка будет содержать нуль:
+	\[
+	\dotso=a_{11}a_{22}\cdots a_{nn}=\prod_{i=1}^{n}a_{ii}
+	\]
+	
+	$\blacksquare$
+	\subsection{Приведение матрицы к верхнетреугольному виду}
+	\lm[Любую матрицу можно привести к верхнетреугольному виду путём элементарных преобразований строк/столбцов]
+	
+	$\square$ Применим метод математической индукции:
+	
+	\begin{enumerate}[1)]
+		\item $n=1$\,:
+		\begin{enumerate}[(1.1)]
+			\item $\left|a_{11}\right|=a_{11}$ --- верно
+		\end{enumerate}
+		\item Пусть лемма верна для $n=m$
+		\item Докажем её для $n=m+1$:
+		\begin{enumerate}[(3.1)]
+			\item Если $\left(\forall i =\overline{1,m+1},\,\forall j=\overline{1,m+1}\right) a_{ij}=0$ --- уже верхнетреугольный вид
+			\item Если $\exists a_{i_{0}j_{0}}\neq 0$\,:
+				\begin{itemize}
+					\item Переставим строку $i_0$ с первой строкой, а столбец $j_0$ с первым столбцом
+					\[
+					\begin{pmatrix} 
+					a_{i_0 j_0}&\cdots&a_{1(m+1)}^{\star}\\
+					a_{21}^{\star}&\cdots&a_{2(m+1)}^{\star}\\
+					\vdots&\ddots&\vdots\\
+					a_{\substack{(m+1)\\1}}^{\star}&\cdots&a_{\substack{(m+1)\\(m+1)}}^{\star}
+					\end{pmatrix}
+					\]
+					\item Занулим элементы, стоящие под $a_{i_0 j_0}$, поочерёдно вычтя из второй по $(m+1)$--ю строки первую, умноженную на соответственно: $\dfrac{a_{21}^{\star}}{a_{i_0 j_0}}$, $\dfrac{a_{31}^{\star}}{a_{i_0 j_0}}$, $\dotsc$, $\dfrac{a_{(m+1)1}^{\star}}{a_{i_0 j_0}}$
+					\[
+					\begin{pmatrix}
+						a_{i_0 j_0} & \cdots & a_{1(m+1)}^{\star}\\
+						0 &~&\tikzmarkempty{Od}{~~~~~~~}\\
+						0 &~&~\\
+						\vdots &~&~\\
+						0 &\tikzmarkempty{O}{~~~~~~~}&~\\
+					\end{pmatrix}
+					\begin{tikzpicture}[overlay, remember picture]
+						\draw (O.south west) rectangle (Od.north east) node [midway, align=center] {Матрица\\размером\\$m\times m$};
+					\end{tikzpicture}
+					\]
+					\item По предположению индукции можем привести матрицу размером $m\times m$ к верхнетреугольному виду $\blacksquare$
+				\end{itemize}
+		\end{enumerate}
+	\end{enumerate}
+	\section{Леммы о разложении определителя по последней строке}
+	\subsection{Дополнительный минор, алгебраическое дополнение}
+	\df[Дополнительный минор]
+	
+	В квадратной матрице $A\left\{a_{ij}\right\}_{i,j=1}^{n}$ вычеркнем строку $k$, столбец $l$. Определитель полученной матрицы называется дополнительным минором $\mathrm{M}_{kl}$.
+	
+	\ex
+	
+	$\displaystyle 
+	\underset{3\times 3}{A}=\begin{pmatrix}
+		a_{11}&a_{12}&a_{13}\\
+		a_{21}&a_{22}&a_{23}\\
+		a_{31}&a_{32}&a_{33}\\
+	\end{pmatrix}
+	$
+	\bigskip
+	
+	$\mathrm{M}_{22}\left(\underset{3\times 3}{A}\right)=
+	\begin{vmatrix}
+		a_{11}&\tikzmarkempty{A}{a_{12}}&a_{13}\\
+		\tikzmarkempty{C}{a_{21}}&a_{22}&\tikzmarkempty{D}{a_{23}}\\
+		a_{31}&\tikzmarkempty{B}{a_{32}}&a_{33}\\
+	\end{vmatrix}=
+	\begin{vmatrix}
+		a_{11}&a_{13}\\
+		a_{31}&a_{33}\\
+	\end{vmatrix}=a_{11}a_{33}-a_{31}a_{13}
+	\begin{tikzpicture}[overlay, remember picture]
+		\draw[red, very thick] (A.north) to (B.south);
+		\draw[red, very thick] (C.west) to (D.east);
+	\end{tikzpicture}
+	$
+	
+	\df[Алгебраическое дополнение]
+	
+	Алгебраическое дополнение, соответствующее элементу $a_{kl}$, равно $\mathrm{A}_{kl}=(-1)^{k+l}\mathrm{M}_{kl}$
+	\subsection{Лемма I}\label{2.5.2}
+	
+	\lm[Если в матрице $A\left\{a_{ij}\right\}_{i,j=1}^{n}$, $\left(\forall j=\overline{1,n-1}\right)a_{nj}=0$, то $|A|=a_{nn}\mathrm{A}_{nn}$]
+	
+	\(\square\)
+	
+	\begin{gather}
+	\begin{align*}
+		A &=\begin{pmatrix}
+			a_{11}&a_{12}&\cdots&a_{1(n-1)}&a_{1n}\\
+			a_{21}&a_{22}&\cdots&a_{2(n-1)}&a_{2n}\\
+			\vdots&\vdots&\ddots&\vdots&\vdots\\
+			a_{\substack{(n-1)\\1}}&a_{\substack{(n-1)\\2}}&\cdots&a_{\substack{(n-1)\\(n-1)}}&a_{\substack{(n-1)\\n}}\\
+			0&0&\cdots&0&a_{nn}\\
+			\end{pmatrix}
+		\\[35pt]
+		|A| &= \sum_{(\inlineperm{1}{n-1}\,\,i_n)}(-1)^{\upsigma({\inlineperm{1}{n-1}\,\, i_n})}a_{1i_1}a_{2i_2}\cdots a_{ni_n}=\\[5pt]
+		&=0+0+0+\dotsb+0+\smashoperator[l]{\sum_{(\inlineperm{1}{n-1}\,\,n)}}(-1)^{\upsigma(\inlineperm{1}{n-1}\,\,n)}a_{1i_1}a_{2i_2}\cdots a_{\substack{(n-1)\\i_{n-1}}}a_{nn}=\\[5pt]
+		&=a_{nn}\cdot\smashoperator[l]{\sum_{(\inlineperm{1}{n-1})}}(-1)^{\upsigma(\inlineperm{1}{n-1})}a_{1i_1}a_{2i_2}\cdots a_{\substack{(n-1)\\i_{n-1}}}=\\[5pt]
+		&=a_{nn}\mathrm{M}_{nn}=a_{nn}\cdot (-1)^{n+n}\mathrm{M}_{nn}=a_{nn}\mathrm{A}_{nn}
+	\end{align*}
+	\end{gather}
+	
+	\(\blacksquare\)
+	\subsection{Лемма II}\label{2.5.3}
+	
+	\lm[Если в матрице \(A\left\{a_{ij}\right\}_{i,j=1}^{n}\), \(\left(\forall j\neq l\right) a_{nj}=0\), то \(|A|=a_{nl}\mathrm{A}_{nl}\)]
+	
+	\(\square\)
+	
+	\[
+		A = \begin{pmatrix}
+				a_{11}&\cdots&a_{1l}&\cdots&a_{1n}\\
+				\vdots&\vdots&\ddots&\vdots&\vdots\\
+				0&\cdots&a_{nl}&\cdots&0\\
+			\end{pmatrix}
+	\]
+	
+	\smallskip
+	Переставим столбец \(l\) на место столбца \(n\) путём последовательных элементарных транспозиций (всего \([n-l]\) ЭТ):
+	
+	\begin{align*}
+		|A|&=(-1)^{n-l}\cdot\begin{vmatrix}
+								a_{11}&\cdots&a_{1(l-1)}&a_{1(l+1)}&\cdots&a_{1n}&a_{1l}\\
+								\vdots&\vdots&\vdots&\ddots&\vdots&\vdots&\vdots\\
+								0&\cdots&0&0&\cdots&0&a_{nl}\\
+							\end{vmatrix}
+		\oversymbol{\nameref{2.5.2}}{=}(-1)^{n-l}\cdot a_{nl}\mathrm{M}_{nl}=\\[5pt]
+		&=\bigg\langle(-1)^{n-l}=(-1)^{n+l}\bigg\rangle=a_{nl}\cdot (-1)^{n+l}\mathrm{M}_{nl}=a_{nl}\mathrm{A}_{nl}
+	\end{align*}
+	
+	\(\blacksquare\)
+	\subsection{Лемма III}\label{2.5.4}
+	
+	\lm[Определитель матрицы \(A\left\{a_{ij}\right\}_{i,j=1}^{n}\) равен \(\displaystyle |A|=\sum_{i=1}^{n}a_{ni}\mathrm{A}_{ni}\)]
+	
+	\(\square\)
+	
+	\[
+		A=\begin{pmatrix}a_{11}&\cdots&a_{1n}\\
+						\vdots&\ddots&\vdots\\
+						a_{n1}&\cdots&a_{nn}\\
+		\end{pmatrix}
+	\]
+	
+	\smallskip
+	По свойству прибавления строк другой матрицы можем представить определитель \(|A|\) как сумму определителей \(\left|A^{(i)}\right|\) матриц \(A^{(i)}\), для которых элементы последней строки равны\\ \(a_{nj}^{(i)}=\begin{cases}a_{ni},&j=i\\0,&j\neq i\end{cases}\)\,, а остальные элементы совпадают с элементами матрицы \(A\):
+	
+	\[
+		|A|=\underbrace{\begin{vmatrix} a_{11}&a_{12}&\cdots&\cdots&a_{1n} \\ \vdots&\vdots&\ddots&\vdots&\vdots \\ a_{n1}&0&\cdots&\cdots&0 \end{vmatrix}}_{\left|A^{(1)}\right|} + \underbrace{\begin{vmatrix} a_{11}&a_{12}&\cdots&\cdots&a_{1n} \\ \vdots&\vdots&\ddots&\vdots&\vdots \\ 0&a_{n2}&\cdots&\cdots&0 \end{vmatrix}}_{\left|A^{(2)}\right|}+\cdots+\underbrace{\begin{vmatrix} a_{11}&a_{12}&\cdots&\cdots&a_{1n} \\ \vdots&\vdots&\ddots&\vdots&\vdots \\ 0&0&\cdots&\cdots&a_{nn} \end{vmatrix}}_{\left|A^{(n)}\right|}
+	\]
+	
+	
+	\[
+		|A|=\sum_{i=1}^{n}\left|A^{(i)}\right|\oversymbol{\nameref{2.5.3}}{=}\sum_{i=1}^{n}a_{ni}\mathrm{A}_{ni}
+	\]
+	
+	\(\blacksquare\)
+	
+	\section{Разложение определителя по любой строке или столбцу}
+	\tm[Для матрицы \(A\left\{a_{ij}\right\}_{i,j=1}^{n}\) \(\displaystyle \left(\forall k=\overline{1,n}\right)|A|=\sum_{i=1}^{n}a_{ki}\mathrm{A}_{ki}\)]
+	
+	\(\square\)	Начиная со строки \(k\), последовательно переставим строки вплоть до строки \(n\):
+	
+	\begin{align*}
+		|A|&=(-1)^{n-k}\cdot\begin{vmatrix}
+						a_{11}&\cdots&a_{1n}\\
+						\vdots&\ddots&\vdots\\
+						a_{\substack{(k-1)\\1}}&\cdots&a_{\substack{(k-1)\\n}}\\
+						a_{\substack{(k+1)\\1}}&\cdots&a_{\substack{(k+1)\\n}}\\
+						\vdots&\ddots&\vdots&\\
+						a_{n1}&\cdots&a_{nn}\\
+						\tikzmarkempty{Ak1}{a_{k1}}&\cdots&a_{kn}\\
+						\end{vmatrix}\oversymbol{\nameref{2.5.4}}{=}(-1)^{n-k}\cdot\sum_{i=1}^{n}a_{ki}\mathrm{A}_{ki}=\\[5pt]
+			&=(-1)^{n-k}\sum_{i=1}^{n}(-1)^{n+i}a_{ki}\mathrm{M}_{ki}=\sum_{i=1}^{n}(-1)^{2n-k+i}a_{ki}\mathrm{M}_{ki}=\\[5pt]
+			&=\sum_{i=1}^{n}(-1)^{k+i}a_{ki}\mathrm{M}_{ki}=\sum_{i=1}^{n}a_{ki}\mathrm{A}_{ki}
+		\begin{tikzpicture}[overlay, remember picture]
+			\draw [LaTeX-, thick] (Ak1.west) ++(-10pt, 0) to ++(-25pt, 0) node [align=center] {\(\big\langle n\text{--я строка}\big\rangle\)\hspace{72pt}};
+		\end{tikzpicture}
+	\end{align*}
+	
+	\(\blacksquare\)
+	\section{Фальшивое разложение определителя}
+	\subsection{Определитель матрицы с одинаковыми строками/столбцами}
+	\lm[Если матрица содержит одинаковые строки/столбцы, то её определитель равен нулю]
+	
+	\(\square\)
+	\[A=\begin{pmatrix}a_{11}&\dotsb&a_{1n}\\
+						\vdots&\ddots&\vdots\\
+						C_{1}&\dotsb&C_{n}\\
+						\vdots&\ddots&\vdots\\
+						C_{1}&\dotsb&C_{n}\\
+						\vdots&\ddots&\vdots\\
+						a_{n1}&\dotsb&a_{nn}\\
+						\end{pmatrix}\text{или } B = \begin{pmatrix}
+														b_{11}&\dotsb&V_{1}&\dotsb&V_{1}&\dotsb&b_{1n}\\
+														\vdots&\ddots&\vdots&\ddots&\vdots&\ddots&\vdots\\
+														b_{n1}&\dotsb&V_{n}&\dotsb&V_{n}&\dotsb&b_{nn}\\
+													\end{pmatrix}\]
+													
+	При вычислении определителя матриц переставим одинаковые строки/столбцы местами, получим:
+	\[ |A| = (-1)\cdot|A|\implies |A| = 0\text{ (аналогично \(|B|=0\))}\]
+	
+	\(\blacksquare\)
+	\newpage\subsection{Теорема о произведении элементов матрицы одной строки на алгебраические дополнения элементов другой строки}
+	\tm[Если задана матрица \(A\left\{a_{ij}\right\}_{i,j=1}^{n}\), то \(\displaystyle \left(\forall j \neq k \right)\sum_{j=1}^{n}a_{lj}\mathrm{A}_{kj}=0\)]
+	
+	\(\square\) Составим матрицу \(B\left\{b_{ij}\right\}_{i,j=1}^{n}\), в которой \(b_{ij}=\begin{cases}a_{ij},&i\neq k\\a_{lj},&i=k\end{cases}\)
+	\[A=\begin{pmatrix}a_{11}&\dotsb&a_{1n}\\
+						\vdots&\ddots&\vdots\\
+						a_{l1}&\dotsb&a_{ln}\\
+						\vdots&\ddots&\vdots\\
+						a_{k1}&\dotsb&a_{kn}\\
+						\vdots&\ddots&\vdots\\
+						a_{1n}&\dotsb&a_{nn}\\\end{pmatrix},~ B=\begin{pmatrix}
+																			b_{11}&\dotsb&b_{1n}\\
+																			\vdots&\ddots&\vdots\\
+																			b_{l1}&\dotsb&b_{ln}\\
+																			\vdots&\ddots&\vdots\\
+																			b_{k1}&\dotsb&b_{kn}\\
+																			\vdots&\ddots&\vdots\\
+																			b_{1n}&\dotsb&b_{nn}\\
+																\end{pmatrix}=\begin{pmatrix}
+																				a_{11}&\dotsb&a_{1n}\\
+																				\vdots&\ddots&\vdots\\
+																				a_{l1}&\dotsb&a_{ln}\\
+																				\vdots&\ddots&\vdots\\
+																				a_{l1}&\dotsb&a_{ln}\\
+																				\vdots&\ddots&\vdots\\
+																				a_{1n}&\dotsb&a_{nn}\\
+																			\end{pmatrix}\]
+																			
+	\medskip Поскольку \(B\) содержит две одинаковые строки, то \(|B|=0\). С другой стороны, разложив \(|B|\) по \(k\text{--ой}\) строке, получим \(\displaystyle |B|=\sum_{j=1}^{n}b_{kj}\mathrm{B}_{kj}=\sum_{j=1}^{n}a_{lj}\mathrm{A}_{kj}=0\) \(\blacksquare\)
+	\chapter{Произведение матриц}
+	\section{Свойства произведения матриц}
+	\subsection{Определение произведения матриц}
+	\df[Произведение матриц]
+	
+	Если заданы матрицы \(\underset{m\times n}{A}\), \(\underset{n\times k}{B}\), то произведением \(A\cdot B\) называется матрица \(\underset{m\times k}{C}\) такая, что:
+	
+	\begin{align*}
+		\underset{m\times n}{A}\cdot\underset{n\times k}{B} &= \underset{m\times k}{C}\\
+													\left(\forall i=\overline{1,m}\,,\,\forall j=\overline{1,k}\right)
+													c_{ij} &= \sum_{t=1}^{n}a_{it}b_{tj}
+	\end{align*}
+	\subsection{Дистрибутивность}
+	\lm[Произведение матриц дистрибутивно]
+	
+	\[
+		\underbrace{\underset{n\times k}{A}\bigg(\overbrace{\uplambda\underset{k\times m}{B}+\upmu\underset{k\times m}{C}}^{R\left\{r_{ij}\right\}}\bigg)}_{D\left\{d_{ij}\right\}} = \underbrace{\overbrace{\uplambda\underset{n\times m}{AB}}^{P\left\{p_{ij}\right\}}+\overbrace{\upmu\underset{n\times m}{AC}}^{Q\left\{q_{ij}\right\}}}_{F\left\{f_{ij}\right\}}~~\left(\uplambda,\upmu\in\mathbb{R}\right)
+	\]
+	
+	\(\square\)
+	\begin{align*}
+		d_{ij}&=\sum_{t=1}^{k}a_{it}r_{tj}=\sum_{t=1}^{k}a_{it}\left(\uplambda b_{tj}+\upmu c_{tj}\right)=\uplambda\sum_{t=1}^{k}a_{it}b_{tj}+\upmu\sum_{t=1}^{k}a_{it}c_{tj}=p_{ij}+q_{ij}=f_{ij}\implies\\[5pt]
+			&\implies D = F
+	\end{align*}
+	
+	\(\blacksquare\)
+	\newpage\subsection{Ассоциативность}
+	\lm[Произведение матриц ассоциативно]
+	
+	\begin{align*}
+		&\bigg(\overbrace{\underset{m\times k}{A}\cdot\underset{k\times l}{B}}^{F\left\{f_{ij}\right\}}\bigg)\cdot\underset{l\times n}{C} = \underset{m\times n}{T}\\[5pt]
+		&\underset{m\times k}{A}\cdot\bigg(\overbrace{\underset{k\times l}{B}\cdot\underset{l\times n}{C}}^{G\left\{g_{ij}\right\}}\bigg) = \underset{m\times n}{D}
+	\end{align*}
+	
+	Покажем, что \(T=D\)\,:
+	
+	\(\square\)
+	\begin{align*}
+		t_{ij}&=\sum_{p=1}^{l}f_{ip}c_{pj}=\sum_{p=1}^{l}c_{pj}\left(\sum_{q=1}^{k}a_{iq}b_{qp}\right)=\sum_{q=1}^{k}a_{iq}\left(\sum_{p=1}^{l}b_{qp}c_{pj}\right)=\sum_{q=1}^{k}a_{iq}g_{qj}=d_{ij}\implies\\[5pt]
+			&\implies T = D
+	\end{align*}
+	\subsection{Некоммутативность (контрпример)}
+	\lm[Произведение матриц некоммутативно]
+	
+	В общем случае \(A\cdot B\neq B\cdot A\)
+	\ex
+	
+	\(A=\begin{pmatrix}3&1\\-1&4\end{pmatrix}\), \(B=\begin{pmatrix}2&1\\-3&0\end{pmatrix}\)
+	
+	\bigskip
+	
+	\[ 
+	\begin{drcases}
+	A\cdot B = \begin{pmatrix}3&1\\-1&4\end{pmatrix}\cdot\begin{pmatrix}2&1\\-3&0\end{pmatrix}=\begin{pmatrix}3&3\\-14&-1\end{pmatrix}\\[10pt]
+	B\cdot A=\begin{pmatrix}2&1\\-3&0\end{pmatrix}\cdot\begin{pmatrix}3&1\\-1&4\end{pmatrix}=\begin{pmatrix}5&6\\-9&-3\end{pmatrix}
+	\end{drcases}\implies A\cdot B\neq B\cdot A
+	\]
+	\section{Единичная матрица}
+	\df[Единичная матрица]
+	
+	Единичная матрица --- матрица \(E\left\{e_{ij}\right\}_{i,j=1}^{n}\), \(\left(\forall i =\overline{1,n},\forall j =\overline{1,n}\right)e_{ij}=\tikzmark{K}{\updelta_{ij}}=\begin{cases}1,&i=j\\0,&i\neq j\end{cases}
+		\begin{tikzpicture}[overlay, remember picture]
+			\draw [LaTeX-, thick] (K.north) [out=90, in=-90] to ++(20pt, 25pt) node [align=center] {\scriptsize\(\big\langle\)Символ Кронекера\(\big\rangle\)\\} ;
+		\end{tikzpicture}
+	\)
+	
+	\lm[Если \(\exists A\cdot E\), то \(A\cdot E = A\) (аналогично \(E\cdot B=B\))]
+	
+	\(\square\)
+	\begin{align*}
+		\underset{m\times n}{A}\cdot\underset{n\times n}{E}&=\underset{m\times n}{C}\\
+														\left(\forall i=\overline{1,m},\forall j =\overline{1,n}\right)c_{ij}&=\sum_{t=1}^{n}a_{it}\updelta_{tj}=0+0+\dotsb+a_{ij}\updelta_{jj}=a_{ij}\implies C = A
+	\end{align*}
+	
+	\(\blacksquare\)
+	\section[Теорема об определителе произведения матриц \textit{(без доказательства)}]{Теорема об определителе произведения матриц \textit{(без доказательства)}\footnote[1]{Полное доказательство можно обнаружить в упомянутом в аннотации учебнике Л.И. Головиной\\(Глава III. Линейные операторы / \S2. Действия над линейными операторами / Теорема 3).}}
+	\tm[Если \(A\) и \(B\) --- квадратные матрицы одного порядка, то \(\left|A\cdot B\right|=|A|\cdot|B|\)]
+	\section{Обратная матрица}
+	\subsection{Определение обратной матрицы}
+	\subsection{Критерий существования обратной матрицы}
+	\subsection{Построение обратной матрицы через алгебраические дополнения}
+	%TODO: remove periods at the end of math structures
+\end{document}
