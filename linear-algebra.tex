@@ -646,6 +646,24 @@
 	Если для матрицы \(\underset{n\times n}{A}\) существует матрица \(\underset{n\times n}{B}\) такая, что \(A\cdot B = B\cdot A = E\), то матрицу \(B\) называют обратной к матрице \(A\) и обозначают \(B\equiv A^{-1}\)
 	\subsection{Критерий существования обратной матрицы}
 	\tm[Если у матрицы \(\underset{n\times n}{A}\), \(|A|\neq 0\), то \(\existsone A^{-1}: A\cdot A^{-1}=A^{-1}\cdot A=E\)]
+	
+	\begin{enumerate}[1)]
+		\item Существование:
+			
+			\begin{itemize}
+				\item Докажем, что если \(|A| = 0\), то \(\nexists A^{-1}\)\,:
+			
+			\(\square\) Предположим противное --- \(A^{-1}\) существует и \(|A|=0\)\,:
+			\begin{align*} 
+				A\cdot A^{-1} &= E\\
+				|A|\cdot\left|A^{-1}\right| &= |E|\\
+				0 &= 1 \implies\skull~\blacksquare
+			\end{align*}
+				\item Докажем, что если \(|A|\neq 0\), то \(\exists A^{-1}=\dfrac{1}{|A|}\big(A^{*}\big)^{\mathrm{T}}\), где \(A=\left\{a_{ij}\right\}_{i,j=1}^{n},\,A^{*}=\left\{\mathrm{A}_{ij}\right\}_{i,j=1}^{n}\)\,:
+			
+			Рассмотрим \(B=\dfrac{1}{|A|}\big(A^{*}\big)^{\mathrm{T}}\) и докажем, что \(A\cdot B=B\cdot A=E\)\,:
+			\end{itemize}
+	\end{enumerate}
 	\subsection{Построение обратной матрицы через алгебраические дополнения}
 	%TODO: remove periods at the end of math structures
 \end{document}
