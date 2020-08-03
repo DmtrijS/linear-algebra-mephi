@@ -668,11 +668,13 @@
 			\(\square\)
 			
 			\(\underset{n\times n}{A}\cdot\underset{n\times n}{B}=\underset{n\times n}{C}\), \(|A| = \Updelta\)
-			
 			\begin{align*}
 				c_{ij}&=\sum_{t=1}^{n}a_{it}b_{tj}=\sum_{t=1}^{n}a_{it}\cdot\dfrac{1}{\Updelta}\mathrm{A}_{jt}=\dfrac{1}{\Updelta}\sum_{t=1}^{n}a_{it}\mathrm{A}_{jt}=\\[5pt]
-					&=\begin{cases}\dfrac{1}{\Updelta}\cdot\Updelta,&i=j\\[10pt]0,&i\neq j\end{cases}=\begin{cases}1,&i=j\\[10pt]0,&i\neq j\end{cases}=\updelta_{ij}
+					&=\begin{cases}\dfrac{1}{\Updelta}\cdot\Updelta,&i=j\\[10pt]0,&i\neq j\end{cases}=\begin{cases}1,&i=j\\[10pt]0,&i\neq j\end{cases}=\updelta_{ij}\implies\\
+					&\implies C=E
 			\end{align*}
+			
+			Аналогично \(B\cdot A=E\), т.к. разложение для определителя справедливо и для столбцов \(\blacksquare\)
 			\end{itemize}
 	\end{enumerate}
 	\subsection{Построение обратной матрицы через алгебраические дополнения}
