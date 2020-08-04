@@ -230,7 +230,7 @@
 	
 	$A=\begin{pmatrix} a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix}\implies A^{\mathrm{T}}=\begin{pmatrix} a_{11}&a_{21}\\a_{12}&a_{22}\end{pmatrix}$
 	\subsection{Теорема об определителе транспонированной матрицы}
-	\tm[Если для матрицы $A$ матрица $B=A^{\mathrm{T}}$, то $|B|=|A|$, т.е. $\left|A^{\mathrm{T}}\right|=|A|$]
+	\tm[Если для матрицы $\boldsymbol{A}$ матрица $\boldsymbol{B=A^{\mathrm{T}}}$, то $\boldsymbol{|B|=|A|}$, т.е. $\boldsymbol{\left|A^{\mathrm{T}}\right|=|A|}$]
 	
 	$\square$ 
 	\[
@@ -246,10 +246,10 @@
 	Таким образом, $\left|A^{\mathrm{T}}\right| = |A|$ $\blacksquare$
 	\section{Влияние элементарных преобразований на определитель матрицы}
 	\df[Умножение строки/столбца матрицы на число]
-	\lm[Если для матриц $A\left\{a_{ij}\right\}_{i,j=1}^{n}$ и $B\left\{b_{ij}\right\}_{i,j=1}^{n}$ на фиксированной строке $l$: $\begin{cases}
+	\lm[Если для матриц $\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}$ и $\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}$ на фиксированной строке $\boldsymbol{l}$: $\boldsymbol{\begin{cases}
 	a_{lj}=\uplambda b_{lj},&j=\overline{1,n}
 	\medskip\\a_{ij}=b_{ij},&\begin{cases}i\neq l,\\i=\overline{1,n}\end{cases}\!\!\!\!\!\!\!,\,j=\overline{1,n}
-	\end{cases}$\,, то $|A|=\uplambda \left|B\right|$]
+	\end{cases}}$, то $\boldsymbol{|A|=\uplambda \left|B\right|}$]
 	
 	$\square$
 	\begin{align*} 
@@ -264,11 +264,11 @@
 	
 	Поскольку $|A|=\left|A^{\mathrm{T}}\right|$, то свойство верно и для столбцов.
 	\df[Перестановка строки/столбца матрицы]
-	\lm[Если для матриц $A\left\{a_{ij}\right\}_{i,j=1}^{n}$ и $B\left\{b_{ij}\right\}_{i,j=1}^{n}$ на фиксированных строках $k$ и $l$: $b_{ij}=\begin{cases}
+	\lm[Если для матриц $\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}$ и $\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}$ на фиксированных строках $\boldsymbol{k}$ и $\boldsymbol{l}$: $\boldsymbol{b_{ij}=\begin{cases}
 	a_{ij},&i\neq k,\,i\neq l
 	\\a_{kj},&\text{строка }l
 	\\a_{lj},&\text{строка }k
-	\end{cases}$\,, то $|A|=-|B|$]
+	\end{cases}}$, то $\boldsymbol{|A|=-|B|}$]
 	
 	$\square$
 	\begin{align*}
@@ -285,11 +285,11 @@
 	
 	Поскольку $|A|=\left|A^{\mathrm{T}}\right|$, то свойство верно и для столбцов.
 	\df[Прибавление строк/столбцов другой матрицы]
-	\lm[Если для матриц $A\left\{a_{ij}\right\}_{i,j=1}^{n}$, $B\left\{b_{ij}\right\}_{i,j=1}^{n}$, $C\left\{c_{ij}\right\}_{i,j=1}^{n}$ на фиксированной строке $l$:
-	\smallskip\\$a_{ij}=\begin{cases}
+	\lm[Если для матриц $\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}$, $\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}$, $\boldsymbol{C\left\{c_{ij}\right\}_{i,j=1}^{n}}$ на фиксированной\\строке $\boldsymbol{l}$:
+	\smallskip\\$\boldsymbol{a_{ij}=\begin{cases}
 	b_{ij}=c_{ij},&i\neq l,\,j=\overline{1,n}
 	\smallskip\\b_{lj}+c_{lj},&\text{строка }l,\,j=\overline{1,n}
-	\end{cases}$\,, то $|A|=|B|+|C|$]
+	\end{cases}}$, то $\boldsymbol{|A|=|B|+|C|}$]
 	
 	$\square$
 	\begin{align*}
@@ -317,7 +317,7 @@
 	0&0&\cdots&0&a_{nn}
 	\end{pmatrix}
 	\]
-	\lm[Определитель верхнетреугольной матрицы равен $\displaystyle |A|=\prod_{i=1}^{n}a_{ii}$]
+	\lm[Определитель верхнетреугольной матрицы равен $\displaystyle\boldsymbol{|A|=\prod_{i=1}^{n}a_{ii}}$]
 	
 	$\square$
 	
@@ -390,7 +390,7 @@
 	$
 	\bigskip
 	
-	$\mathrm{M}_{22}\left(\underset{3\times 3}{A}\right)=
+	$\mathrm{M}_{22}\bigg(\underset{3\times 3}{A}\bigg)=
 	\begin{vmatrix}
 		a_{11}&\tikzmarkempty{A}{a_{12}}&a_{13}\\
 		\tikzmarkempty{C}{a_{21}}&a_{22}&\tikzmarkempty{D}{a_{23}}\\
@@ -411,7 +411,7 @@
 	Алгебраическое дополнение, соответствующее элементу $a_{kl}$, равно $\mathrm{A}_{kl}=(-1)^{k+l}\mathrm{M}_{kl}$
 	\subsection{Лемма I}\label{2.5.2}
 	
-	\lm[Если в матрице $A\left\{a_{ij}\right\}_{i,j=1}^{n}$, $\left(\forall j=\overline{1,n-1}\right)a_{nj}=0$, то $|A|=a_{nn}\mathrm{A}_{nn}$]
+	\lm[Если в матрице $\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}$, $\boldsymbol{\left(\forall j=\overline{1,n-1}\right)a_{nj}=0}$, то $\boldsymbol{|A|=a_{nn}\mathrm{A}_{nn}}$]
 	
 	\(\square\)
 	
@@ -435,7 +435,7 @@
 	\(\blacksquare\)
 	\subsection{Лемма II}\label{2.5.3}
 	
-	\lm[Если в матрице \(A\left\{a_{ij}\right\}_{i,j=1}^{n}\), \(\left(\forall j\neq l\right) a_{nj}=0\), то \(|A|=a_{nl}\mathrm{A}_{nl}\)]
+	\lm[Если в матрице \(\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}\), \(\boldsymbol{\left(\forall j\neq l\right) a_{nj}=0}\), то \(\boldsymbol{|A|=a_{nl}\mathrm{A}_{nl}}\)]
 	
 	\(\square\)
 	
@@ -463,7 +463,7 @@
 	\(\blacksquare\)
 	\subsection{Лемма III}\label{2.5.4}
 	
-	\lm[Определитель матрицы \(A\left\{a_{ij}\right\}_{i,j=1}^{n}\) равен \(\displaystyle |A|=\sum_{i=1}^{n}a_{ni}\mathrm{A}_{ni}\)]
+	\lm[Определитель матрицы \(\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}\) равен \(\displaystyle\boldsymbol{ |A|=\sum_{i=1}^{n}a_{ni}\mathrm{A}_{ni}}\)]
 	
 	\(\square\)
 	
@@ -489,7 +489,7 @@
 	\(\blacksquare\)
 	
 	\section{Разложение определителя по любой строке или столбцу}
-	\tm[Для матрицы \(A\left\{a_{ij}\right\}_{i,j=1}^{n}\) \(\displaystyle \left(\forall k=\overline{1,n}\right)|A|=\sum_{i=1}^{n}a_{ki}\mathrm{A}_{ki}\)]
+	\tm[Для матрицы \(\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}\) \(\displaystyle\boldsymbol{\left(\forall k=\overline{1,n}\right)|A|=\sum_{i=1}^{n}a_{ki}\mathrm{A}_{ki}}\)]
 	
 	\(\square\)	Начиная со строки \(k\), последовательно переставим строки вплоть до строки \(n\):
 	
@@ -534,7 +534,7 @@
 	
 	\(\blacksquare\)
 	\newpage\subsection{Теорема о произведении элементов матрицы одной строки на алгебраические дополнения элементов другой строки}
-	\tm[Если задана матрица \(A\left\{a_{ij}\right\}_{i,j=1}^{n}\), то \(\displaystyle \left(\forall j \neq k \right)\sum_{j=1}^{n}a_{lj}\mathrm{A}_{kj}=0\)]
+	\tm[Если задана матрица \(\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}\), то \(\displaystyle\boldsymbol{\left(\forall j \neq k \right)\sum_{j=1}^{n}a_{lj}\mathrm{A}_{kj}=0}\)]
 	
 	\(\square\) Составим матрицу \(B\left\{b_{ij}\right\}_{i,j=1}^{n}\), в которой \(b_{ij}=\begin{cases}a_{ij},&i\neq k\\a_{lj},&i=k\end{cases}\)
 	\[A=\begin{pmatrix}a_{11}&\dotsb&a_{1n}\\
@@ -630,7 +630,7 @@
 		\end{tikzpicture}
 	\)
 	
-	\lm[Если \(\exists A\cdot E\), то \(A\cdot E = A\) (аналогично \(E\cdot B=B\))]
+	\lm[Если \(\boldsymbol{\exists A\cdot E}\), то \(\boldsymbol{A\cdot E = A}\) (аналогично \(\boldsymbol{E\cdot B=B}\))]
 	
 	\(\square\)
 	\begin{align*}
@@ -640,14 +640,14 @@
 	
 	\(\blacksquare\)
 	\section[Теорема об определителе произведения матриц \textit{(без доказательства)}]{Теорема об определителе произведения матриц \textit{(без доказательства)}\footnote[1]{Полное доказательство можно обнаружить в упомянутом в аннотации учебнике Л.И. Головиной\\(Глава III. Линейные операторы / \S2. Действия над линейными операторами / Теорема 3).}}
-	\tm[Если \(A\) и \(B\) --- квадратные матрицы одного порядка, то \(\left|A\cdot B\right|=|A|\cdot|B|\)]
+	\tm[Если \(\boldsymbol{A}\) и \(\boldsymbol{B}\) --- квадратные матрицы одного порядка, то \(\boldsymbol{\left|A\cdot B\right|=|A|\cdot|B|}\)]
 	\section{Обратная матрица}
 	\subsection{Определение обратной матрицы}
 	\df[Обратная матрица]
 	
 	Если для матрицы \(\underset{n\times n}{A}\) существует матрица \(\underset{n\times n}{B}\) такая, что \(A\cdot B = B\cdot A = E\), то матрицу \(B\) называют обратной к матрице \(A\) и обозначают \(B\equiv A^{-1}\)
 	\subsection{Критерий существования обратной матрицы}
-	\tm[Если у матрицы \(\underset{n\times n}{A}\), \(|A|\neq 0\), то \(\existsone A^{-1}: A\cdot A^{-1}=A^{-1}\cdot A=E\)]
+	\tm[Если у матрицы \(\boldsymbol{\underset{n\times n}{A}}\), \(\boldsymbol{|A|\neq 0}\), то \(\boldsymbol{\existsone A^{-1}: A\cdot A^{-1}=A^{-1}\cdot A=E}\)]
 	
 	\begin{enumerate}[1)]
 		\item Существование:
@@ -676,11 +676,36 @@
 			
 			Аналогично \(B\cdot A=E\), т.к. разложение для определителя справедливо и для\\столбцов \(\blacksquare\)
 			\end{itemize}
+		\newpage\item Единственность:
 		
-		\item Единственность:
-		
+			\(\square\) Пусть для матрицы \(A\) существуют матрицы \(B\) и \(C\) такие, что \(\begin{cases}A\cdot B=B\cdot A = E\\A\cdot C=C\cdot A= E\\ B\neq C\end{cases}\)\\
+			Тогда, \(\begin{rcases}C\cdot A\cdot B=\big(C\cdot A\big)\cdot B=E\cdot B=B\\C\cdot A\cdot B=C\cdot\big(A\cdot B\big)=C\cdot E= C\end{rcases}\implies B=C\implies\skull\) \(\blacksquare\)
 	\end{enumerate}
 	\subsection{Построение обратной матрицы через алгебраические дополнения}
+	\ex
+	
+	\(A=\begin{pmatrix}1&2\\3&4\end{pmatrix}\)
+	
+	\begin{enumerate}[1)]
+		\item
+	\(\begin{alignedat}{2}&\mathrm{A}_{11}=(-1)^{1+1}\mathrm{M}_{11}=4\hspace{25pt}&&\mathrm{A}_{12}=(-1)^{1+2}\mathrm{M}_{12}=-3\\[5pt]&\mathrm{A}_{21}=(-1)^{2+1}\mathrm{M}_{21}=-2\hspace{25pt}&&\mathrm{A}_{22}=(-1)^{2+2}\mathrm{M}_{22}=1\end{alignedat}\)
+	
+	\item \(A^{*}=\begin{pmatrix}4&-3\\-2&1\end{pmatrix}\implies \big(A^{*}\big)^{\mathrm{T}}=\begin{pmatrix}4&-2\\-3&1\end{pmatrix}\)
+	
+	\item \(|A| = 4-6=-2\)
+	
+	\item \(A^{-1}=\dfrac{1}{|A|}\big(A^{*}\big)^{\mathrm{T}}=\begin{pmatrix}-2&1\\\tfrac{3}{2}&-\tfrac{1}{2}\end{pmatrix}\)
+	
+	\item \(\begin{alignedat}{1}&A\cdot A^{-1} = \begin{pmatrix}1&2\\3&4\end{pmatrix}\cdot \begin{pmatrix}-2&1\\\tfrac{3}{2}&-\tfrac{1}{2}\end{pmatrix}=\begin{pmatrix}-2+3&1-1\\-6+6&3-2\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}=E\\[5pt]&A^{-1}\cdot{A}=\begin{pmatrix}-2&1\\\tfrac{3}{2}&-\tfrac{1}{2}\end{pmatrix}\cdot \begin{pmatrix}1&2\\3&4\end{pmatrix}=\begin{pmatrix}-2+3&-4+4\\\tfrac{3}{2}-\tfrac{3}{2}&3-2\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}=E\end{alignedat}\)
+	\end{enumerate}
+	\subsection[Построение обратной матрицы методом ЭПС]{Построение обратной матрицы методом элементарных преобразований строк}
+	\subsubsection{Умножение \(\boldsymbol{k}\)--ой строки на \(\boldsymbol{\upalpha\in\mathbb{R}}\)}
+	
+	\lm[Соответствует левостороннему домножению на \(\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}\), \(\boldsymbol{b_{ij}=\begin{cases}\upalpha,&i=k,\, j=k\\\updelta_{ij},&i\neq k,\,j\neq k\end{cases}}\)]
+	\[B=\begin{pmatrix}1&\dotsb&0\\\vdots&\ddots&\vdots\\\vdots&\upalpha&\vdots\\\vdots&\ddots&\vdots\\0&\dotsb&1\end{pmatrix}\]
+	\(\square\)
+	
+	
 	%TODO: remove periods at the end of math structures
 	%TODO: fix gitpush.bat
 \end{document}
