@@ -248,7 +248,7 @@
 	\df[Умножение строки/столбца матрицы на число]
 	\lm[Если для матриц $\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}$ и $\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}$ на фиксированной строке $\boldsymbol{l}$: $\boldsymbol{\begin{cases}
 	a_{lj}=\uplambda b_{lj},&j=\overline{1,n}
-	\medskip\\a_{ij}=b_{ij},&\begin{cases}i\neq l,\\i=\overline{1,n}\end{cases}\!\!\!\!\!\!\!,\,j=\overline{1,n}
+	\medskip\\a_{ij}=b_{ij},&\begin{cases}i\neq l,\\i=\overline{1,n}\end{cases}\!\!\!\!\!\!\!\text{ и }j=\overline{1,n}
 	\end{cases}}$, то $\boldsymbol{|A|=\uplambda \left|B\right|}$]
 	
 	$\square$
@@ -265,7 +265,7 @@
 	Поскольку $|A|=\left|A^{\mathrm{T}}\right|$, то свойство верно и для столбцов.
 	\df[Перестановка строки/столбца матрицы]
 	\lm[Если для матриц $\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}$ и $\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}$ на фиксированных строках $\boldsymbol{k}$ и $\boldsymbol{l}$: $\boldsymbol{b_{ij}=\begin{cases}
-	a_{ij},&i\neq k,\,i\neq l
+	a_{ij},&i\neq k\text{ и }i\neq l
 	\\a_{kj},&\text{строка }l
 	\\a_{lj},&\text{строка }k
 	\end{cases}}$, то $\boldsymbol{|A|=-|B|}$]
@@ -687,8 +687,7 @@
 	\(A=\begin{pmatrix}1&2\\3&4\end{pmatrix}\)
 	
 	\begin{enumerate}[1)]
-		\item
-	\(\begin{alignedat}{2}&\mathrm{A}_{11}=(-1)^{1+1}\mathrm{M}_{11}=4\hspace{25pt}&&\mathrm{A}_{12}=(-1)^{1+2}\mathrm{M}_{12}=-3\\[5pt]&\mathrm{A}_{21}=(-1)^{2+1}\mathrm{M}_{21}=-2\hspace{25pt}&&\mathrm{A}_{22}=(-1)^{2+2}\mathrm{M}_{22}=1\end{alignedat}\)
+	\item \(\begin{alignedat}[t]{2}&\mathrm{A}_{11}=(-1)^{1+1}\mathrm{M}_{11}=4\hspace{25pt}&&\mathrm{A}_{12}=(-1)^{1+2}\mathrm{M}_{12}=-3\\[5pt]&\mathrm{A}_{21}=(-1)^{2+1}\mathrm{M}_{21}=-2\hspace{25pt}&&\mathrm{A}_{22}=(-1)^{2+2}\mathrm{M}_{22}=1\end{alignedat}\)
 	
 	\item \(A^{*}=\begin{pmatrix}4&-3\\-2&1\end{pmatrix}\implies \big(A^{*}\big)^{\mathrm{T}}=\begin{pmatrix}4&-2\\-3&1\end{pmatrix}\)
 	
@@ -696,16 +695,16 @@
 	
 	\item \(A^{-1}=\dfrac{1}{|A|}\big(A^{*}\big)^{\mathrm{T}}=\begin{pmatrix}-2&1\\\tfrac{3}{2}&-\tfrac{1}{2}\end{pmatrix}\)
 	
-	\item \(\begin{alignedat}{1}&A\cdot A^{-1} = \begin{pmatrix}1&2\\3&4\end{pmatrix}\cdot \begin{pmatrix}-2&1\\\tfrac{3}{2}&-\tfrac{1}{2}\end{pmatrix}=\begin{pmatrix}-2+3&1-1\\-6+6&3-2\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}=E\\[5pt]&A^{-1}\cdot{A}=\begin{pmatrix}-2&1\\\tfrac{3}{2}&-\tfrac{1}{2}\end{pmatrix}\cdot \begin{pmatrix}1&2\\3&4\end{pmatrix}=\begin{pmatrix}-2+3&-4+4\\\tfrac{3}{2}-\tfrac{3}{2}&3-2\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}=E\end{alignedat}\)
+	\item \(\begin{alignedat}[t]{1}&A\cdot A^{-1} = \begin{pmatrix}1&2\\3&4\end{pmatrix}\cdot \begin{pmatrix}-2&1\\\tfrac{3}{2}&-\tfrac{1}{2}\end{pmatrix}=\begin{pmatrix}-2+3&1-1\\-6+6&3-2\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}=E\\[5pt]&A^{-1}\cdot{A}=\begin{pmatrix}-2&1\\\tfrac{3}{2}&-\tfrac{1}{2}\end{pmatrix}\cdot \begin{pmatrix}1&2\\3&4\end{pmatrix}=\begin{pmatrix}-2+3&-4+4\\\tfrac{3}{2}-\tfrac{3}{2}&3-2\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}=E\end{alignedat}\)
 	\end{enumerate}
 	\subsection[Построение обратной матрицы методом ЭПС]{Построение обратной матрицы методом элементарных преобразований строк}
 	\subsubsection{Умножение \(\boldsymbol{k}\)--ой строки на \(\boldsymbol{\upalpha\in\mathbb{R}}\)}
 	
-	\lm[Соответствует левостороннему домножению на \(\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}\), \(\boldsymbol{b_{ij}=\begin{cases}\upalpha,&i=k,\, j=k\\\updelta_{ij},&i\neq k,\,j\neq k\end{cases}}\)]
-	\[B=\begin{pmatrix}1&\dotsb&0\\\vdots&\ddots&\vdots\\\vdots&\upalpha&\vdots\\\vdots&\ddots&\vdots\\0&\dotsb&1\end{pmatrix}\]
-	
+	\lm[Соответствует левостороннему домножению на \(\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}\), \(\boldsymbol{b_{ij}=\begin{cases}\upalpha,&i=k\text{ и }j=k\\\updelta_{ij},&i\neq k\text{ или }j\neq k\end{cases}}\)]
 	
 	\(\square\) \(B\cdot A=C\)
 	
+	\medskip\(\big(i=k,\, j=\overline{1,n}\big)\) \(\begin{aligned}[t]\displaystyle c_{kj} = \sum_{t=1}^{n}b_{kt}a_{tj}&=\updelta_{k1}a_{1j}+\updelta_{k2}a_{2j}+\dotsb+\updelta_{\substack{k\\(k-1)}}a_{\substack{(k-1)\\j}}+\upalpha a_{kj}+\dotsb+\updelta_{kn}a_{nj}=\\&=0+0+\dotsb+\smallskip+0+\upalpha a_{kj}+\dotsb+0=\\&=\upalpha a_{kj}\end{aligned}\)
+	%\(\displaystyle c_{ij}=\sum_{t=1}^{n}b_{it}a_{tj}=\begin{cases}\upalpha a_{ij},&i=k\text{ и }j=\overline{1,n}\\a_{ij},&i\neq k\text{ и }j\neq k\end{cases}\)
 	%TODO: remove periods at the end of math structures
 \end{document}
