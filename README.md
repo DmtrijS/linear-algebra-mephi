@@ -1,1 +1,1 @@
-My university projects
+Забавимся в TeXstudio
