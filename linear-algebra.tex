@@ -58,7 +58,8 @@
 \newcommand{\inlineperm}[3][i]{{#1}_{#2}\dotsb{#1}_{#3}}
 \usepackage{calc}
 \definecolor{MMagenta}{rgb}{1.0, 0.0, 1.0}
-\newcommand{\oversymbol}[2]{\mathop{\overset{\textcolor{MMagenta}{\textbf{\textit{#1}}}}{\resizebox{\widthof{#1}}{\heightof{#2}}{#2}}}}
+\newcommand{\oversymbol}[2]{\overset{\textcolor{MMagenta}{\textbf{\textit{#1}}}}{\resizebox{\widthof{#1}}{\heightof{\(#2\)}}{\(#2\)}}}
+\newcommand{\oversymbolnoref}[3][]{\underset{#1}{\overset{#2}{\resizebox{\widthof{\(#2\)}}{\heightof{\(#3\)}}{\(#3\)}}}}
 %--------------------------------------------------------------------------------------------------------------------------
 \let\oldexists\exists
 \renewcommand{\exists}{\oldexists\,}
@@ -699,13 +700,22 @@
 	\end{enumerate}
 	\subsection[Построение обратной матрицы методом ЭПС]{Построение обратной матрицы методом элементарных преобразований строк}
 	\subsubsection{Умножение \(\boldsymbol{k}\)--ой строки на \(\boldsymbol{\upalpha\in\mathbb{R}}\)}
-	
 	\lm[Соответствует левостороннему домножению на \(\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}\), \(\boldsymbol{b_{ij}=\begin{cases}\upalpha,&i=k\text{ и }j=k\\\updelta_{ij},&i\neq k\text{ или }j\neq k\end{cases}}\)]
 	
 	\(\square\) \(B\cdot A=C\)
 	
 	\(\big(i=k,\, j=\overline{1,n}\big)\) \(\begin{aligned}[t]\displaystyle c_{kj} = \sum_{t=1}^{n}b_{kt}a_{tj}&=\updelta_{k1}a_{1j}+\updelta_{k2}a_{2j}+\dotsb+\updelta_{k(k-1)}a_{(k-1)j}+\upalpha a_{kj}+\dotsb+\updelta_{kn}a_{nj}=\\&=0+0+\dotsb+0+\upalpha a_{kj}+\dotsb+0=\\&=\upalpha a_{kj}\end{aligned}\)
 	
-	\(\big(i=i^{\star}\neq k,\, j=\overline{1,n}\big)\) \(\begin{aligned}[t]\displaystyle c_{i^{\star}j}=\sum_{t=1}^{n}b_{i^{\star}t}a_{tj}\end{aligned}\)
+	\medskip\(\big(i=i_{\star}\neq k,\, j=\overline{1,n}\big)\) \(\begin{aligned}[t]\displaystyle c_{i_{\star}j}=\sum_{t=1}^{n}b_{i_{\star}t}a_{tj}&=\updelta_{i_{\star}1}a_{1j}+\dotsb+\updelta_{i_{\star}i_{\star}}a_{i_{\star}j}+\dotsb+\updelta_{i_{\star}n}a_{nj}=\\&=0+\dotsb+1\cdot a_{i_{\star}j}+\dotsb+0=\\&=a_{i_{\star}j}\end{aligned}\)
+	
+	Таким образом, \(c_{ij}=\begin{cases}\upalpha a_{ij},&i=k,\,j=\overline{1,n}\\a_{ij},&i\neq k,\,j=\overline{1,n}\end{cases}\) \(\blacksquare\)
+	\ex
+	
+	\(A=\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}\oversymbolnoref[\upalpha = c]{k=2}{\sim}\begin{pmatrix}1&2&3\\4c&5c&6c\\7&8&9\end{pmatrix}\)
+	
+	\bigskip\(B=\begin{pmatrix}1&0&0\\0&c&0\\0&0&1\end{pmatrix}\implies B\cdot A = \begin{pmatrix}1&0&0\\0&c&0\\0&0&1\end{pmatrix}\cdot \begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\begin{pmatrix}1&2&3\\4c&5c&6c\\7&8&9\end{pmatrix}\)
+	\subsubsection{Перемена местами \(\boldsymbol{l}\)--ой и \(\boldsymbol{k}\)--ой строк}
+	\lm[Соответствует левостороннему домножению на \(\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}\), \(\boldsymbol{b_{ij}=\begin{cases}\updelta_{ij},&i\neq k,\,i\neq l,\,j=\overline{1,n}\\0,&i=k,\,j\neq l\text{ или }i=l,\,j\neq k\\1,&i=k,\,j=l\text{ или }i=l,\,j=k\end{cases}}\)]
+	
 	%TODO: remove periods at the end of math structures
 \end{document}
