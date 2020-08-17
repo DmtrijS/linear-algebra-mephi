@@ -72,7 +72,12 @@
 \DeclareSymbolFont{extraup}          {U}{zavm}{m}{n}
 \DeclareMathSymbol{\skull}{\mathalpha}{extraup}{119}
 \newcommand\aug{\fboxsep=-\fboxrule\!\!\!\fbox{\strut}\!\!\!}
-
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+	\hskip -\arraycolsep
+	\let\@ifnextchar\new@ifnextchar
+	\array{#1}}
+\makeatother
 %--------------------------------------------------------------------------------------------------------------------------
 \begin{document}
 	\title{
