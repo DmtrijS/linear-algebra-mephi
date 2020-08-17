@@ -71,6 +71,7 @@
 %--------------------------------------------------------------------------------------------------------------------------
 \DeclareSymbolFont{extraup}          {U}{zavm}{m}{n}
 \DeclareMathSymbol{\skull}{\mathalpha}{extraup}{119}
+\newenvironment{amatrix}[1]{\left(\begin{array}{@{}*{#1}{c}|c@{}}}{\end{array}\right)}
 %--------------------------------------------------------------------------------------------------------------------------
 \begin{document}
 	\title{
@@ -776,7 +777,7 @@
 	\end{enumerate}
 	\ex
 	
-	\(A=\begin{pmatrix}1&2\\1&3\end{pmatrix}\)
+	\(A=\begin{amatrix}{1}1&2\\1&3\end{amatrix}\)
 	\[\]
 	%TODO: remove periods at the end of math structures
 \end{document}
