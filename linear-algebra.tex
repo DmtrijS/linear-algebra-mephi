@@ -702,7 +702,6 @@
 	\lm[Соответствует левостороннему домножению на \(\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}\), \(\boldsymbol{b_{ij}=\begin{cases}\upalpha,&i=k\text{ и }j=k\\\updelta_{ij},&i\neq k\text{ или }j\neq k\end{cases}}\)]
 	
 	\(\square\) \(B\cdot A=C\)
-	
 	\begin{enumerate}[{1.}1)]
 		\item \(\big(i=k,\, j=\overline{1,n}\big)\) \(\begin{aligned}[t]\displaystyle c_{kj} = \sum_{t=1}^{n}b_{kt}a_{tj}&=\updelta_{k1}a_{1j}+\updelta_{k2}a_{2j}+\dotsb+\updelta_{k(k-1)}a_{(k-1)j}+\upalpha a_{kj}+\dotsb+\updelta_{kn}a_{nj}=\\&=0+0+\dotsb+0+\upalpha a_{kj}+\dotsb+0=\\&=\upalpha a_{kj}\end{aligned}\)
 	
@@ -724,6 +723,8 @@
 		\item\(\displaystyle\big(i\neq k,\,i\neq l,\,j=\overline{1,n}\big)\text{ } c_{ij}=\sum_{t=1}^{n}b_{it}a_{tj}=0+\dotsb+0+\updelta_{ii}a_{ij}=a_{ij}\)
 	
 		\item\(\displaystyle\big(i=k,\,j=\overline{1,n}\big)\text{ }c_{kj}=\sum_{t=1}^{n}b_{kt}a_{tj}=0+\dotsb+0+b_{kl}a_{lj}=1\cdot a_{lj}=a_{lj}\)
+		
+		\item\(\big(i=l,\,j=\overline{1,n}\big)\text{ }c_{lj}=\sum_{t=1}^{n}b_{lt}a_{tj}=0+\dotsb+0+b_{lk}a_{kj}=1\cdot a_{kj}=a_{kj}\)
 	\end{enumerate}
 	%TODO: remove periods at the end of math structures
 \end{document}
