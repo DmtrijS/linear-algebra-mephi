@@ -805,15 +805,15 @@
 	
 	\(A=\begin{pmatrix}1&2&3&0\\4&5&6&0\\7&8&9&0\end{pmatrix}\)
 	
-	\medskip\(\mathrm{M}_{_{1\,2}}^{^{2\,3}}\big(A\big)=\begin{vmatrix}\tikzmarkemptyX{L11}{1}&\tikzmarkemptyX{C11}{2}&\tikzmarkemptyX{L12}{3}&0\\\tikzmarkemptyX{L21}{4}&5&\tikzmarkemptyX{L22}{6}&0\\7&\tikzmarkemptyX{C12}{8}&\tikzmarkemptyX{C22}{9}&0\end{vmatrix}=\begin{vmatrix}2&3\\5&6\end{vmatrix}=12-15=-3
+	\medskip\(\mathrm{M}_{_{1\,2}}^{^{2\,3}}\big(A\big)=\begin{vmatrix}\tikzmarkemptyX{L11}{1}&\tikzmarkemptyX{C11}{2}&\tikzmarkemptyX{C21}{3}&\tikzmarkemptyX{L12}{0}\\\tikzmarkemptyX{L21}{4}&5&6&\tikzmarkemptyX{L22}{0}\\7&\tikzmarkemptyX{C12}{8}&\tikzmarkemptyX{C22}{9}&0\end{vmatrix}=\begin{vmatrix}2&3\\5&6\end{vmatrix}=12-15=-3
 	\begin{tikzpicture}[overlay, remember picture]
 		\draw[rounded corners, green, thick, fill=green!15, fill opacity=0.4] (L11.north west) rectangle (L12.south east);
 		\draw[rounded corners, green, thick, fill=green!15, fill opacity=0.4] (L21.north west) rectangle (L22.south east);
 		\draw[rounded corners, red, thick, fill=red!15, fill opacity=0.4] (C11.north west) rectangle (C12.south east);
-		\draw[rounded corners, red, thick, fill=red!15, fill opacity=0.4] (L12.north west) rectangle (C22.south east);
+		\draw[rounded corners, red, thick, fill=red!15, fill opacity=0.4] (C21.north west) rectangle (C22.south east);
 	\end{tikzpicture}\)
 	
-	\medskip Обратим внимание читателя, что понятие \textit{минора} матрицы \textbf{отличается} от понятия \hyperref[2.5.1]{\textit{\color{MMagenta}дополнительного минора}} матрицы, вводившегося ранее.
+	\medskip Обратим внимание читателя на то, что понятие \textit{минора} матрицы \textbf{отличается} от понятия \hyperref[2.5.1]{\textit{\color{MMagenta}дополнительного минора}} матрицы, вводившегося ранее.
 	\subsection{Ранг матрицы}
 	\df[Ранг матрицы]
 	
