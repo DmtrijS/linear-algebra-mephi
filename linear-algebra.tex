@@ -50,7 +50,7 @@
 \newcommand\encircle[1]{\tikz[baseline=(X.base)]\node(X)[draw, shape=circle, inner sep=1pt] {#1};}
 \newcommand{\tikzmark}[2]{\tikz[remember picture,baseline=-2pt]\node[circle, dashed,black,draw,text=black,anchor=center,inner sep=1pt] (#1) {$#2$};}
 \newcommand{\tikzmarkempty}[2]{\tikz[overlay,remember picture,baseline=-2pt] \node [anchor=center, inner sep=0] (#1) {$#2$};}
-\newcommand{\tikzmarkemptyX}[2]{\tikz[overlay,remember picture,baseline=(#1.base)] \node [inner sep=0] (#1) {$#2$};}
+\newcommand{\tikzmarkemptyX}[2]{\tikz[overlay,remember picture,baseline=(#1.base)] \node [inner sep=1pt] (#1) {$#2$};}
 %--------------------------------------------------------------------------------------------------------------------------
 \newcommand{\df}[1][]{\begin{flushleft}\textbf{\underline{Опр} \textcolor{Plum}{#1}}\end{flushleft}}
 \newcommand{\ex}{\begin{flushleft}\textbf{\underline{Пр}}\end{flushleft}}
