@@ -55,7 +55,7 @@
 \newcommand{\df}[1][]{\begin{flushleft}\textbf{\underline{Опр} \textcolor{Plum}{#1}}\end{flushleft}}
 \newcommand{\ex}{\begin{flushleft}\textbf{\underline{Пр}}\end{flushleft}}
 \newcommand{\lm}[1][]{\begin{flushleft}\textbf{\sqbox{Л} \textcolor{Blue}{#1}}\end{flushleft}}
-\newcommand{\tm}[1][]{\begin{flushleft}\textbf{\encircle{Th} \textcolor{Red}{#1}}\end{flushleft}}
+\newcommand{\tm}[2][]{\begin{flushleft}\textbf{\encircle{Th\(^\mathbf{#1}\)} \textcolor{Red}{#2}}\end{flushleft}}
 \newcommand{\inlineperm}[3][i]{{#1}_{#2}\dotsb{#1}_{#3}}
 \usepackage{calc}
 \definecolor{MMagenta}{rgb}{1.0, 0.0, 1.0}
@@ -182,7 +182,7 @@
 	
 	Таким образом, количество инверсий изменилось на $1$, следовательно, чётность перестановки изменилась $\blacksquare$
 	\subsection{Изменение чётности}
-	\tm[При любой транспозиции чётность перестановки меняется]
+	\tm{При любой транспозиции чётность перестановки меняется}
 	
 	$\square$
 	\[
@@ -209,7 +209,7 @@
 	
 	Получим перестановку $\begin{pmatrix} j_1&j_2&\cdots&j_n\end{pmatrix}$, называемую обратной к перестановке $\begin{pmatrix} i_1&i_2&\cdots&i_n\end{pmatrix}$.
 	\subsection{Чётность обратной перестановки}
-	\tm[Чётность прямой и обратной перестановок совпадает]
+	\tm{Чётность прямой и обратной перестановок совпадает}
 	
 	$\square$ При перестановке столбцов совершается одинаковое число транспозиций над верхней и нижней перестановками $\blacksquare$
 	\chapter{Определитель матрицы}
@@ -239,7 +239,7 @@
 	
 	$A=\begin{pmatrix} a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix}\implies A^{\mathrm{T}}=\begin{pmatrix} a_{11}&a_{21}\\a_{12}&a_{22}\end{pmatrix}$
 	\subsection{Теорема об определителе транспонированной матрицы}
-	\tm[Если для матрицы $\boldsymbol{A}$ матрица $\boldsymbol{B=A^{\mathrm{T}}}$, то $\boldsymbol{|B|=|A|}$, т.е. $\boldsymbol{\left|A^{\mathrm{T}}\right|=|A|}$]
+	\tm{Если для матрицы $\boldsymbol{A}$ матрица $\boldsymbol{B=A^{\mathrm{T}}}$, то $\boldsymbol{|B|=|A|}$, т.е. $\boldsymbol{\left|A^{\mathrm{T}}\right|=|A|}$}
 	
 	$\square$ 
 	\[
@@ -497,7 +497,7 @@
 	\(\blacksquare\)
 	
 	\section{Разложение определителя по любой строке или столбцу}
-	\tm[Для матрицы \(\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}\) \(\displaystyle\boldsymbol{\left(\forall k=\overline{1,n}\right)|A|=\sum_{i=1}^{n}a_{ki}\mathrm{A}_{ki}}\)]
+	\tm{Для матрицы \(\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}\) \(\displaystyle\boldsymbol{\left(\forall k=\overline{1,n}\right)|A|=\sum_{i=1}^{n}a_{ki}\mathrm{A}_{ki}}\)}
 	
 	\(\square\)	Начиная со строки \(k\), последовательно переставим строки вплоть до строки \(n\):
 	
@@ -542,7 +542,7 @@
 	
 	\(\blacksquare\)
 	\newpage\subsection{Теорема о произведении элементов матрицы одной строки на алгебраические дополнения элементов другой строки}
-	\tm[Если задана матрица \(\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}\), то \(\displaystyle\boldsymbol{\left(\forall j \neq k \right)\sum_{j=1}^{n}a_{lj}\mathrm{A}_{kj}=0}\)]
+	\tm{Если задана матрица \(\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}\), то \(\displaystyle\boldsymbol{\left(\forall j \neq k \right)\sum_{j=1}^{n}a_{lj}\mathrm{A}_{kj}=0}\)}
 	
 	\(\square\) Составим матрицу \(B\left\{b_{ij}\right\}_{i,j=1}^{n}\), в которой \(b_{ij}=\begin{cases}a_{ij},&i\neq k\\a_{lj},&i=k\end{cases}\)
 	\[A=\begin{pmatrix}a_{11}&\dotsb&a_{1n}\\
@@ -648,14 +648,14 @@
 	
 	\(\blacksquare\)
 	\section[Теорема об определителе произведения матриц \textit{(без доказательства)}]{Теорема об определителе произведения матриц \textit{(без доказательства)}\footnote[1]{Полное доказательство можно обнаружить в упомянутом в аннотации учебнике Л.И. Головиной\\(Глава III. Линейные операторы / \S2. Действия над линейными операторами / Теорема 3).}}
-	\tm[Если \(\boldsymbol{A}\) и \(\boldsymbol{B}\) --- квадратные матрицы одного порядка, то \(\boldsymbol{\left|A\cdot B\right|=|A|\cdot|B|}\)]
+	\tm{Если \(\boldsymbol{A}\) и \(\boldsymbol{B}\) --- квадратные матрицы одного порядка, то \(\boldsymbol{\left|A\cdot B\right|=|A|\cdot|B|}\)}
 	\section{Обратная матрица}
 	\subsection{Определение обратной матрицы}
 	\df[Обратная матрица]
 	
 	Если для матрицы \(\underset{n\times n}{A}\) существует матрица \(\underset{n\times n}{B}\) такая, что \(A\cdot B = B\cdot A = E\), то матрицу \(B\) называют обратной к матрице \(A\) и обозначают \(B\equiv A^{-1}\).
 	\subsection{Критерий существования обратной матрицы}
-	\tm[Если у матрицы \(\boldsymbol{\underset{n\times n}{A}}\), \(\boldsymbol{|A|\neq 0}\), то \(\boldsymbol{\existsone A^{-1}: A\cdot A^{-1}=A^{-1}\cdot A=E}\)]
+	\tm{Если у матрицы \(\boldsymbol{\underset{n\times n}{A}}\), \(\boldsymbol{|A|\neq 0}\), то \(\boldsymbol{\existsone A^{-1}: A\cdot A^{-1}=A^{-1}\cdot A=E}\)}
 	
 	\begin{enumerate}[1)]
 		\item Существование:
@@ -826,5 +826,6 @@
 	Ранг матрицы \(A\) --- максимальный порядок отличного от нуля минора.
 	
 	\medskip То есть, если \(\rank A=r\), то \(\exists\left\{i_1,\dotsc,i_r\right\}\text{ и }\left\{j_1,\dotsc,j_r\right\}:\mathrm{M}_{_{\inlineperm{1}{r}}}^{^{\inlineperm[j]{1}{r}}}\neq 0\), а любой другой минор более высокого порядка равен нулю.
+	\section{Влияние элементарных преобразований строк на ранг матрицы}
 	%TODO: remove periods at the end of math structures
 \end{document}
