@@ -836,13 +836,13 @@
 		\begin{itemize}
 			\item Рассмотрим минор матрицы \(B\) порядка \(r+1\). Он либо совпадает с соответствующим минором матрицы \(A\), либо отличается порядком строк. 
 			
-			Отсюда, \(\mathrm{M}^{r+1}\big(B\big)=\pm\mathrm{M}^{r+1}\big(A\big)=0\implies\rank B=r\).
+			Отсюда, \(\mathrm{M}^{r+1}\big(B\big)=\pm\mathrm{M}^{r+1}\big(A\big)=0\implies\rank B\leq r\).
 		\end{itemize}
 		\item Умножим \(k\)--ю строку \(A\) на \(\uplambda\in\mathbb{R}\). \(A\rightarrow B\).
 		\begin{itemize}
 			\item Рассмотрим минор матрицы \(B\) порядка \(r+1\). Он либо совпадает с минором \(A\) (если \(k\)--я строка не вошла), либо отличается в \(\uplambda\) раз.
 			
-			Отсюда, \(\mathrm{M}^{r+1}\big(B\big)=\left[\begin{aligned}&\uplambda\cdot\mathrm{M}^{r+1}\big(A\big)=0\\[2.5pt]&\mathrm{M}^{r+1}\big(A\big)=0\end{aligned}\right.\implies \rank B=r\).
+			Отсюда, \(\mathrm{M}^{r+1}\big(B\big)=\left[\begin{aligned}&\uplambda\cdot\mathrm{M}^{r+1}\big(A\big)=0\\[2.5pt]&\mathrm{M}^{r+1}\big(A\big)=0\end{aligned}\right.\implies \rank B\leq r\).
 		\end{itemize}
 		\item Прибавим к \(k\)--ой строке \(l\)--ю, умноженную на \(\uplambda\in\mathbb{R}\). \(A\left\{a_{ij}\right\}\rightarrow B\left\{b_{ij}\mid b_{kj}=a_{kj}+\uplambda a_{lj}\right\}\).
 		\begin{itemize}
@@ -851,7 +851,7 @@
 				\item Если \(k\)--я строка не вошла, то \(\mathrm{M}^{r+1}\big(B\big)=\mathrm{M}^{r+1}\big(A\big)=0\).
 				\item Если \(k\)--я строка вошла, то из \hyperref[2.3]{\textit{\color{MMagenta}лемм о влиянии ЭП на определитель матрицы}} получим \(\mathrm{M}^{r+1}\big(B\big)=\left|B\big(\mathrm{M}^{r+1}\big)\right|=\left|A\big(\mathrm{M}^{r+1}\big)\right|+\uplambda\cdot 0=0\).
 			\end{enumerate}
-		Отсюда, \(\rank B=r\).
+		Отсюда, \(\rank B\leq r\).
 		\end{itemize}
 	\end{enumerate}
 	%TODO: remove periods at the end of math structures
