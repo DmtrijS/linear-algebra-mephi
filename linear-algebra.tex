@@ -61,7 +61,7 @@
 \definecolor{MMagenta}{rgb}{1.0, 0.0, 1.0}
 \newcommand{\oversymbol}[2]{\overset{\textcolor{MMagenta}{\textbf{\textit{#1}}}}{\resizebox{\widthof{#1}}{\heightof{\(#2\)}}{\(#2\)}}}
 \newcommand{\oversymbolnoref}[3][]{\underset{#1}{\overset{#2}{\resizebox{\widthof{\(#2\)}}{\heightof{\(#3\)}}{\(#3\)}}}}
-\newcommand{\vect}[1]{\vv{\boldsymbol{#1}}}
+\newcommand{\vect}[2][]{\vv*{\bm{#2}}{#1}}
 %--------------------------------------------------------------------------------------------------------------------------
 \let\oldexists\exists
 \renewcommand{\exists}{\oldexists\,}
@@ -890,6 +890,14 @@
 	 
 	 \(\overset{\Rightarrow}{\square}\) Предположим противное: существуют линейно зависимые строки. 
 	 
-	 Пусть всего \(n\) строк: \(\vv*{\bm{A}}{1},\dotsc,\vv*{\bm{A}}{m},\dotsc,\vv*{\bm{A}}{n}\)
+	 \medskip Пусть всего \(n\) строк: \(\vv*{\bm{A}}{1},\dotsb,\vv*{\bm{A}}{m},\dotsb,\vv*{\bm{A}}{n}\). Пусть \(\displaystyle\vv*{\bm{A}}{m}=\sum_{\substack{k=1,\\[.5pt]k\neq m}}^{n}\upalpha_{k}\vect[k]{A}\). 
+	 
+	 \smallskip Вычитая поочерёдно из этой строки все \(\upalpha_{k}\vect[k]{A}\left(k=\overline{1,n},\,k\neq m\right)\), произведём над этой строкой ЭП--ия и в итоге получим нулевую строку \(\implies |A|=0\implies\skull\). 
+	 
+	 Значит, все строки линейно независимы.
+	 
+	 \bigskip\(\overset{\Leftarrow}{\square}\) Приведём матрицу к ступенчатому виду.
+	 
+	 \smallskip Нулевых строк нет (они линейно независимы), поэтому матрица имеет верхнетреугольный вид \(\displaystyle\implies a_{kk}\neq 0\left(\forall k=\overline{1,n}\right)\implies |A|=\prod_{k=1}^{n}a_{kk}\neq 0\)
 	%TODO: remove periods at the end of math structures
 \end{document}
