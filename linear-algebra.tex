@@ -16,7 +16,7 @@
 \usepackage[dvipsnames]{xcolor}
 \usepackage{amssymb}
 \usepackage[f]{esvect}
-\usepackage{mathtools}
+\usepackage{mathtools, bm}
 \usepackage[makeroom]{cancel}
 \usepackage{upgreek}
 \usepackage{enumerate}
@@ -256,9 +256,9 @@
 	Таким образом, $\left|A^{\mathrm{T}}\right| = |A|$ $\blacksquare$
 	\section{Влияние элементарных преобразований на определитель матрицы}\label{2.3}
 	\df[Умножение строки/столбца матрицы на число]
-	\lm{Если для матриц $\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}$ и $\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}$ на фиксированной строке $\boldsymbol{l}$: $\boldsymbol{\begin{cases}
+	\lm{Если для матриц $\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}$ и $\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}$ на фиксированной строке $\boldsymbol{l}$: $\boldsymbol{{\begin{cases}
 	a_{lj}=\uplambda b_{lj},&j=\overline{1,n}
-	\medskip\\a_{ij}=b_{ij},&i\neq l,\,j=\overline{1,n}\end{cases}}$, то $\boldsymbol{|A|=\uplambda \left|B\right|}$}
+	\medskip\\a_{ij}=b_{ij},&i\neq l,\,j=\overline{1,n}\end{cases}}}$, то $\boldsymbol{|A|=\uplambda \left|B\right|}$}
 	
 	$\square$
 	\begin{align*} 
@@ -273,11 +273,11 @@
 	
 	Поскольку $|A|=\left|A^{\mathrm{T}}\right|$, то свойство верно и для столбцов.
 	\df[Перестановка строки/столбца матрицы]
-	\lm{Если для матриц $\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}$ и $\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}$ на фиксированных строках $\boldsymbol{k}$ и $\boldsymbol{l}$: $\boldsymbol{b_{ij}=\begin{cases}
+	\lm{Если для матриц $\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}$ и $\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}$ на фиксированных строках $\boldsymbol{k}$ и $\boldsymbol{l}$: $\boldsymbol{{b_{ij}=\begin{cases}
 	a_{ij},&i\neq k\text{ и }i\neq l
 	\\a_{kj},&\text{строка }l
 	\\a_{lj},&\text{строка }k
-	\end{cases}}$, то $\boldsymbol{|A|=-|B|}$}
+	\end{cases}}}$, то $\boldsymbol{|A|=-|B|}$}
 	
 	$\square$
 	\begin{align*}
@@ -295,10 +295,10 @@
 	Поскольку $|A|=\left|A^{\mathrm{T}}\right|$, то свойство верно и для столбцов.
 	\df[Прибавление строк/столбцов другой матрицы]
 	\lm{Если для матриц $\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}$, $\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}$, $\boldsymbol{C\left\{c_{ij}\right\}_{i,j=1}^{n}}$ на фиксированной\\строке $\boldsymbol{l}$:
-	\smallskip\\$\boldsymbol{a_{ij}=\begin{cases}
+	\smallskip\\$\boldsymbol{{a_{ij}=\begin{cases}
 	b_{ij}=c_{ij},&i\neq l,\,j=\overline{1,n}
 	\smallskip\\b_{lj}+c_{lj},&\text{строка }l,\,j=\overline{1,n}
-	\end{cases}}$, то $\boldsymbol{|A|=|B|+|C|}$}
+	\end{cases}}}$, то $\boldsymbol{|A|=|B|+|C|}$}
 	
 	$\square$
 	\begin{align*}
@@ -656,7 +656,7 @@
 	
 	Если для матрицы \(\underset{n\times n}{A}\) существует матрица \(\underset{n\times n}{B}\) такая, что \(A\cdot B = B\cdot A = E\), то матрицу \(B\) называют обратной к матрице \(A\) и обозначают \(B\equiv A^{-1}\).
 	\subsection{Критерий существования обратной матрицы}
-	\tm{Если у матрицы \(\boldsymbol{\underset{n\times n}{A}}\), \(\boldsymbol{|A|\neq 0}\), то \(\boldsymbol{\existsone A^{-1}: A\cdot A^{-1}=A^{-1}\cdot A=E}\)}
+	\tm{Если у матрицы \(\boldsymbol{{\underset{n\times n}{A}}}\), \(\boldsymbol{{|A|\neq 0}}\), то \(\bm{{\existsone}} \bm{{A^{-1}}}\bm{:} \bm{A}\bm{{\cdot}} \bm{{A^{-1}}} \bm{=} \bm{{A^{-1}}} \bm{{\cdot}} \bm{A=E}\)}
 	
 	\begin{enumerate}[1)]
 		\item Существование:
@@ -708,7 +708,7 @@
 	\end{enumerate}
 	\subsection[Построение обратной матрицы методом ЭПС]{Построение обратной матрицы методом элементарных преобразований строк}
 	\subsubsection{Умножение \(\boldsymbol{k}\)--ой строки на \(\boldsymbol{\upalpha\in\mathbb{R}}\)}
-	\lm{Соответствует левостороннему домножению на \(\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}\), \(\boldsymbol{b_{ij}=\begin{cases}\upalpha,&i=k\text{ и }j=k\\\updelta_{ij},&i\neq k\text{ или }j\neq k\end{cases}}\)}
+	\lm{Соответствует левостороннему домножению на \(\boldsymbol{{B\left\{b_{ij}\right\}_{i,j=1}^{n}}}\), \(\boldsymbol{{b_{ij}=\begin{cases}\upalpha,&i=k\text{ и }j=k\\\updelta_{ij},&i\neq k\text{ или }j\neq k\end{cases}}}\)}
 	
 	\(\square\) \(B\cdot A=C\)
 	\begin{enumerate}[{1.}1)]
@@ -724,7 +724,7 @@
 	
 	\bigskip\(B=\begin{pmatrix}1&0&0\\0&c&0\\0&0&1\end{pmatrix}\implies B\cdot A = \begin{pmatrix}1&0&0\\0&c&0\\0&0&1\end{pmatrix}\cdot \begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\begin{pmatrix}1&2&3\\4c&5c&6c\\7&8&9\end{pmatrix}\)
 	\subsubsection{Перемена местами \(\boldsymbol{l}\)--ой и \(\boldsymbol{k}\)--ой строк}
-	\lm{Соответствует левостороннему домножению на \(\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}\), \(\boldsymbol{b_{ij}=\begin{cases}\updelta_{ij},&i\neq k,\,i\neq l,\,j=\overline{1,n}\\\updelta_{kj},&i=l,\,j=\overline{1,n}\\\updelta_{lj},&i=k,\,j=\overline{1,n}\end{cases}}\)}
+	\lm{Соответствует левостороннему домножению на \(\boldsymbol{{B\left\{b_{ij}\right\}_{i,j=1}^{n}}}\), \(\boldsymbol{{b_{ij}=\begin{cases}\updelta_{ij},&i\neq k,\,i\neq l,\,j=\overline{1,n}\\\updelta_{kj},&i=l,\,j=\overline{1,n}\\\updelta_{lj},&i=k,\,j=\overline{1,n}\end{cases}}}\)}
 	
 	\(\square\) \(B\cdot A = C\)
 	
@@ -744,7 +744,7 @@
 	
 	\bigskip\(B=\begin{pmatrix}0&1&0\\1&0&0\\0&0&1\end{pmatrix}\implies B\cdot A = \begin{pmatrix}0&1&0\\1&0&0\\0&0&1\end{pmatrix}\cdot\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\begin{pmatrix}4&5&6\\1&2&3\\7&8&9\end{pmatrix}\)
 	\subsubsection{Добавление к \(\boldsymbol{k}\)--ой строке \(\boldsymbol{l}\)--ую, умноженную на \(\boldsymbol{\upalpha\in\mathbb{R}}\)}
-	\lm{Соответствует левостороннему домножению на \(\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}\), \(\boldsymbol{b_{ij}=\begin{cases}\upalpha+\updelta_{kl},&i=k\text{ и } j=l\\\updelta_{ij},&i\neq k\text{ или }j\neq l\end{cases}}\)}
+	\lm{Соответствует левостороннему домножению на \(\boldsymbol{{B\left\{b_{ij}\right\}_{i,j=1}^{n}}}\), \(\boldsymbol{{b_{ij}=\begin{cases}\upalpha+\updelta_{kl},&i=k\text{ и } j=l\\\updelta_{ij},&i\neq k\text{ или }j\neq l\end{cases}}}\)}
 	
 	\(\square\) \(B\cdot A = C\)
 	
@@ -887,5 +887,7 @@
 	 \medskip Строки и столбцы матрицы \(A\), входящие в базисный минор, называются базисными строками и базисными столбцами соответственно.
 	 
 	 \lm[1]{Если для матрицы \(A\), \(|A|\neq 0\), то строки \(A\) линейно независимы}
+	 
+	 \(\overset{\Rightarrow}{\square}\) Предположим противное: существуют линейно зависимые строки. Пусть всего \(n\)
 	%TODO: remove periods at the end of math structures
 \end{document}
