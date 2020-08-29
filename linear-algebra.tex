@@ -656,7 +656,7 @@
 	
 	Если для матрицы \(\underset{n\times n}{A}\) существует матрица \(\underset{n\times n}{B}\) такая, что \(A\cdot B = B\cdot A = E\), то матрицу \(B\) называют обратной к матрице \(A\) и обозначают \(B\equiv A^{-1}\).
 	\subsection{Критерий существования обратной матрицы}
-	\tm{Если у матрицы \(\boldsymbol{{\underset{n\times n}{A}}}\), \(\boldsymbol{{|A|\neq 0}}\), то \(\bm{{\existsone}} \bm{{A^{-1}}}\bm{:} \bm{A}\bm{{\cdot}} \bm{{A^{-1}}} \bm{=} \bm{{A^{-1}}} \bm{{\cdot}} \bm{A=E}\)}
+	\tm{Если у матрицы \(\boldsymbol{{\underset{n\times n}{A}}}\), \(\boldsymbol{{|A|\neq 0}}\), то \(\bm{{\existsone A^{-1}:A\cdot A^{-1} = A^{-1} \cdot A=E}}\)}
 	
 	\begin{enumerate}[1)]
 		\item Существование:
@@ -886,8 +886,8 @@
 	 
 	 \medskip Строки и столбцы матрицы \(A\), входящие в базисный минор, называются базисными строками и базисными столбцами соответственно.
 	 
-	 \lm[1]{Если для матрицы \(A\), \(|A|\neq 0\), то строки \(A\) линейно независимы}
+	 \lm[1]{Если для матрицы \(\bm{A}\), \(\bm{{|A|\neq 0}}\), то строки \(\bm{A}\) линейно независимы}
 	 
-	 \(\overset{\Rightarrow}{\square}\) Предположим противное: существуют линейно зависимые строки. Пусть всего \(n\)
+	 \(\overset{\Rightarrow}{\square}\) Предположим противное: существуют линейно зависимые строки. Пусть всего \(n\) строк: \(\vv*{\bm{A}}{1},\dotsc,\vv*{\bm{A}}{m},\dotsc,\vv*{\bm{A}}{n}\)
 	%TODO: remove periods at the end of math structures
 \end{document}
