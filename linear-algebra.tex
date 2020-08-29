@@ -54,13 +54,14 @@
 %--------------------------------------------------------------------------------------------------------------------------
 \newcommand{\df}[1][]{\begin{flushleft}\textbf{\underline{Опр} \textcolor{Plum}{#1}}\end{flushleft}}
 \newcommand{\ex}{\begin{flushleft}\textbf{\underline{Пр}}\end{flushleft}}
-\newcommand{\lm}[1][]{\begin{flushleft}\textbf{\sqbox{Л} \textcolor{Blue}{#1}}\end{flushleft}}
+\newcommand{\lm}[2][]{\begin{flushleft}\textbf{\sqbox{Л\(^\mathbf{#1}\)} \textcolor{Blue}{#2}}\end{flushleft}}
 \newcommand{\tm}[2][]{\begin{flushleft}\textbf{\encircle{Th\(^\mathbf{#1}\)} \textcolor{Red}{#2}}\end{flushleft}}
 \newcommand{\inlineperm}[3][i]{{#1}_{#2}\dotsb{#1}_{#3}}
 \usepackage{calc}
 \definecolor{MMagenta}{rgb}{1.0, 0.0, 1.0}
 \newcommand{\oversymbol}[2]{\overset{\textcolor{MMagenta}{\textbf{\textit{#1}}}}{\resizebox{\widthof{#1}}{\heightof{\(#2\)}}{\(#2\)}}}
 \newcommand{\oversymbolnoref}[3][]{\underset{#1}{\overset{#2}{\resizebox{\widthof{\(#2\)}}{\heightof{\(#3\)}}{\(#3\)}}}}
+\newcommand{\vect}[1]{\vv{\boldsymbol{#1}}}
 %--------------------------------------------------------------------------------------------------------------------------
 \let\oldexists\exists
 \renewcommand{\exists}{\oldexists\,}
@@ -167,7 +168,7 @@
 	
 	Перемена местами двух соседних элементов перестановки --- элементарная транспозиция (ЭТ).
 	
-	\newpage\lm[При элементарной транспозиции чётность перестановки меняется]
+	\newpage\lm{При элементарной транспозиции чётность перестановки меняется}
 	
 	$\square$
 	\[
@@ -255,9 +256,9 @@
 	Таким образом, $\left|A^{\mathrm{T}}\right| = |A|$ $\blacksquare$
 	\section{Влияние элементарных преобразований на определитель матрицы}\label{2.3}
 	\df[Умножение строки/столбца матрицы на число]
-	\lm[Если для матриц $\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}$ и $\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}$ на фиксированной строке $\boldsymbol{l}$: $\boldsymbol{\begin{cases}
+	\lm{Если для матриц $\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}$ и $\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}$ на фиксированной строке $\boldsymbol{l}$: $\boldsymbol{\begin{cases}
 	a_{lj}=\uplambda b_{lj},&j=\overline{1,n}
-	\medskip\\a_{ij}=b_{ij},&i\neq l,\,j=\overline{1,n}\end{cases}}$, то $\boldsymbol{|A|=\uplambda \left|B\right|}$]
+	\medskip\\a_{ij}=b_{ij},&i\neq l,\,j=\overline{1,n}\end{cases}}$, то $\boldsymbol{|A|=\uplambda \left|B\right|}$}
 	
 	$\square$
 	\begin{align*} 
@@ -272,11 +273,11 @@
 	
 	Поскольку $|A|=\left|A^{\mathrm{T}}\right|$, то свойство верно и для столбцов.
 	\df[Перестановка строки/столбца матрицы]
-	\lm[Если для матриц $\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}$ и $\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}$ на фиксированных строках $\boldsymbol{k}$ и $\boldsymbol{l}$: $\boldsymbol{b_{ij}=\begin{cases}
+	\lm{Если для матриц $\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}$ и $\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}$ на фиксированных строках $\boldsymbol{k}$ и $\boldsymbol{l}$: $\boldsymbol{b_{ij}=\begin{cases}
 	a_{ij},&i\neq k\text{ и }i\neq l
 	\\a_{kj},&\text{строка }l
 	\\a_{lj},&\text{строка }k
-	\end{cases}}$, то $\boldsymbol{|A|=-|B|}$]
+	\end{cases}}$, то $\boldsymbol{|A|=-|B|}$}
 	
 	$\square$
 	\begin{align*}
@@ -293,11 +294,11 @@
 	
 	Поскольку $|A|=\left|A^{\mathrm{T}}\right|$, то свойство верно и для столбцов.
 	\df[Прибавление строк/столбцов другой матрицы]
-	\lm[Если для матриц $\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}$, $\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}$, $\boldsymbol{C\left\{c_{ij}\right\}_{i,j=1}^{n}}$ на фиксированной\\строке $\boldsymbol{l}$:
+	\lm{Если для матриц $\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}$, $\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}$, $\boldsymbol{C\left\{c_{ij}\right\}_{i,j=1}^{n}}$ на фиксированной\\строке $\boldsymbol{l}$:
 	\smallskip\\$\boldsymbol{a_{ij}=\begin{cases}
 	b_{ij}=c_{ij},&i\neq l,\,j=\overline{1,n}
 	\smallskip\\b_{lj}+c_{lj},&\text{строка }l,\,j=\overline{1,n}
-	\end{cases}}$, то $\boldsymbol{|A|=|B|+|C|}$]
+	\end{cases}}$, то $\boldsymbol{|A|=|B|+|C|}$}
 	
 	$\square$
 	\begin{align*}
@@ -325,7 +326,7 @@
 	0&0&\cdots&0&a_{nn}
 	\end{pmatrix}
 	\]
-	\lm[Определитель верхнетреугольной матрицы равен $\displaystyle\boldsymbol{|A|=\prod_{i=1}^{n}a_{ii}}$]
+	\lm{Определитель верхнетреугольной матрицы равен $\displaystyle\boldsymbol{|A|=\prod_{i=1}^{n}a_{ii}}$}
 	
 	$\square$
 	
@@ -340,7 +341,7 @@
 	
 	$\blacksquare$
 	\subsection{Приведение матрицы к верхнетреугольному виду}
-	\lm[Любую матрицу можно привести к верхнетреугольному виду путём элементарных преобразований строк/столбцов]
+	\lm{Любую матрицу можно привести к верхнетреугольному виду путём элементарных преобразований строк/столбцов}
 	
 	$\square$ Применим метод математической индукции:
 	
@@ -419,7 +420,7 @@
 	Алгебраическое дополнение, соответствующее элементу $a_{kl}$, равно $\mathrm{A}_{kl}=(-1)^{k+l}\mathrm{M}_{kl}$
 	\subsection{Лемма I}\label{2.5.2}
 	
-	\lm[Если в матрице $\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}$, $\boldsymbol{\left(\forall j=\overline{1,n-1}\right)a_{nj}=0}$, то $\boldsymbol{|A|=a_{nn}\mathrm{A}_{nn}}$]
+	\lm{Если в матрице $\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}$, $\boldsymbol{\left(\forall j=\overline{1,n-1}\right)a_{nj}=0}$, то $\boldsymbol{|A|=a_{nn}\mathrm{A}_{nn}}$}
 	
 	\(\square\)
 	
@@ -443,7 +444,7 @@
 	\(\blacksquare\)
 	\subsection{Лемма II}\label{2.5.3}
 	
-	\lm[Если в матрице \(\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}\), \(\boldsymbol{\left(\forall j\neq l\right) a_{nj}=0}\), то \(\boldsymbol{|A|=a_{nl}\mathrm{A}_{nl}}\)]
+	\lm{Если в матрице \(\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}\), \(\boldsymbol{\left(\forall j\neq l\right) a_{nj}=0}\), то \(\boldsymbol{|A|=a_{nl}\mathrm{A}_{nl}}\)}
 	
 	\(\square\)
 	
@@ -471,7 +472,7 @@
 	\(\blacksquare\)
 	\subsection{Лемма III}\label{2.5.4}
 	
-	\lm[Определитель матрицы \(\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}\) равен \(\displaystyle\boldsymbol{ |A|=\sum_{i=1}^{n}a_{ni}\mathrm{A}_{ni}}\)]
+	\lm{Определитель матрицы \(\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}\) равен \(\displaystyle\boldsymbol{ |A|=\sum_{i=1}^{n}a_{ni}\mathrm{A}_{ni}}\)}
 	
 	\(\square\)
 	
@@ -521,7 +522,7 @@
 	\(\blacksquare\)
 	\section{Фальшивое разложение определителя}
 	\subsection{Определитель матрицы с одинаковыми строками/столбцами}
-	\lm[Если матрица содержит одинаковые строки/столбцы, то её определитель равен нулю]
+	\lm{Если матрица содержит одинаковые строки/столбцы, то её определитель равен нулю}
 	
 	\(\square\)
 	\[A=\begin{pmatrix}a_{11}&\dotsb&a_{1n}\\
@@ -583,7 +584,7 @@
 													c_{ij} &= \sum_{t=1}^{n}a_{it}b_{tj}
 	\end{align*}
 	\subsection{Дистрибутивность}
-	\lm[Произведение матриц дистрибутивно]
+	\lm{Произведение матриц дистрибутивно}
 	
 	\[
 		\underbrace{\underset{n\times k}{A}\bigg(\overbrace{\uplambda\underset{k\times m}{B}+\upmu\underset{k\times m}{C}}^{R\left\{r_{ij}\right\}}\bigg)}_{D\left\{d_{ij}\right\}} = \underbrace{\overbrace{\uplambda\underset{n\times m}{AB}}^{P\left\{p_{ij}\right\}}+\overbrace{\upmu\underset{n\times m}{AC}}^{Q\left\{q_{ij}\right\}}}_{F\left\{f_{ij}\right\}}~~\left(\uplambda,\upmu\in\mathbb{R}\right)
@@ -597,7 +598,7 @@
 	
 	\(\blacksquare\)
 	\newpage\subsection{Ассоциативность}
-	\lm[Произведение матриц ассоциативно]
+	\lm{Произведение матриц ассоциативно}
 	
 	\begin{align*}
 		&\bigg(\overbrace{\underset{m\times k}{A}\cdot\underset{k\times l}{B}}^{F\left\{f_{ij}\right\}}\bigg)\cdot\underset{l\times n}{C} = \underset{m\times n}{T}\\[5pt]
@@ -614,7 +615,7 @@
 	
 	\(\blacksquare\)
 	\subsection{Некоммутативность (контрпример)}
-	\lm[Произведение матриц некоммутативно]
+	\lm{Произведение матриц некоммутативно}
 	
 	В общем случае \(A\cdot B\neq B\cdot A\)
 	\ex
@@ -638,7 +639,7 @@
 		\end{tikzpicture}
 	\)
 	
-	\lm[Если \(\boldsymbol{\exists A\cdot E}\), то \(\boldsymbol{A\cdot E = A}\) (аналогично \(\boldsymbol{E\cdot B=B}\))]
+	\lm{Если \(\boldsymbol{\exists A\cdot E}\), то \(\boldsymbol{A\cdot E = A}\) (аналогично \(\boldsymbol{E\cdot B=B}\))}
 	
 	\(\square\)
 	\begin{align*}
@@ -707,7 +708,7 @@
 	\end{enumerate}
 	\subsection[Построение обратной матрицы методом ЭПС]{Построение обратной матрицы методом элементарных преобразований строк}
 	\subsubsection{Умножение \(\boldsymbol{k}\)--ой строки на \(\boldsymbol{\upalpha\in\mathbb{R}}\)}
-	\lm[Соответствует левостороннему домножению на \(\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}\), \(\boldsymbol{b_{ij}=\begin{cases}\upalpha,&i=k\text{ и }j=k\\\updelta_{ij},&i\neq k\text{ или }j\neq k\end{cases}}\)]
+	\lm{Соответствует левостороннему домножению на \(\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}\), \(\boldsymbol{b_{ij}=\begin{cases}\upalpha,&i=k\text{ и }j=k\\\updelta_{ij},&i\neq k\text{ или }j\neq k\end{cases}}\)}
 	
 	\(\square\) \(B\cdot A=C\)
 	\begin{enumerate}[{1.}1)]
@@ -723,7 +724,7 @@
 	
 	\bigskip\(B=\begin{pmatrix}1&0&0\\0&c&0\\0&0&1\end{pmatrix}\implies B\cdot A = \begin{pmatrix}1&0&0\\0&c&0\\0&0&1\end{pmatrix}\cdot \begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\begin{pmatrix}1&2&3\\4c&5c&6c\\7&8&9\end{pmatrix}\)
 	\subsubsection{Перемена местами \(\boldsymbol{l}\)--ой и \(\boldsymbol{k}\)--ой строк}
-	\lm[Соответствует левостороннему домножению на \(\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}\), \(\boldsymbol{b_{ij}=\begin{cases}\updelta_{ij},&i\neq k,\,i\neq l,\,j=\overline{1,n}\\\updelta_{kj},&i=l,\,j=\overline{1,n}\\\updelta_{lj},&i=k,\,j=\overline{1,n}\end{cases}}\)]
+	\lm{Соответствует левостороннему домножению на \(\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}\), \(\boldsymbol{b_{ij}=\begin{cases}\updelta_{ij},&i\neq k,\,i\neq l,\,j=\overline{1,n}\\\updelta_{kj},&i=l,\,j=\overline{1,n}\\\updelta_{lj},&i=k,\,j=\overline{1,n}\end{cases}}\)}
 	
 	\(\square\) \(B\cdot A = C\)
 	
@@ -743,7 +744,7 @@
 	
 	\bigskip\(B=\begin{pmatrix}0&1&0\\1&0&0\\0&0&1\end{pmatrix}\implies B\cdot A = \begin{pmatrix}0&1&0\\1&0&0\\0&0&1\end{pmatrix}\cdot\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\begin{pmatrix}4&5&6\\1&2&3\\7&8&9\end{pmatrix}\)
 	\subsubsection{Добавление к \(\boldsymbol{k}\)--ой строке \(\boldsymbol{l}\)--ую, умноженную на \(\boldsymbol{\upalpha\in\mathbb{R}}\)}
-	\lm[Соответствует левостороннему домножению на \(\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}\), \(\boldsymbol{b_{ij}=\begin{cases}\upalpha+\updelta_{kl},&i=k\text{ и } j=l\\\updelta_{ij},&i\neq k\text{ или }j\neq l\end{cases}}\)]
+	\lm{Соответствует левостороннему домножению на \(\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}\), \(\boldsymbol{b_{ij}=\begin{cases}\upalpha+\updelta_{kl},&i=k\text{ и } j=l\\\updelta_{ij},&i\neq k\text{ или }j\neq l\end{cases}}\)}
 	
 	\(\square\) \(B\cdot A = C\)
 	
@@ -861,5 +862,30 @@
 		\item \(A\xrightarrow{\text{ЭП}}B\). По \hyperref[4.2.1]{\color{MMagenta}\(\mathbf{\Big[\textbf{Th}^{1}\Big]}\)} \(\rank B\leq\rank A\)
 		\item \(B\xrightarrow{\text{ЭП}}A\). По \hyperref[4.2.1]{\color{MMagenta}\(\mathbf{\Big[\textbf{Th}^{1}\Big]}\)} \(\rank A\leq\rank B\)
 	\end{itemize}
+	
+	\section{Вычисление ранга с помощью ЭП строк}
+	\tm[3]{У матрицы ступенчатого вида ранг равен числу ненулевых строк}
+	
+	\(\square\) Пусть у матрицы ступенчатого вида \(r\) ненулевых строк (без ограничения общности, пусть это строки \(1,\dotsc,r\)). Пусть тогда \(k_1,\dotsc,k_r\) --- ненулевые столбцы, в которых стоят начала ступенек.
+	\[\mathrm{M}_{_{1\dotsb r}}^{^{\inlineperm[k]{1}{r}}}=\begin{vmatrix}a_{1k_1}&\dotsb&\dotsb&\dotsb&\dotsb\\
+																		0&a_{2k_2}&\dotsb&\dotsb&\dotsb\\
+																		0&0&\ddots&\dotsb&\dotsb\\
+																		\dotsb&\dotsb&\dotsb&\ddots&\dotsb\\
+																		0&\dotsb&\dotsb&0&a_{rk_r}\\													
+	\end{vmatrix}=\prod_{n=1}^{r}a_{nk_n}\neq 0\]
+	
+	Это минор порядка \(r\). Любой другой минор большего порядка равен нулю. \(\blacksquare\)
+	
+	\smallskip Таким образом, приводя матрицу ЭП строк к ступенчатому виду, можно определить её ранг.
+	
+	\section{Свойство базисных строк и базисных столбцов матрицы}
+	\subsection{Базисный минор матрицы}
+	\df[Базисный минор, базисные строки/столбцы]
+	
+	 Если для матрицы \(A\), \(\rank A=r\), то \(\mathrm{M}^{r}(A)\neq 0\) --- базисный минор.
+	 
+	 \medskip Строки и столбцы матрицы \(A\), входящие в базисный минор, называются базисными строками и базисными столбцами соответственно.
+	 
+	 \lm[1]{Если для матрицы \(A\), \(|A|\neq 0\), то строки \(A\) линейно независимы}
 	%TODO: remove periods at the end of math structures
 \end{document}
