@@ -15,11 +15,39 @@
 \graphicspath{ {d:/texstudio-pics/} }
 \usepackage[dvipsnames]{xcolor}
 \usepackage{amssymb}
-\usepackage[f]{esvect}
 \usepackage{mathtools, bm}
 \usepackage[makeroom]{cancel}
 \usepackage{upgreek}
 \usepackage{enumerate}
+%--------------------------------------------------------------------------------------------------------------------------
+\makeatletter
+\newsavebox\myboxA
+\newsavebox\myboxB
+\newlength\mylenA
+
+\newcommand*\xoverline[2][0.75]{%
+	\sbox{\myboxA}{$\m@th#2$}%
+	\setbox\myboxB\null% Phantom box
+	\ht\myboxB=\ht\myboxA%
+	\dp\myboxB=\dp\myboxA%
+	\wd\myboxB=#1\wd\myboxA% Scale phantom
+	\sbox\myboxB{$\m@th\overline{\copy\myboxB}$}%  Overlined phantom
+	\setlength\mylenA{\the\wd\myboxA}%   calc width diff
+	\addtolength\mylenA{-\the\wd\myboxB}%
+	\ifdim\wd\myboxB<\wd\myboxA%
+	\rlap{\hskip 0.5\mylenA\usebox\myboxB}{\usebox\myboxA}%
+	\else
+	\hskip -0.5\mylenA\rlap{\usebox\myboxA}{\hskip 0.5\mylenA\usebox\myboxB}%
+	\fi}
+\makeatother
+%--------------------------------------------------------------------------------------------------------------------------
+\usepackage{xstring}
+\newcommand{\vect}[2][n]{\IfEqCase{#1}%
+										{%
+											{l}{\bm{#2}}%
+											{c}{\mathbf{#2}}%
+											{n}{\xoverline{\bm{#2}}}%
+										}}%
 %--------------------------------------------------------------------------------------------------------------------------
 \usepackage{collectbox}
 \makeatletter
@@ -61,7 +89,6 @@
 \definecolor{MMagenta}{rgb}{1.0, 0.0, 1.0}
 \newcommand{\oversymbol}[2]{\overset{\textcolor{MMagenta}{\textbf{\textit{#1}}}}{\resizebox{\widthof{#1}}{\heightof{\(#2\)}}{\(#2\)}}}
 \newcommand{\oversymbolnoref}[3][]{\underset{#1}{\overset{#2}{\resizebox{\widthof{\(#2\)}}{\heightof{\(#3\)}}{\(#3\)}}}}
-\newcommand{\vect}[2][]{\vv*{\bm{#2}}{#1}}
 %--------------------------------------------------------------------------------------------------------------------------
 \let\oldexists\exists
 \renewcommand{\exists}{\oldexists\,}
@@ -316,7 +343,7 @@
 	\subsection{Треугольный вид матрицы}
 	\df[Верхнетреугольная матрица]
 	
-	Матрица $A\left\{a_{ij}\right\}_{i,j=1}^{n}$ имеет верхнетреугольный вид, если $\left(\forall j =\overline{1,n},\, \forall i =\overline{2,n}: i>j\right) a_{ij} = 0$.
+	Матрица $A\left\{a_{ij}\right\}_{i,j=1}^{n}$ имеет верхнетреугольный вид, если $\left(\forall j =\overline{1,n},\, \forall i =\overline{2,n}\colon i>j\right) a_{ij} = 0$.
 	\[
 	\begin{pmatrix} 
 	a_{11}&a_{12}&\dotsb&a_{1(n-1)}&a_{1n}\\
@@ -656,7 +683,7 @@
 	
 	Если для матрицы \(\underset{n\times n}{A}\) существует матрица \(\underset{n\times n}{B}\) такая, что \(A\cdot B = B\cdot A = E\), то матрицу \(B\) называют обратной к матрице \(A\) и обозначают \(B\equiv A^{-1}\).
 	\subsection{Критерий существования обратной матрицы}
-	\tm{Если у матрицы \(\boldsymbol{{\underset{n\times n}{A}}}\), \(\boldsymbol{{|A|\neq 0}}\), то \(\bm{{\existsone A^{-1}:A\cdot A^{-1} = A^{-1} \cdot A=E}}\)}
+	\tm{Если у матрицы \(\boldsymbol{{\underset{n\times n}{A}}}\), \(\boldsymbol{{|A|\neq 0}}\), то \(\bm{{\existsone A^{-1}\colon A\cdot A^{-1} = A^{-1} \cdot A=E}}\)}
 	
 	\begin{enumerate}[1)]
 		\item Существование:
@@ -826,7 +853,7 @@
 	
 	Ранг матрицы \(A\) --- максимальный порядок отличного от нуля минора.
 	
-	\medskip То есть, если \(\rank A=r\), то \(\exists\left\{i_1,\dotsc,i_r\right\}\text{ и }\left\{j_1,\dotsc,j_r\right\}:\mathrm{M}_{_{\inlineperm{1}{r}}}^{^{\inlineperm[j]{1}{r}}}\neq 0\), а любой другой минор более высокого порядка равен нулю.
+	\medskip То есть, если \(\rank A=r\), то \(\exists\left\{i_1,\dotsc,i_r\right\}\text{ и }\left\{j_1,\dotsc,j_r\right\}\colon \mathrm{M}_{_{\inlineperm{1}{r}}}^{^{\inlineperm[j]{1}{r}}}\neq 0\), а любой другой минор более высокого порядка равен нулю.
 	\section{Влияние элементарных преобразований строк на ранг матрицы}
 	\tm[1]{При ЭП строк ранг матрицы не увеличивается}\label{4.2.1}
 	
@@ -870,7 +897,7 @@
 	\[\mathrm{M}_{_{1\dotsb r}}^{^{\inlineperm[k]{1}{r}}}=\begin{vmatrix}a_{1k_1}&\dotsb&\dotsb&\dotsb&\dotsb\\
 																		0&a_{2k_2}&\dotsb&\dotsb&\dotsb\\
 																		0&0&\ddots&\dotsb&\dotsb\\
-																		\dotsb&\dotsb&\dotsb&\ddots&\dotsb\\
+																		\vdots&\vdots&\vdots&\ddots&\vdots\\
 																		0&\dotsb&\dotsb&0&a_{rk_r}\\													
 	\end{vmatrix}=\prod_{n=1}^{r}a_{nk_n}\neq 0\]
 	
@@ -886,18 +913,28 @@
 	 
 	 \medskip Строки и столбцы матрицы \(A\), входящие в базисный минор, называются базисными строками и базисными столбцами соответственно.
 	 
-	 \lm[1]{Если для матрицы \(\bm{A}\), \(\bm{{|A|\neq 0}}\), то строки \(\bm{A}\) линейно независимы}
+	 \lm[1]{Для матрицы \(\bm{A}\), \(\bm{{|A|\neq 0}}\bm{{\iff}}\text{строки \(\bm{A}\) линейно независимы}\)}\label{4.4.1}
 	 
 	 \(\overset{\Rightarrow}{\square}\) Предположим противное: существуют линейно зависимые строки. 
 	 
-	 \medskip Пусть всего \(n\) строк: \(\vv*{\bm{A}}{1},\dotsb,\vv*{\bm{A}}{m},\dotsb,\vv*{\bm{A}}{n}\). Пусть \(\displaystyle\vv*{\bm{A}}{m}=\sum_{\substack{k=1,\\[.5pt]k\neq m}}^{n}\upalpha_{k}\vect[k]{A}\). 
+	 \medskip Пусть всего \(n\) строк: \(\bm{A}_{1},\dotsb,\bm{A}_{m},\dotsb,\bm{A}_{n}\). Пусть \(\displaystyle\bm{A}_{m}=\sum_{\substack{k=1,\\[.5pt]k\neq m}}^{n}\upalpha_{k}\vect[l]{A}_{k}\). 
 	 
-	 \smallskip Вычитая поочерёдно из этой строки все \(\upalpha_{k}\vect[k]{A}\left(k=\overline{1,n},\,k\neq m\right)\), произведём над этой строкой ЭП--ия и в итоге получим нулевую строку \(\implies |A|=0\implies\skull\). 
+	 \smallskip Вычитая поочерёдно из этой строки все \(\upalpha_{k}\vect[l]{A}_{k}\left(k=\overline{1,n},\,k\neq m\right)\), произведём над этой строкой ЭП--ия и в итоге получим нулевую строку \(\implies |A|=0\implies\skull\). 
 	 
 	 Значит, все строки линейно независимы.
 	 
 	 \bigskip\(\overset{\Leftarrow}{\square}\) Приведём матрицу к ступенчатому виду.
 	 
 	 \smallskip Нулевых строк нет (они линейно независимы), поэтому матрица имеет верхнетреугольный вид \(\displaystyle\implies a_{kk}\neq 0\left(\forall k=\overline{1,n}\right)\implies |A|=\prod_{k=1}^{n}a_{kk}\neq 0\) \(\blacksquare\)
+	 
+	 \tm[1]{Строки, входящие в базисный минор, линейно независимы}
+	 
+	 Пусть \(\rank A =r\implies\exists\mathrm{M}^{r}(A)\neq 0\). Пусть, для определённости, это минор \(\mathrm{M}_{_{1\dotsb r}}^{^{1\dotsb r}}\).
+	 
+	 \(\square\) По \hyperref[4.4.1]{\color{MMagenta}\(\big[\)\textbf{Л}\(^{1}\big]\)}, т.к. \(\mathrm{M}_{_{1\dotsb r}}^{^{1\dotsb r}}\neq 0\), то строки матрицы минора будут линейно независимы.
+	 
+	 Теперь рассмотрим матрицу из первых \(r\) строк матрицы \(A\). Докажем, что они линейно независимы.
+	 
+	 Предположим противное: одна из этих строк (пусть \(r\)--я) является линейной комбинацией других.
 	%TODO: remove periods at the end of math structures
 \end{document}
