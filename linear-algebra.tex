@@ -6,6 +6,7 @@
 \usepackage[russian]{babel}
 \usepackage{csquotes}
 \usepackage{hyphenat}
+\usepackage[a]{esvect}
 \hyphenation{ма-те-ма-ти-ка вос-ста-нав-ли-вать}
 %--------------------------------------------------------------------------------------------------------------------------
 \usepackage[hidelinks]{hyperref}
@@ -89,7 +90,10 @@
 \definecolor{MMagenta}{rgb}{1.0, 0.0, 1.0}
 \newcommand{\oversymbol}[2]{\overset{\textcolor{MMagenta}{\textbf{\textit{#1}}}}{\resizebox{\widthof{#1}}{\heightof{\(#2\)}}{\(#2\)}}}
 \newcommand{\oversymbolnoref}[3][]{\underset{#1}{\overset{#2}{\resizebox{\widthof{\(#2\)}}{\heightof{\(#3\)}}{\(#3\)}}}}
-\newenvironment{proof}{\(\square\)}{\hfill \\ \(\blacksquare\)}
+\newcommand{\squareR}{\overset{\Rightarrow}{\square}}
+\newenvironment{proof}{\paragraph{\(\square\)}}{\hfill\(\blacksquare\)}
+\newenvironment{proofR}{\paragraph{\(\squareR\)}}{\hfill\(\blacksquare\)}
+\newenvironment{proofL}{\paragraph{\(\overset{\Leftarrow}{\square}\)}}{\hfill\(\blacksquare\)}
 %--------------------------------------------------------------------------------------------------------------------------
 \let\oldexists\exists
 \renewcommand{\exists}{\oldexists\,}
@@ -213,7 +217,7 @@
 	\subsection{Изменение чётности}
 	\tm{При любой транспозиции чётность перестановки меняется}
 	
-	$\square$
+	\begin{proof}
 	\[
 	\begin{pmatrix} i_1&i_2&\cdots&\tikzmark{a}{i_k}&i_{k+1}&\cdots&i_{l-1}&\tikzmark{b}{i_l}&\cdots&i_n\end{pmatrix}
 	\begin{tikzpicture}[overlay, remember picture]
@@ -225,7 +229,7 @@
 	
 	Элемент $i_l$ оказался на $(l-1)$-ом месте. Перемещаем его элементарными транспозициями на $k$-ое место (всего $[l-1-k]$ ЭТ).
 	
-	Свели транспозицию к $\left[(l-k)+(l-1-k)\right] = \left[2(l-k)-1\right]$ --- нечётному числу ЭТ $\implies$\\$\implies$ сменили чётность нечётное число раз $\implies$ чётность изменилась $\blacksquare$
+	Свели транспозицию к $\left[(l-k)+(l-1-k)\right] = \left[2(l-k)-1\right]$ --- нечётному числу ЭТ $\implies$\\$\implies$ сменили чётность нечётное число раз $\implies$ чётность изменилась. \end{proof}
 	\section{Обратная перестановка}
 	\subsection{Обратная перестановка}
 	\df[Обратная перестановка]
@@ -240,7 +244,7 @@
 	\subsection{Чётность обратной перестановки}
 	\tm{Чётность прямой и обратной перестановок совпадает}
 	
-	$\square$ При перестановке столбцов совершается одинаковое число транспозиций над верхней и нижней перестановками $\blacksquare$
+	\begin{proof} При перестановке столбцов совершается одинаковое число транспозиций над верхней и нижней перестановками. \end{proof}
 	\chapter{Определитель матрицы}
 	\section{Определение определителя матрицы}
 	\df[Определитель матрицы]
@@ -270,7 +274,7 @@
 	\subsection{Теорема об определителе транспонированной матрицы}
 	\tm{Если для матрицы $\boldsymbol{A}$ матрица $\boldsymbol{B=A^{\mathrm{T}}}$, то $\boldsymbol{|B|=|A|}$, т.е. $\boldsymbol{\left|A^{\mathrm{T}}\right|=|A|}$}
 	
-	$\square$ 
+	\begin{proof}
 	\[
 	|B| = \sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}b_{1i_1}b_{2i_2}\dotsm b_{ni_n}=\sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}a_{i_1 1}a_{i_2 2}\dotsm a_{i_n n}=\dotso
 	\]
@@ -281,25 +285,23 @@
 	\dotso = \sum_{(\inlineperm[j]{1}{n})}(-1)^{\upsigma(\inlineperm[j]{1}{n})}a_{1j_1}a_{2j_2}\dotsm a_{n j_n} = |A|
 	\]
 	
-	Таким образом, $\left|A^{\mathrm{T}}\right| = |A|$ $\blacksquare$
+	Таким образом, $\left|A^{\mathrm{T}}\right| = |A|$\end{proof}
 	\section{Влияние элементарных преобразований на определитель матрицы}\label{2.3}
 	\df[Умножение строки/столбца матрицы на число]
 	\lm{Если для матриц $\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}$ и $\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}$ на фиксированной строке $\boldsymbol{l}$: $\boldsymbol{{\begin{cases}
 	a_{lj}=\uplambda b_{lj},&j=\overline{1,n}
 	\medskip\\a_{ij}=b_{ij},&i\neq l,\,j=\overline{1,n}\end{cases}}}$, то $\boldsymbol{|A|=\uplambda \left|B\right|}$}
 	
-	$\square$
+	\begin{proof}
 	\begin{align*} 
 	|A|&=\sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}a_{1i_1}\dotsm a_{li_l}\dotsm a_{ni_n}=
 	\\[5pt]&=\sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}a_{1i_1}\dotsm \uplambda b_{li_l}\dotsm a_{ni_n}=
 	\\[5pt]&=\uplambda\cdot\smashoperator[l]{\sum_{(\inlineperm{1}{n})}}(-1)^{\upsigma(\inlineperm{1}{n})}b_{1i_1}\dotsm b_{li_l}\dotsm b_{ni_n}=
 	\\[5pt]&=\uplambda \left|B\right|
-	\end{align*}
-	
-	$\blacksquare$
-	\smallskip
+	\end{align*}\end{proof}
 	
 	Поскольку $|A|=\left|A^{\mathrm{T}}\right|$, то свойство верно и для столбцов.
+	
 	\df[Перестановка строки/столбца матрицы]
 	\lm{Если для матриц $\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}$ и $\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}$ на фиксированных строках $\boldsymbol{k}$ и $\boldsymbol{l}$: $\boldsymbol{{b_{ij}=\begin{cases}
 	a_{ij},&i\neq k\text{ и }i\neq l
@@ -307,7 +309,7 @@
 	\\a_{lj},&\text{строка }k
 	\end{cases}}}$, то $\boldsymbol{|A|=-|B|}$}
 	
-	$\square$
+	\begin{proof}
 	\begin{align*}
 	|B|&=\sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{l}\,\inlineperm{k}{n})}b_{1i_1}\cdots b_{li_l}b_{ki_k}\cdots b_{ni_n}=
 	\\[5pt]&=\sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{l}\,\inlineperm{k}{n})}a_{1i_1}\cdots a_{ki_l}a_{li_k}\cdots a_{ni_n}
@@ -315,12 +317,10 @@
 	|A|&=\sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{k}\,\inlineperm{l}{n})}a_{1i_1}\cdots a_{ki_l}a_{li_k}\cdots a_{ni_n}=
 	\\[5pt]&=\sum_{(\inlineperm{1}{n})}(-1)\cdot (-1)^{\upsigma(\inlineperm{1}{l}\,\inlineperm{k}{n})}a_{1i_1}\cdots a_{ki_l}a_{li_k}\cdots a_{ni_n}=
 	\\[5pt]&=-|B|
-	\end{align*}
-	
-	$\blacksquare$
-	\smallskip
+	\end{align*}\end{proof}
 	
 	Поскольку $|A|=\left|A^{\mathrm{T}}\right|$, то свойство верно и для столбцов.
+	
 	\df[Прибавление строк/столбцов другой матрицы]
 	\lm{Если для матриц $\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}$, $\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}$, $\boldsymbol{C\left\{c_{ij}\right\}_{i,j=1}^{n}}$ на фиксированной\\строке $\boldsymbol{l}$:
 	\smallskip\\$\boldsymbol{{a_{ij}=\begin{cases}
@@ -328,19 +328,17 @@
 	\smallskip\\b_{lj}+c_{lj},&\text{строка }l,\,j=\overline{1,n}
 	\end{cases}}}$, то $\boldsymbol{|A|=|B|+|C|}$}
 	
-	$\square$
+	\begin{proof}
 	\begin{align*}
 	|A| &= \sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}a_{1i_1}\cdots a_{li_l}\cdots a_{ni_n}=
 	\\[5pt]&=\sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}a_{1i_1}\cdots (b_{li_l}+c_{li_l})\cdots a_{ni_n}=
 	\\[5pt]&=\sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}b_{1i_1}\cdots b_{li_l}\cdots b_{ni_n} + \sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}c_{1i_1}\cdots c_{li_l}\cdots c_{ni_n}=
 	\\[5pt]&=|B|+|C|
-	\end{align*}
-	
-	$\blacksquare$
-	\smallskip
+	\end{align*}\end{proof}
 	
 	Поскольку $|A|=\left|A^{\mathrm{T}}\right|$, то свойство верно и для столбцов.
-	\section{Вычисление определителя треугольной матрицы}
+	
+	\newpage \section{Вычисление определителя треугольной матрицы}
 	\subsection{Треугольный вид матрицы}
 	\df[Верхнетреугольная матрица]
 	
@@ -355,9 +353,7 @@
 	\end{pmatrix}
 	\]
 	\lm{Определитель верхнетреугольной матрицы равен $\displaystyle\boldsymbol{|A|=\prod_{i=1}^{n}a_{ii}}$}
-	
-	$\square$
-	
+	\begin{proof}
 	\[
 	|A| = \sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}a_{1i_1}a_{2i_2}\cdots a_{ni_n}=\dotso
 	\]
@@ -365,16 +361,15 @@
 	Заметим, что любая не единичная перестановка будет содержать нуль:
 	\[
 	\dotso=a_{11}a_{22}\cdots a_{nn}=\prod_{i=1}^{n}a_{ii}
-	\]
-	
-	$\blacksquare$
+	\]\end{proof}
+
 	\subsection{Приведение матрицы к верхнетреугольному виду}
 	\lm{Любую матрицу можно привести к верхнетреугольному виду путём элементарных преобразований строк/столбцов}
 	
-	$\square$ Применим метод математической индукции:
-	
+	\begin{proof}
+	Применим метод математической индукции:
 	\begin{enumerate}[1)]
-		\item $n=1$\,:
+		\item $n=1$:
 		\begin{enumerate}[(1.1)]
 			\item $\left|a_{11}\right|=a_{11}$ --- верно
 		\end{enumerate}
@@ -406,10 +401,10 @@
 						\draw (O.south west) rectangle (Od.north east) node [midway, align=center] {Матрица\\размером\\$m\times m$};
 					\end{tikzpicture}
 					\]
-					\item По предположению индукции можем привести матрицу размером $m\times m$ к верхнетреугольному виду $\blacksquare$
+					\item По предположению индукции можем привести матрицу размером $m\times m$ к верхнетреугольному виду.
 				\end{itemize}
 		\end{enumerate}
-	\end{enumerate}
+	\end{enumerate}\end{proof}
 	\section{Леммы о разложении определителя по последней строке}
 	\subsection{Дополнительный минор, алгебраическое дополнение}
 	\df[Дополнительный минор]\label{2.5.1}
@@ -446,12 +441,10 @@
 	\df[Алгебраическое дополнение]
 	
 	Алгебраическое дополнение, соответствующее элементу $a_{kl}$, равно $\mathrm{A}_{kl}=(-1)^{k+l}\mathrm{M}_{kl}$
-	\subsection{Лемма I}\label{2.5.2}
+	\newpage \subsection{Лемма I}\label{2.5.2}
 	
 	\lm{Если в матрице $\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}$, $\boldsymbol{\left(\forall j=\overline{1,n-1}\right)a_{nj}=0}$, то $\boldsymbol{|A|=a_{nn}\mathrm{A}_{nn}}$}
-	
-	\(\square\)
-	
+	\begin{proof}
 	\begin{gather}
 	\begin{align*}
 		A &=\begin{pmatrix}
@@ -467,15 +460,11 @@
 		&=a_{nn}\cdot\smashoperator[l]{\sum_{(\inlineperm{1}{n-1})}}(-1)^{\upsigma(\inlineperm{1}{n-1})}a_{1i_1}a_{2i_2}\cdots a_{\substack{(n-1)\\i_{n-1}}}=\\[5pt]
 		&=a_{nn}\mathrm{M}_{nn}=a_{nn}\cdot (-1)^{n+n}\mathrm{M}_{nn}=a_{nn}\mathrm{A}_{nn}
 	\end{align*}
-	\end{gather}
-	
-	\(\blacksquare\)
+	\end{gather}\end{proof}
 	\subsection{Лемма II}\label{2.5.3}
 	
 	\lm{Если в матрице \(\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}\), \(\boldsymbol{\left(\forall j\neq l\right) a_{nj}=0}\), то \(\boldsymbol{|A|=a_{nl}\mathrm{A}_{nl}}\)}
-	
-	\(\square\)
-	
+	\begin{proof}
 	\[
 		A = \begin{pmatrix}
 				a_{11}&\cdots&a_{1l}&\cdots&a_{1n}\\
@@ -495,15 +484,12 @@
 							\end{vmatrix}
 		\oversymbol{\nameref{2.5.2}}{=}(-1)^{n-l}\cdot a_{nl}\mathrm{M}_{nl}=\\[5pt]
 		&=\Big\langle(-1)^{n-l}=(-1)^{n+l}\Big\rangle=a_{nl}\cdot (-1)^{n+l}\mathrm{M}_{nl}=a_{nl}\mathrm{A}_{nl}
-	\end{align*}
+	\end{align*}\end{proof}
 	
-	\(\blacksquare\)
-	\subsection{Лемма III}\label{2.5.4}
+	\newpage \subsection{Лемма III}\label{2.5.4}
 	
 	\lm{Определитель матрицы \(\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}\) равен \(\displaystyle\boldsymbol{ |A|=\sum_{i=1}^{n}a_{ni}\mathrm{A}_{ni}}\)}
-	
-	\(\square\)
-	
+	\begin{proof}
 	\[
 		A=\begin{pmatrix}a_{11}&\cdots&a_{1n}\\
 						\vdots&\ddots&\vdots\\
@@ -521,14 +507,12 @@
 	
 	\[
 		|A|=\sum_{i=1}^{n}\left|A^{(i)}\right|\oversymbol{\nameref{2.5.3}}{=}\sum_{i=1}^{n}a_{ni}\mathrm{A}_{ni}
-	\]
-	
-	\(\blacksquare\)
+	\]\end{proof}
 	
 	\section{Разложение определителя по любой строке или столбцу}
 	\tm{Для матрицы \(\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}\) \(\displaystyle\boldsymbol{\left(\forall k=\overline{1,n}\right)|A|=\sum_{i=1}^{n}a_{ki}\mathrm{A}_{ki}}\)}
-	
-	\(\square\)	Начиная со строки \(k\), последовательно переставим строки вплоть до строки \(n\):
+	\begin{proof}
+	Начиная со строки \(k\), последовательно переставим строки вплоть до строки \(n\):
 	
 	\begin{align*}
 		|A|&=(-1)^{n-k}\cdot\begin{vmatrix}
@@ -545,14 +529,11 @@
 		\begin{tikzpicture}[overlay, remember picture]
 			\draw [LaTeX-, thick] (Ak1.west) ++(-10pt, 0) to ++(-25pt, 0) node [align=center] {\scriptsize\(\big\langle n\text{--я строка}\big\rangle\)\hspace{52pt}};
 		\end{tikzpicture}
-	\end{align*}
-	
-	\(\blacksquare\)
+	\end{align*}\end{proof}
 	\section{Фальшивое разложение определителя}
 	\subsection{Определитель матрицы с одинаковыми строками/столбцами}
 	\lm{Если матрица содержит одинаковые строки/столбцы, то её определитель равен нулю}
-	
-	\(\square\)
+	\begin{proof}
 	\[A=\begin{pmatrix}a_{11}&\dotsb&a_{1n}\\
 						\vdots&\ddots&\vdots\\
 						C_{1}&\dotsb&C_{n}\\
@@ -567,13 +548,12 @@
 													\end{pmatrix}\]
 													
 	При вычислении определителя матриц переставим одинаковые строки/столбцы местами, получим:
-	\[ |A| = (-1)\cdot|A|\implies |A| = 0\text{ (аналогично \(|B|=0\))}\]
+	\[ |A| = (-1)\cdot|A|\implies |A| = 0\text{ (аналогично \(|B|=0\))}\]\end{proof}
 	
-	\(\blacksquare\)
-	\newpage\subsection{Теорема о произведении элементов матрицы одной строки на алгебраические дополнения элементов другой строки}
+	\subsection{Теорема о произведении элементов матрицы одной строки на алгебраические дополнения элементов другой строки}
 	\tm{Если задана матрица \(\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}\), то \(\displaystyle\boldsymbol{\left(\forall l \neq k \right)\sum_{j=1}^{n}a_{lj}\mathrm{A}_{kj}=0}\)}
-	
-	\(\square\) Составим матрицу \(B\left\{b_{ij}\right\}_{i,j=1}^{n}\), в которой \(b_{ij}=\begin{cases}a_{ij},&i\neq k\\a_{lj},&i=k\end{cases}\)
+	\begin{proof}
+	Составим матрицу \(B\left\{b_{ij}\right\}_{i,j=1}^{n}\), в которой \(b_{ij}=\begin{cases}a_{ij},&i\neq k\\a_{lj},&i=k\end{cases}\)
 	\[A=\begin{pmatrix}a_{11}&\dotsb&a_{1n}\\
 						\vdots&\ddots&\vdots\\
 						a_{l1}&\dotsb&a_{ln}\\
@@ -598,7 +578,7 @@
 																				a_{1n}&\dotsb&a_{nn}\\
 																			\end{pmatrix}\]
 																			
-	\medskip Поскольку \(B\) содержит две одинаковые строки, то \(|B|=0\). С другой стороны, разложив \(|B|\) по \(k\text{--ой}\) строке, получим \(\displaystyle |B|=\sum_{j=1}^{n}b_{kj}\mathrm{B}_{kj}=\sum_{j=1}^{n}a_{lj}\mathrm{A}_{kj}=0\) \(\blacksquare\)
+	\medskip Поскольку \(B\) содержит две одинаковые строки, то \(|B|=0\). С другой стороны, разложив \(|B|\) по \(k\text{--ой}\) строке, получим \(\displaystyle |B|=\sum_{j=1}^{n}b_{kj}\mathrm{B}_{kj}=\sum_{j=1}^{n}a_{lj}\mathrm{A}_{kj}=0\)\end{proof}
 	\chapter{Произведение матриц}
 	\section{Свойства произведения матриц}
 	\subsection{Определение произведения матриц}
@@ -618,13 +598,11 @@
 		\underbrace{\underset{n\times k}{A}\bigg(\overbrace{\uplambda\underset{k\times m}{B}+\upmu\underset{k\times m}{C}}^{R\left\{r_{ij}\right\}}\bigg)}_{D\left\{d_{ij}\right\}} = \underbrace{\overbrace{\uplambda\underset{n\times m}{AB}}^{P\left\{p_{ij}\right\}}+\overbrace{\upmu\underset{n\times m}{AC}}^{Q\left\{q_{ij}\right\}}}_{F\left\{f_{ij}\right\}}~~\left(\uplambda,\upmu\in\mathbb{R}\right)
 	\]
 	
-	\(\square\)
+	\begin{proof}
 	\begin{align*}
 		d_{ij}&=\sum_{t=1}^{k}a_{it}r_{tj}=\sum_{t=1}^{k}a_{it}\left(\uplambda b_{tj}+\upmu c_{tj}\right)=\uplambda\sum_{t=1}^{k}a_{it}b_{tj}+\upmu\sum_{t=1}^{k}a_{it}c_{tj}=p_{ij}+q_{ij}=f_{ij}\implies\\[5pt]
 			&\implies D = F
-	\end{align*}
-	
-	\(\blacksquare\)
+	\end{align*}\end{proof}
 	\newpage\subsection{Ассоциативность}
 	\lm{Произведение матриц ассоциативно}
 	
@@ -633,15 +611,12 @@
 		&\underset{m\times k}{A}\cdot\bigg(\overbrace{\underset{k\times l}{B}\cdot\underset{l\times n}{C}}^{G\left\{g_{ij}\right\}}\bigg) = \underset{m\times n}{D}
 	\end{align*}
 	
-	Покажем, что \(T=D\)\,:
-	
-	\smallskip \(\square\)
+	Покажем, что \(T=D\):
+	\begin{proof}
 	\begin{align*}
 		t_{ij}&=\sum_{p=1}^{l}f_{ip}c_{pj}=\sum_{p=1}^{l}c_{pj}\left(\sum_{q=1}^{k}a_{iq}b_{qp}\right)=\sum_{q=1}^{k}a_{iq}\left(\sum_{p=1}^{l}b_{qp}c_{pj}\right)=\sum_{q=1}^{k}a_{iq}g_{qj}=d_{ij}\implies\\[5pt]
 			&\implies T = D
-	\end{align*}
-	
-	\(\blacksquare\)
+	\end{align*}\end{proof}
 	\subsection{Некоммутативность (контрпример)}
 	\lm{Произведение матриц некоммутативно}
 	
@@ -667,15 +642,12 @@
 		\end{tikzpicture}
 	\)
 	
-	\lm{Если \(\boldsymbol{\exists A\cdot E}\), то \(\boldsymbol{A\cdot E = A}\) (аналогично \(\boldsymbol{E\cdot B=B}\))}
-	
-	\(\square\)
+	\newpage\lm{Если \(\boldsymbol{\exists A\cdot E}\), то \(\boldsymbol{A\cdot E = A}\) (аналогично \(\boldsymbol{E\cdot B=B}\))}
+	\begin{proof}
 	\begin{align*}
 		\underset{m\times n}{A}\cdot\underset{n\times n}{E}&=\underset{m\times n}{C}\\
 														\left(\forall i=\overline{1,m},\forall j =\overline{1,n}\right)c_{ij}&=\sum_{t=1}^{n}a_{it}\updelta_{tj}=0+0+\dotsb+a_{ij}\updelta_{jj}=a_{ij}\implies C = A
-	\end{align*}
-	
-	\(\blacksquare\)
+	\end{align*}\end{proof}
 	\section[Теорема об определителе произведения матриц \textit{(без доказательства)}]{Теорема об определителе произведения матриц \textit{(без доказательства)}\footnote[1]{Полное доказательство можно обнаружить в упомянутом в аннотации учебнике Л.И. Головиной\\(Глава III. Линейные операторы / \S2. Действия над линейными операторами / Теорема 3).}}
 	\tm{Если \(\boldsymbol{A}\) и \(\boldsymbol{B}\) --- квадратные матрицы одного порядка, то \(\boldsymbol{\left|A\cdot B\right|=|A|\cdot|B|}\)}
 	\section{Обратная матрица}
@@ -686,23 +658,21 @@
 	\subsection{Критерий существования обратной матрицы}
 	\tm{Если у матрицы \(\boldsymbol{{\underset{n\times n}{A}}}\), \(\boldsymbol{{|A|\neq 0}}\), то \(\bm{{\existsone A^{-1}\colon A\cdot A^{-1} = A^{-1} \cdot A=E}}\)}
 	
-	\begin{enumerate}[1)]
+	\begin{proof} 
+		\begin{enumerate}[1)]
 		\item Существование:
-			
 			\begin{itemize}
 				\item Докажем, что если \(|A| = 0\), то \(\nexists A^{-1}\)\,:
 			
-			\(\square\) Предположим противное --- \(A^{-1}\) существует и \(|A|=0\)\,:
+			 Предположим противное --- \(A^{-1}\) существует и \(|A|=0\)\,:
 			\begin{align*} 
 				A\cdot A^{-1} &= E\\
 				|A|\cdot\left|A^{-1}\right| &= |E|\\
-				0 &= 1 \implies\skull~\blacksquare
+				0 &= 1 \implies\skull
 			\end{align*}
 				\item Докажем, что если \(|A|\neq 0\), то \(\exists A^{-1}=\dfrac{1}{|A|}\big(A^{*}\big)^{\mathrm{T}}\), где \(A=\left\{a_{ij}\right\}_{i,j=1}^{n},\,A^{*}=\left\{\mathrm{A}_{ij}\right\}_{i,j=1}^{n}\)\,:
 			
-			Рассмотрим \(B=\dfrac{1}{|A|}\big(A^{*}\big)^{\mathrm{T}}\) и докажем, что \(A\cdot B=B\cdot A=E\)\,:
-			
-			\(\square\)
+			Рассмотрим \(B=\dfrac{1}{|A|}\big(A^{*}\big)^{\mathrm{T}}\) и докажем, что \(A\cdot B=B\cdot A=E\):
 			
 			\(\underset{n\times n}{A}\cdot\underset{n\times n}{B}=\underset{n\times n}{C}\), \(|A| = \Updelta\)
 			\begin{align*}
@@ -711,13 +681,14 @@
 					&\implies C=E
 			\end{align*}
 			
-			Аналогично \(B\cdot A=E\), т.к. разложение для определителя справедливо и для\\столбцов \(\blacksquare\)
+			Аналогично \(B\cdot A=E\), т.к. разложение для определителя справедливо и для столбцов.
 			\end{itemize}
-		\newpage\item Единственность:
+		\item Единственность:
 		
-			\(\square\) Пусть для матрицы \(A\) существуют матрицы \(B\) и \(C\) такие, что \(\begin{cases}A\cdot B=B\cdot A = E\\A\cdot C=C\cdot A= E\\ B\neq C\end{cases}\)\\
-			Тогда, \(\begin{rcases}C\cdot A\cdot B=\big(C\cdot A\big)\cdot B=E\cdot B=B\\C\cdot A\cdot B=C\cdot\big(A\cdot B\big)=C\cdot E= C\end{rcases}\implies B=C\implies\skull\) \(\blacksquare\)
-	\end{enumerate}
+			 Пусть для матрицы \(A\) существуют матрицы \(B\) и \(C\) такие, что \(\begin{cases}A\cdot B=B\cdot A = E\\A\cdot C=C\cdot A= E\\ B\neq C\end{cases}\)\\
+			Тогда, \(\begin{rcases}C\cdot A\cdot B=\big(C\cdot A\big)\cdot B=E\cdot B=B\\C\cdot A\cdot B=C\cdot\big(A\cdot B\big)=C\cdot E= C\end{rcases}\implies B=C\implies\skull\)
+		\end{enumerate}
+	\end{proof}
 	\subsection{Построение обратной матрицы через алгебраические дополнения}
 	\ex
 	
@@ -738,14 +709,14 @@
 	\subsubsection{Умножение \(\boldsymbol{k}\)--ой строки на \(\boldsymbol{\upalpha\in\mathbb{R}}\)}
 	\lm{Соответствует левостороннему домножению на \(\boldsymbol{{B\left\{b_{ij}\right\}_{i,j=1}^{n}}}\), \(\boldsymbol{{b_{ij}=\begin{cases}\upalpha,&i=k\text{ и }j=k\\\updelta_{ij},&i\neq k\text{ или }j\neq k\end{cases}}}\)}
 	
-	\(\square\) \(B\cdot A=C\)
+	\begin{proof} \(B\cdot A=C\)
 	\begin{enumerate}[{1.}1)]
 		\item \(\big(i=k,\, j=\overline{1,n}\big)\) \(\begin{aligned}[t]\displaystyle c_{kj} = \sum_{t=1}^{n}b_{kt}a_{tj}&=\updelta_{k1}a_{1j}+\updelta_{k2}a_{2j}+\dotsb+\updelta_{k(k-1)}a_{(k-1)j}+\upalpha a_{kj}+\dotsb+\updelta_{kn}a_{nj}=\\&=0+0+\dotsb+0+\upalpha a_{kj}+\dotsb+0=\\&=\upalpha a_{kj}\end{aligned}\)
 	
 		\item \(\big(i\neq k,\, j=\overline{1,n}\big)\) \(\begin{aligned}[t]\displaystyle c_{ij}=\sum_{t=1}^{n}b_{it}a_{tj}&=\updelta_{i1}a_{1j}+\dotsb+\updelta_{ii}a_{ij}+\dotsb+\updelta_{in}a_{nj}=\\&=0+\dotsb+1\cdot a_{ij}+\dotsb+0=\\&=a_{ij}\end{aligned}\)
 	\end{enumerate}
 	
-	Таким образом, \(c_{ij}=\begin{cases}\upalpha a_{ij},&i=k,\,j=\overline{1,n}\\a_{ij},&i\neq k,\,j=\overline{1,n}\end{cases}\) \(\blacksquare\)
+	Таким образом, \(c_{ij}=\begin{cases}\upalpha a_{ij},&i=k,\,j=\overline{1,n}\\a_{ij},&i\neq k,\,j=\overline{1,n}\end{cases}\)\end{proof}
 	\ex
 	
 	\(A=\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}\oversymbolnoref[\upalpha = c]{k=2}{\sim}\begin{pmatrix}1&2&3\\4c&5c&6c\\7&8&9\end{pmatrix}\)
@@ -754,7 +725,7 @@
 	\subsubsection{Перемена местами \(\boldsymbol{l}\)--ой и \(\boldsymbol{k}\)--ой строк}
 	\lm{Соответствует левостороннему домножению на \(\boldsymbol{{B\left\{b_{ij}\right\}_{i,j=1}^{n}}}\), \(\boldsymbol{{b_{ij}=\begin{cases}\updelta_{ij},&i\neq k,\,i\neq l,\,j=\overline{1,n}\\\updelta_{kj},&i=l,\,j=\overline{1,n}\\\updelta_{lj},&i=k,\,j=\overline{1,n}\end{cases}}}\)}
 	
-	\(\square\) \(B\cdot A = C\)
+	\begin{proof} \(B\cdot A = C\)
 	
 	\begin{enumerate}[{2.}1)]
 		\item\(\displaystyle\big(i\neq k,\,i\neq l,\,j=\overline{1,n}\big)\text{ } c_{ij}=\sum_{t=1}^{n}b_{it}a_{tj}=0+\dotsb+0+\updelta_{ii}a_{ij}=a_{ij}\)
@@ -764,7 +735,7 @@
 		\item\(\displaystyle\big(i=k,\,j=\overline{1,n}\big)\text{ }c_{kj}=\sum_{t=1}^{n}b_{kt}a_{tj}=0+\dotsb+0+\updelta_{ll}a_{lj}=a_{lj}\)
 	\end{enumerate}
 
-	Таким образом, \(c_{ij}=\begin{cases}a_{ij},&i\neq k,\,i\neq l,\,j=\overline{1,n}\\a_{kj},&i=l,\,j=\overline{1,n}\\a_{lj},&i=k,\,j=\overline{1,n}\end{cases}\) \(\blacksquare\)
+	Таким образом, \(c_{ij}=\begin{cases}a_{ij},&i\neq k,\,i\neq l,\,j=\overline{1,n}\\a_{kj},&i=l,\,j=\overline{1,n}\\a_{lj},&i=k,\,j=\overline{1,n}\end{cases}\)\end{proof}
 	
 	\ex
 
@@ -774,7 +745,7 @@
 	\subsubsection{Добавление к \(\boldsymbol{k}\)--ой строке \(\boldsymbol{l}\)--ую, умноженную на \(\boldsymbol{\upalpha\in\mathbb{R}}\)}
 	\lm{Соответствует левостороннему домножению на \(\boldsymbol{{B\left\{b_{ij}\right\}_{i,j=1}^{n}}}\), \(\boldsymbol{{b_{ij}=\begin{cases}\upalpha+\updelta_{kl},&i=k\text{ и } j=l\\\updelta_{ij},&i\neq k\text{ или }j\neq l\end{cases}}}\)}
 	
-	\(\square\) \(B\cdot A = C\)
+	\begin{proof} \(B\cdot A = C\)
 	
 	\begin{enumerate}[{3.}1)]
 		\item\(\displaystyle\big(i=k\neq l,\,j=\overline{1,n}\big)\text{ }c_{kj}=\sum_{t=1}^{n}b_{kt}a_{tj}=0+\dotsb+0+\updelta_{kk}a_{kj}+a_{lj}(\upalpha + 0)=a_{kj}+\upalpha a_{lj}\)
@@ -784,14 +755,14 @@
 		\item\(\displaystyle\big(i\neq k,\,j=\overline{1,n}\big)\text{ } c_{ij}=\sum_{t=1}^{n}b_{it}a_{tj}=\sum_{t=1}^{n}b_{it}a_{tj}=0+\dotsb+0+\updelta_{ii}a_{ij}=a_{ij}\)
 	\end{enumerate}
 
-	Таким образом, \(c_{ij}=\begin{cases}a_{kj}+\upalpha a_{lj},&i=k,\,j=\overline{1,n}\\a_{ij},&i\neq k,\,j=\overline{1,n}\end{cases}\) \(\blacksquare\)
+	Таким образом, \(c_{ij}=\begin{cases}a_{kj}+\upalpha a_{lj},&i=k,\,j=\overline{1,n}\\a_{ij},&i\neq k,\,j=\overline{1,n}\end{cases}\)\end{proof}
 	\ex
 	
 	\(A=\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}\oversymbolnoref[k=2]{l=1}{\sim}\begin{pmatrix}1&2&3\\4+\upalpha&5+2\upalpha&6+3\upalpha\\7&8&9\end{pmatrix}\)
 	
 	\bigskip\(B=\begin{pmatrix}1&0&0\\\upalpha+\updelta_{21}&1&0\\0&0&1\end{pmatrix}\implies B\cdot A=\begin{pmatrix}1&0&0\\\upalpha&1&0\\0&0&1\end{pmatrix}\cdot\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\begin{pmatrix}1&2&3\\4+\upalpha&5+2\upalpha&6+3\upalpha\\7&8&9\end{pmatrix}\)
 	
-	\ex
+	\newpage\ex
 	
 	\(A=\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}\oversymbolnoref[k=3]{l=3}{\sim}\begin{pmatrix}1&2&3\\4&5&6\\7+7\upalpha&8+8\upalpha&9+9\upalpha\end{pmatrix}\)
 	
@@ -805,12 +776,12 @@
 	
 	Производя ЭП строк над обеими матрицами, добьёмся того, чтобы слева образовалась единичная матрица. Тогда справа образуется матрица, обратная \(A\): \[\begin{pmatrix}[c|c]A&E\end{pmatrix}\sim\begin{pmatrix}[c|c]E&A^{-1}\end{pmatrix}\]
 	
-	\newpage\(\square\) По доказанному выше, применение ЭП строк эквивалентно левому домножению на некоторую матрицу \(B_{i}\). Таким образом, получим:
+	\begin{proof} По доказанному выше, применение ЭП строк эквивалентно левому домножению на некоторую матрицу \(B_{i}\). Таким образом, получим:
 	
 	\begin{enumerate}[{4.}1)]
 		\item \(A\sim B_{m}\dotsb B_{n}A=E\implies \big(B_{m}\dotsb B_{n}\big) = A^{-1}\)
-		\item \(E\sim B_{m}\dotsb B_{n}E = \big(B_{m}\dotsb B_{n}\big)\implies E\sim A^{-1}\) \(\blacksquare\)
-	\end{enumerate}
+		\item \(E\sim B_{m}\dotsb B_{n}E = \big(B_{m}\dotsb B_{n}\big)\implies E\sim A^{-1}\)
+	\end{enumerate}\end{proof}
 	\ex
 	
 	\(A=\begin{pmatrix}1&2\\1&3\end{pmatrix}\)
@@ -858,7 +829,7 @@
 	\section{Влияние элементарных преобразований строк на ранг матрицы}
 	\tm[1]{При ЭП строк ранг матрицы не увеличивается}\label{4.2.1}
 	
-	\(\square\) Пусть \(\rank A=r\).
+	\begin{proof} Пусть \(\rank A=r\).
 	
 	\begin{enumerate}[1)]
 		\item Переставим строки \(l\) и \(k\). \(A\rightarrow B\).
@@ -879,22 +850,21 @@
 			\begin{enumerate}[a)]
 				\item Если \(k\)--я строка не вошла, то \(\mathrm{M}^{r+1}\big(B\big)=\mathrm{M}^{r+1}\big(A\big)=0\).
 				\item Если \(k\)--я строка вошла, то из \hyperref[2.3]{\textit{\color{MMagenta}лемм о влиянии ЭП на определитель матрицы}} получим \(\mathrm{M}^{r+1}\big(B\big)=\left|B\big(\mathrm{M}^{r+1}\big)\right|=\left|A\big(\mathrm{M}^{r+1}\big)\right|+\uplambda\cdot 0=0\).
-			\end{enumerate}
-		Отсюда, \(\rank B\leq r\). \(\blacksquare\)
+			\end{enumerate} Отсюда, \(\rank B\leq r\).
 		\end{itemize}
-	\end{enumerate}
+	\end{enumerate}\end{proof}
 	\tm[2]{При ЭП строк ранг матрицы не изменяется}
 	
-	\(\square\) ЭП обратимы.
+	\begin{proof} ЭП обратимы.
 	\begin{itemize}
 		\item \(A\xrightarrow{\text{ЭП}}B\). По \hyperref[4.2.1]{\color{MMagenta}\(\mathbf{\Big[\textbf{Th}^{1}\Big]}\)} \(\rank B\leq\rank A\)
-		\item \(B\xrightarrow{\text{ЭП}}A\). По \hyperref[4.2.1]{\color{MMagenta}\(\mathbf{\Big[\textbf{Th}^{1}\Big]}\)} \(\rank A\leq\rank B\) \(\blacksquare\)
-	\end{itemize}
+		\item \(B\xrightarrow{\text{ЭП}}A\). По \hyperref[4.2.1]{\color{MMagenta}\(\mathbf{\Big[\textbf{Th}^{1}\Big]}\)} \(\rank A\leq\rank B\)
+	\end{itemize}\end{proof}
 	
-	\section{Вычисление ранга с помощью ЭП строк}
+	\newpage\section{Вычисление ранга с помощью ЭП строк}
 	\tm[3]{У матрицы ступенчатого вида ранг равен числу ненулевых строк}
 	
-	\(\square\) Пусть у матрицы ступенчатого вида \(r\) ненулевых строк (без ограничения общности, пусть это строки \(1,\dotsc,r\)). Пусть тогда \(k_1,\dotsc,k_r\) --- ненулевые столбцы, в которых стоят начала ступенек.
+	\begin{proof} Пусть у матрицы ступенчатого вида \(r\) ненулевых строк (без ограничения общности, пусть это строки \(1,\dotsc,r\)). Пусть тогда \(k_1,\dotsc,k_r\) --- ненулевые столбцы, в которых стоят начала ступенек.
 	\[\mathrm{M}_{_{1\dotsb r}}^{^{\inlineperm[k]{1}{r}}}=\begin{vmatrix}a_{1k_1}&\dotsb&\dotsb&\dotsb&\dotsb\\
 																		0&a_{2k_2}&\dotsb&\dotsb&\dotsb\\
 																		0&0&\ddots&\dotsb&\dotsb\\
@@ -902,9 +872,10 @@
 																		0&\dotsb&\dotsb&0&a_{rk_r}\\													
 	\end{vmatrix}=\prod_{n=1}^{r}a_{nk_n}\neq 0\]
 	
-	Это минор порядка \(r\). Любой другой минор большего порядка равен нулю. \(\blacksquare\)
-	
-	\smallskip Таким образом, приводя матрицу ЭП строк к ступенчатому виду, можно определить её ранг.
+	Это минор порядка \(r\). Любой другой минор большего порядка равен нулю.
+	\end{proof}
+	\medskip\\
+	Таким образом, приводя матрицу ЭП строк к ступенчатому виду, можно определить её ранг.
 	
 	\section{Свойство базисных строк и базисных столбцов матрицы}
 	\subsection{Базисный минор матрицы}
@@ -915,14 +886,13 @@
 	 \medskip Строки и столбцы матрицы \(A\), входящие в базисный минор, называются базисными строками и базисными столбцами соответственно.
 	 
 	 \lm[1]{Для матрицы \(\bm{A}\), \(\bm{{|A|\neq 0}}\bm{{\iff}}\text{строки \(\bm{A}\) линейно независимы}\)}\label{4.4.1}
-	 
-	 \(\overset{\Rightarrow}{\square}\) Предположим противное: существуют линейно зависимые строки. 
+	 \begin{proof} Гредположим противное: существуют линейно зависимые строки. 
 	 
 	 \medskip Пусть всего \(n\) строк: \(\bm{A}_{1},\dotsb,\bm{A}_{m},\dotsb,\bm{A}_{n}\). Пусть \(\displaystyle\bm{A}_{m}=\sum_{\substack{k=1,\\[.5pt]k\neq m}}^{n}\upalpha_{k}\vect[l]{A}_{k}\). 
 	 
-	 \smallskip Вычитая поочерёдно из этой строки все \(\upalpha_{k}\vect[l]{A}_{k}\left(k=\overline{1,n},\,k\neq m\right)\), произведём над этой строкой ЭП--ия и в итоге получим нулевую строку \(\implies |A|=0\implies\skull\). 
+	 \medskip Вычитая поочерёдно из этой строки все \(\upalpha_{k}\vect[l]{A}_{k}\left(k=\overline{1,n},\,k\neq m\right)\), произведём над этой строкой ЭП--ия и в итоге получим нулевую строку \(\implies |A|=0\implies\skull\). 
 	 
-	 Значит, все строки линейно независимы.
+	 \medskip Значит, все строки линейно независимы.\end{proof}
 	 
 	 \bigskip\(\overset{\Leftarrow}{\square}\) Приведём матрицу к ступенчатому виду.
 	 
