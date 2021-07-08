@@ -43,11 +43,12 @@
 \makeatother
 %--------------------------------------------------------------------------------------------------------------------------
 \usepackage{xstring}
-\newcommand{\vect}[2][n]{\IfEqCase{#1}%
+\newcommand{\vect}[3][n]{\IfEqCase{#1}%
 										{%
-											{l}{\bm{#2}}%
-											{c}{\mathbf{#2}}%
-											{n}{\xoverline{\bm{#2}}}%
+											{l}{\vv{\mathbf{#2}}}%
+											{l*}{\vv*{\mathbf{#2}}{#3}}%
+											{c}{\smash{\underset{\downarrow}{\mathbf{#2}}}_{#3}}%
+											{n}{\mathbf{#2}_{#3}}%
 										}}%
 %--------------------------------------------------------------------------------------------------------------------------
 \usepackage{collectbox}
@@ -886,15 +887,15 @@
 	 \medskip Строки и столбцы матрицы \(A\), входящие в базисный минор, называются базисными строками и базисными столбцами соответственно.
 	 
 	 \lm[1]{Для матрицы \(\bm{A}\), \(\bm{{|A|\neq 0}}\bm{{\iff}}\text{строки \(\bm{A}\) линейно независимы}\)}\label{4.4.1}
-	 \begin{proof} Предположим противное: существуют линейно зависимые строки. 
+	 \begin{proof}\(\langle\Rightarrow\rangle\) Предположим противное: существуют линейно зависимые строки. 
 	 
-	 Пусть всего \(n\) строк: \(\bm{A}_{1},\dotsb,\bm{A}_{m},\dotsb,\bm{A}_{n}\). Пусть \(\displaystyle\bm{A}_{m}=\sum_{\substack{k=1,\\[.5pt]k\neq m}}^{n}\upalpha_{k}\vect[l]{A}_{k}\). 
+	 Пусть всего \(n\) строк: \(\vv*{\mathbf{A}}{1},\dotsb,\vv*{\mathbf{A}}{m},\dotsb,\vv*{\mathbf{A}}{n}\). Пусть \(\displaystyle\vv*{\mathbf{A}}{m}=\sum_{\substack{k=1,\\[.5pt]k\neq m}}^{n}\upalpha_{k}\vect[l*]{A}{k}\). 
 	 
-	 \smallskip Вычитая поочерёдно из этой строки все \(\upalpha_{k}\vect[l]{A}_{k}\left(k=\overline{1,n},\,k\neq m\right)\), произведём над этой строкой ЭП--я и в итоге получим нулевую строку \(\implies |A|=0\implies\skull\)
+	 \smallskip Вычитая поочерёдно из этой строки все \(\upalpha_{k}\vect[l*]{A}{k}\left(k=\overline{1,n},\,k\neq m\right)\), произведём над этой строкой ЭП--я и в итоге получим нулевую строку \(\implies |A|=0\implies\skull\)
 	 
 	 \medskip Значит, все строки линейно независимы.\end{proof}
 	 
-	 \begin{proof} Приведём матрицу к ступенчатому виду.
+	 \begin{proof} \(\langle\Leftarrow\rangle\) Приведём матрицу к ступенчатому виду.
 	 
 	 Нулевых строк нет (они линейно независимы), поэтому матрица имеет верхнетреугольный вид \(\displaystyle\implies a_{kk}\neq 0\left(\forall k=\overline{1,n}\right)\implies |A|=\prod_{k=1}^{n}a_{kk}\neq 0\)\end{proof}
 	 
@@ -909,5 +910,5 @@
 	 
 	 Предположим противное: одна из этих строк (пусть \(r\)--я) является линейной комбинацией других.
 	%TODO: remove periods at the end of math structures
-	%TODO: represent line vectors as bold blue slanted math, column vectors as red bold straight math, any vector as bold black slanted math
+	%TODO: fix proof* and proof** (see \vect??)
 \end{document}
