@@ -90,10 +90,10 @@
 \definecolor{MMagenta}{rgb}{1.0, 0.0, 1.0}
 \newcommand{\oversymbol}[2]{\overset{\textcolor{MMagenta}{\textbf{\textit{#1}}}}{\resizebox{\widthof{#1}}{\heightof{\(#2\)}}{\(#2\)}}}
 \newcommand{\oversymbolnoref}[3][]{\underset{#1}{\overset{#2}{\resizebox{\widthof{\(#2\)}}{\heightof{\(#3\)}}{\(#3\)}}}}
-\newcommand{\squareR}{\overset{\Rightarrow}{\square}}
+
 \newenvironment{proof}{\paragraph{\(\square\)}}{\hfill\(\blacksquare\)}
-\newenvironment{proofR}{\paragraph{\(\squareR\)}}{\hfill\(\blacksquare\)}
-\newenvironment{proofL}{\paragraph{\(\overset{\Leftarrow}{\square}\)}}{\hfill\(\blacksquare\)}
+\newenvironment{proof*}{\paragraph{\(\overset{\Rightarrow}{\square}\)}}{\hfill\(\blacksquare\)}
+\newenvironment{proof**}{\paragraph{\(\overset{\Leftarrow}{\square}\)}}{\hfill\(\blacksquare\)}
 %--------------------------------------------------------------------------------------------------------------------------
 \let\oldexists\exists
 \renewcommand{\exists}{\oldexists\,}
@@ -886,19 +886,19 @@
 	 \medskip Строки и столбцы матрицы \(A\), входящие в базисный минор, называются базисными строками и базисными столбцами соответственно.
 	 
 	 \lm[1]{Для матрицы \(\bm{A}\), \(\bm{{|A|\neq 0}}\bm{{\iff}}\text{строки \(\bm{A}\) линейно независимы}\)}\label{4.4.1}
-	 \begin{proof} Гредположим противное: существуют линейно зависимые строки. 
+	 \begin{proof} Предположим противное: существуют линейно зависимые строки. 
 	 
-	 \medskip Пусть всего \(n\) строк: \(\bm{A}_{1},\dotsb,\bm{A}_{m},\dotsb,\bm{A}_{n}\). Пусть \(\displaystyle\bm{A}_{m}=\sum_{\substack{k=1,\\[.5pt]k\neq m}}^{n}\upalpha_{k}\vect[l]{A}_{k}\). 
+	 Пусть всего \(n\) строк: \(\bm{A}_{1},\dotsb,\bm{A}_{m},\dotsb,\bm{A}_{n}\). Пусть \(\displaystyle\bm{A}_{m}=\sum_{\substack{k=1,\\[.5pt]k\neq m}}^{n}\upalpha_{k}\vect[l]{A}_{k}\). 
 	 
-	 \medskip Вычитая поочерёдно из этой строки все \(\upalpha_{k}\vect[l]{A}_{k}\left(k=\overline{1,n},\,k\neq m\right)\), произведём над этой строкой ЭП--ия и в итоге получим нулевую строку \(\implies |A|=0\implies\skull\). 
+	 \smallskip Вычитая поочерёдно из этой строки все \(\upalpha_{k}\vect[l]{A}_{k}\left(k=\overline{1,n},\,k\neq m\right)\), произведём над этой строкой ЭП--я и в итоге получим нулевую строку \(\implies |A|=0\implies\skull\)
 	 
 	 \medskip Значит, все строки линейно независимы.\end{proof}
 	 
-	 \bigskip\(\overset{\Leftarrow}{\square}\) Приведём матрицу к ступенчатому виду.
+	 \begin{proof} Приведём матрицу к ступенчатому виду.
 	 
-	 \smallskip Нулевых строк нет (они линейно независимы), поэтому матрица имеет верхнетреугольный вид \(\displaystyle\implies a_{kk}\neq 0\left(\forall k=\overline{1,n}\right)\implies |A|=\prod_{k=1}^{n}a_{kk}\neq 0\) \(\blacksquare\)
+	 Нулевых строк нет (они линейно независимы), поэтому матрица имеет верхнетреугольный вид \(\displaystyle\implies a_{kk}\neq 0\left(\forall k=\overline{1,n}\right)\implies |A|=\prod_{k=1}^{n}a_{kk}\neq 0\)\end{proof}
 	 
-	 \tm[1]{Строки, входящие в базисный минор, линейно независимы}
+	 \newpage\tm[1]{Строки, входящие в базисный минор, линейно независимы}
 	 
 	 Пусть \(\rank A =r\implies\exists\mathrm{M}^{r}(A)\neq 0\). Пусть, для определённости, это минор \(\mathrm{M}_{_{1\dotsb r}}^{^{1\dotsb r}}\).
 	 
