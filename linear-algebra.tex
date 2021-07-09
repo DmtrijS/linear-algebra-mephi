@@ -115,6 +115,7 @@
 \makeatother
 \DeclareMathOperator{\rank}{rank}
 %--------------------------------------------------------------------------------------------------------------------------
+\setlength{\parskip}{6pt}
 \begin{document}
 	\title{
 		\centering \vfill
@@ -252,15 +253,15 @@
 	
 	Для матрицы $M$ размером $n\times n$: 
 	\[
-	|M|\equiv \det M = \sum_{\left(i_1\,\inlineperm{2}{n}\right)} \left(-1\right)^{\upsigma\left(\inlineperm{1}{n}\right)} a_{1i_1}a_{2i_2}\dotsm a_{ni_n}\,,
+	|M|\equiv \det M = \sum_{\left(i_1\,\inlineperm{2}{n}\right)} \left(-1\right)^{\upsigma\left(\inlineperm{1}{n}\right)} a_{1i_1}a_{2i_2}\dotsm a_{ni_n},
 	\]
 	
 	где $\upsigma(\inlineperm{1}{n})$ --- дефект перестановки $\begin{pmatrix} i_1&i_2&\cdots&i_n\end{pmatrix}$, численно равный количеству инверсий этой перестановки.
 	\ex
 	
-	Пусть дана $\underset{2\times 2}{M}=\begin{pmatrix} a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix}$. 
+	Пусть дана матрица $\underset{2\times 2}{M}=\begin{pmatrix} a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix}$. 
 	
-	\medskip Тогда её определитель $\displaystyle \det\underset{2\times 2}{M}=\sum_{\substack{(1\,\,2)\\(2\,\,1)}}(-1)^{\upsigma(i_1\,\,i_2)}a_{1i_1}a_{2i_2}=(-1)^{\upsigma(1\,\,2)}a_{11}a_{22}+(-1)^{\upsigma(2\,\,1)}a_{12}a_{21}=\\=a_{11}a_{22}-a_{12}a_{21}$.
+	Тогда её определитель $\displaystyle \det\underset{2\times 2}{M}=\sum_{\substack{(1\,\,2)\\(2\,\,1)}}(-1)^{\upsigma(i_1\,\,i_2)}a_{1i_1}a_{2i_2}=(-1)^{\upsigma(1\,\,2)}a_{11}a_{22}+(-1)^{\upsigma(2\,\,1)}a_{12}a_{21}=\\=a_{11}a_{22}-a_{12}a_{21}$.
 	\section{Теорема об определителе транспонированной матрицы}
 	\subsection{Транспонированная матрица}
 	\df[Транспонированная матрица]
@@ -421,7 +422,7 @@
 		a_{31}&a_{32}&a_{33}\\
 	\end{pmatrix}
 	$
-	\bigskip
+	\medskip
 	
 	$\mathrm{M}_{22}\Big(\underset{3\times 3}{A}\Big)=
 	\begin{vmatrix}
@@ -474,7 +475,6 @@
 			\end{pmatrix}
 	\]
 	
-	\smallskip
 	Переставим столбец \(l\) на место столбца \(n\) путём последовательных элементарных транспозиций (всего \([n-l]\) ЭТ):
 	
 	\begin{align*}
@@ -498,7 +498,6 @@
 		\end{pmatrix}
 	\]
 	
-	\smallskip
 	По свойству прибавления строк другой матрицы можем представить определитель \(|A|\) как сумму определителей \(\left|A^{(i)}\right|\) матриц \(A^{(i)}\), для которых элементы последней строки равны\\ \(a_{nj}^{(i)}=\begin{cases}a_{ni},&j=i\\0,&j\neq i\end{cases}\)\,, а остальные элементы совпадают с элементами матрицы \(A\):
 	
 	\[
@@ -579,7 +578,7 @@
 																				a_{1n}&\dotsb&a_{nn}\\
 																			\end{pmatrix}\]
 																			
-	\medskip Поскольку \(B\) содержит две одинаковые строки, то \(|B|=0\). С другой стороны, разложив \(|B|\) по \(k\text{--ой}\) строке, получим \(\displaystyle |B|=\sum_{j=1}^{n}b_{kj}\mathrm{B}_{kj}=\sum_{j=1}^{n}a_{lj}\mathrm{A}_{kj}=0\)\end{proof}
+	Поскольку \(B\) содержит две одинаковые строки, то \(|B|=0\). С другой стороны, разложив \(|B|\) по \(k\text{--ой}\) строке, получим \(\displaystyle |B|=\sum_{j=1}^{n}b_{kj}\mathrm{B}_{kj}=\sum_{j=1}^{n}a_{lj}\mathrm{A}_{kj}=0\)\end{proof}
 	\chapter{Произведение матриц}
 	\section{Свойства произведения матриц}
 	\subsection{Определение произведения матриц}
@@ -625,8 +624,7 @@
 	\ex
 	
 	\(A=\begin{pmatrix}3&1\\-1&4\end{pmatrix}\), \(B=\begin{pmatrix}2&1\\-3&0\end{pmatrix}\)
-	
-	\bigskip
+	\medskip
 	
 	\[ 
 	\begin{drcases}
@@ -721,8 +719,9 @@
 	\ex
 	
 	\(A=\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}\oversymbolnoref[\upalpha = c]{k=2}{\sim}\begin{pmatrix}1&2&3\\4c&5c&6c\\7&8&9\end{pmatrix}\)
+	\medskip
 	
-	\bigskip\(B=\begin{pmatrix}1&0&0\\0&c&0\\0&0&1\end{pmatrix}\implies B\cdot A = \begin{pmatrix}1&0&0\\0&c&0\\0&0&1\end{pmatrix}\cdot \begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\begin{pmatrix}1&2&3\\4c&5c&6c\\7&8&9\end{pmatrix}\)
+	\(B=\begin{pmatrix}1&0&0\\0&c&0\\0&0&1\end{pmatrix}\implies B\cdot A = \begin{pmatrix}1&0&0\\0&c&0\\0&0&1\end{pmatrix}\cdot \begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\begin{pmatrix}1&2&3\\4c&5c&6c\\7&8&9\end{pmatrix}\)
 	\subsubsection{Перемена местами \(\boldsymbol{l}\)--ой и \(\boldsymbol{k}\)--ой строк}
 	\lm{Соответствует левостороннему домножению на \(\boldsymbol{{B\left\{b_{ij}\right\}_{i,j=1}^{n}}}\), \(\boldsymbol{{b_{ij}=\begin{cases}\updelta_{ij},&i\neq k,\,i\neq l,\,j=\overline{1,n}\\\updelta_{kj},&i=l,\,j=\overline{1,n}\\\updelta_{lj},&i=k,\,j=\overline{1,n}\end{cases}}}\)}
 	
@@ -741,8 +740,9 @@
 	\ex
 
 	\(A=\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}\oversymbolnoref[k=2]{l=1}{\sim}\begin{pmatrix}4&5&6\\1&2&3\\7&8&9\end{pmatrix}\)
+	\medskip
 	
-	\bigskip\(B=\begin{pmatrix}0&1&0\\1&0&0\\0&0&1\end{pmatrix}\implies B\cdot A = \begin{pmatrix}0&1&0\\1&0&0\\0&0&1\end{pmatrix}\cdot\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\begin{pmatrix}4&5&6\\1&2&3\\7&8&9\end{pmatrix}\)
+	\(B=\begin{pmatrix}0&1&0\\1&0&0\\0&0&1\end{pmatrix}\implies B\cdot A = \begin{pmatrix}0&1&0\\1&0&0\\0&0&1\end{pmatrix}\cdot\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\begin{pmatrix}4&5&6\\1&2&3\\7&8&9\end{pmatrix}\)
 	\subsubsection{Добавление к \(\boldsymbol{k}\)--ой строке \(\boldsymbol{l}\)--ую, умноженную на \(\boldsymbol{\upalpha\in\mathbb{R}}\)}
 	\lm{Соответствует левостороннему домножению на \(\boldsymbol{{B\left\{b_{ij}\right\}_{i,j=1}^{n}}}\), \(\boldsymbol{{b_{ij}=\begin{cases}\upalpha+\updelta_{kl},&i=k\text{ и } j=l\\\updelta_{ij},&i\neq k\text{ или }j\neq l\end{cases}}}\)}
 	
@@ -760,16 +760,19 @@
 	\ex
 	
 	\(A=\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}\oversymbolnoref[k=2]{l=1}{\sim}\begin{pmatrix}1&2&3\\4+\upalpha&5+2\upalpha&6+3\upalpha\\7&8&9\end{pmatrix}\)
+	\medskip
 	
-	\bigskip\(B=\begin{pmatrix}1&0&0\\\upalpha+\updelta_{21}&1&0\\0&0&1\end{pmatrix}\implies B\cdot A=\begin{pmatrix}1&0&0\\\upalpha&1&0\\0&0&1\end{pmatrix}\cdot\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\begin{pmatrix}1&2&3\\4+\upalpha&5+2\upalpha&6+3\upalpha\\7&8&9\end{pmatrix}\)
+	\(B=\begin{pmatrix}1&0&0\\\upalpha+\updelta_{21}&1&0\\0&0&1\end{pmatrix}\implies B\cdot A=\begin{pmatrix}1&0&0\\\upalpha&1&0\\0&0&1\end{pmatrix}\cdot\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\begin{pmatrix}1&2&3\\4+\upalpha&5+2\upalpha&6+3\upalpha\\7&8&9\end{pmatrix}\)
 	
 	\newpage\ex
 	
 	\(A=\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}\oversymbolnoref[k=3]{l=3}{\sim}\begin{pmatrix}1&2&3\\4&5&6\\7+7\upalpha&8+8\upalpha&9+9\upalpha\end{pmatrix}\)
+	\medskip
 	
-	\bigskip\(B=\begin{pmatrix}1&0&0\\0&1&0\\0&0&\upalpha+\updelta_{33}\end{pmatrix}\implies B\cdot A=\begin{pmatrix}1&0&0\\0&1&0\\0&0&\upalpha+1\end{pmatrix}\cdot\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\begin{pmatrix}1&2&3\\4&5&6\\7(\upalpha+1)&8(\upalpha+1)&9(\upalpha+1)\end{pmatrix}\)
+	\(B=\begin{pmatrix}1&0&0\\0&1&0\\0&0&\upalpha+\updelta_{33}\end{pmatrix}\implies B\cdot A=\begin{pmatrix}1&0&0\\0&1&0\\0&0&\upalpha+1\end{pmatrix}\cdot\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\begin{pmatrix}1&2&3\\4&5&6\\7(\upalpha+1)&8(\upalpha+1)&9(\upalpha+1)\end{pmatrix}\)
+	\bigskip
 	
-	\bigskip Таким образом, последовательное применение ЭП строк к матрице \(A\) эквивалентно последовательному домножению слева матрицы \(A\) на соответствующую матрицу \(B_{i}\).
+	Таким образом, последовательное применение ЭП строк к матрице \(A\) эквивалентно последовательному домножению слева матрицы \(A\) на соответствующую матрицу \(B_{i}\).
 	
 	\subsubsection{Метод элементарных преобразований строк}\leavevmode
 	
@@ -786,8 +789,9 @@
 	\ex
 	
 	\(A=\begin{pmatrix}1&2\\1&3\end{pmatrix}\)
+	\medskip
 	
-	\bigskip\(\begin{pmatrix}[cc|cc]1&2&1&0\\1&3&0&1\end{pmatrix}\sim\begin{pmatrix}[cc|cc]1&2&1&0\\0&1&-1&1\end{pmatrix}\sim\begin{pmatrix}[cc|cc]1&0&3&-2\\0&1&-1&1\end{pmatrix}\)
+	\(\begin{pmatrix}[cc|cc]1&2&1&0\\1&3&0&1\end{pmatrix}\sim\begin{pmatrix}[cc|cc]1&2&1&0\\0&1&-1&1\end{pmatrix}\sim\begin{pmatrix}[cc|cc]1&0&3&-2\\0&1&-1&1\end{pmatrix}\)
 	
 	\bigskip Таким образом, \(A^{-1}=\begin{pmatrix}3&-2\\-1&1\end{pmatrix}\)
 	
@@ -800,7 +804,7 @@
 	
 	В матрице \(A\) выделим строки \(i_1,\,i_2,\dotsc,i_r\) и столбцы \(j_1,\,j_2,\dotsc,j_r\). Определитель, составленный из выделенных элементов матрицы \(A\), называется минором \(\mathrm{M}_{_{\inlineperm{1}{r}}}^{^{\inlineperm[j]{1}{r}}}\).
 	
-	\smallskip Порядок минора --- количество \(r\) выделенных строк и столбцов. 
+	Порядок минора --- количество \(r\) выделенных строк и столбцов. 
 	
 	Для краткости некоторый минор порядка \(r\) соответствующей матрицы \(A\) будем обозначать как \(\mathrm{M}^{r}\big(A\big)\), а соответствующую матрицу минора как \(A\big(\mathrm{M}^{r}\big)\).
 	
@@ -808,7 +812,7 @@
 	
 	\(A=\begin{pmatrix}1&2&3&0\\4&5&6&0\\7&8&9&0\end{pmatrix}\)
 	
-	\medskip\(\mathrm{M}_{_{1\,2}}^{^{2\,3}}\big(A\big)=\begin{vmatrix}\tikzmarkemptyX{L11}{1}&\tikzmarkemptyX{C11}{2}&\tikzmarkemptyX{C21}{3}&\tikzmarkemptyX{L12}{0}\\\tikzmarkemptyX{L21}{4}&5&6&\tikzmarkemptyX{L22}{0}\\7&\tikzmarkemptyX{C12}{8}&\tikzmarkemptyX{C22}{9}&0\end{vmatrix}=\begin{vmatrix}2&3\\5&6\end{vmatrix}=12-15=-3
+	\(\mathrm{M}_{_{1\,2}}^{^{2\,3}}\big(A\big)=\begin{vmatrix}\tikzmarkemptyX{L11}{1}&\tikzmarkemptyX{C11}{2}&\tikzmarkemptyX{C21}{3}&\tikzmarkemptyX{L12}{0}\\\tikzmarkemptyX{L21}{4}&5&6&\tikzmarkemptyX{L22}{0}\\7&\tikzmarkemptyX{C12}{8}&\tikzmarkemptyX{C22}{9}&0\end{vmatrix}=\begin{vmatrix}2&3\\5&6\end{vmatrix}=12-15=-3
 	\begin{tikzpicture}[overlay, remember picture]
 		\draw[rounded corners, green, thick, fill=green!15, fill opacity=0.4] (L11.north west) rectangle (L12.south east);
 		\draw[rounded corners, green, thick, fill=green!15, fill opacity=0.4] (L21.north west) rectangle (L22.south east);
@@ -816,9 +820,9 @@
 		\draw[rounded corners, red, thick, fill=red!15, fill opacity=0.4] (C21.north west) rectangle (C22.south east);
 	\end{tikzpicture}\)
 	
-	\medskip\(A\Big(\mathrm{M}_{_{1\,2}}^{^{2\,3}}\Big)=\begin{pmatrix}2&3\\5&6\end{pmatrix}\)
+	\(A\Big(\mathrm{M}_{_{1\,2}}^{^{2\,3}}\Big)=\begin{pmatrix}2&3\\5&6\end{pmatrix}\)
 	
-	\medskip Обратим внимание читателя на то, что понятие \textit{минора} матрицы \textbf{отличается} от понятия \hyperref[2.5.1]{\textit{\color{MMagenta}дополнительного минора}} матрицы, вводившегося ранее. 
+	Обратим внимание читателя на то, что понятие \textit{минора} матрицы \textbf{отличается} от понятия \hyperref[2.5.1]{\textit{\color{MMagenta}дополнительного минора}} матрицы, вводившегося ранее. 
 	
 	В частности, минор некого порядка можно вычислить для любой матрицы, а дополнительный минор --- только для квадратной.
 	\subsection{Ранг матрицы}
@@ -826,7 +830,7 @@
 	
 	Ранг матрицы \(A\) --- максимальный порядок отличного от нуля минора.
 	
-	\medskip То есть, если \(\rank A=r\), то \(\exists\left\{i_1,\dotsc,i_r\right\}\text{ и }\left\{j_1,\dotsc,j_r\right\}\colon \mathrm{M}_{_{\inlineperm{1}{r}}}^{^{\inlineperm[j]{1}{r}}}\neq 0\), а любой другой минор более высокого порядка равен нулю.
+	То есть, если \(\rank A=r\), то \(\exists\left\{i_1,\dotsc,i_r\right\}\text{ и }\left\{j_1,\dotsc,j_r\right\}: \mathrm{M}_{_{\inlineperm{1}{r}}}^{^{\inlineperm[j]{1}{r}}}\neq 0\), а любой другой минор более высокого порядка равен нулю.
 	\section{Влияние элементарных преобразований строк на ранг матрицы}
 	\tm[1]{При ЭП строк ранг матрицы не увеличивается}\label{4.2.1}
 	\begin{proof} Пусть \(\rank A=r\).
@@ -873,10 +877,11 @@
 																		\vdots&\vdots&\vdots&\ddots&\vdots\\
 																		0&\dotsb&\dotsb&0&a_{rk_r}\\													
 	\end{vmatrix}=\prod_{n=1}^{r}a_{nk_n}\neq 0\]
-	
+	\\
 	Это минор порядка \(r\). Любой другой минор большего порядка равен нулю.
 	\end{proof}
-	\medskip\\
+	
+	
 	Таким образом, приводя матрицу ЭП строк к ступенчатому виду, можно определить её ранг.
 	
 	\section{Свойство базисных строк и базисных столбцов матрицы}
@@ -885,25 +890,22 @@
 	
 	 Если для матрицы \(A\), \(\rank A=r\), то \(\mathrm{M}^{r}(A)\neq 0\) --- базисный минор.
 	 
-	 \medskip Строки и столбцы матрицы \(A\), входящие в базисный минор, называются базисными строками и базисными столбцами соответственно.
+	 Строки и столбцы матрицы \(A\), входящие в базисный минор, называются базисными строками и базисными столбцами соответственно.
 	 
-	 \lm[1]{Для квадратной матрицы \(\bm{A}\), \(\bm{{|A|\neq 0}}\bm{{\iff}}\text{строки \(\bm{A}\) линейно независимы}\)}\label{4.4.1}
-	 \begin{proof}\(\langle\Rightarrow\rangle\) Предположим противное: существуют линейно зависимые строки. 
+	 \lm[1]{Для квадратной матрицы \(\bm{A}\), \(\bm{{|A|\neq 0}}\bm{{\iff}}\text{строки \(\bm{A}\) линейно независимы}\)}\label{4.4.1}\begin{proof}\(\langle\Rightarrow\rangle\) Предположим противное: существуют линейно зависимые строки. 
 	 
 	 Пусть всего \(n\) строк: \(\vv*{\mathbf{A}}{1},\dotsb,\vv*{\mathbf{A}}{m},\dotsb,\vv*{\mathbf{A}}{n}\). Пусть \(\displaystyle\vv*{\mathbf{A}}{m}=\sum_{\substack{k=1,\\[.5pt]k\neq m}}^{n}\upalpha_{k}\vect[l*]{A}{k}\). 
 	 
-	 \smallskip Вычитая поочерёдно из этой строки все \(\upalpha_{k}\vect[l*]{A}{k}\left(k=\overline{1,n},\,k\neq m\right)\), произведём над этой строкой ЭП--я и в итоге получим нулевую строку \(\implies |A|=0\implies\skull\)
+	 Вычитая поочерёдно из этой строки все \(\upalpha_{k}\vect[l*]{A}{k}\left(k=\overline{1,n},\,k\neq m\right)\), произведём над этой строкой ЭП--я и в итоге получим нулевую строку \(\implies |A|=0\implies\skull\)
 	 
-	 \medskip Значит, все строки линейно независимы.\end{proof}
+	 Значит, все строки линейно независимы.\end{proof}
 	 
 	 \begin{proof} \(\langle\Leftarrow\rangle\) Приведём матрицу к ступенчатому виду.
 	 
 	 Нулевых строк нет (они линейно независимы), поэтому матрица имеет верхнетреугольный вид \(\displaystyle\implies a_{kk}\neq 0\left(\forall k=\overline{1,n}\right)\implies |A|=\prod_{k=1}^{n}a_{kk}\neq 0\)\end{proof}
 	 
 	 \newpage\tm[1]{Строки, входящие в базисный минор, линейно независимы}
-	 
 	 Пусть \(\rank A =r\implies\exists\mathrm{M}^{r}(A)\neq 0\). Пусть, для определённости, это минор \(\mathrm{M}_{_{1\dotsb r}}^{^{1\dotsb r}}\).
-	 
 	 \begin{proof} По \hyperref[4.4.1]{\color{MMagenta}\(\big[\)\textbf{Л}\(^{1}\big]\)}, т.к. \(\mathrm{M}_{_{1\dotsb r}}^{^{1\dotsb r}}\neq 0\), то строки матрицы минора будут линейно независимы.
 	 
 	 Теперь рассмотрим матрицу из первых \(r\) строк матрицы \(A\). Докажем, что они линейно независимы.
@@ -911,13 +913,36 @@
 	 					\vdots&\ddots&\vdots&\ddots&\vdots\\
  						a_{r1}&\cdots&\tikzmarkempty{B}{a_{rr}}&\cdots&\tikzmarkempty{C}{a_{rn}}\\
  						\vdots&\ddots&\vdots&\ddots&\vdots\\
- 						a_{m1}&\cdots&\cdots&\cdots&a_{mn} \end{pmatrix}\begin{tikzpicture}[overlay, remember picture] \draw[dashed, red, very thin] (A.north west) rectangle (B.south east);
- 						\draw[rounded corners, green, fill=green!15, fill opacity=0.4] (A.north west) rectangle (C.south east);
+ 						a_{m1}&\cdots&\cdots&\cdots&a_{mn} \end{pmatrix}\begin{tikzpicture}[overlay, remember picture]
+ 						\draw[rounded corners=1.5pt, blue, fill=blue!5, fill opacity=0.4, ultra thin] (A.north west) rectangle (C.south east);
+ 						\draw[dashed, red, very thin] (A.north west) rectangle (B.south east);
  						\end{tikzpicture}\]
 	 
 	 Предположим противное: одна из этих строк (пусть \(r\)--я) является линейной комбинацией других.
- 	\[k=\overline{1,n}:~a_{rk}=\sum_{i=1}^{r-1}\uplambda_{i}a_{ik}\text{, причём }r\leq n\]	
+ 	\[\forall k=\overline{1,n}:~a_{rk}=\sum_{i=1}^{r-1}\uplambda_{i}a_{ik}\text{, причём }r\leq n\]
+ 	
+ 	Это будет верно и для \(\forall k=\overline{1,r}\). Следовательно, \(r\)--я строка матрицы минора \(\mathrm{M}^{^{1\dotsb r}}_{_{1\dotsb r}}\) является линейной комбинацией других\(\implies\skull\).
+ 	
+ 	Значит, строки, входящие в базисный минор, линейно независимы.
  	\end{proof}
+ 
+ 	(То же самое относится и к базисным столбцам).
+ 	
+ 	\lm[2]{Если в матрице \(\bm{A}\) \(\bm{m}\) штук линейно независимых строк, то\\\smallskip существует \(\bm{\mathrm{M}^{^m}(A)\neq 0}\)}
+ 	\begin{proof}Приведём эту матрицу к ступенчатому виду. Найдутся \(l_{1},\dotsc,l_{m}\) и \(k_{1},\dotsc,k_{m}\) -- ненулевые строки и столбцы соответственно. Таким образом, ранг матрицы \(A\) равен \(m\) и нужный минор имеет вид \(\mathrm{M}_{_{l_{1}\dotsb l_{m}}}^{^{k_{1}\dotsb k_{m}}}=\mathrm{M}^{^{m}}(A)\neq 0\).
+ 	\end{proof}
+ 
+ 	\bigskip Далее будем пользоваться следующими обозначениями: 
+ 	\begin{align*}
+ 	\vect[l]{A}{}=\begin{pmatrix}a_{1}&\cdots&a_{n}\end{pmatrix}&\text{ -- вектор-строка}
+ 	\\[3.5pt]	
+ 	\vect[c]{X}{}=\begin{pmatrix}x_{1}\\\vdots\\x_{n}\end{pmatrix}&\text{ -- вектор-столбец}
+ 	\\[3.5pt]
+ 	\vect{b}{}&\text{ -- любой вектор (вектор-строка ИЛИ вектор-столбец)}
+ 	\end{align*}
+ 
+ 	\lm[3]{Если система векторов \({\{\vect{a}{1},\dotsc,\vect{a}{k}\}}\) -- линейно независима, а \({\{\vect{a}{1},\dotsc,\vect{a}{k}\}\cup\{\vect{b}{}\}}\) -- линейно зависима, то \({\vect{b}{}\in L(\vect{a}{1}\dotsb\vect{a}{k})}\)}
 	%TODO: remove periods at the end of math structures
 	%TODO: fix proof* and proof** (see \vect??)
+	%TODO: fix/check newpages
 \end{document}
