@@ -946,7 +946,11 @@
  	Линейной оболочкой данной системы векторов \(\{\vect{a}{1},\dotsc,\vect{a}{n}\}\) называется множество \[L\big(\vect{a}{1}\dotsb\vect{a}{n}\big)=\Bigg\{\vect{x}{}~\bigg|~\exists\{\uplambda_{i}\}_{i=1}^{n}\subset\mathbb{R}: \vect{x}{}=\sum_{i=1}^{n}\uplambda_{i}\vect{a}{i}\Bigg\}\] 
  	
  	\lm[3]{Если система векторов \(\boldsymbol{\{}\vect{a}{\bm{1}}\boldsymbol{,\dotsc,}\vect{a}{\bm{k}}\boldsymbol{\}}\) -- линейно независима, а \(\boldsymbol{\{}\vect{a}{\bm{1}}\boldsymbol{,\dotsc,}\vect{a}{\bm{k}}\boldsymbol{\}}\boldsymbol{\cup}\boldsymbol{\{}\vect{b}{}\boldsymbol{\}}\) -- линейно зависима, то \(\vect{b}{}\boldsymbol{\in} \boldsymbol{L\big(}\vect{a}{\bm{1}}\boldsymbol{\dotsb}\vect{a}{\bm{k}}\bm{\big)}\)}
+ 	\begin{proof}\(\{\vect{a}{1},\dotsc,\vect{a}{k},\vect{b}{}\}\) -- линейно зависимы\(\displaystyle\iff\exists\{\uplambda_i\}_{i=1}^{k},\upmu:\sum_{i=1}^{k}|\uplambda_i|+|\upmu|\neq 0\) и \(\displaystyle\sum_{i=1}^{k}\uplambda_{i}\vect{a}{i}+\upmu\vect{b}{}=\vect{0}{}\)
+ 	\begin{enumerate}[1)]\item Если \(\upmu=0\), то \(\{\vect{a}{1},\dotsc,\vect{a}{k}\}\) -- линейно зависимы, что противоречит условию. \item Если \(\upmu\neq 0\), то, поделив сумму на \(\upmu\neq 0\), получим \(\vect{b}{}\in L\big(\vect{a}{1}\dotsb\vect{a}{k}\big)\).\end{enumerate}\end{proof}
+ 	
+ 	\tm[2]{Если \(\vect[l*]{A}{m_1},\dotsc,\vect[l*]{A}{m_r}\) -- строки, входящие в базисный минор матрицы \(\boldsymbol{A}\) (т.е. \(\boldsymbol{\rank A = r}\)), то \(\big(\forall k\neq m_{i}, i=\overline{1,r}\big)\vect[l*]{A}{k}\in L\big(\vect[l*]{A}{m_1}\dotsb\vect[l*]{A}{m_r}\big)\)}
 	%TODO: remove periods at the end of math structures
 	%TODO: fix proof* and proof** (see \vect??)
-	%TODO: fix/check newpages
+	%TODO: fix/check newpages, -- or ---
 \end{document}
