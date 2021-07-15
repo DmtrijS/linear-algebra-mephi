@@ -51,16 +51,6 @@
 											{n}{\mathbf{#2}_{#3}}%
 										}}%
 %--------------------------------------------------------------------------------------------------------------------------
-\usepackage{collectbox}
-\makeatletter
-\newcommand{\sqbox}{%
-	\collectbox{%
-		\setlength{\fboxsep}{2pt}%
-		\fbox{\BOXCONTENT}%
-	}%
-}
-\makeatother
-
 \makeatletter
 \newenvironment{union}{%
 	\matrix@check\union\env@union
@@ -77,14 +67,15 @@
 %--------------------------------------------------------------------------------------------------------------------------
 \usepackage{tikz}
 	\usetikzlibrary{cd, matrix, fit}
-\newcommand\encircle[1]{\tikz[baseline=(X.base)]\node(X)[draw, shape=circle, inner sep=1pt] {#1};}
+\newcommand\encircle[1]{\tikz[baseline=(X.base)]\node(X)[draw, shape=circle, inner sep=2pt] {#1};}
+\newcommand\ensq[1]{\tikz[baseline=(X.base)]\node(X)[draw, shape=rectangle, inner sep=3pt] {#1};}
 \newcommand{\tikzmark}[2]{\tikz[remember picture,baseline=-2pt]\node[circle, dashed,black,draw,text=black,anchor=center,inner sep=1pt] (#1) {$#2$};}
 \newcommand{\tikzmarkempty}[2]{\tikz[overlay,remember picture,baseline=-2pt] \node [anchor=center, inner sep=0] (#1) {$#2$};}
 \newcommand{\tikzmarkemptyX}[2]{\tikz[overlay,remember picture,baseline=(#1.base)] \node [inner sep=1pt] (#1) {$#2$};}
 %--------------------------------------------------------------------------------------------------------------------------
 \newcommand{\df}[1][]{\begin{flushleft}\textbf{\underline{Опр} \textcolor{Plum}{#1}}\end{flushleft}}
 \newcommand{\ex}{\begin{flushleft}\textbf{\underline{Пр}}\end{flushleft}}
-\newcommand{\lm}[2][]{\begin{flushleft}\textbf{\sqbox{Л\(^\mathbf{#1}\)} \textcolor{Blue}{#2}}\end{flushleft}}
+\newcommand{\lm}[2][]{\begin{flushleft}\textbf{\ensq{Л\(^\mathbf{#1}\)} \textcolor{Blue}{#2}}\end{flushleft}}
 \newcommand{\tm}[2][]{\begin{flushleft}\textbf{\encircle{Th\(^\mathbf{#1}\)} \textcolor{Red}{#2}}\end{flushleft}}
 \newcommand{\inlineperm}[3][i]{{#1}_{#2}\dotsb{#1}_{#3}}
 \usepackage{calc}
@@ -146,7 +137,7 @@
 
 	\nomenclature[01]{\textbf{\underline{Опр}}}{Определение}
 	\nomenclature[02]{\textbf{\underline{Пр}}}{Пример}
-	\nomenclature[03]{\textbf{\sqbox{Л}}}{Лемма}
+	\nomenclature[03]{\textbf{\ensq{Л}}}{Лемма}
 	\nomenclature[04]{\textbf{\encircle{Th}}}{Теорема}
 	\nomenclature[05]{$\square$}{Начало доказательства}
 	\nomenclature[06]{$\blacksquare$}{Конец доказательства}
@@ -202,7 +193,7 @@
 	
 	Перемена местами двух соседних элементов перестановки --- элементарная транспозиция (ЭТ).
 	
-	\newpage\lm{При элементарной транспозиции чётность перестановки меняется}
+	\lm{При элементарной транспозиции чётность перестановки меняется}
 	
 	\begin{proof}
 	\[
@@ -928,7 +919,7 @@
  
  	(То же самое относится и к базисным столбцам).
  	
- 	\lm[2]{Если в матрице \(\bm{A}\) есть \(\bm{m}\) штук линейно независимых строк, то\\\smallskip существует \(\bm{\mathrm{M}^{^m}(A)\neq 0}\)}
+ 	\lm[2]{Если в матрице \(\bm{A}\) есть \(\bm{m}\) штук линейно независимых строк, то существует\nolinebreak[4] \(\bm{\mathrm{M}^{^m}(A)\neq 0}\)}
  	\begin{proof}Приведём эту матрицу к ступенчатому виду. Найдутся \(l_{1},\dotsc,l_{m}\) и \(k_{1},\dotsc,k_{m}\) -- ненулевые строки и столбцы соответственно. Таким образом, ранг матрицы \(A\) равен \(m\) и нужный минор имеет вид \(\mathrm{M}_{_{l_{1}\dotsb l_{m}}}^{^{k_{1}\dotsb k_{m}}}=\mathrm{M}^{^{m}}(A)\neq 0\).
  	\end{proof}
  
@@ -945,11 +936,12 @@
  	
  	Линейной оболочкой данной системы векторов \(\{\vect{a}{1},\dotsc,\vect{a}{n}\}\) называется множество \[L\big(\vect{a}{1}\dotsb\vect{a}{n}\big)=\Bigg\{\vect{x}{}~\bigg|~\exists\{\uplambda_{i}\}_{i=1}^{n}\subset\mathbb{R}: \vect{x}{}=\sum_{i=1}^{n}\uplambda_{i}\vect{a}{i}\Bigg\}\] 
  	
- 	\lm[3]{Если система векторов \(\boldsymbol{\{}\vect{a}{\bm{1}}\boldsymbol{,\dotsc,}\vect{a}{\bm{k}}\boldsymbol{\}}\) -- линейно независима, а \(\boldsymbol{\{}\vect{a}{\bm{1}}\boldsymbol{,\dotsc,}\vect{a}{\bm{k}}\boldsymbol{\}}\boldsymbol{\cup}\boldsymbol{\{}\vect{b}{}\boldsymbol{\}}\) -- линейно зависима, то \(\vect{b}{}\boldsymbol{\in} \boldsymbol{L\big(}\vect{a}{\bm{1}}\boldsymbol{\dotsb}\vect{a}{\bm{k}}\bm{\big)}\)}
+ 	\lm[3]{Если система векторов \(\boldsymbol{\{}\vect{a}{\bm{1}}\boldsymbol{,}\boldsymbol{\dotsc}\,\boldsymbol{,}\vect{a}{\bm{k}}\boldsymbol{\}}\) -- линейно независима, а \(\boldsymbol{\{}\vect{a}{\bm{1}}\boldsymbol{,\dotsc\,,}\vect{a}{\bm{k}}\boldsymbol{\}}\boldsymbol{\cup}\boldsymbol{\{}\vect{b}{}\boldsymbol{\}}\)\nolinebreak[4] --\nolinebreak[4] линейно зависима, то \(\vect{b}{}\boldsymbol{\in} \boldsymbol{L\big(}\vect{a}{\bm{1}}\boldsymbol{\dotsb}\,\vect{a}{\bm{k}}\bm{\big)}\)}
  	\begin{proof}\(\{\vect{a}{1},\dotsc,\vect{a}{k},\vect{b}{}\}\) -- линейно зависимы\(\displaystyle\iff\exists\{\uplambda_i\}_{i=1}^{k},\upmu:\sum_{i=1}^{k}|\uplambda_i|+|\upmu|\neq 0\) и \(\displaystyle\sum_{i=1}^{k}\uplambda_{i}\vect{a}{i}+\upmu\vect{b}{}=\vect{0}{}\)
  	\begin{enumerate}[1)]\item Если \(\upmu=0\), то \(\{\vect{a}{1},\dotsc,\vect{a}{k}\}\) -- линейно зависимы, что противоречит условию. \item Если \(\upmu\neq 0\), то, поделив сумму на \(\upmu\neq 0\), получим \(\vect{b}{}\in L\big(\vect{a}{1}\dotsb\vect{a}{k}\big)\).\end{enumerate}\end{proof}
  	
- 	\tm[2]{Если \(\vect[l*]{A}{m_1},\dotsc,\vect[l*]{A}{m_r}\) -- строки, входящие в базисный минор матрицы \(\boldsymbol{A}\) (т.е. \(\boldsymbol{\rank A = r}\)), то \(\big(\forall k\neq m_{i}, i=\overline{1,r}\big)\vect[l*]{A}{k}\in L\big(\vect[l*]{A}{m_1}\dotsb\vect[l*]{A}{m_r}\big)\)}
+ 	\tm[2]{Если \(\vect[l*]{A}{\boldsymbol{m_1}}\boldsymbol{,\dotsc\,,}\vect[l*]{A}{\boldsymbol{m_r}}\) -- строки, входящие в базисный минор матрицы \(\boldsymbol{A}\) (т.е.\nolinebreak[4] \(\boldsymbol{\rank A = r}\)), то \(\boldsymbol{\big(\forall k\neq m_{i},\, i=\overline{1,r}\big)}\vect[l*]{A}{\boldsymbol{k}}\boldsymbol{\in} \boldsymbol{L\Big(}\vect[l*]{A}{\boldsymbol{m_1}}\boldsymbol{\dotsb}\,\vect[l*]{A}{\boldsymbol{m_r}}\boldsymbol{\Big)}\)}
+ 	\begin{proof}Докажем, что\end{proof}
 	%TODO: remove periods at the end of math structures
 	%TODO: fix proof* and proof** (see \vect??)
 	%TODO: fix/check newpages, -- or ---
