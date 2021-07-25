@@ -20,6 +20,7 @@
 \usepackage[makeroom]{cancel}
 \usepackage{upgreek}
 \usepackage{enumerate}
+\usepackage{caption}
 %--------------------------------------------------------------------------------------------------------------------------
 \makeatletter
 \newsavebox\myboxA
@@ -97,7 +98,7 @@
 %--------------------------------------------------------------------------------------------------------------------------
 \DeclareSymbolFont{extraup}          {U}{zavm}{m}{n}
 \DeclareMathSymbol{\skull}{\mathalpha}{extraup}{119}
-
+%--------------------------------------------------------------------------------------------------------------------------
 \makeatletter
 \renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
 	\hskip -\arraycolsep
@@ -105,6 +106,18 @@
 	\array{#1}}
 \makeatother
 \DeclareMathOperator{\rank}{rank}
+%--------------------------------------------------------------------------------------------------------------------------
+\makeatletter
+\newcommand{\hcdotsfor}[1]{%
+	\ifx[#1\@xp\shcdots@for\else\hcdots@for\@ne{#1}\fi}
+\def\shcdots@for#1]{\hcdots@for{#1}}
+\def\hcdots@for#1#2{\multicolumn{#2}c%
+	{\m@th\dotsspace@1.5mu\mkern-#1\dotsspace@
+		\xleaders\hbox{$\m@th\mkern#1\dotsspace@\cdot\mkern#1\dotsspace@$}%
+		\hfill
+		\mkern-#1\dotsspace@}%
+}
+\makeatother
 %--------------------------------------------------------------------------------------------------------------------------
 \setlength{\parskip}{6pt}
 \begin{document}
@@ -948,6 +961,11 @@
 	Следовательно, \(\Big\{\vect[l*]{A}{m_1},\dotsc,\vect[l*]{A}{m_r}\Big\}\bigcup\Big\{\vect[l*]{A}{k}\Big\}\) -- лин. зав., но из \hyperref[4.4 Th1]{\color{MMagenta}\(\Big[\textbf{Th}^1\Big]\)} \(\Big\{\vect[l*]{A}{m_1},\dotsc,\vect[l*]{A}{m_r}\Big\}\) -- лин. нез. Значит, по \hyperref[4.4 L3]{\color{MMagenta}\(\mathbf{\Big[\textbf{Л}^3\Big]}\)} \(\vect[l*]{A}{k}\in L\Big(\vect[l*]{A}{m_1}\dotsb\,\vect[l*]{A}{m_r}\Big)\).\end{proof}
 
 	\chapter[СЛАУ]{Системы линейных алгебраических уравнений}
+	\[\left\{\begin{array}{@{}l@{}}a_{11}x_{1}+a_{12}x_{2}+\dotsb+a_{1n}x_{n}=b_{1},\\[3pt]
+								  \hcdotsfor{1}\\[3pt]
+							  	  a_{m1}x_{1}+a_{m2}x_{2}+\dotsb+a_{mn}x_{n}=b_{m}.\end{array}\right.\]\captionof*{figure}{Система линейных алгебраических уравнений\\на неизвестные \(\{x_{1},x_{2},\dotsc,x_{n}\}=\vect{x}{}\)}
+	\section{Решение, совместность, определённость}
+	\subsection{Решение СЛАУ}
 	%TODO: remove periods at the end of math structures
 	%TODO: fix proof* and proof** (see \vect??)
 	%TODO: fix/check newpages, "--" or "---"
