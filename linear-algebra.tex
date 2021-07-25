@@ -878,7 +878,7 @@
 																		0&a_{2k_2}&\hcdotsfor{3}\\
 																		0&0&\ddots&\hcdotsfor{2}\\
 																		\vdots&\vdots&\vdots&\ddots&\vdots\\
-																		0&\dotsb&\dotsb&0&a_{rk_r}\\													
+																		0&\hcdotsfor{2}&0&a_{rk_r}\\													
 	\end{vmatrix}=\prod_{n=1}^{r}a_{nk_n}\neq 0\]
 	\\
 	Это минор порядка \(r\). Любой другой минор большего порядка равен нулю.
@@ -952,12 +952,12 @@
  	\begin{proof}\(\{\vect{a}{1},\dotsc,\vect{a}{k},\vect{b}{}\}\) -- линейно зависимы\(\displaystyle\iff\exists\{\uplambda_i\}_{i=1}^{k},\upmu:\sum_{i=1}^{k}|\uplambda_i|+|\upmu|\neq 0\) и \(\displaystyle\sum_{i=1}^{k}\uplambda_{i}\vect{a}{i}+\upmu\vect{b}{}=\vect{0}{}\)
  	\begin{enumerate}[1)]\item Если \(\upmu=0\), то \(\{\vect{a}{1},\dotsc,\vect{a}{k}\}\) -- линейно зависимы, что противоречит условию. \item Если \(\upmu\neq 0\), то, поделив сумму на \(\upmu\neq 0\), получим \(\vect{b}{}\in L\big(\vect{a}{1}\dotsb\vect{a}{k}\big)\).\end{enumerate}\end{proof}
  	
- 	\tm[2]{Если \(\vect[l*]{A}{\boldsymbol{m_1}}\boldsymbol{,\dotsc\,,}\vect[l*]{A}{\boldsymbol{m_r}}\) -- строки, входящие в базисный минор матрицы \(\boldsymbol{A}\) (т.е.\nolinebreak[4] \(\boldsymbol{\rank A = r}\)), то \(\boldsymbol{\big(\forall k\neq m_{i},\, i=\overline{1,r}\big)}\vect[l*]{A}{\boldsymbol{k}}\boldsymbol{\in} \boldsymbol{L\Big(}\vect[l*]{A}{\boldsymbol{m_1}}\boldsymbol{\dotsb}\,\vect[l*]{A}{\boldsymbol{m_r}}\boldsymbol{\Big)}\)}
- 	\begin{proof}Докажем, что \(\Big\{\vect[l*]{A}{m_1},\dotsc,\vect[l*]{A}{m_r},\vect[l*]{A}{k}\Big\}\) -- линейно зависимая система. 
+ 	\tm[2]{Если \(\vect[l*]{A}{\boldsymbol{m_1}}\boldsymbol{,\dotsc\,,}\vect[l*]{A}{\boldsymbol{m_r}}\) --- строки, входящие в базисный минор матрицы \(\boldsymbol{A}\) (т.е.\nolinebreak[4] \(\boldsymbol{\rank A = r}\)), то \(\boldsymbol{\big(\forall k\neq m_{i},\, i=\overline{1,r}\big)}\vect[l*]{A}{\boldsymbol{k}}\boldsymbol{\in} \boldsymbol{L\Big(}\vect[l*]{A}{\boldsymbol{m_1}}\boldsymbol{\dotsb}\,\vect[l*]{A}{\boldsymbol{m_r}}\boldsymbol{\Big)}\)}
+ 	\begin{proof}Докажем, что \(\Big\{\vect[l*]{A}{m_1},\dotsc,\vect[l*]{A}{m_r},\vect[l*]{A}{k}\Big\}\) --- линейно зависимая система. 
  		
  	Предположим противное: тогда имеем в матрице \(A\) \((r+1)\) штук линейно независимых строк. По \hyperref[4.4 L2]{\color{MMagenta}\(\mathbf{\Big[\textbf{Л}^2\Big]}\)} можно найти минор \(\mathrm{M}^{r+1}\big(A\big)\neq 0\), т.е. \(\rank A\neq r\implies\skull\).
  
-	Следовательно, \(\Big\{\vect[l*]{A}{m_1},\dotsc,\vect[l*]{A}{m_r}\Big\}\bigcup\Big\{\vect[l*]{A}{k}\Big\}\) -- лин. зав., но из \hyperref[4.4 Th1]{\color{MMagenta}\(\Big[\textbf{Th}^1\Big]\)} \(\Big\{\vect[l*]{A}{m_1},\dotsc,\vect[l*]{A}{m_r}\Big\}\) -- лин. нез. Значит, по \hyperref[4.4 L3]{\color{MMagenta}\(\mathbf{\Big[\textbf{Л}^3\Big]}\)} \(\vect[l*]{A}{k}\in L\Big(\vect[l*]{A}{m_1}\dotsb\,\vect[l*]{A}{m_r}\Big)\).\end{proof}
+	Следовательно, \(\Big\{\vect[l*]{A}{m_1},\dotsc,\vect[l*]{A}{m_r}\Big\}\bigcup\Big\{\vect[l*]{A}{k}\Big\}\) --- лин. зав., но из \hyperref[4.4 Th1]{\color{MMagenta}\(\mathbf{\Big[\textbf{Th}^1\Big]}\)} \(\Big\{\vect[l*]{A}{m_1},\dotsc,\vect[l*]{A}{m_r}\Big\}\) --- лин. нез. Значит, по \hyperref[4.4 L3]{\color{MMagenta}\(\mathbf{\Big[\textbf{Л}^3\Big]}\)} \(\vect[l*]{A}{k}\in L\Big(\vect[l*]{A}{m_1}\dotsb\,\vect[l*]{A}{m_r}\Big)\).\end{proof}
 
 	\chapter{Системы линейных алгебраических уравнений}
 	\[\left\{\begin{array}{@{}l@{}}a_{11}x_{1}+a_{12}x_{2}+\dotsb+a_{1n}x_{n}=b_{1},\\[3pt]
@@ -1008,10 +1008,19 @@
 					   a_{21}&\cdots&a_{2n}\\
 				   	   \hcdotsfor{3}\\
 			   	   	   a_{n1}&\cdots&a_{nn}\end{pmatrix},\, \vect[c]{X}{}=\begin{pmatrix}x_{1}\\\vdots\\x_{n}\end{pmatrix},\,\vect[c]{B}{}=\begin{pmatrix}b_1\\\vdots\\b_n\end{pmatrix}\]
-	\begin{proof}
-		\begin{tabbing}Введём \(\Updelta_{i}\): \=\(\Updelta_{1}=\begin{vmatrix}\vect[c]{B}{}&\vect[c]{A}{2}&\cdots&\vect[c]{A}{n}\end{vmatrix}\)
-		\end{tabbing}
+	\begin{proof}Введём \(\Updelta_{i}\):
+	\[\begin{array}{@{}l@{}} \Updelta_{1}=\begin{vmatrix}\vect[c]{B}{}&\vect[c]{A}{2}&\cdots&\vect[c]{A}{n}\end{vmatrix}=\begin{vmatrix}b_{1}&a_{12}&\tikzmarkempty{A}{\phantom{b_{22}}}&a_{1n}\\ \vdots&\vdots&\phantom{\vdots}&\vdots\\b_{n}&a_{n2}&\tikzmarkempty{B}{\phantom{b_{22}}}&a_{nn}\end{vmatrix},\\[3pt]
+	\hcdotsfor{1}\\[3pt]
+	\Updelta_{i}=\begin{vmatrix}\vect[c]{A}{1}&\cdots&\vect[c]{A}{i-1}&\vect[c]{B}{}&\vect[c]{A}{i+1}&\cdots&\vect[c]{A}{n}\end{vmatrix}=\begin{vmatrix}a_{11}&\tikzmarkempty{D}{\phantom{a_{12}}}&a_{1(i-1)}&b_{1}&a_{1(i+1)}&\tikzmarkempty{C}{\phantom{a_{12}}}&a_{1n}\\
+				\vdots&\phantom{\vdots}&\vdots&\vdots&\vdots&\phantom{\vdots}&\vdots\\
+				a_{n1}&\tikzmarkempty{De}{\phantom{a_{n2}}}&a_{n(i-1)}&b_n&a_{n(i+1)}&\tikzmarkempty{Ce}{\phantom{a_{nn}}}&a_{nn}\end{vmatrix}
+	\end{array}\]
 	\end{proof}
+\begin{tikzpicture}[overlay, remember picture]
+	\draw[line width=1.157pt, line cap=round, dash pattern=on 0pt off 3.5\pgflinewidth] (A.north) -- (B.south);
+	\draw[line width=1.157pt, line cap=round, dash pattern=on 0pt off 3.5\pgflinewidth] (D.north) -- (De.south);
+	\draw[line width=1.157pt, line cap=round, dash pattern=on 0pt off 3.5\pgflinewidth] (C.north) -- (Ce.south);
+\end{tikzpicture}
 	%TODO: remove periods at the end of math structures
 	%TODO: fix proof* and proof** (see \vect??)
 	%TODO: fix/check newpages, "--" or "---"
