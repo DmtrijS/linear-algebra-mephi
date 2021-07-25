@@ -896,8 +896,9 @@
 	 Нулевых строк нет (они линейно независимы), поэтому матрица имеет верхнетреугольный вид \(\displaystyle\implies a_{kk}\neq 0\left(\forall k=\overline{1,n}\right)\implies |A|=\prod_{k=1}^{n}a_{kk}\neq 0\)\end{proof}
 	 
 	 \newpage\tm[1]{Строки, входящие в базисный минор, линейно независимы}
+	 \label{4.4 Th1}
 	 Пусть \(\rank A =r\implies\exists\mathrm{M}^{r}(A)\neq 0\). Пусть, для определённости, это минор \(\mathrm{M}_{_{1\dotsb r}}^{^{1\dotsb r}}\).
-	 \begin{proof} По \hyperref[4.4.1]{\color{MMagenta}\(\big[\)\textbf{Л}\(^{1}\big]\)}, т.к. \(\mathrm{M}_{_{1\dotsb r}}^{^{1\dotsb r}}\neq 0\), то строки матрицы минора будут линейно независимы.
+	 \begin{proof} По \hyperref[4.4.1]{\color{MMagenta}\(\mathbf{\Big[\textbf{Л}^1\Big]}\)}, т.к. \(\mathrm{M}_{_{1\dotsb r}}^{^{1\dotsb r}}\neq 0\), то строки матрицы минора будут линейно независимы.
 	 
 	 Теперь рассмотрим матрицу из первых \(r\) строк матрицы \(A\). Докажем, что они линейно независимы.
 	 \[A=\begin{pmatrix}\tikzmarkempty{A}{a_{11}}&\cdots&a_{1r}&\cdots&a_{1n}\\
@@ -919,8 +920,8 @@
  
  	(То же самое относится и к базисным столбцам).
  	
- 	\lm[2]{Если в матрице \(\bm{A}\) есть \(\bm{m}\) штук линейно независимых строк, то существует\nolinebreak[4] \(\bm{\mathrm{M}^{^m}(A)\neq 0}\)}
- 	\begin{proof}Приведём эту матрицу к ступенчатому виду. Найдутся \(l_{1},\dotsc,l_{m}\) и \(k_{1},\dotsc,k_{m}\) -- ненулевые строки и столбцы соответственно. Таким образом, ранг матрицы \(A\) равен \(m\) и нужный минор имеет вид \(\mathrm{M}_{_{l_{1}\dotsb l_{m}}}^{^{k_{1}\dotsb k_{m}}}=\mathrm{M}^{^{m}}(A)\neq 0\).
+ 	\lm[2]{Если в матрице \(\bm{A}\) есть \(\bm{m}\) штук линейно независимых строк, то существует\nolinebreak[4] \(\bm{\mathrm{M}^{m}\big(A\big)\neq 0}\)}\label{4.4 L2}
+ 	\begin{proof}Приведём эту матрицу к ступенчатому виду. Найдутся \(l_{1},\dotsc,l_{m}\) и \(k_{1},\dotsc,k_{m}\) -- ненулевые строки и столбцы соответственно. Таким образом, ранг матрицы \(A\) равен \(m\) и нужный минор имеет вид \(\mathrm{M}_{_{l_{1}\dotsb l_{m}}}^{^{k_{1}\dotsb k_{m}}}=\mathrm{M}^{m}\big(A\big)\neq 0\).
  	\end{proof}
  
  	\bigskip Далее будем пользоваться следующими обозначениями: 
@@ -936,13 +937,17 @@
  	
  	Линейной оболочкой данной системы векторов \(\{\vect{a}{1},\dotsc,\vect{a}{n}\}\) называется множество \[L\big(\vect{a}{1}\dotsb\vect{a}{n}\big)=\Bigg\{\vect{x}{}~\bigg|~\exists\{\uplambda_{i}\}_{i=1}^{n}\subset\mathbb{R}: \vect{x}{}=\sum_{i=1}^{n}\uplambda_{i}\vect{a}{i}\Bigg\}\] 
  	
- 	\lm[3]{Если система векторов \(\boldsymbol{\{}\vect{a}{\bm{1}}\boldsymbol{,}\boldsymbol{\dotsc}\,\boldsymbol{,}\vect{a}{\bm{k}}\boldsymbol{\}}\) -- линейно независима, а \(\boldsymbol{\{}\vect{a}{\bm{1}}\boldsymbol{,\dotsc\,,}\vect{a}{\bm{k}}\boldsymbol{\}}\boldsymbol{\cup}\boldsymbol{\{}\vect{b}{}\boldsymbol{\}}\)\nolinebreak[4] --\nolinebreak[4] линейно зависима, то \(\vect{b}{}\boldsymbol{\in} \boldsymbol{L\big(}\vect{a}{\bm{1}}\boldsymbol{\dotsb}\,\vect{a}{\bm{k}}\bm{\big)}\)}
+ 	\lm[3]{Если система векторов \(\boldsymbol{\{}\vect{a}{\bm{1}}\boldsymbol{,}\boldsymbol{\dotsc}\,\boldsymbol{,}\vect{a}{\bm{k}}\boldsymbol{\}}\) -- линейно независима, а \(\boldsymbol{\{}\vect{a}{\bm{1}}\boldsymbol{,\dotsc\,,}\vect{a}{\bm{k}}\boldsymbol{\}}\boldsymbol{\cup}\boldsymbol{\{}\vect{b}{}\boldsymbol{\}}\)\nolinebreak[4] --\nolinebreak[4] линейно зависима, то \(\vect{b}{}\boldsymbol{\in} \boldsymbol{L\big(}\vect{a}{\bm{1}}\boldsymbol{\dotsb}\,\vect{a}{\bm{k}}\bm{\big)}\)}\label{4.4 L3}
  	\begin{proof}\(\{\vect{a}{1},\dotsc,\vect{a}{k},\vect{b}{}\}\) -- линейно зависимы\(\displaystyle\iff\exists\{\uplambda_i\}_{i=1}^{k},\upmu:\sum_{i=1}^{k}|\uplambda_i|+|\upmu|\neq 0\) и \(\displaystyle\sum_{i=1}^{k}\uplambda_{i}\vect{a}{i}+\upmu\vect{b}{}=\vect{0}{}\)
  	\begin{enumerate}[1)]\item Если \(\upmu=0\), то \(\{\vect{a}{1},\dotsc,\vect{a}{k}\}\) -- линейно зависимы, что противоречит условию. \item Если \(\upmu\neq 0\), то, поделив сумму на \(\upmu\neq 0\), получим \(\vect{b}{}\in L\big(\vect{a}{1}\dotsb\vect{a}{k}\big)\).\end{enumerate}\end{proof}
  	
  	\tm[2]{Если \(\vect[l*]{A}{\boldsymbol{m_1}}\boldsymbol{,\dotsc\,,}\vect[l*]{A}{\boldsymbol{m_r}}\) -- строки, входящие в базисный минор матрицы \(\boldsymbol{A}\) (т.е.\nolinebreak[4] \(\boldsymbol{\rank A = r}\)), то \(\boldsymbol{\big(\forall k\neq m_{i},\, i=\overline{1,r}\big)}\vect[l*]{A}{\boldsymbol{k}}\boldsymbol{\in} \boldsymbol{L\Big(}\vect[l*]{A}{\boldsymbol{m_1}}\boldsymbol{\dotsb}\,\vect[l*]{A}{\boldsymbol{m_r}}\boldsymbol{\Big)}\)}
- 	\begin{proof}Докажем, что\end{proof}
+ 	\begin{proof}Докажем, что \(\Big\{\vect[l*]{A}{m_1},\dotsc,\vect[l*]{A}{m_r},\vect[l*]{A}{k}\Big\}\) -- линейно зависимая система. Предположим противное: тогда имеем в матрице \(A\) \((r+1)\) штук линейно независимых строк.
+ 	
+ 	По \hyperref[4.4 L2]{\color{MMagenta}\(\mathbf{\Big[\textbf{Л}^2\Big]}\)} можно найти минор \(\mathrm{M}^{r+1}\big(A\big)\neq 0\), т.е. \(\rank A\neq r\implies\skull\).
+ 
+	Следовательно, \(\Big\{\vect[l*]{A}{m_1},\dotsc,\vect[l*]{A}{m_r}\Big\}\bigcup\Big\{\vect[l*]{A}{k}\Big\}\) -- лин. зав., но из \hyperref[4.4 Th1]{\color{MMagenta}\(\Big[\textbf{Th}^1\Big]\)} \(\Big\{\vect[l*]{A}{m_1},\dotsc,\vect[l*]{A}{m_r}\Big\}\) -- лин. нез. Значит, по \hyperref[4.4 L3]{\color{MMagenta}\(\mathbf{\Big[\textbf{Л}^3\Big]}\)}\end{proof}
 	%TODO: remove periods at the end of math structures
 	%TODO: fix proof* and proof** (see \vect??)
-	%TODO: fix/check newpages, -- or ---
+	%TODO: fix/check newpages, "--" or "---"
 \end{document}
