@@ -504,7 +504,7 @@
 	По свойству прибавления строк другой матрицы можем представить определитель \(|A|\) как сумму определителей \(\left|A^{(i)}\right|\) матриц \(A^{(i)}\), для которых элементы последней строки равны\\ \(a_{nj}^{(i)}=\begin{cases}a_{ni},&j=i\\0,&j\neq i\end{cases}\)\,, а остальные элементы совпадают с элементами матрицы \(A\):
 	
 	\[
-		|A|=\underbrace{\begin{vmatrix} a_{11}&a_{12}&\cdots&\cdots&a_{1n} \\ \vdots&\vdots&\ddots&\vdots&\vdots \\ a_{n1}&0&\cdots&\cdots&0 \end{vmatrix}}_{\left|A^{(1)}\right|} + \underbrace{\begin{vmatrix} a_{11}&a_{12}&\cdots&\cdots&a_{1n} \\ \vdots&\vdots&\ddots&\vdots&\vdots \\ 0&a_{n2}&\cdots&\cdots&0 \end{vmatrix}}_{\left|A^{(2)}\right|}+\cdots+\underbrace{\begin{vmatrix} a_{11}&a_{12}&\cdots&\cdots&a_{1n} \\ \vdots&\vdots&\ddots&\vdots&\vdots \\ 0&0&\cdots&\cdots&a_{nn} \end{vmatrix}}_{\left|A^{(n)}\right|}
+		|A|=\underbrace{\begin{vmatrix} a_{11}&a_{12}&\hcdotsfor{2}&a_{1n} \\ \vdots&\vdots&\ddots&\vdots&\vdots \\ a_{n1}&0&\hcdotsfor{2}&0 \end{vmatrix}}_{\left|A^{(1)}\right|} + \underbrace{\begin{vmatrix} a_{11}&a_{12}&\hcdotsfor{2}&a_{1n} \\ \vdots&\vdots&\ddots&\vdots&\vdots \\ 0&a_{n2}&\hcdotsfor{2}&0 \end{vmatrix}}_{\left|A^{(2)}\right|}+\cdots+\underbrace{\begin{vmatrix} a_{11}&a_{12}&\hcdotsfor{2}&a_{1n} \\ \vdots&\vdots&\ddots&\vdots&\vdots \\ 0&0&\hcdotsfor{2}&a_{nn} \end{vmatrix}}_{\left|A^{(n)}\right|}
 	\]
 	
 	
@@ -874,9 +874,9 @@
 	\tm[3]{У матрицы ступенчатого вида ранг равен числу ненулевых строк}
 	
 	\begin{proof} Пусть у матрицы ступенчатого вида \(r\) ненулевых строк (без ограничения общности, пусть это строки \(1,\dotsc,r\)). Пусть тогда \(k_1,\dotsc,k_r\) --- ненулевые столбцы, в которых стоят начала ступенек.
-	\[\mathrm{M}_{_{1\dotsb r}}^{^{\inlineperm[k]{1}{r}}}=\begin{vmatrix}a_{1k_1}&\dotsb&\dotsb&\dotsb&\dotsb\\
-																		0&a_{2k_2}&\dotsb&\dotsb&\dotsb\\
-																		0&0&\ddots&\dotsb&\dotsb\\
+	\[\mathrm{M}_{_{1\dotsb r}}^{^{\inlineperm[k]{1}{r}}}=\begin{vmatrix}a_{1k_1}&\hcdotsfor{4}\\
+																		0&a_{2k_2}&\hcdotsfor{3}\\
+																		0&0&\ddots&\hcdotsfor{2}\\
 																		\vdots&\vdots&\vdots&\ddots&\vdots\\
 																		0&\dotsb&\dotsb&0&a_{rk_r}\\													
 	\end{vmatrix}=\prod_{n=1}^{r}a_{nk_n}\neq 0\]
@@ -916,7 +916,7 @@
 	 					\vdots&\ddots&\vdots&\ddots&\vdots\\
  						a_{r1}&\cdots&\tikzmarkempty{B}{a_{rr}}&\cdots&\tikzmarkempty{C}{a_{rn}}\\
  						\vdots&\ddots&\vdots&\ddots&\vdots\\
- 						a_{m1}&\cdots&\cdots&\cdots&a_{mn} \end{pmatrix}\begin{tikzpicture}[overlay, remember picture]
+ 						a_{m1}&\hcdotsfor{3}&a_{mn} \end{pmatrix}\begin{tikzpicture}[overlay, remember picture]
  						\draw[rounded corners=1.5pt, blue, fill=blue!5, fill opacity=0.4, ultra thin] (A.north west) rectangle (C.south east);
  						\draw[dashed, red, very thin] (A.north west) rectangle (B.south east);
  						\end{tikzpicture}\]
@@ -996,6 +996,22 @@
 	\begin{proof} Поскольку ЭП--я обратимы, то утверждение следует из \hyperref[5.2 L]{\color{MMagenta}\(\mathbf{\Big[\textbf{Л}\Big]}\)}.\end{proof}
 	
 	\section[Теорема Крамера решения СЛАУ]{Теорема Крамера решения системы линейных алгебраических уравнений}
+	\tm{Если в системе одинаковое количество уравнений и неизвестных, а определитель \(\bm{|A|}\) основной матрицы системы не равен нулю, то система является определённой}
+	\[\left\{\begin{array}{@{}l@{}}
+									a_{11}x_{1}+\dotsb+a_{1n}x_{n}=b_{1},\\[3pt]
+									a_{21}x_{1}+\dotsb+a_{2n}x_{n}=b_{2},\\[3pt]
+									\hcdotsfor{1}\\[3pt]
+									a_{n1}x_{1}+\dotsb+a_{nn}x_{n}=b_{n}.
+			 \end{array}\right.\]
+		 
+	\[A=\begin{pmatrix}a_{11}&\cdots&a_{1n}\\
+					   a_{21}&\cdots&a_{2n}\\
+				   	   \hcdotsfor{3}\\
+			   	   	   a_{n1}&\cdots&a_{nn}\end{pmatrix},\, \vect[c]{X}{}=\begin{pmatrix}x_{1}\\\vdots\\x_{n}\end{pmatrix},\,\vect[c]{B}{}=\begin{pmatrix}b_1\\\vdots\\b_n\end{pmatrix}\]
+	\begin{proof}
+		\begin{tabbing}Введём \(\Updelta_{i}\): \=\(\Updelta_{1}=\begin{vmatrix}\vect[c]{B}{}&\vect[c]{A}{2}&\cdots&\vect[c]{A}{n}\end{vmatrix}\)
+		\end{tabbing}
+	\end{proof}
 	%TODO: remove periods at the end of math structures
 	%TODO: fix proof* and proof** (see \vect??)
 	%TODO: fix/check newpages, "--" or "---"
