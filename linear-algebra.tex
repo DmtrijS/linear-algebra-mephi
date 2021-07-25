@@ -554,7 +554,7 @@
 	\[ |A| = (-1)\cdot|A|\implies |A| = 0\text{ (аналогично \(|B|=0\))}\]\end{proof}
 	
 	\subsection{Теорема о произведении элементов матрицы одной строки на алгебраические дополнения элементов другой строки}
-	\tm{Если задана матрица \(\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}\), то \(\displaystyle\boldsymbol{\left(\forall l \neq k \right)\sum_{j=1}^{n}a_{lj}\mathrm{A}_{kj}=0}\)}
+	\tm{Если задана матрица \(\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}\), то \(\displaystyle\boldsymbol{\left(\forall l \neq k \right)\sum_{j=1}^{n}a_{lj}\mathrm{A}_{kj}=0}\)}\label{2.7.2 Th}
 	\begin{proof}
 	Составим матрицу \(B\left\{b_{ij}\right\}_{i,j=1}^{n}\), в которой \(b_{ij}=\begin{cases}a_{ij},&i\neq k\\a_{lj},&i=k\end{cases}\)
 	\[A=\begin{pmatrix}a_{11}&\dotsb&a_{1n}\\
@@ -963,7 +963,7 @@
 	\[\left\{\begin{array}{@{}l@{}}a_{11}x_{1}+a_{12}x_{2}+\dotsb+a_{1n}x_{n}=b_{1},\\[3pt]
 								  \hcdotsfor{1}\\[3pt]
 							  	  a_{m1}x_{1}+a_{m2}x_{2}+\dotsb+a_{mn}x_{n}=b_{m}.\end{array}\right.\]
-	\begin{center}Система линейных алгебраических уравнений\\
+	\begin{center}\footnotesize Система линейных алгебраических уравнений\\
 					на неизвестные \(\{x_{1},x_{2},\dotsc,x_{n}\}=\vect{x}{}\)\end{center}
 	\section{Решение, совместность, определённость}
 	\df[Решение СЛАУ]
@@ -992,7 +992,7 @@
 	\end{enumerate}
 	\end{proof}
 	
-	\tm{Если система \(\bm{B}\) получена из системы \(\bm{A}\) путём ЭП--ий, то они эквивалентны}
+	\tm{Если система \(\bm{B}\) получена из системы \(\bm{A}\) путём ЭП--ий, то они эквивалентны}\label{5.2 Th}
 	\begin{proof} Поскольку ЭП--я обратимы, то утверждение следует из \hyperref[5.2 L]{\color{MMagenta}\(\mathbf{\Big[\textbf{Л}\Big]}\)}.\end{proof}
 	
 	\section[Теорема Крамера решения СЛАУ]{Теорема Крамера решения системы линейных алгебраических уравнений}
@@ -1009,12 +1009,14 @@
 				   	   \hcdotsfor{3}\\
 			   	   	   a_{n1}&\cdots&a_{nn}\end{pmatrix},\, \vect[c]{X}{}=\begin{pmatrix}x_{1}\\\vdots\\x_{n}\end{pmatrix},\,\vect[c]{B}{}=\begin{pmatrix}b_1\\\vdots\\b_n\end{pmatrix}\]
 	\begin{proof}Введём \(\Updelta_{i}\):
-	\[\begin{array}{@{}l@{}} \Updelta_{1}=\begin{vmatrix}\vect[c]{B}{}&\vect[c]{A}{2}&\cdots&\vect[c]{A}{n}\end{vmatrix}=\begin{vmatrix}b_{1}&a_{12}&\tikzmarkempty{A}{\phantom{b_{22}}}&a_{1n}\\ \vdots&\vdots&\phantom{\vdots}&\vdots\\b_{n}&a_{n2}&\tikzmarkempty{B}{\phantom{b_{22}}}&a_{nn}\end{vmatrix},\\[3pt]
-	\hcdotsfor{1}\\[3pt]
-	\Updelta_{i}=\begin{vmatrix}\vect[c]{A}{1}&\cdots&\vect[c]{A}{i-1}&\vect[c]{B}{}&\vect[c]{A}{i+1}&\cdots&\vect[c]{A}{n}\end{vmatrix}=\begin{vmatrix}a_{11}&\tikzmarkempty{D}{\phantom{a_{12}}}&a_{1(i-1)}&b_{1}&a_{1(i+1)}&\tikzmarkempty{C}{\phantom{a_{12}}}&a_{1n}\\
+	\begin{align*} \Updelta_{1}&=\begin{vmatrix}\vect[c]{B}{}&\vect[c]{A}{2}&\cdots&\vect[c]{A}{n}\end{vmatrix}=\begin{vmatrix}b_{1}&a_{12}&\tikzmarkempty{A}{\phantom{b_{22}}}&a_{1n}\\ \vdots&\vdots&\phantom{\vdots}&\vdots\\b_{n}&a_{n2}&\tikzmarkempty{B}{\phantom{b_{22}}}&a_{nn}\end{vmatrix},\\[10pt]
+	\cdots\\[10pt]
+	\Updelta_{i}&=\begin{vmatrix}\vect[c]{A}{1}&\cdots&\vect[c]{A}{i-1}&\vect[c]{B}{}&\vect[c]{A}{i+1}&\cdots&\vect[c]{A}{n}\end{vmatrix}=\begin{vmatrix}a_{11}&\tikzmarkempty{D}{\phantom{a_{12}}}&a_{1(i-1)}&b_{1}&a_{1(i+1)}&\tikzmarkempty{C}{\phantom{a_{12}}}&a_{1n}\\
 				\vdots&\phantom{\vdots}&\vdots&\vdots&\vdots&\phantom{\vdots}&\vdots\\
-				a_{n1}&\tikzmarkempty{De}{\phantom{a_{n2}}}&a_{n(i-1)}&b_n&a_{n(i+1)}&\tikzmarkempty{Ce}{\phantom{a_{nn}}}&a_{nn}\end{vmatrix}
-	\end{array}\]
+				a_{n1}&\tikzmarkempty{De}{\phantom{a_{n2}}}&a_{n(i-1)}&b_n&a_{n(i+1)}&\tikzmarkempty{Ce}{\phantom{a_{nn}}}&a_{nn}\end{vmatrix}\text{ и т.д.}
+	\end{align*}
+	
+	\begin{enumerate}[1)]\item\(\begin{aligned}[t]&A\cdot\vect[c]{X}{}=\vect[c]{B}{}\\[10pt] &\vect[c]{X}{}=A^{-1}\cdot\vect[c]{B}{}\text{, пусть }A^{-1}=C\{c_{ij}\}_{i,j=1}^{n},\, c_{ij}=\dfrac{\mathrm{A}_{ji}}{\Updelta}\end{aligned}\)\end{enumerate}
 	\end{proof}
 \begin{tikzpicture}[overlay, remember picture]
 	\draw[line width=1.157pt, line cap=round, dash pattern=on 0pt off 3.5\pgflinewidth] (A.north) -- (B.south);
