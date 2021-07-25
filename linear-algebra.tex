@@ -978,12 +978,24 @@
 	\newpage\section[Влияние ЭП на решение СЛАУ]{Влияние элементарных преобразований на решение системы линейных алгебраических уравнений}
 	
 	Переформулируем уже знакомые элементарные преобразования с языка матриц на язык СЛАУ:
-	\begin{enumerate}[1)]\item Перестановка уравнений \item Умножение уравнения на \(\uplambda\neq 0\) \item Прибавление к \(k\)--му уравнению \(l\)--го умноженного на \(\upmu\)\end{enumerate}
+	\begin{enumerate}[1)]\item Перестановка уравнений; \item Умножение уравнения на \(\uplambda\neq 0\); \item Прибавление к \(k\)--му уравнению \(l\)--го умноженного на \(\upmu\).\end{enumerate}
 	
-	\lm{Если ЭП--ем перейти от системы \(\bm{A}\) к системе \(\bm{B}\), то любое решение \(\bm{A}\) будет являться решением \(\bm{B}\)}
-	\begin{proof}Пусть \(x_1=x_{1}^{(0)},\, x_2=x_2^{(0)},\dotsc,\, x_n=x_n^{(0)}\) --- некоторое решение системы \(A\).
+	\lm{Если ЭП--ем перейти от системы \(\bm{A}\) к системе \(\bm{B}\), то любое решение \(\bm{A}\) будет являться решением \(\bm{B}\)}\label{5.2 L}
+	\begin{proof}
+	Пусть \(x_1=x_{1}^{(0)},\, x_2=x_2^{(0)},\dotsc,\, x_n=x_n^{(0)}\) --- некоторое решение системы \(A\).
 	
-	\begin{enumerate}[1)]\item Очевидно \item Бла\end{enumerate}\end{proof}
+	\begin{enumerate}[(1)]\item Справедливость леммы очевидна;
+						  \item Пусть изменили \(k\)--ое уравнение:
+								\begin{tabbing}В системе \(A\): \=\(\displaystyle\sum_{t=1}^{n}a_{kt}x_{t}^{(0)}=b_k\).\\[5pt] В системе \(B\): \>\(\displaystyle\sum_{t=1}^{n}(\uplambda a_{kt})x_{t}=\uplambda b_k\). Подставим решение \(A\):\\[5pt] \>\(\displaystyle\uplambda\cdot\sum_{t=1}^{n}a_{kt}x_{t}^{(0)}\mathrel{\oversymbolnoref{\;A\;}{=}}\uplambda\cdot b_k\) --- решение \(B\);\end{tabbing}
+						  \item Пусть изменили \(k\)--ое уравнение:
+						  		\begin{tabbing}В системе \(A\): \=\(\displaystyle\sum_{t=1}^{n}a_{kt}x_{t}^{(0)}=b_k\text{ и }\sum_{t=1}^{n}a_{lt}x_{t}^{(0)}=b_l\).\\[5pt]В системе \(B\): \>\(\displaystyle\sum_{t=1}^{n}\big(a_{kt}x_{t}+(\upmu a_{lt})x_{t}\big)=b_{k}+\upmu b_{l}\). Подставим решение \(A\):\\[5pt]\>\(\displaystyle\sum_{t=1}^{n}a_{kt}x_{t}^{(0)}+\upmu\sum_{t=1}^{n}a_{lt}x_{t}^{(0)}\mathrel{\oversymbolnoref{\;A\;}{=}}b_{k}+\upmu b_{l}\) --- решение \(B\).\end{tabbing}
+	\end{enumerate}
+	\end{proof}
+	
+	\tm{Если система \(\bm{B}\) получена из системы \(\bm{A}\) путём ЭП--ий, то они эквивалентны}
+	\begin{proof} Поскольку ЭП--я обратимы, то утверждение следует из \hyperref[5.2 L]{\color{MMagenta}\(\mathbf{\Big[\textbf{Л}\Big]}\)}.\end{proof}
+	
+	\section[Теорема Крамера решения СЛАУ]{Теорема Крамера решения системы линейных алгебраических уравнений}
 	%TODO: remove periods at the end of math structures
 	%TODO: fix proof* and proof** (see \vect??)
 	%TODO: fix/check newpages, "--" or "---"
