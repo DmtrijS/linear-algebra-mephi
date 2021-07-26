@@ -20,6 +20,7 @@
 \usepackage[makeroom]{cancel}
 \usepackage{upgreek}
 \usepackage{enumerate}
+\usepackage{xfrac}
 %--------------------------------------------------------------------------------------------------------------------------
 \makeatletter
 \newsavebox\myboxA
@@ -1016,7 +1017,12 @@
 				a_{n1}&\tikzmarkempty{De}{\phantom{a_{n2}}}&a_{n(i-1)}&b_n&a_{n(i+1)}&\tikzmarkempty{Ce}{\phantom{a_{nn}}}&a_{nn}\end{vmatrix}\text{ и т.д.}
 	\end{align*}
 	
-	\begin{enumerate}[1)]\item\(\begin{aligned}[t]&A\cdot\vect[c]{X}{}=\vect[c]{B}{}\\[10pt] &\vect[c]{X}{}=A^{-1}\cdot\vect[c]{B}{}\text{, пусть }A^{-1}=C\{c_{ij}\}_{i,j=1}^{n},\, c_{ij}=\dfrac{\mathrm{A}_{ji}}{\Updelta}\end{aligned}\)\end{enumerate}
+	\begin{enumerate}[1)]\item\(A\cdot\vect[c]{X}{}=\vect[c]{B}{}\)\\[10pt]\begin{minipage}[t]{.5\textwidth}\(\vect[c]{X}{}=A^{-1}\cdot\vect[c]{B}{}\), пусть \(A^{-1}=C\{c_{ij}\}_{i,j=1}^{n}\), \(c_{ij}=\dfrac{\mathrm{A}_{ji}}{\Updelta}\), \end{minipage}%
+		\begin{minipage}[t]{.5\textwidth}\begin{tabbing}где \=\(\mathrm{A}_{ji}\) --- \(\begin{aligned}[t]&\text{алгебраическое дополнение}\\ &\text{соответствующего элемента}\\ &\text{матрицы }A^\mathrm{T},\end{aligned}\)\\[5pt]\>\(\Updelta=\det A\).\end{tabbing}\end{minipage}
+	
+	Отсюда, \(\displaystyle\big(\forall p=\overline{1,n}\big)\, x_{p}=\sum_{t=1}^{n}c_{pt}b_{t}=\dfrac{1}{\Updelta}\underbrace{\sum_{t=1}^{n}\mathrm{A}_{tp}\cdot b_{t}}_{\substack{\text{Разложение }\Updelta_{p}\\\text{ по }p\text{--му столбцу}}}\iff x_{p}\cdot\Updelta=\Updelta_{p}\iff x_{p}\cdot\Big(\sum_{t=1}^{n}\mathrm{A}_{tp}\cdot a_{tp}\Big)=\Updelta_{p}\).
+
+	Так как получили новую систему  \(\vect[c]{X}{}=\left(\begin{smallmatrix}\sfrac{\Updelta_{1}}{\Updelta}\\ \sfrac{\Updelta_{2}}{\Updelta}\\\vdots\\\sfrac{\Updelta_{n}}{\Updelta}\end{smallmatrix}\right)\) путём ЭП исходной системы, то по \hyperref[5.2 Th]{\color{MMagenta}\(\mathbf{\big[\textbf{Th}\big]}\)} они эквивалентны. Значит, единственность решения доказана. \item Покажем, что полученное выражение --- решение исходной системы.\end{enumerate}
 	\end{proof}
 \begin{tikzpicture}[overlay, remember picture]
 	\draw[line width=1.157pt, line cap=round, dash pattern=on 0pt off 3.5\pgflinewidth] (A.north) -- (B.south);
