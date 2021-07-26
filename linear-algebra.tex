@@ -293,7 +293,7 @@
 	
 	Таким образом, $\left|A^{\mathrm{T}}\right| = |A|$\end{proof}
 	\section{Влияние элементарных преобразований на определитель матрицы}\label{2.3}
-	\df[Умножение строки/столбца матрицы на число]
+	\subsection{Умножение строки/столбца матрицы на число}
 	\lm{Если для матриц $\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}$ и $\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}$ на фиксированной строке $\boldsymbol{l}$: $\boldsymbol{{\begin{cases}
 	a_{lj}=\uplambda b_{lj},&j=\overline{1,n}
 	\medskip\\a_{ij}=b_{ij},&i\neq l,\,j=\overline{1,n}\end{cases}}}$, то $\boldsymbol{|A|=\uplambda \left|B\right|}$}
@@ -308,7 +308,7 @@
 	
 	Поскольку $|A|=\left|A^{\mathrm{T}}\right|$, то свойство верно и для столбцов.
 	
-	\df[Перестановка строки/столбца матрицы]
+	\subsection{Перестановка строки/столбца матрицы}
 	\lm{Если для матриц $\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}$ и $\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}$ на фиксированных строках $\boldsymbol{k}$ и $\boldsymbol{l}$: $\boldsymbol{{b_{ij}=\begin{cases}
 	a_{ij},&i\neq k\text{ и }i\neq l
 	\\a_{kj},&\text{строка }l
@@ -327,12 +327,12 @@
 	
 	Поскольку $|A|=\left|A^{\mathrm{T}}\right|$, то свойство верно и для столбцов.
 	
-	\df[Прибавление строк/столбцов другой матрицы]
+	\subsection{Прибавление строк/столбцов другой матрицы}
 	\lm{Если для матриц $\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}$, $\boldsymbol{B\left\{b_{ij}\right\}_{i,j=1}^{n}}$, $\boldsymbol{C\left\{c_{ij}\right\}_{i,j=1}^{n}}$ на фиксированной\\строке $\boldsymbol{l}$:
 	\smallskip\\$\boldsymbol{{a_{ij}=\begin{cases}
 	b_{ij}=c_{ij},&i\neq l,\,j=\overline{1,n}
 	\smallskip\\b_{lj}+c_{lj},&\text{строка }l,\,j=\overline{1,n}
-	\end{cases}}}$, то $\boldsymbol{|A|=|B|+|C|}$}
+	\end{cases}}}$, то $\boldsymbol{|A|=|B|+|C|}$}\label{2.3.3 L}
 	
 	\begin{proof}
 	\begin{align*}
@@ -502,7 +502,7 @@
 		\end{pmatrix}
 	\]
 	
-	По свойству прибавления строк другой матрицы можем представить определитель \(|A|\) как сумму определителей \(\left|A^{(i)}\right|\) матриц \(A^{(i)}\), для которых элементы последней строки равны\\ \(a_{nj}^{(i)}=\begin{cases}a_{ni},&j=i\\0,&j\neq i\end{cases}\)\,, а остальные элементы совпадают с элементами матрицы \(A\):
+	По \hyperref[2.3.3 L]{\emph{\color{MMagenta}свойству прибавления строк другой матрицы}} можем представить определитель \(|A|\) как сумму определителей \(\left|A^{(i)}\right|\) матриц \(A^{(i)}\), для которых элементы последней строки равны\\ \(a_{nj}^{(i)}=\begin{cases}a_{ni},&j=i\\0,&j\neq i\end{cases}\)\,, а остальные элементы совпадают с элементами матрицы \(A\):
 	
 	\[
 		|A|=\underbrace{\begin{vmatrix} a_{11}&a_{12}&\hcdotsfor{2}&a_{1n} \\ \vdots&\vdots&\ddots&\vdots&\vdots \\ a_{n1}&0&\hcdotsfor{2}&0 \end{vmatrix}}_{\left|A^{(1)}\right|} + \underbrace{\begin{vmatrix} a_{11}&a_{12}&\hcdotsfor{2}&a_{1n} \\ \vdots&\vdots&\ddots&\vdots&\vdots \\ 0&a_{n2}&\hcdotsfor{2}&0 \end{vmatrix}}_{\left|A^{(2)}\right|}+\cdots+\underbrace{\begin{vmatrix} a_{11}&a_{12}&\hcdotsfor{2}&a_{1n} \\ \vdots&\vdots&\ddots&\vdots&\vdots \\ 0&0&\hcdotsfor{2}&a_{nn} \end{vmatrix}}_{\left|A^{(n)}\right|}
@@ -599,7 +599,7 @@
 	\lm{Произведение матриц дистрибутивно}
 	
 	\[
-		\underbrace{\underset{n\times k}{A}\bigg(\overbrace{\uplambda\underset{k\times m}{B}+\upmu\underset{k\times m}{C}}^{R\left\{r_{ij}\right\}}\bigg)}_{D\left\{d_{ij}\right\}} = \underbrace{\overbrace{\uplambda\underset{n\times m}{AB}}^{P\left\{p_{ij}\right\}}+\overbrace{\upmu\underset{n\times m}{AC}}^{Q\left\{q_{ij}\right\}}}_{F\left\{f_{ij}\right\}}~~\left(\uplambda,\upmu\in\mathbb{R}\right)
+		\underbrace{\underset{n\times k}{A}\bigg(\overbrace{\uplambda\underset{k\times m}{B}+\upmu\underset{k\times m}{C}}^{R\left\{r_{ij}\right\}}\bigg)}_{D\left\{d_{ij}\right\}} = \underbrace{\overbrace{\uplambda\underset{n\times m}{AB}}^{P\left\{p_{ij}\right\}}+\overbrace{\upmu\underset{n\times m}{AC}}^{Q\left\{q_{ij}\right\}}}_{F\left\{f_{ij}\right\}},\,\Big(\{\uplambda,\upmu\}\subset\mathbb{R}\Big)
 	\]
 	
 	\begin{proof}
@@ -673,10 +673,9 @@
 				|A|\cdot\left|A^{-1}\right| &= |E|\\
 				0 &= 1 \implies\skull
 			\end{align*}
-				\item Докажем, что если \(|A|\neq 0\), то \(\exists A^{-1}=\dfrac{1}{|A|}\big(A^{*}\big)^{\mathrm{T}}\), где \(A=\left\{a_{ij}\right\}_{i,j=1}^{n},\,A^{*}=\left\{\mathrm{A}_{ij}\right\}_{i,j=1}^{n}\)\,:
+				\item Докажем, что если \(|A|\neq 0\), то \(\exists A^{-1}=\dfrac{1}{|A|}\big(A^{*}\big)^{\mathrm{T}}\), где \(A=\left\{a_{ij}\right\}_{i,j=1}^{n},\,A^{*}=\left\{\mathrm{A}_{ij}\right\}_{i,j=1}^{n}\).
 			
-			Рассмотрим \(B=\dfrac{1}{|A|}\big(A^{*}\big)^{\mathrm{T}}\) и докажем, что \(A\cdot B=B\cdot A=E\):
-			
+			Рассмотрим \(B=\dfrac{1}{|A|}\big(A^{*}\big)^{\mathrm{T}}\) и докажем, что \(A\cdot B=B\cdot A=E\):\\[6pt]
 			\(\underset{n\times n}{A}\cdot\underset{n\times n}{B}=\underset{n\times n}{C}\), \(|A| = \Updelta\)
 			\begin{align*}
 				c_{ij}&=\sum_{t=1}^{n}a_{it}b_{tj}=\sum_{t=1}^{n}a_{it}\cdot\dfrac{1}{\Updelta}\mathrm{A}_{jt}=\dfrac{1}{\Updelta}\sum_{t=1}^{n}a_{it}\mathrm{A}_{jt}=\\[5pt]
@@ -1016,19 +1015,26 @@
 				\vdots&\phantom{\vdots}&\vdots&\vdots&\vdots&\phantom{\vdots}&\vdots\\
 				a_{n1}&\tikzmarkempty{De}{\phantom{a_{n2}}}&a_{n(i-1)}&b_n&a_{n(i+1)}&\tikzmarkempty{Ce}{\phantom{a_{nn}}}&a_{nn}\end{vmatrix}\text{ и т.д.}
 	\end{align*}
-	
+	\begin{tikzpicture}[overlay, remember picture]
+		\draw[line width=1.157pt, line cap=round, dash pattern=on 0pt off 3.5\pgflinewidth] (A.north) -- (B.south);
+		\draw[line width=1.157pt, line cap=round, dash pattern=on 0pt off 3.5\pgflinewidth] (D.north) -- (De.south);
+		\draw[line width=1.157pt, line cap=round, dash pattern=on 0pt off 3.5\pgflinewidth] (C.north) -- (Ce.south);
+	\end{tikzpicture}
 	\begin{enumerate}[1)]\item\(A\cdot\vect[c]{X}{}=\vect[c]{B}{}\)\\[10pt]\begin{minipage}[t]{.5\textwidth}\(\vect[c]{X}{}=A^{-1}\cdot\vect[c]{B}{}\), пусть \(A^{-1}=C\{c_{ij}\}_{i,j=1}^{n}\), \(c_{ij}=\dfrac{\mathrm{A}_{ji}}{\Updelta}\), \end{minipage}%
 		\begin{minipage}[t]{.5\textwidth}\begin{tabbing}где \=\(\mathrm{A}_{ji}\) --- \(\begin{aligned}[t]&\text{алгебраическое дополнение}\\ &\text{соответствующего элемента}\\ &\text{матрицы }A^\mathrm{T},\end{aligned}\)\\[5pt]\>\(\Updelta=\det A\).\end{tabbing}\end{minipage}
 	
-	Отсюда, \(\displaystyle\big(\forall p=\overline{1,n}\big)\, x_{p}=\sum_{t=1}^{n}c_{pt}b_{t}=\dfrac{1}{\Updelta}\underbrace{\sum_{t=1}^{n}\mathrm{A}_{tp}\cdot b_{t}}_{\substack{\text{Разложение }\Updelta_{p}\\\text{ по }p\text{--му столбцу}}}\iff x_{p}\cdot\Updelta=\Updelta_{p}\iff x_{p}\cdot\Big(\sum_{t=1}^{n}\mathrm{A}_{tp}\cdot a_{tp}\Big)=\Updelta_{p}\).
+	Отсюда, \(\displaystyle\big(\forall p=\overline{1,n}\big)\, x_{p}=\sum_{t=1}^{n}c_{pt}b_{t}=\dfrac{1}{\Updelta}\cdot\underbrace{\sum_{t=1}^{n}\mathrm{A}_{tp}b_{t}}_{\mathclap{\substack{\text{Разложение }\Updelta_{p}\\\text{ по }p\text{--му столбцу}}}}\iff x_{p}\cdot\Updelta=\Updelta_{p}\iff\\[5pt]\iff x_{p}\cdot\bigg(\sum_{t=1}^{n}\mathrm{A}_{tp}a_{tp}\bigg)=\Updelta_{p}\iff x_{p}\cdot\bigg(\sum_{t=1}^{n}\mathrm{A}_{tp}a_{tp}\bigg)+\sum_{\substack{s=1,\\s\neq p}}^{n}x_{s}\cdot\underbrace{\bigg(\sum_{t=1}^{n}\mathrm{A}_{tp}a_{ts}\bigg)}_{\mathclap{\substack{\hyperref[2.7.2 Th]{\color{MMagenta}\text{Фальшивое}}\text{ разложение }\Updelta\\\text{по }s\text{--му \emph{столбцу} --- равно нулю}}}}=\Updelta_{p}\).
 
-	Так как получили новую систему  \(\vect[c]{X}{}=\left(\begin{smallmatrix}\sfrac{\Updelta_{1}}{\Updelta}\\ \sfrac{\Updelta_{2}}{\Updelta}\\\vdots\\\sfrac{\Updelta_{n}}{\Updelta}\end{smallmatrix}\right)\) путём ЭП исходной системы, то по \hyperref[5.2 Th]{\color{MMagenta}\(\mathbf{\big[\textbf{Th}\big]}\)} они эквивалентны. Значит, единственность решения доказана. \item Покажем, что полученное выражение --- решение исходной системы.\end{enumerate}
+	Таким образом, получили новую систему  \(\vect[c]{X}{}=\left(\begin{smallmatrix}\sfrac{\Updelta_{1}}{\Updelta}\\ \sfrac{\Updelta_{2}}{\Updelta}\\\vdots\\\sfrac{\Updelta_{n}}{\Updelta}\end{smallmatrix}\right)\) путём ЭП исходной системы. По \hyperref[5.2 Th]{\color{MMagenta}\(\mathbf{\big[\textbf{Th}\big]}\)} они эквивалентны. Единственность решения доказана. \item Покажем, что полученное выражение --- решение исходной системы. Подставим выражение в любое уравнение системы (пусть \(q\)--ое, \(1\leq q\leq n\)):
+	
+	\(\displaystyle a_{q1}x_{1}+a_{q2}x_{2}+\dotsb+a_{qn}x_{n}=\sum_{p=1}^{n}a_{qp}x_{p}=\dfrac{1}{\Updelta}\sum_{p=1}^{n}a_{qp}\sum_{t=1}^{n}\mathrm{A}_{tp}b_{t}=\dfrac{1}{\Updelta}\sum_{t=1}^{n}b_{t}\underbrace{\sum_{p=1}^{n}a_{qp}\mathrm{A}_{tp}}_{\mathclap{\substack{\text{При }t\neq q\text{ это}\\\text{фальшивое разложение }\det A}}}=\\[5pt]=\underbrace{0}_{\mathclap{t=1\neq q}}+\underbrace{0}_{\mathclap{t=2\neq q}}+\dotsb+\underbrace{\dfrac{1}{\cancel{\Updelta}}\cdot b_{q}\cdot\cancel{\Updelta}}_{\mathclap{t=q}}+\underbrace{0}_{\mathclap{t=q+1}}+\dotsb+\underbrace{0}_{\mathclap{t=n\neq q}}=b_{q}\).\end{enumerate}
 	\end{proof}
-\begin{tikzpicture}[overlay, remember picture]
-	\draw[line width=1.157pt, line cap=round, dash pattern=on 0pt off 3.5\pgflinewidth] (A.north) -- (B.south);
-	\draw[line width=1.157pt, line cap=round, dash pattern=on 0pt off 3.5\pgflinewidth] (D.north) -- (De.south);
-	\draw[line width=1.157pt, line cap=round, dash pattern=on 0pt off 3.5\pgflinewidth] (C.north) -- (Ce.south);
-\end{tikzpicture}
+	\section[Структура общего решения однородной СЛАУ]{Структура общего решения однородной системы линейных алгебраических уравнений}
+	\[\left\{\begin{array}{@{}l@{}}a_{11}x_{1}+a_{12}x_{2}+\dotsb+a_{1n}x_{n}=0,\\[3pt]
+		\hcdotsfor{1}\\[3pt]
+		a_{m1}x_{1}+a_{m2}x_{2}+\dotsb+a_{mn}x_{n}=0.\end{array}\right.\]
+	\begin{center}\footnotesize Однородная СЛАУ
+		на неизвестные \(\{x_{1},x_{2},\dotsc,x_{n}\}=\vect{x}{}\)\end{center}
 	%TODO: remove periods at the end of math structures
 	%TODO: fix proof* and proof** (see \vect??)
 	%TODO: fix/check newpages, "--" or "---"
