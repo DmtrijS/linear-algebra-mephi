@@ -1057,11 +1057,32 @@
 				a_{r1}x_{1}+\dotsb+a_{rr}x_{r}=-a_{r(r+1)}x_{r+1}-\dotsb-a_{rn}x_{n}.\end{array}\right.\label{HSOQ*}\tag{2*}\end{equation}
 	
 	Назовём \(\{x_{1},\dotsc,x_{r}\}\) \emph{базовыми} неизвестными, а \(\{x_{r+1},\dotsc,x_{n}\}\) --- \emph{свободными} неизвестными. Если задать свободные неизвестные, то система \eqref{HSOQ*} будет удовлетворять \hyperref[5.3 Th]{\color{MMagenta}теореме Крамера} и, следовательно, базовые неизвестные выразятся однозначно:
-	\begin{align*} &\left\{\begin{array}{@{}l@{}} x_{r+1}=1,\\[5pt] x_{r+2}=x_{r+3}=\dotsb=x_{n}=0.\end{array}\right.\implies \vect[c]{X}{}^{(1)}=\begin{pmatrix}x_{1}^{(1)}\\[-3pt] \vdots\\x_{r}^{(1)}\\1\\0\\[-3pt]\vdots\\0 \end{pmatrix} \\[5pt] &\cdots \\[5pt] &\left\{\begin{array}{@{}l@{}} x_{n}=1,\\[5pt] x_{r+1}=x_{r+2}=\dotsb=x_{n-1}=0.\end{array}\right.\implies\vect[c]{X}{}^{(n-r)}=\begin{pmatrix}x_{1}^{(n-r)}\\[-3pt] \vdots\\x_{r}^{(n-r)}\\0\\0\\[-3pt] \vdots\\1 \end{pmatrix} \end{align*}
+	\begin{align*} &\left\{\begin{array}{@{}l@{}} x_{r+1}=1,\\[5pt] x_{r+2}=x_{r+3}=\dotsb=x_{n}=0.\end{array}\right.\implies \vect[c]{X}{}^{(1)}=\begin{pmatrix}x_{1}^{(1)}\\[-1pt] \vdots\\[2pt]x_{r}^{(1)}\\1\\0\\[-3pt]\vdots\\0 \end{pmatrix} \\[5pt] &\cdots \\[5pt] &\left\{\begin{array}{@{}l@{}} x_{n}=1,\\[5pt] x_{r+1}=x_{r+2}=\dotsb=x_{n-1}=0.\end{array}\right.\implies\vect[c]{X}{}^{(n-r)}=\begin{pmatrix}x_{1}^{(n-r)}\\[-1pt] \vdots\\[2pt]x_{r}^{(n-r)}\\0\\0\\[-3pt] \vdots\\1 \end{pmatrix} \end{align*}
 	
-	\begin{flushleft}\encircle{\textbf{1}} \end{flushleft}
+	Докажем ряд утверждений о системе вектор-столбцов \(\Big\{\vect[c]{X}{}^{(1)},\dotsc,\vect[c]{X}{}^{(n-r)}\Big\}\):
+	\begin{flushleft}\encircle{\textbf{1}} \(\boldsymbol{\Big\{}\vect[c]{X}{}^{\boldsymbol{(1)}}\boldsymbol{,\dotsc\,,}\vect[c]{X}{}^{\boldsymbol{(n-r)}}\boldsymbol{\Big\}}\)\textbf{ --- линейно независимая система}\end{flushleft}
+	
+	\begin{proof}Рассмотрим матрицу \(U\), составленную из столбцов \(\vect[c]{X}{}^{(i)},\, i=\overline{1,n-r}\):
+	\[U=\begin{pmatrix}x_{1}^{(1)}&x_{1}^{(2)}&\tikzmarkempty{Aa}{\phantom{x_{1}^{(3)}}}&x_{1}^{(n-r)}\\
+					   \vdots     &\vdots     &\phantom{\vdots}                        &\vdots\\
+				   	   x_{r}^{(1)}&x_{r}^{(2)}&\phantom{\vdots}						   &x_{r}^{(n-r)}\\
+			   	   	   1		  &0		  &\phantom{\vdots}						   &0\\
+		   	   	   	   0		  &1		  &\phantom{\vdots}						   &0\\
+	   	   	   	   	   \vdots     &\vdots     &\phantom{\vdots}                        &\vdots\\
+   	   	   	   	   	   0		  &0		  &\tikzmarkempty{Bb}{\phantom{1}}	   &1\end{pmatrix}
+      	   	   	   	   	\begin{tikzpicture}[overlay, remember picture]
+      	   	   	   	   	\draw[line width=1.157pt, line cap=round, dash pattern=on 0pt off 3.5\pgflinewidth] (Aa.north) -- (Bb.south);\end{tikzpicture}
+         	   	   	   	\]
+    \(\mathrm{M}^{^{1\dotsb n-r}}_{_{r+1\dotsb n}}\big(U\big)=1\neq 0\) --- минор порядка \((n-r)\).
+    
+    Поскольку минора большего порядка нет, то \(\rank U=n-r\implies \mathrm{M}^{^{1\dotsb n-r}}_{_{r+1\dotsb n}}\big(U\big)\) --- базисный минор. По \hyperref[4.4 Th1]{\color{MMagenta} свойству базисных столбцов} система \(\Big\{\vect[c]{X}{}^{(1)},\dotsc,\vect[c]{X}{}^{(n-r)}\Big\}\) линейно независима.
+    \end{proof}
+
+	\begin{flushleft}\encircle{\textbf{2}} \(\displaystyle \vect[c]{X}{}=\boldsymbol{\sum_{i=1}^{n-r}}\boldsymbol{\uplambda_{i}}\vect[c]{X}{}^{\boldsymbol{(i)}}\)\textbf{ --- решение системы \hyperref[HSOQ]{\(\boldsymbol{(2)}\)} при любом наборе \(\boldsymbol{\{\uplambda_j\}_{j=1}^{n-r}}\)}\end{flushleft}
+	
+	\begin{proof} \(\vect[c]{X}{}=\begin{pmatrix}x_{1}\\\vdots\\ x_{r}\\x_{r+1}\\x_{r+2}\\\vdots\\x_{n}\end{pmatrix}=\displaystyle \sum_{i=1}^{n-r}\uplambda_{i}\vect[c]{X}{}^{(i)}=\begin{pmatrix}\displaystyle \sum_{i=1}^{n-r}\uplambda_{i} x_{1}^{(i)}\\ \vdots\\\displaystyle \sum_{i=1}^{n-r}\uplambda_{i} x_{r}^{(i)}\\ \uplambda_{1}\\ \uplambda_{2}\\\vdots\\\uplambda_{n-r}\end{pmatrix}\implies\left\{\begin{array}{@{}l@{}}x_{1}=\displaystyle\sum_{i=1}^{n-r}\uplambda_{i} x_{1}^{(i)}\\[3pt] \hcdotsfor{1}\\[3pt] \end{array}\right.\)\end{proof}
 	%TODO: remove periods at the end of math structures
 	%TODO: fix proof* and proof** (see \vect??)
 	%TODO: fix/check newpages, "--" or "---"
-	%TODO: доказать эквивалентность систем (см. Головину)
+	%TODO: нормально доказать эквивалентность систем в 5.3 (см. Головину)
 \end{document}
