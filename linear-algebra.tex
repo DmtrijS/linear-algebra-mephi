@@ -119,6 +119,12 @@
 }
 \makeatother
 %--------------------------------------------------------------------------------------------------------------------------
+\makeatletter
+\DeclareRobustCommand
+\myvdots{\vbox{\baselineskip4\p@ \lineskiplimit\z@
+		\hbox{.}\hbox{.}\hbox{.}}}
+\makeatother
+%--------------------------------------------------------------------------------------------------------------------------
 \setlength{\parskip}{6pt}
 \begin{document}
 	\title{
@@ -963,7 +969,7 @@
 	\[\left\{\begin{array}{@{}l@{}}a_{11}x_{1}+a_{12}x_{2}+\dotsb+a_{1n}x_{n}=b_{1},\\[3pt]
 								  \hcdotsfor{1}\\[3pt]
 							  	  a_{m1}x_{1}+a_{m2}x_{2}+\dotsb+a_{mn}x_{n}=b_{m}.\end{array}\right.\]
-	\begin{center}\footnotesize Система линейных алгебраических уравнений\\
+	\vspace*{-1.25\baselineskip}\begin{center}\footnotesize Система линейных алгебраических уравнений\\
 					на неизвестные \(\{x_{1},x_{2},\dotsc,x_{n}\}=\vect{x}{}\)\end{center}
 	\section{Решение, совместность, определённость}
 	\df[Решение СЛАУ]
@@ -996,7 +1002,7 @@
 	\begin{proof} Поскольку ЭП--я обратимы, то утверждение следует из \hyperref[5.2 L]{\color{MMagenta}\(\mathbf{\Big[\textbf{Л}\Big]}\)}.\end{proof}
 	
 	\section[Теорема Крамера решения СЛАУ]{Теорема Крамера решения системы линейных алгебраических уравнений}
-	\tm{Если в системе одинаковое количество уравнений и неизвестных, а определитель \(\bm{|A|}\) основной матрицы системы не равен нулю, то система является определённой}
+	\tm{Если в системе одинаковое количество уравнений и неизвестных, а определитель \(\bm{|A|}\) основной матрицы системы не равен нулю, то система является определённой}\label{5.3 Th}
 	\[\left\{\begin{array}{@{}l@{}}
 									a_{11}x_{1}+\dotsb+a_{1n}x_{n}=b_{1},\\[3pt]
 									a_{21}x_{1}+\dotsb+a_{2n}x_{n}=b_{2},\\[3pt]
@@ -1025,16 +1031,35 @@
 	
 	Отсюда, \(\displaystyle\big(\forall p=\overline{1,n}\big)\, x_{p}=\sum_{t=1}^{n}c_{pt}b_{t}=\dfrac{1}{\Updelta}\cdot\underbrace{\sum_{t=1}^{n}\mathrm{A}_{tp}b_{t}}_{\mathclap{\substack{\text{Разложение }\Updelta_{p}\\\text{ по }p\text{--му столбцу}}}}\iff x_{p}\cdot\Updelta=\Updelta_{p}\iff\\[5pt]\iff x_{p}\cdot\bigg(\sum_{t=1}^{n}\mathrm{A}_{tp}a_{tp}\bigg)=\Updelta_{p}\iff x_{p}\cdot\bigg(\sum_{t=1}^{n}\mathrm{A}_{tp}a_{tp}\bigg)+\sum_{\substack{s=1,\\s\neq p}}^{n}x_{s}\cdot\underbrace{\bigg(\sum_{t=1}^{n}\mathrm{A}_{tp}a_{ts}\bigg)}_{\mathclap{\substack{\hyperref[2.7.2 Th]{\color{MMagenta}\text{Фальшивое}}\text{ разложение }\Updelta\\\text{по }s\text{--му \emph{столбцу} --- равно нулю}}}}=\Updelta_{p}\).
 
-	Таким образом, получили новую систему  \(\vect[c]{X}{}=\left(\begin{smallmatrix}\sfrac{\Updelta_{1}}{\Updelta}\\ \sfrac{\Updelta_{2}}{\Updelta}\\\vdots\\\sfrac{\Updelta_{n}}{\Updelta}\end{smallmatrix}\right)\) путём ЭП исходной системы. По \hyperref[5.2 Th]{\color{MMagenta}\(\mathbf{\big[\textbf{Th}\big]}\)} они эквивалентны. Единственность решения доказана. \item Покажем, что полученное выражение --- решение исходной системы. Подставим выражение в любое уравнение системы (пусть \(q\)--ое, \(1\leq q\leq n\)):
+	Таким образом, получили новую систему  \(\vect[c]{X}{}=\left(\begin{smallmatrix}\sfrac{\Updelta_{1}}{\Updelta}\\ \sfrac{\Updelta_{2}}{\Updelta}\\[1pt]\myvdots\\[1pt]\sfrac{\Updelta_{n}}{\Updelta}\end{smallmatrix}\right)\) путём ЭП исходной системы. По \hyperref[5.2 Th]{\color{MMagenta}\(\mathbf{\Big[\textbf{Th}\Big]}\)} они эквивалентны. Единственность решения доказана. \item Покажем, что полученное выражение --- решение исходной системы. Подставим выражение в любое уравнение системы (пусть \(q\)--ое, \(1\leq q\leq n\)):
 	
 	\(\displaystyle a_{q1}x_{1}+a_{q2}x_{2}+\dotsb+a_{qn}x_{n}=\sum_{p=1}^{n}a_{qp}x_{p}=\dfrac{1}{\Updelta}\sum_{p=1}^{n}a_{qp}\sum_{t=1}^{n}\mathrm{A}_{tp}b_{t}=\dfrac{1}{\Updelta}\sum_{t=1}^{n}b_{t}\underbrace{\sum_{p=1}^{n}a_{qp}\mathrm{A}_{tp}}_{\mathclap{\substack{\text{При }t\neq q\text{ это}\\\text{фальшивое разложение }\det A}}}=\\[5pt]=\underbrace{0}_{\mathclap{t=1\neq q}}+\underbrace{0}_{\mathclap{t=2\neq q}}+\dotsb+\underbrace{\dfrac{1}{\cancel{\Updelta}}\cdot b_{q}\cdot\cancel{\Updelta}}_{\mathclap{t=q}}+\underbrace{0}_{\mathclap{t=q+1}}+\dotsb+\underbrace{0}_{\mathclap{t=n\neq q}}=b_{q}\).\end{enumerate}
 	\end{proof}
 	\section[Структура общего решения однородной СЛАУ]{Структура общего решения однородной системы линейных алгебраических уравнений}
-	\[\left\{\begin{array}{@{}l@{}}a_{11}x_{1}+a_{12}x_{2}+\dotsb+a_{1n}x_{n}=0,\\[3pt]
+	\begin{equation} \left\{\begin{array}{@{}l@{}}a_{11}x_{1}+a_{12}x_{2}+\dotsb+a_{1n}x_{n}=0,\\[3pt]
 		\hcdotsfor{1}\\[3pt]
-		a_{m1}x_{1}+a_{m2}x_{2}+\dotsb+a_{mn}x_{n}=0.\end{array}\right.\]
-	\begin{center}\footnotesize Однородная СЛАУ
+		a_{m1}x_{1}+a_{m2}x_{2}+\dotsb+a_{mn}x_{n}=0.\end{array}\right.\label{HSOQm}\tag{1}\end{equation}
+	\vspace*{-1.25\baselineskip}\begin{center}\footnotesize Однородная СЛАУ
 		на неизвестные \(\{x_{1},x_{2},\dotsc,x_{n}\}=\vect{x}{}\)\end{center}
+	
+	Пусть ранг матрицы \(A=\begin{pmatrix}a_{11}&\cdots&a_{1n}\\
+								\hcdotsfor{3}\\
+								a_{m1}&\cdots&a_{mn}\end{pmatrix}\) равен \(r\). 
+	Для определённости положим минор \nolinebreak[4]\(\mathrm{M}_{_{1\dotsb r}}^{^{1\dotsb r}}\neq 0\).
+	
+	Тогда, путём ЭП--ий строк данную систему можно привести к системе \begin{equation} \left\{\begin{array}{@{}l@{}}a_{11}x_{1}+a_{12}x_{2}+\dotsb+a_{1n}x_{n}=0,\\[3pt]
+			\hcdotsfor{1}\\[3pt]
+			a_{r1}x_{1}+a_{r2}x_{2}+\dotsb+a_{rn}x_{n}=0.\end{array}\right.\label{HSOQ}\tag{2}\end{equation}
+	Причём, по \hyperref[5.2 Th]{\color{MMagenta}\(\mathbf{\Big[\textbf{Th}\Big]}\)} системы \eqref{HSOQm}---\eqref{HSOQ} эквивалентны.
+	
+	Представим систему \eqref{HSOQ} в виде \begin{equation}\left\{\begin{array}{@{}l@{}}a_{11}x_{1}+\dotsb+a_{1r}x_{r}=-a_{1(r+1)}x_{r+1}-\dotsb-a_{1n}x_{n},\\[3pt]
+				\hcdotsfor{1}\\[3pt]
+				a_{r1}x_{1}+\dotsb+a_{rr}x_{r}=-a_{r(r+1)}x_{r+1}-\dotsb-a_{rn}x_{n}.\end{array}\right.\label{HSOQ*}\tag{2*}\end{equation}
+	
+	Назовём \(\{x_{1},\dotsc,x_{r}\}\) \emph{базовыми} неизвестными, а \(\{x_{r+1},\dotsc,x_{n}\}\) --- \emph{свободными} неизвестными. Если задать свободные неизвестные, то система \eqref{HSOQ*} будет удовлетворять \hyperref[5.3 Th]{\color{MMagenta}теореме Крамера} и, следовательно, базовые неизвестные выразятся однозначно:
+	\begin{align*} &\left\{\begin{array}{@{}l@{}} x_{r+1}=1,\\[5pt] x_{r+2}=x_{r+3}=\dotsb=x_{n}=0.\end{array}\right.\implies \vect[c]{X}{}^{(1)}=\begin{pmatrix}x_{1}^{(1)}\\[-3pt] \vdots\\x_{r}^{(1)}\\1\\0\\[-3pt]\vdots\\0 \end{pmatrix} \\[5pt] &\cdots \\[5pt] &\left\{\begin{array}{@{}l@{}} x_{n}=1,\\[5pt] x_{r+1}=x_{r+2}=\dotsb=x_{n-1}=0.\end{array}\right.\implies\vect[c]{X}{}^{(n-r)}=\begin{pmatrix}x_{1}^{(n-r)}\\[-3pt] \vdots\\x_{r}^{(n-r)}\\0\\0\\[-3pt] \vdots\\1 \end{pmatrix} \end{align*}
+	
+	\begin{flushleft}\encircle{\textbf{1}} \end{flushleft}
 	%TODO: remove periods at the end of math structures
 	%TODO: fix proof* and proof** (see \vect??)
 	%TODO: fix/check newpages, "--" or "---"
