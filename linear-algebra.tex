@@ -992,9 +992,9 @@
 	
 	\begin{enumerate}[(1)]\item Справедливость леммы очевидна;
 						  \item Пусть изменили \(k\)--ое уравнение:
-								\begin{tabbing}В системе \(A\): \=\(\displaystyle\sum_{t=1}^{n}a_{kt}x_{t}^{(0)}=b_k\).\\[5pt] В системе \(B\): \>\(\displaystyle\sum_{t=1}^{n}(\uplambda a_{kt})x_{t}=\uplambda b_k\). Подставим решение \(A\):\\[5pt] \>\(\displaystyle\uplambda\cdot\sum_{t=1}^{n}a_{kt}x_{t}^{(0)}\mathrel{\oversymbolnoref{\;A\;}{=}}\uplambda\cdot b_k\) --- решение \(B\);\end{tabbing}
+								\begin{tabbing}В системе \(A\): \=\(\displaystyle\sum_{t=1}^{n}a_{kt}x_{t}^{(0)}=b_k\).\\[5pt] В системе \(B\): \>\(\displaystyle\sum_{t=1}^{n}(\uplambda a_{kt})x_{t}=\uplambda b_k\). Подставим решение \(A\):\\[5pt] \>\(\displaystyle\uplambda\cdot\sum_{t=1}^{n}a_{kt}x_{t}^{(0)}\mathbin{\oversymbolnoref{\;A\;}{=}}\uplambda\cdot b_k\) --- решение \(B\);\end{tabbing}
 						  \item Пусть изменили \(k\)--ое уравнение:
-						  		\begin{tabbing}В системе \(A\): \=\(\displaystyle\sum_{t=1}^{n}a_{kt}x_{t}^{(0)}=b_k\text{ и }\sum_{t=1}^{n}a_{lt}x_{t}^{(0)}=b_l\).\\[5pt]В системе \(B\): \>\(\displaystyle\sum_{t=1}^{n}\big(a_{kt}x_{t}+(\upmu a_{lt})x_{t}\big)=b_{k}+\upmu b_{l}\). Подставим решение \(A\):\\[5pt]\>\(\displaystyle\sum_{t=1}^{n}a_{kt}x_{t}^{(0)}+\upmu\sum_{t=1}^{n}a_{lt}x_{t}^{(0)}\mathrel{\oversymbolnoref{\;A\;}{=}}b_{k}+\upmu b_{l}\) --- решение \(B\).\end{tabbing}
+						  		\begin{tabbing}В системе \(A\): \=\(\displaystyle\sum_{t=1}^{n}a_{kt}x_{t}^{(0)}=b_k\text{ и }\sum_{t=1}^{n}a_{lt}x_{t}^{(0)}=b_l\).\\[5pt]В системе \(B\): \>\(\displaystyle\sum_{t=1}^{n}\big(a_{kt}x_{t}+(\upmu a_{lt})x_{t}\big)=b_{k}+\upmu b_{l}\). Подставим решение \(A\):\\[5pt]\>\(\displaystyle\sum_{t=1}^{n}a_{kt}x_{t}^{(0)}+\upmu\sum_{t=1}^{n}a_{lt}x_{t}^{(0)}\mathbin{\oversymbolnoref{\;A\;}{=}}b_{k}+\upmu b_{l}\) --- решение \(B\).\end{tabbing}
 	\end{enumerate}
 	\end{proof}
 	
@@ -1080,7 +1080,12 @@
 
 	\begin{flushleft}\encircle{\textbf{2}} \(\displaystyle \vect[c]{X}{}=\boldsymbol{\sum_{i=1}^{n-r}}\boldsymbol{\uplambda_{i}}\vect[c]{X}{}^{\boldsymbol{(i)}}\)\textbf{ --- решение системы \hyperref[HSOQ]{\(\boldsymbol{(2)}\)} при любом наборе \(\boldsymbol{\{\uplambda_j\}_{j=1}^{n-r}}\)}\end{flushleft}
 	
-	\begin{proof} \(\vect[c]{X}{}=\begin{pmatrix}x_{1}\\\vdots\\ x_{r}\\x_{r+1}\\x_{r+2}\\\vdots\\x_{n}\end{pmatrix}=\displaystyle \sum_{i=1}^{n-r}\uplambda_{i}\vect[c]{X}{}^{(i)}=\begin{pmatrix}\displaystyle \sum_{i=1}^{n-r}\uplambda_{i} x_{1}^{(i)}\\ \vdots\\\displaystyle \sum_{i=1}^{n-r}\uplambda_{i} x_{r}^{(i)}\\ \uplambda_{1}\\ \uplambda_{2}\\\vdots\\\uplambda_{n-r}\end{pmatrix}\implies\left\{\begin{array}{@{}l@{}}x_{1}=\displaystyle\sum_{i=1}^{n-r}\uplambda_{i} x_{1}^{(i)}\\[3pt] \hcdotsfor{1}\\[3pt] \end{array}\right.\)\end{proof}
+	\begin{proof} \(\vect[c]{X}{}=\begin{pmatrix}x_{1}\\\vdots\\ x_{r}\\x_{r+1}\\x_{r+2}\\\vdots\\x_{n}\end{pmatrix}=\displaystyle \sum_{i=1}^{n-r}\uplambda_{i}\vect[c]{X}{}^{(i)}=\begin{pmatrix}\displaystyle \sum_{i=1}^{n-r}\uplambda_{i} x_{1}^{(i)}\\ \vdots\\\displaystyle \sum_{i=1}^{n-r}\uplambda_{i} x_{r}^{(i)}\\ \uplambda_{1}\\ \uplambda_{2}\\\vdots\\\uplambda_{n-r}\end{pmatrix}\implies\left\{\begin{array}{@{}l@{}}x_{1}=\displaystyle\sum_{i=1}^{n-r}\uplambda_{i} x_{1}^{(i)},\\ \hcdotsfor{1}\\ \displaystyle x_{r}=\sum_{i=1}^{n-r}\uplambda_{i}x_{r}^{(i)},\\ x_{r+1}=\uplambda_{1},\\ x_{r+2}=\uplambda_{2},\\ \hcdotsfor{1}\\ x_{n}=\uplambda_{n-r}. \end{array}\right.\)
+	
+	Подставим значения неизвестных в, например, \(k\)--ое (\(1\leq k\leq r\)) уравнение системы \eqref{HSOQ*}, которая эквивалентна системе \eqref{HSOQ}.
+	\begin{align*}\sum_{j=1}^{r}a_{kj}x_{j}&\mathbin{\oversymbolnoref{\:\boldsymbol{?}\:}{=}}-\sum_{j=r+1}^{n}a_{kj}x_{j}\\[5pt] \sum_{j=1}^{r}a_{kj}\sum_{i=1}^{n-r}\uplambda_{i}x_{j}^{(i)}&\mathbin{\oversymbolnoref{\:\boldsymbol{?}\:}{=}}-\sum_{t=1}^{n-r}a_{k(r+t)}\uplambda_{t}\\[5pt] \sum_{i=1}^{n-r}\uplambda_{i}\sum_{j=1}^{r}a_{kj}x_{j}^{(i)}&\mathbin{\oversymbolnoref{\:\boldsymbol{?}\:}{=}}-\sum_{t=1}^{n-r}a_{k(r+t)}\uplambda_{t}\end{align*}
+	По построению \(\big\{x_{j}^{(i)}\big\}_{j=1}^{r}\) получим
+	\begin{align*}\end{align*}\end{proof}
 	%TODO: remove periods at the end of math structures
 	%TODO: fix proof* and proof** (see \vect??)
 	%TODO: fix/check newpages, "--" or "---"
