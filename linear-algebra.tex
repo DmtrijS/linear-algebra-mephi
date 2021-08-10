@@ -1033,9 +1033,31 @@
 	
 	Убедимся, что полученная система эквивалентна исходной:
 	
-	\(\displaystyle x_{p}\cdot\bigg(\sum_{t=1}^{n}\mathrm{A}_{tp}a_{tp}\bigg)=\sum_{t=1}^{n}\mathrm{A}_{tp}b_{t}\iff x_{p}\cdot\bigg(\sum_{t=1}^{n}\mathrm{A}_{tp}a_{tp}\bigg)+\sum_{\substack{\phantom{,}s=1,\\s\neq p}}^{n}x_{s}\cdot\underbrace{\bigg(\sum_{t=1}^{n}\mathrm{A}_{tp}a_{ts}\bigg)}_{\mathclap{\substack{\hyperref[2.7.2 Th]{\color{MMagenta}\text{Фальшивое}}\text{ разложение }\Updelta\\\text{по }s\text{--му \emph{столбцу} --- равно нулю}}}}=\sum_{t=1}^{n}\mathrm{A}_{tp}b_{t}\iff\\[5pt]\iff\sum_{s=1}^{n}x_{s}\cdot\bigg(\sum_{t=1}^{n}\mathrm{A}_{tp}a_{ts}\bigg)=\sum_{t=1}^{n}\mathrm{A}_{tp}b_{t}\iff \sum_{t=1}^{n}\mathrm{A}_{tp}\cdot\bigg(\sum_{s=1}^{n}x_{s}a_{ts}\bigg)=\sum_{t=1}^{n}\mathrm{A}_{tp}b_{t}\iff\\[6pt] \iff \begin{aligned} &\mathrm{A}_{1p}\cdot(x_{1}a_{11}+\dotsb+x_{n}a_{1n})+{} \\{}+{}&\mathrm{A}_{2p}\cdot(x_{1}a_{21}+\dotsb+x_{n}a_{2n})+{}\\{}+{}&{\tikzmarkempty{As}{\mathrm{A}_{3p}}\cdot (x_{1}a_{31}+\dotsb+x_{n}a_{3n})}{}+{}\end{aligned} \).
-
-	Таким образом, получили новую систему  \(\vect[c]{X}{}=\left(\begin{smallmatrix}\sfrac{\Updelta_{1}}{\Updelta}\\ \sfrac{\Updelta_{2}}{\Updelta}\\[1pt]\myvdots\\[1pt]\sfrac{\Updelta_{n}}{\Updelta}\end{smallmatrix}\right)\) путём ЭП исходной системы. По \hyperref[5.2 Th]{\color{MMagenta}\(\mathbf{\Big[\textbf{Th}\Big]}\)} они эквивалентны. Единственность решения доказана. \item Покажем, что полученное выражение --- решение исходной системы. Подставим выражение в любое уравнение системы (пусть \(q\)--ое, \(1\leq q\leq n\)):
+	\(\displaystyle x_{p}\cdot\bigg(\sum_{t=1}^{n}\mathrm{A}_{tp}a_{tp}\bigg)=\sum_{t=1}^{n}\mathrm{A}_{tp}b_{t}\iff x_{p}\cdot\bigg(\sum_{t=1}^{n}\mathrm{A}_{tp}a_{tp}\bigg)+\sum_{\substack{\phantom{,}s=1,\\s\neq p}}^{n}x_{s}\cdot\underbrace{\bigg(\sum_{t=1}^{n}\mathrm{A}_{tp}a_{ts}\bigg)}_{\mathclap{\substack{\hyperref[2.7.2 Th]{\color{MMagenta}\text{Фальшивое}}\text{ разложение }\Updelta\\\text{по }s\text{--му \emph{столбцу} --- равно нулю}}}}=\sum_{t=1}^{n}\mathrm{A}_{tp}b_{t}\iff\\[5pt]\iff\sum_{s=1}^{n}x_{s}\cdot\bigg(\sum_{t=1}^{n}\mathrm{A}_{tp}a_{ts}\bigg)=\sum_{t=1}^{n}\mathrm{A}_{tp}b_{t}\iff \sum_{t=1}^{n}\mathrm{A}_{tp}\cdot\bigg(\sum_{s=1}^{n}x_{s}a_{ts}\bigg)=\sum_{t=1}^{n}\mathrm{A}_{tp}b_{t}\iff\\[8pt] \iff 
+	\begin{aligned} 
+		&\mathrm{A}_{1p}\cdot(x_{1}a_{11}+\dotsb+x_{n}a_{1n})+{}\\
+		{}+{}&\mathrm{A}_{2p}\cdot(x_{1}a_{21}+\dotsb+x_{n}a_{2n})+{}\\
+		{}+{}&\tikzmarkempty{As1}{}\phantom{\mathrm{A}_{3p}\cdot (x_{1}a_{31}+\dotsb+x_{n}a_{3n})}\tikzmarkempty{Bs1}{}{}+{}\\
+		{}+{}&\mathrm{A}_{pp}\cdot(x_{1}a_{p1}+\dotsb+x_{n}a_{pn})+{}\\
+		{}+{}&\tikzmarkempty{As2}{}\phantom{\mathrm{A}_{3p}\cdot (x_{1}a_{31}+\dotsb+x_{n}a_{3n})}\tikzmarkempty{Bs2}{}{}+{}\\
+		{}+{}&\mathrm{A}_{np}\cdot(x_{1}a_{n1}+\dotsb+x_{n}a_{nn})
+		\begin{tikzpicture}[overlay, remember picture]
+		\draw[line width=1.157pt, line cap=round, dash pattern=on 0pt off 3.5\pgflinewidth] (As1.north) -- (Bs1.north);
+		\draw[line width=1.157pt, line cap=round, dash pattern=on 0pt off 3.5\pgflinewidth] (As2.north) -- (Bs2.north);
+		\end{tikzpicture}\end{aligned}=\begin{aligned}&\mathrm{A}_{1p}b_{1}+{}\\
+												 {}+{}&\mathrm{A}_{2p}b_{2}+{}\\
+											 	 {}+{}&\tikzmarkempty{Ai1}{}\phantom{\mathrm{A}_{3p}b_{3}}\tikzmarkempty{Bi1}{}+{}\\
+											 	 {}+{}&\mathrm{A}_{pp}b_{p}+{}\\
+											 	 {}+{}&\tikzmarkempty{Ai2}{}\phantom{\mathrm{A}_{3p}b_{3}}\tikzmarkempty{Bi2}{}+{}\\
+											 	 {}+{}&\mathrm{A}_{np}b_{n}
+										 	 	\begin{tikzpicture}[overlay, remember picture]
+										 	 		\draw[line width=1.157pt, line cap=round, dash pattern=on 0pt off 3.5\pgflinewidth] (Ai1.north) -- (Bi1.north);
+										 	 		\draw[line width=1.157pt, line cap=round, dash pattern=on 0pt off 3.5\pgflinewidth] (Ai2.north) -- (Bi2.north);
+									 	 	\end{tikzpicture}\end{aligned}\)
+	
+	То есть преобразование выше можно рассматривать как ЭП--ия \(p\)--ой строки, а именно умножение её на \(\mathrm{A}_{pp}\), затем прибавление к ней всех остальных строк умноженных на \(\mathrm{A}_{tp}\) соответственно (\(t=\overline{1,n},\,t\neq p\)).
+	
+	Таким образом, получили новую систему  \(\vect[c]{X}{}=\left(\begin{smallmatrix}\sfrac{\Updelta_{1}}{\Updelta}\\ \sfrac{\Updelta_{2}}{\Updelta}\\[1pt]\myvdots\\[1pt]\sfrac{\Updelta_{n}}{\Updelta}\end{smallmatrix}\right)\) путём ЭП--ий исходной системы. По \hyperref[5.2 Th]{\color{MMagenta}\(\mathbf{\Big[\textbf{Th}\Big]}\)} они эквивалентны. Единственность решения доказана. \item Покажем, что полученное выражение --- решение исходной системы. Подставим выражение в любое уравнение системы (пусть \(q\)--ое, \(1\leq q\leq n\)):
 	
 	\(\displaystyle a_{q1}x_{1}+a_{q2}x_{2}+\dotsb+a_{qn}x_{n}=\sum_{p=1}^{n}a_{qp}x_{p}=\dfrac{1}{\Updelta}\sum_{p=1}^{n}a_{qp}\sum_{t=1}^{n}\mathrm{A}_{tp}b_{t}=\dfrac{1}{\Updelta}\sum_{t=1}^{n}b_{t}\underbrace{\sum_{p=1}^{n}a_{qp}\mathrm{A}_{tp}}_{\mathclap{\substack{\text{При }t\neq q\text{ это}\\\text{фальшивое разложение }\det A}}}=\\[5pt]=\underbrace{0}_{\mathclap{t=1\neq q}}+\underbrace{0}_{\mathclap{t=2\neq q}}+\dotsb+\underbrace{\dfrac{1}{\cancel{\Updelta}}\cdot b_{q}\cdot\cancel{\Updelta}}_{\mathclap{t=q}}+\underbrace{0}_{\mathclap{t=q+1}}+\dotsb+\underbrace{0}_{\mathclap{t=n\neq q}}=b_{q}\).\end{enumerate}
 	\end{proof}
@@ -1043,7 +1065,7 @@
 	\begin{equation} \left\{\begin{array}{@{}l@{}}a_{11}x_{1}+a_{12}x_{2}+\dotsb+a_{1n}x_{n}=0,\\[3pt]
 		\hcdotsfor{1}\\[3pt]
 		a_{m1}x_{1}+a_{m2}x_{2}+\dotsb+a_{mn}x_{n}=0.\end{array}\right.\label{HSOQm}\tag{1}\end{equation}
-	\vspace*{-1.25\baselineskip}\begin{center}\footnotesize Однородная СЛАУ
+	\vspace*{-0.75\baselineskip}\begin{center}\footnotesize Однородная СЛАУ
 		на неизвестные \(\{x_{1},x_{2},\dotsc,x_{n}\}=\vect{x}{}\)\end{center}
 	
 	Пусть ранг матрицы \(A=\begin{pmatrix}a_{11}&\cdots&a_{1n}\\
