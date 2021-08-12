@@ -16,7 +16,7 @@
 \graphicspath{ {d:/texstudio-pics/} }
 \usepackage[dvipsnames]{xcolor}
 \usepackage{amssymb}
-\usepackage{mathtools, bm}
+\usepackage{mathtools, bm, accents}
 \usepackage[makeroom]{cancel}
 \usepackage{upgreek}
 \usepackage{enumerate}
@@ -48,7 +48,7 @@
 										{%
 											{l}{\vv{\mathbf{#2}}}%
 											{l*}{\vv*{\mathbf{#2}}{#3}}%
-											{c}{\smash{\underset{\substack{\downarrow\\ \vspace*{2pt}}}{\mathbf{#2}}}_{#3}}%
+											{c}{\underaccent{\boldsymbol{\downarrow}}{\mathbf{#2}}_{#3}}%
 											{n}{\mathbf{#2}_{#3}}%
 										}}%
 %--------------------------------------------------------------------------------------------------------------------------
@@ -1026,7 +1026,9 @@
 		\draw[line width=1.157pt, line cap=round, dash pattern=on 0pt off 3.5\pgflinewidth] (D.north) -- (De.south);
 		\draw[line width=1.157pt, line cap=round, dash pattern=on 0pt off 3.5\pgflinewidth] (C.north) -- (Ce.south);
 	\end{tikzpicture}
-	\begin{enumerate}[1)]\item\(A\cdot\vect[c]{X}{}=\vect[c]{B}{}\)\\[10pt]\begin{minipage}[t]{.5\textwidth}\(\vect[c]{X}{}=A^{-1}\cdot\vect[c]{B}{}\), пусть \(A^{-1}=C\{c_{ij}\}_{i,j=1}^{n}\), \(c_{ij}=\dfrac{\mathrm{A}_{ji}}{\Updelta}\), \end{minipage}%
+	\begin{enumerate}[1)]\item\(A\cdot\vect[c]{X}{}=\vect[c]{B}{}\)
+		
+		\begin{minipage}[t]{.5\textwidth}\(\vect[c]{X}{}=A^{-1}\cdot\vect[c]{B}{}\), пусть \(A^{-1}=C\{c_{ij}\}_{i,j=1}^{n}\), \(c_{ij}=\dfrac{\mathrm{A}_{ji}}{\Updelta}\), \end{minipage}%
 		\begin{minipage}[t]{.5\textwidth}\begin{tabbing}где \=\(\mathrm{A}_{ji}\) --- \(\begin{aligned}[t]&\text{алгебраическое дополнение}\\ &\text{соответствующего элемента}\\ &\text{матрицы }A^\mathrm{T},\end{aligned}\)\\[5pt]\>\(\Updelta=\det A\neq 0\).\end{tabbing}\end{minipage}
 	
 	Отсюда, \(\displaystyle\big(\forall p=\overline{1,n}\big)\, x_{p}=\sum_{t=1}^{n}c_{pt}b_{t}=\dfrac{1}{\Updelta}\cdot\underbrace{\sum_{t=1}^{n}\mathrm{A}_{tp}b_{t}}_{\mathclap{\substack{\text{Разложение }\Updelta_{p}\\\text{ по }p\text{--му столбцу}}}}\iff x_{p}=\dfrac{\Updelta_{p}}{\Updelta}\iff x_{p}\cdot\Updelta=\Updelta_{p}\)
@@ -1088,7 +1090,7 @@
 	Докажем ряд утверждений о системе вектор-столбцов \(\Big\{\vect[c]{X}{}^{(1)},\dotsc,\vect[c]{X}{}^{(n-r)}\Big\}\):
 	\begin{flushleft}\encircle{\textbf{1}} \(\boldsymbol{\Big\{}\vect[c]{X}{}^{\boldsymbol{(1)}}\boldsymbol{,\dotsc\,,}\vect[c]{X}{}^{\boldsymbol{(n-r)}}\boldsymbol{\Big\}}\)\textbf{ --- линейно независимая система}\end{flushleft}
 	
-	\begin{proof}Рассмотрим матрицу \(U\), составленную из столбцов \(\vect[c]{X}{}^{(i)},\, i=\overline{1,n-r}\):\\[2.5pt]\[U=\begin{pmatrix}x_{1}^{(1)}&x_{1}^{(2)}&\tikzmarkempty{Aa}{\phantom{x_{1}^{(3)}}}&x_{1}^{(n-r)}\\
+	\begin{proof}Рассмотрим матрицу \(U\), составленную из столбцов \(\vect[c]{X}{}^{(i)},\, i=\overline{1,n-r}\):\[U=\begin{pmatrix}x_{1}^{(1)}&x_{1}^{(2)}&\tikzmarkempty{Aa}{\phantom{x_{1}^{(3)}}}&x_{1}^{(n-r)}\\
 					   \vdots     &\vdots     &\phantom{\vdots}                        &\vdots\\
 				   	   x_{r}^{(1)}&x_{r}^{(2)}&\phantom{\vdots}						   &x_{r}^{(n-r)}\\
 			   	   	   1		  &0		  &\phantom{\vdots}						   &0\\
@@ -1114,13 +1116,17 @@
 	
 	\begin{flushleft}\encircle{\textbf{3}} \textbf{Любое решение системы \hyperref[HSOQm]{\(\boldsymbol{(1)}\)} можно получить как линейную комбинацию системы } \(\boldsymbol{\Big\{}\vect[c]{X}{}^{\boldsymbol{(1)}}\boldsymbol{,\dotsc\,,}\vect[c]{X}{}^{\boldsymbol{(n-r)}}\boldsymbol{\Big\}}\)\end{flushleft}
 	
-	\begin{proof}Пусть \(\vect[c]{Y}{}=\begin{pmatrix}y_{1}\\ \vdots\\ y_{n}\end{pmatrix}\) --- какое-нибудь решение системы \eqref{HSOQ}.
+	\begin{proof}Пусть \(\vect[c]{Y}{}=\begin{pmatrix}y_{1}\\ \vdots\\ y_{n}\end{pmatrix}\) --- какое-нибудь решение системы \eqref{HSOQm}.
 	
-	Рассмотрим \(\displaystyle \vect[c]{Z}{}=\sum_{i=1}^{n-r}y_{r+i}\vect[c]{X}{}=\begin{pmatrix}z_{1}\\ \vdots\\ z_{r}\\y_{r+1}\\ \vdots\\ y_{n}\end{pmatrix}\) --- решение системы \eqref{HSOQ} согласно утверждению \hyperref[5.4 S2]{\color{MMagenta}\encircle{\textbf{2}}}. \(\vect[c]{Z}{}\)\nolinebreak[4] совпадает с \(\vect[c]{Y}{}\) в разрядах от \((r+1)\)--го до \(n\)--го.
+	Рассмотрим \(\displaystyle \vect[c]{Z}{}=\sum_{i=1}^{n-r}y_{r+i}\vect[c]{X}{}=\left(\begin{smallmatrix}z_{1}\\[1pt] \myvdots\\[1pt] z_{r}\\[2pt]y_{r+1}\\[1pt] \myvdots\\[1pt] y_{n}\end{smallmatrix}\right)\) --- решение системы \eqref{HSOQ} согласно утверждению \hyperref[5.4 S2]{\color{MMagenta}\encircle{\textbf{2}}}, а,\nolinebreak[4] соответственно, и системы \eqref{HSOQm}.
 
-	Поскольку \(\vect[c]{Y}{}\) и \(\vect[c]{Z}{}\) оба являются решениями системы \eqref{HSOQ}, то, подставив неизвестные, можем приравнять правые части полученных выражений. Получим систему Крамера (СЛАУ, удовлетворяющую теореме Крамера) относительно \(\{z_{1},\dotsc,z_{r}\}\).
-	
-	Она имеет единственное решение, которое выглядит как \(\left\{\begin{array}{@{}l@{}}z_{1}=y_{1},\\z_{2}=y_{2},\\ \hcdotsfor{1}\\ z_{r}=y_{r}\end{array}\right.\).\end{proof}
+	Поскольку \(\vect[c]{Y}{}\) и \(\vect[c]{Z}{}\) оба являются решениями системы \eqref{HSOQm}, и \(\vect[c]{Z}{}\) совпадает с \(\vect[c]{Y}{}\) в разрядах от \((r+1)\)--го до \(n\)--го, то, подставив их в систему \eqref{HSOQ*}, можем приравнять левые части полученных выражений. Получим систему Крамера (СЛАУ, удовлетворяющую теореме Крамера) относительно \(\{z_{1},\dotsc,z_{r}\}\).
+	\[\left\{\begin{array}{@{}l@{}}a_{11}z_{1}+\dotsb+a_{1r}z_{r}=a_{11}y_{1}+\dotsb+a_{1r}y_{r},\\ \hcdotsfor{1}\\ a_{r1}z_{1}+\dotsb+a_{rr}z_{r}=a_{r1}y_{1}+\dotsb+a_{rr}y_{r}.\end{array}\right.\]
+	Она имеет единственное решение, которое выглядит как \(\left\{\begin{array}{@{}l@{}}z_{1}=y_{1},\\z_{2}=y_{2},\\ \hcdotsfor{1}\\ z_{r}=y_{r}.\end{array}\right.\) Отсюда, \(\vect[c]{Y}{}=\vect[c]{Z}{}\).
+
+	Следовательно, \(\vect[c]{Y}{}\in L\Big(\vect[c]{X}{}^{(1)},\dotsc,\vect[c]{X}{}^{(n-r)}\Big)\) и система \(\Big\{\vect[c]{X}{}^{(1)},\dotsc,\vect[c]{X}{}^{(n-r)}\Big\}\) называется \emph{фундаментальной системой решений} (ФСР) СЛАУ \eqref{HSOQm}. \end{proof}
+
+	\section[Структура общего решения неоднородной СЛАУ]{Структура общего решения неоднородной системы линейных алгебраических уравнений}
 	%TODO: remove periods at the end of math structures
 	%TODO: fix proof* and proof** (see \vect??)
 	%TODO: fix/check newpages, "--" or "---"
