@@ -1199,8 +1199,15 @@
 	\section[Структура общего решения неоднородной СЛАУ]{Структура общего решения неоднородной системы линейных алгебраических уравнений}
 	\subsection{Теорема Кронекера--Капелли}
 	\tm{Неоднородная СЛАУ совместна тогда и только тогда, когда \(\boldsymbol{\rank A=} \boldsymbol{\rank{}}\augm{\boldsymbol{A}}\), где \(\boldsymbol{A}\) --- основная матрица системы, а \(\augm{\boldsymbol{A}}\) --- расширенная матрица, полученная из основной матрицы приписыванием столбца с неоднородностями}
-	
-	\[\]
+	\[\left\{\begin{array}{@{}l@{}}
+		a_{11}x_{1}+\dotsb+a_{1n}x_{n}=b_{1},\\[3pt]
+		a_{21}x_{1}+\dotsb+a_{2n}x_{n}=b_{2},\\[3pt]
+		\hcdotsfor{1}\\[3pt]
+		a_{m1}x_{1}+\dotsb+a_{mn}x_{n}=b_{n}.
+	\end{array}\right.\]
+
+	\[A=\begin{pmatrix}a_{11}&\cdots&a_{1n}\\ a_{21}&\cdots&a_{2n}\\ \hcdotsfor{3} \\ a_{m1}&\cdots&a_{mn}\end{pmatrix},\,\augm{A}=\begin{pmatrix}[ccc|c]a_{11}&\cdots&a_{1n}&b_{1}\\ a_{21}&\cdots&a_{2n}&b_{2}\\ \hcdotsfor{4}\\ a_{m1}&\cdots&a_{mn}&b_{n}\end{pmatrix}\]
+	\begin{proof}\(\left< \Rightarrow \right>\) Предположим противное: система совместна, но \(\rank A<\rank\augm{A}\).\end{proof}
 	%TODO: fix/check periods at the end of math structures
 	%TODO: fix proof* and proof** (see \vect??)
 	%TODO: fix/check newpages, "--" or "---"
