@@ -48,7 +48,7 @@
 										{%
 											{l}{\vv{\mathbf{#2}}}%
 											{l*}{\vv*{\mathbf{#2}}{#3}}%
-											{c}{\smash{\underset{\downarrow}{\mathbf{#2}}}_{#3}}%
+											{c}{\smash{\underset{\substack{\downarrow\\ \vspace*{2pt}}}{\mathbf{#2}}}_{#3}}%
 											{n}{\mathbf{#2}_{#3}}%
 										}}%
 %--------------------------------------------------------------------------------------------------------------------------
@@ -1029,7 +1029,7 @@
 	\begin{enumerate}[1)]\item\(A\cdot\vect[c]{X}{}=\vect[c]{B}{}\)\\[10pt]\begin{minipage}[t]{.5\textwidth}\(\vect[c]{X}{}=A^{-1}\cdot\vect[c]{B}{}\), пусть \(A^{-1}=C\{c_{ij}\}_{i,j=1}^{n}\), \(c_{ij}=\dfrac{\mathrm{A}_{ji}}{\Updelta}\), \end{minipage}%
 		\begin{minipage}[t]{.5\textwidth}\begin{tabbing}где \=\(\mathrm{A}_{ji}\) --- \(\begin{aligned}[t]&\text{алгебраическое дополнение}\\ &\text{соответствующего элемента}\\ &\text{матрицы }A^\mathrm{T},\end{aligned}\)\\[5pt]\>\(\Updelta=\det A\neq 0\).\end{tabbing}\end{minipage}
 	
-	Отсюда, \(\displaystyle\big(\forall p=\overline{1,n}\big)\, x_{p}=\sum_{t=1}^{n}c_{pt}b_{t}=\dfrac{1}{\Updelta}\cdot\underbrace{\sum_{t=1}^{n}\mathrm{A}_{tp}b_{t}}_{\mathclap{\substack{\text{Разложение }\Updelta_{p}\\\text{ по }p\text{--му столбцу}}}}\iff x_{p}\cdot\Updelta=\Updelta_{p}\iff x_{p}=\dfrac{\Updelta_{p}}{\Updelta}\)
+	Отсюда, \(\displaystyle\big(\forall p=\overline{1,n}\big)\, x_{p}=\sum_{t=1}^{n}c_{pt}b_{t}=\dfrac{1}{\Updelta}\cdot\underbrace{\sum_{t=1}^{n}\mathrm{A}_{tp}b_{t}}_{\mathclap{\substack{\text{Разложение }\Updelta_{p}\\\text{ по }p\text{--му столбцу}}}}\iff x_{p}=\dfrac{\Updelta_{p}}{\Updelta}\iff x_{p}\cdot\Updelta=\Updelta_{p}\)
 	
 	Убедимся, что полученная система эквивалентна исходной:
 	
@@ -1055,7 +1055,7 @@
 										 	 		\draw[line width=1.157pt, line cap=round, dash pattern=on 0pt off 3.5\pgflinewidth] (Ai2.north) -- (Bi2.north);
 									 	 	\end{tikzpicture}\end{aligned}\)
 	
-	То есть преобразование выше можно рассматривать как ЭП--ия \(p\)--ой строки, а именно умножение её на \(\mathrm{A}_{pp}\), затем прибавление к ней всех остальных строк, умноженных на \(\mathrm{A}_{tp}\) соответственно (\(t=\overline{1,n},\,t\neq p\)).
+	То есть преобразование выше можно рассматривать как ЭП--ия \(p\)--ой строки, а именно: умножение её на \(\mathrm{A}_{pp}\), затем прибавление к ней всех остальных строк, умноженных на \(\mathrm{A}_{tp}\) соответственно (\(t=\overline{1,n},\,t\neq p\)).
 	
 	Таким образом, получили новую систему  \(\vect[c]{X}{}=\left(\begin{smallmatrix}\sfrac{\Updelta_{1}}{\Updelta}\\ \sfrac{\Updelta_{2}}{\Updelta}\\[1pt]\myvdots\\[1pt]\sfrac{\Updelta_{n}}{\Updelta}\end{smallmatrix}\right)\) путём ЭП--ий исходной системы. По \hyperref[5.2 Th]{\color{MMagenta}\(\mathbf{\Big[\textbf{Th}\Big]}\)} они эквивалентны. Единственность решения доказана. \item Покажем, что полученное выражение --- решение исходной системы. Подставим выражение в любое уравнение системы (пусть \(q\)--ое, \(1\leq q\leq n\)):
 	
@@ -1103,14 +1103,24 @@
     Поскольку минора большего порядка нет, то \(\rank U=n-r\implies \mathrm{M}^{^{1\dotsb n-r}}_{_{r+1\dotsb n}}\big(U\big)\) --- базисный минор. По \hyperref[4.4 Th1]{\color{MMagenta} свойству базисных столбцов} система \(\Big\{\vect[c]{X}{}^{(1)},\dotsc,\vect[c]{X}{}^{(n-r)}\Big\}\) линейно независима.
     \end{proof}
 
-	\begin{flushleft}\encircle{\textbf{2}} \(\displaystyle \vect[c]{X}{}=\boldsymbol{\sum_{i=1}^{n-r}}\boldsymbol{\uplambda_{i}}\vect[c]{X}{}^{\boldsymbol{(i)}}\)\textbf{ --- решение системы \hyperref[HSOQ]{\(\boldsymbol{(2)}\)} при любом наборе \(\boldsymbol{\{\uplambda_j\}_{j=1}^{n-r}}\)}\end{flushleft}
+	\begin{flushleft}\encircle{\textbf{2}} \(\displaystyle \vect[c]{X}{}=\boldsymbol{\sum_{i=1}^{n-r}}\boldsymbol{\uplambda_{i}}\vect[c]{X}{}^{\boldsymbol{(i)}}\)\textbf{ --- решение системы \hyperref[HSOQ]{\(\boldsymbol{(2)}\)} при любом наборе \(\boldsymbol{\{\uplambda_j\}_{j=1}^{n-r}}\)}\end{flushleft}\label{5.4 S2}
 	
 	\begin{proof} \(\vect[c]{X}{}=\begin{pmatrix}x_{1}\\\vdots\\ x_{r}\\x_{r+1}\\x_{r+2}\\\vdots\\x_{n}\end{pmatrix}=\displaystyle \sum_{i=1}^{n-r}\uplambda_{i}\vect[c]{X}{}^{(i)}=\begin{pmatrix}\displaystyle \sum_{i=1}^{n-r}\uplambda_{i} x_{1}^{(i)}\\ \vdots\\\displaystyle \sum_{i=1}^{n-r}\uplambda_{i} x_{r}^{(i)}\\ \uplambda_{1}\\ \uplambda_{2}\\\vdots\\\uplambda_{n-r}\end{pmatrix}\implies\left\{\begin{array}{@{}l@{}}x_{1}=\displaystyle\sum_{i=1}^{n-r}\uplambda_{i} x_{1}^{(i)},\\ \hcdotsfor{1}\\ \displaystyle x_{r}=\sum_{i=1}^{n-r}\uplambda_{i}x_{r}^{(i)},\\ x_{r+1}=\uplambda_{1},\\ x_{r+2}=\uplambda_{2},\\ \hcdotsfor{1}\\ x_{n}=\uplambda_{n-r}. \end{array}\right.\)
 	
 	Подставим значения неизвестных в, например, \(k\)--ое (\(1\leq k\leq r\)) уравнение системы \eqref{HSOQ*}, которая эквивалентна системе \eqref{HSOQ}.
 	\begin{align*}\sum_{j=1}^{r}a_{kj}x_{j}&\mathbin{\oversymbolnoref{\:\boldsymbol{?}\:}{=}}-\sum_{j=r+1}^{n}a_{kj}x_{j}\\[5pt] \sum_{j=1}^{r}a_{kj}\sum_{i=1}^{n-r}\uplambda_{i}x_{j}^{(i)}&\mathbin{\oversymbolnoref{\:\boldsymbol{?}\:}{=}}-\sum_{t=1}^{n-r}a_{k(r+t)}\uplambda_{t}\\[5pt] \sum_{i=1}^{n-r}\uplambda_{i}\sum_{j=1}^{r}a_{kj}x_{j}^{(i)}&\mathbin{\oversymbolnoref{\:\boldsymbol{?}\:}{=}}-\sum_{t=1}^{n-r}a_{k(r+t)}\uplambda_{t}\end{align*}
 	По построению \(\big\{x_{j}^{(i)}\big\}_{j=1}^{r}\) получим
-	\begin{align*}\end{align*}\end{proof}
+	\begin{align*}\sum_{i=1}^{n-r}\uplambda_{i}\cdot\big({-a_{k(r+i)}}\big)&\mathbin{\oversymbolnoref{\,\boldsymbol{\checkmark}\,}{=}}-\sum_{t=1}^{n-r}a_{k(r+t)}\uplambda_{t}\end{align*}\end{proof}
+	
+	\begin{flushleft}\encircle{\textbf{3}} \textbf{Любое решение системы \hyperref[HSOQm]{\(\boldsymbol{(1)}\)} можно получить как линейную комбинацию системы } \(\boldsymbol{\Big\{}\vect[c]{X}{}^{\boldsymbol{(1)}}\boldsymbol{,\dotsc\,,}\vect[c]{X}{}^{\boldsymbol{(n-r)}}\boldsymbol{\Big\}}\)\end{flushleft}
+	
+	\begin{proof}Пусть \(\vect[c]{Y}{}=\begin{pmatrix}y_{1}\\ \vdots\\ y_{n}\end{pmatrix}\) --- какое-нибудь решение системы \eqref{HSOQ}.
+	
+	Рассмотрим \(\displaystyle \vect[c]{Z}{}=\sum_{i=1}^{n-r}y_{r+i}\vect[c]{X}{}=\begin{pmatrix}z_{1}\\ \vdots\\ z_{r}\\y_{r+1}\\ \vdots\\ y_{n}\end{pmatrix}\) --- решение системы \eqref{HSOQ} согласно утверждению \hyperref[5.4 S2]{\color{MMagenta}\encircle{\textbf{2}}}. \(\vect[c]{Z}{}\)\nolinebreak[4] совпадает с \(\vect[c]{Y}{}\) в разрядах от \((r+1)\)--го до \(n\)--го.
+
+	Поскольку \(\vect[c]{Y}{}\) и \(\vect[c]{Z}{}\) оба являются решениями системы \eqref{HSOQ}, то, подставив неизвестные, можем приравнять правые части полученных выражений. Получим систему Крамера (СЛАУ, удовлетворяющую теореме Крамера) относительно \(\{z_{1},\dotsc,z_{r}\}\).
+	
+	Она имеет единственное решение, которое выглядит как \(\left\{\begin{array}{@{}l@{}}z_{1}=y_{1},\\z_{2}=y_{2},\\ \hcdotsfor{1}\\ z_{r}=y_{r}\end{array}\right.\).\end{proof}
 	%TODO: remove periods at the end of math structures
 	%TODO: fix proof* and proof** (see \vect??)
 	%TODO: fix/check newpages, "--" or "---"
