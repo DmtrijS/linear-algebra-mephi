@@ -200,9 +200,16 @@
 %--------------------------------------------------------------------------------------------------------------------------
 \setlength{\parskip}{0em}
 \setlength{\parindent}{1.25cm} %ГОСТ 7.32
-%\linespread{1.3}
 \binoppenalty=\maxdimen
 \relpenalty=\maxdimen
+
+\tolerance 1414
+\hbadness 1414
+\emergencystretch 1.5em
+\hfuzz 0.3pt
+\widowpenalty=10000
+\vfuzz \hfuzz
+\raggedbottom
 \begin{document}
 \setlength{\jot}{.5\baselineskip}
 	\title{
@@ -293,6 +300,7 @@
 	\lm{При элементарной транспозиции чётность перестановки меняется}
 	
 	\begin{proof}
+		
 	\[
 	\begin{gathered}
 	\begin{pmatrix}i_1&i_2&i_3&\cdots&i_k&i_{k+1}&\cdots&i_n\end{pmatrix}\\
@@ -319,7 +327,7 @@
 	
 	Элемент $i_l$ оказался на $(l-1)$-ом месте. Перемещаем его элементарными транспозициями на $k$-ое место (всего $[l-1-k]$ ЭТ).
 	
-	Свели транспозицию к $\left[(l-k)+(l-1-k)\right] = \left[2(l-k)-1\right]$ --- нечётному числу ЭТ $\implies$\\$\implies$ сменили чётность нечётное число раз $\implies$ чётность изменилась. \end{proof}
+	Свели транспозицию к $\left[(l-k)+(l-1-k)\right] = \left[2(l-k)-1\right]$ --- нечётному числу~ЭТ $\implies$ сменили чётность нечётное число раз $\implies$ чётность изменилась. \end{proof}
 	\section{Обратная перестановка}
 	\subsection{Обратная перестановка}
 	\df[Обратная перестановка]
@@ -402,11 +410,11 @@
 	\begin{proof}
 	\begin{align*}
 	|B|&=\sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{l}\,\inlineperm{k}{n})}b_{1i_1}\cdots b_{li_l}b_{ki_k}\cdots b_{ni_n}=
-	\\[5pt]&=\sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{l}\,\inlineperm{k}{n})}a_{1i_1}\cdots a_{ki_l}a_{li_k}\cdots a_{ni_n}
-	\\[25pt]
+	\\&=\sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{l}\,\inlineperm{k}{n})}a_{1i_1}\cdots a_{ki_l}a_{li_k}\cdots a_{ni_n}
+	\\[\baselineskip]
 	|A|&=\sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{k}\,\inlineperm{l}{n})}a_{1i_1}\cdots a_{ki_l}a_{li_k}\cdots a_{ni_n}=
-	\\[5pt]&=\sum_{(\inlineperm{1}{n})}(-1)\cdot (-1)^{\upsigma(\inlineperm{1}{l}\,\inlineperm{k}{n})}a_{1i_1}\cdots a_{ki_l}a_{li_k}\cdots a_{ni_n}=
-	\\[5pt]&=-|B|
+	\\&=\sum_{(\inlineperm{1}{n})}(-1)\cdot (-1)^{\upsigma(\inlineperm{1}{l}\,\inlineperm{k}{n})}a_{1i_1}\cdots a_{ki_l}a_{li_k}\cdots a_{ni_n}=
+	\\&=-|B|
 	\end{align*}\end{proof}
 	
 	Поскольку $|A|=\left|A^{\mathrm{T}}\right|$, то свойство верно и для столбцов.
@@ -421,9 +429,9 @@
 	\begin{proof}
 	\begin{align*}
 	|A| &= \sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}a_{1i_1}\cdots a_{li_l}\cdots a_{ni_n}=
-	\\[5pt]&=\sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}a_{1i_1}\cdots (b_{li_l}+c_{li_l})\cdots a_{ni_n}=
-	\\[5pt]&=\sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}b_{1i_1}\cdots b_{li_l}\cdots b_{ni_n} + \sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}c_{1i_1}\cdots c_{li_l}\cdots c_{ni_n}=
-	\\[5pt]&=|B|+|C|
+	\\&=\sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}a_{1i_1}\cdots (b_{li_l}+c_{li_l})\cdots a_{ni_n}=
+	\\&=\sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}b_{1i_1}\cdots b_{li_l}\cdots b_{ni_n} + \sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}c_{1i_1}\cdots c_{li_l}\cdots c_{ni_n}=
+	\\&=|B|+|C|
 	\end{align*}\end{proof}
 	
 	Поскольку $|A|=\left|A^{\mathrm{T}}\right|$, то свойство верно и для столбцов.
@@ -432,7 +440,7 @@
 	\subsection{Треугольный вид матрицы}
 	\df[Верхнетреугольная матрица]
 	
-	Матрица $A\left\{a_{ij}\right\}_{i,j=1}^{n}$ имеет верхнетреугольный вид, если $\left(\forall j =\overline{1,n},\, \forall i =\overline{2,n}\colon i>j\right) a_{ij} = 0$.
+	\begin{tabbing}\indent Матрица $A\left\{a_{ij}\right\}_{i,j=1}^{n}$ имеет верхнетреугольный вид, \=если\\\>\({\left(\forall j =\overline{1,n},\, \forall i =\overline{2,n}\colon i>j\right) a_{ij} = 0}\).\end{tabbing}
 	\[
 	\begin{pmatrix} 
 	a_{11}&a_{12}&\dotsb&a_{1(n-1)}&a_{1n}\\
@@ -478,7 +486,7 @@
 					a_{\substack{(m+1)\\1}}^{\star}&\cdots&a_{\substack{(m+1)\\(m+1)}}^{\star}
 					\end{pmatrix}
 					\]
-					\item Занулим элементы, стоящие под $a_{i_0 j_0}$, поочерёдно вычтя из второй по $(m+1)$--ю строки первую, умноженную на соответственно: $\dfrac{a_{21}^{\star}}{a_{i_0 j_0}}$, $\dfrac{a_{31}^{\star}}{a_{i_0 j_0}}$, $\dotsc$, $\dfrac{a_{(m+1)1}^{\star}}{a_{i_0 j_0}}$
+					\item Занулим элементы, стоящие под $a_{i_0 j_0}$, поочерёдно вычтя из второй по $(m+1)$--ю строки первую, умноженную на соответственно: $\dfrac{a_{21}^{\star}}{a_{i_0 j_0}}$,~$\dfrac{a_{31}^{\star}}{a_{i_0 j_0}}$,~$\dotsc$,~$\dfrac{a_{(m+1)1}^{\star}}{a_{i_0 j_0}}$
 					\[
 					\begin{pmatrix}
 						a_{i_0 j_0} & \cdots & a_{1(m+1)}^{\star}\\
@@ -727,7 +735,7 @@
 		\end{tikzpicture}
 	\)
 	
-	\newpage\lm{Если \(\boldsymbol{\exists A\cdot E}\), то \(\boldsymbol{A\cdot E = A}\) (аналогично \(\boldsymbol{E\cdot B=B}\))}
+	\lm{Если \(\boldsymbol{\exists A\cdot E}\), то \(\boldsymbol{A\cdot E = A}\) (аналогично \(\boldsymbol{E\cdot B=B}\))}
 	\begin{proof}
 	\begin{align*}
 		\underset{m\times n}{A}\cdot\underset{n\times n}{E}&=\underset{m\times n}{C}\\
@@ -743,7 +751,8 @@
 	\subsection{Критерий существования обратной матрицы}
 	\tm{Если у матрицы \(\boldsymbol{{\underset{n\times n}{A}}}\), \(\boldsymbol{{|A|\neq 0}}\), то \(\bm{{\existsone A^{-1}\colon A\cdot A^{-1} = A^{-1} \cdot A=E}}\)}
 	
-	\begin{proof} 
+	\begin{proof}
+		
 		\begin{enumerate}[1)]
 		\item Существование:
 			\begin{itemize}
@@ -779,15 +788,15 @@
 	\(A=\begin{pmatrix}1&2\\3&4\end{pmatrix}\)
 	
 	\begin{enumerate}[1)]
-	\item \(\begin{alignedat}[t]{2}&\mathrm{A}_{11}=(-1)^{1+1}\mathrm{M}_{11}=4\hspace{25pt}&&\mathrm{A}_{12}=(-1)^{1+2}\mathrm{M}_{12}=-3\\[5pt]&\mathrm{A}_{21}=(-1)^{2+1}\mathrm{M}_{21}=-2\hspace{25pt}&&\mathrm{A}_{22}=(-1)^{2+2}\mathrm{M}_{22}=1\end{alignedat}\)
+	\item \(\begin{alignedat}[t]{2}&\mathrm{A}_{11}=(-1)^{1+1}\mathrm{M}_{11}=4\hspace{25pt}&&\mathrm{A}_{12}=(-1)^{1+2}\mathrm{M}_{12}=-3\\&\mathrm{A}_{21}=(-1)^{2+1}\mathrm{M}_{21}=-2\hspace{25pt}&&\mathrm{A}_{22}=(-1)^{2+2}\mathrm{M}_{22}=1\end{alignedat}\)
 	
-	\item \(A^{*}=\begin{pmatrix}4&-3\\-2&1\end{pmatrix}\implies \big(A^{*}\big)^{\mathrm{T}}=\begin{pmatrix}4&-2\\-3&1\end{pmatrix}\)
+	\item \(A^{*}=\begin{pmatrix}[rr]4&-3\\-2&1\end{pmatrix}\implies \big(A^{*}\big)^{\mathrm{T}}=\begin{pmatrix}[rr]4&-2\\-3&1\end{pmatrix}\)
 	
 	\item \(|A| = 4-6=-2\)
 	
-	\item \(A^{-1}=\dfrac{1}{|A|}\big(A^{*}\big)^{\mathrm{T}}=\begin{pmatrix}-2&1\\\tfrac{3}{2}&-\tfrac{1}{2}\end{pmatrix}\)
+	\item \(A^{-1}=\dfrac{1}{|A|}\big(A^{*}\big)^{\mathrm{T}}=\begin{pmatrix}[rr]-2&1\\\tfrac{3}{2}&-\tfrac{1}{2}\end{pmatrix}\)
 	
-	\item \(\begin{alignedat}[t]{1}&A\cdot A^{-1} = \begin{pmatrix}1&2\\3&4\end{pmatrix}\cdot \begin{pmatrix}-2&1\\\tfrac{3}{2}&-\tfrac{1}{2}\end{pmatrix}=\begin{pmatrix}-2+3&1-1\\-6+6&3-2\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}=E\\[5pt]&A^{-1}\cdot{A}=\begin{pmatrix}-2&1\\\tfrac{3}{2}&-\tfrac{1}{2}\end{pmatrix}\cdot \begin{pmatrix}1&2\\3&4\end{pmatrix}=\begin{pmatrix}-2+3&-4+4\\\tfrac{3}{2}-\tfrac{3}{2}&3-2\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}=E\end{alignedat}\)
+	\item \(\begin{alignedat}[t]{1}&A\cdot A^{-1} = \begin{pmatrix}1&2\\3&4\end{pmatrix}\cdot \begin{pmatrix}[rr]-2&1\\\tfrac{3}{2}&-\tfrac{1}{2}\end{pmatrix}=\begin{pmatrix}[rr]-2+3&1-1\\-6+6&3-2\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}=E\\&A^{-1}\cdot{A}=\begin{pmatrix}[rr]-2&1\\\tfrac{3}{2}&-\tfrac{1}{2}\end{pmatrix}\cdot \begin{pmatrix}1&2\\3&4\end{pmatrix}=\begin{pmatrix}[rr]-2+3&-4+4\\\tfrac{3}{2}-\tfrac{3}{2}&3-2\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}=E\end{alignedat}\)
 	\end{enumerate}
 	\subsection[Построение обратной матрицы методом ЭПС]{Построение обратной матрицы методом элементарных преобразований строк}
 	\subsubsection{Умножение \(\boldsymbol{k}\)--ой строки на \(\boldsymbol{\upalpha\in\mathbb{R}}\)}
@@ -795,7 +804,7 @@
 	
 	\begin{proof} \(B\cdot A=C\)
 	\begin{enumerate}[{1.}1)]
-		\item \(\big(i=k,\, j=\overline{1,n}\big)\) \(\begin{aligned}[t]\displaystyle c_{kj} = \sum_{t=1}^{n}b_{kt}a_{tj}&=\updelta_{k1}a_{1j}+\updelta_{k2}a_{2j}+\dotsb+\updelta_{k(k-1)}a_{(k-1)j}+\upalpha a_{kj}+\dotsb+\updelta_{kn}a_{nj}=\\&=0+0+\dotsb+0+\upalpha a_{kj}+\dotsb+0=\\&=\upalpha a_{kj}\end{aligned}\)
+		\item \(\big(i=k,\, j=\overline{1,n}\big)\)~\(\begin{aligned}[t]\displaystyle c_{kj} = \sum_{t=1}^{n}b_{kt}a_{tj}&=\begin{aligned}[t]\updelta_{k1}a_{1j}&+\updelta_{k2}a_{2j}+\dotsb+\updelta_{k(k-1)}a_{(k-1)j}+{}\\&{}+\upalpha a_{kj}+\dotsb+\updelta_{kn}a_{nj}=\end{aligned}\\&=0+0+\dotsb+0+\upalpha a_{kj}+\dotsb+0=\\&=\upalpha a_{kj}\end{aligned}\)
 	
 		\item \(\big(i\neq k,\, j=\overline{1,n}\big)\) \(\begin{aligned}[t]\displaystyle c_{ij}=\sum_{t=1}^{n}b_{it}a_{tj}&=\updelta_{i1}a_{1j}+\dotsb+\updelta_{ii}a_{ij}+\dotsb+\updelta_{in}a_{nj}=\\&=0+\dotsb+1\cdot a_{ij}+\dotsb+0=\\&=a_{ij}\end{aligned}\)
 	\end{enumerate}
@@ -803,10 +812,9 @@
 	Таким образом, \(c_{ij}=\begin{cases}\upalpha a_{ij},&i=k,\,j=\overline{1,n}\\a_{ij},&i\neq k,\,j=\overline{1,n}\end{cases}\)\end{proof}
 	\ex
 	
-	\(A=\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}\oversymbolnoref[\upalpha = c]{k=2}{\sim}\begin{pmatrix}1&2&3\\4c&5c&6c\\7&8&9\end{pmatrix}\)
-	\medskip
+	\(\begin{aligned}&A=\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}\oversymbolnoref[\upalpha = c]{k=2}{\sim}\begin{pmatrix}1&2&3\\4c&5c&6c\\7&8&9\end{pmatrix}\\
+	&B=\begin{pmatrix}1&0&0\\0&c&0\\0&0&1\end{pmatrix}\implies B\cdot A = \begin{pmatrix}1&0&0\\0&c&0\\0&0&1\end{pmatrix}\cdot \begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\begin{pmatrix}1&2&3\\4c&5c&6c\\7&8&9\end{pmatrix}\end{aligned}\)
 	
-	\(B=\begin{pmatrix}1&0&0\\0&c&0\\0&0&1\end{pmatrix}\implies B\cdot A = \begin{pmatrix}1&0&0\\0&c&0\\0&0&1\end{pmatrix}\cdot \begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\begin{pmatrix}1&2&3\\4c&5c&6c\\7&8&9\end{pmatrix}\)
 	\subsubsection{Перемена местами \(\boldsymbol{l}\)--ой и \(\boldsymbol{k}\)--ой строк}
 	\lm{Соответствует левостороннему домножению на \(\boldsymbol{{B\left\{b_{ij}\right\}_{i,j=1}^{n}}}\), \(\boldsymbol{{b_{ij}=\begin{cases}\updelta_{ij},&i\neq k,\,i\neq l,\,j=\overline{1,n}\\\updelta_{kj},&i=l,\,j=\overline{1,n}\\\updelta_{lj},&i=k,\,j=\overline{1,n}\end{cases}}}\)}
 	
@@ -824,9 +832,8 @@
 	
 	\ex
 
-	\[A=\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}\oversymbolnoref[k=2]{l=1}{\sim}\begin{pmatrix}4&5&6\\1&2&3\\7&8&9\end{pmatrix}\]
-	
-	\[B=\begin{pmatrix}0&1&0\\1&0&0\\0&0&1\end{pmatrix}\implies B\cdot A = \begin{pmatrix}0&1&0\\1&0&0\\0&0&1\end{pmatrix}\cdot\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\begin{pmatrix}4&5&6\\1&2&3\\7&8&9\end{pmatrix}\]
+	\(\begin{aligned}&A=\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}\oversymbolnoref[k=2]{l=1}{\sim}\begin{pmatrix}4&5&6\\1&2&3\\7&8&9\end{pmatrix}\\
+	&B=\begin{pmatrix}0&1&0\\1&0&0\\0&0&1\end{pmatrix}\implies B\cdot A = \begin{pmatrix}0&1&0\\1&0&0\\0&0&1\end{pmatrix}\cdot\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\begin{pmatrix}4&5&6\\1&2&3\\7&8&9\end{pmatrix}\end{aligned}\)
 	
 	\subsubsection{Добавление к \(\boldsymbol{k}\)--ой строке \(\boldsymbol{l}\)--ую, умноженную на \(\boldsymbol{\upalpha\in\mathbb{R}}\)}
 	\lm{Соответствует левостороннему домножению на \(\boldsymbol{{B\left\{b_{ij}\right\}_{i,j=1}^{n}}}\), \(\boldsymbol{{b_{ij}=\begin{cases}\upalpha+\updelta_{kl},&i=k\text{ и } j=l\\\updelta_{ij},&i\neq k\text{ или }j\neq l\end{cases}}}\)}
@@ -849,9 +856,8 @@
 	
 	\ex
 	
-	\[A=\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}\oversymbolnoref[k=3]{l=3}{\sim}\begin{pmatrix}1&2&3\\4&5&6\\7+7\upalpha&8+8\upalpha&9+9\upalpha\end{pmatrix}\]
-	
-	\[\begin{split}B=\begin{pmatrix}1&0&0\\0&1&0\\0&0&\upalpha+\updelta_{33}\end{pmatrix}\implies B\cdot A&=\begin{pmatrix}1&0&0\\0&1&0\\0&0&\upalpha+1\end{pmatrix}\cdot\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\\&=\begin{pmatrix}1&2&3\\4&5&6\\7(\upalpha+1)&8(\upalpha+1)&9(\upalpha+1)\end{pmatrix}\end{split}\]
+	\(\begin{aligned}&A=\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}\oversymbolnoref[k=3]{l=3}{\sim}\begin{pmatrix}1&2&3\\4&5&6\\7+7\upalpha&8+8\upalpha&9+9\upalpha\end{pmatrix}\\
+	&B=\begin{pmatrix}1&0&0\\0&1&0\\0&0&\upalpha+\updelta_{33}\end{pmatrix}\implies B\cdot A=\begin{pmatrix}1&0&0\\0&1&0\\0&0&\upalpha+1\end{pmatrix}\cdot\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\begin{pmatrix}1&2&3\\4&5&6\\7(\upalpha+1)&8(\upalpha+1)&9(\upalpha+1)\end{pmatrix}\end{aligned}\)
 	
 	Таким образом, последовательное применение ЭП строк к матрице \(A\) эквивалентно последовательному домножению слева матрицы \(A\) на соответствующую матрицу \(B_{i}\).
 	
@@ -1219,4 +1225,5 @@
 	%TODO: fix/check periods at the end of math structures
 	%TODO: fix proof* and proof** (see \vect??)
 	%TODO: fix/check newpages, "--" or "---"
+	%TODO: fix spacing
 \end{document}
