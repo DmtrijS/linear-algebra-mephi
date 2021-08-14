@@ -1,5 +1,8 @@
 \documentclass[12pt, a4paper]{report}
-\usepackage[cm]{fullpage}
+\usepackage[left=3.0cm, right=1.5cm, vmargin=2.0cm]{geometry} %ГОСТ 7.32
+\usepackage{indentfirst}
+\usepackage{setspace}
+\onehalfspacing
 %--------------------------------------------------------------------------------------------------------------------------
 \usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -195,8 +198,13 @@
 }
 \makeatother
 %--------------------------------------------------------------------------------------------------------------------------
-\setlength{\parskip}{6pt}
+\setlength{\parskip}{0em}
+\setlength{\parindent}{1.25cm} %ГОСТ 7.32
+%\linespread{1.3}
+\binoppenalty=\maxdimen
+\relpenalty=\maxdimen
 \begin{document}
+\setlength{\jot}{.5\baselineskip}
 	\title{
 		\centering \vfill
 		\vspace*{0.5cm}
@@ -377,9 +385,9 @@
 	\begin{proof}
 	\begin{align*} 
 	|A|&=\sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}a_{1i_1}\dotsm a_{li_l}\dotsm a_{ni_n}=
-	\\[5pt]&=\sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}a_{1i_1}\dotsm \uplambda b_{li_l}\dotsm a_{ni_n}=
-	\\[5pt]&=\uplambda\cdot\smashoperator[l]{\sum_{(\inlineperm{1}{n})}}(-1)^{\upsigma(\inlineperm{1}{n})}b_{1i_1}\dotsm b_{li_l}\dotsm b_{ni_n}=
-	\\[5pt]&=\uplambda \left|B\right|
+	\\&=\sum_{(\inlineperm{1}{n})}(-1)^{\upsigma(\inlineperm{1}{n})}a_{1i_1}\dotsm \uplambda b_{li_l}\dotsm a_{ni_n}=
+	\\&=\uplambda\cdot\smashoperator[l]{\sum_{(\inlineperm{1}{n})}}(-1)^{\upsigma(\inlineperm{1}{n})}b_{1i_1}\dotsm b_{li_l}\dotsm b_{ni_n}=
+	\\&=\uplambda \left|B\right|
 	\end{align*}\end{proof}
 	
 	Поскольку $|A|=\left|A^{\mathrm{T}}\right|$, то свойство верно и для столбцов.
@@ -578,12 +586,10 @@
 		\end{pmatrix}
 	\]
 	
-	По \hyperref[2.3.3 L]{\emph{\color{MMagenta}свойству прибавления строк другой матрицы}} можем представить определитель \(|A|\) как сумму определителей \(\left|A^{(i)}\right|\) матриц \(A^{(i)}\), для которых элементы последней строки равны\\ \(a_{nj}^{(i)}=\begin{cases}a_{ni},&j=i\\0,&j\neq i\end{cases}\)\,, а остальные элементы совпадают с элементами матрицы \(A\):
-	
+	По \hyperref[2.3.3 L]{\emph{\color{MMagenta}свойству прибавления строк другой матрицы}} можем представить определитель \(|A|\) как сумму определителей \(\left|A^{(i)}\right|\) матриц \(A^{(i)}\), для которых элементы последней строки равны \(a_{nj}^{(i)}=\begin{cases}a_{ni},&j=i\\0,&j\neq i\end{cases}\)\,, а остальные элементы совпадают с элементами матрицы \(A\):
 	\[
 		|A|=\underbrace{\begin{vmatrix} a_{11}&a_{12}&\hcdotsfor{2}&a_{1n} \\ \vdots&\vdots&\ddots&\vdots&\vdots \\ a_{n1}&0&\hcdotsfor{2}&0 \end{vmatrix}}_{\left|A^{(1)}\right|} + \underbrace{\begin{vmatrix} a_{11}&a_{12}&\hcdotsfor{2}&a_{1n} \\ \vdots&\vdots&\ddots&\vdots&\vdots \\ 0&a_{n2}&\hcdotsfor{2}&0 \end{vmatrix}}_{\left|A^{(2)}\right|}+\cdots+\underbrace{\begin{vmatrix} a_{11}&a_{12}&\hcdotsfor{2}&a_{1n} \\ \vdots&\vdots&\ddots&\vdots&\vdots \\ 0&0&\hcdotsfor{2}&a_{nn} \end{vmatrix}}_{\left|A^{(n)}\right|}
 	\]
-	
 	
 	\[
 		|A|=\sum_{i=1}^{n}\left|A^{(i)}\right|\oversymbol{\nameref{2.5.3}}{=}\sum_{i=1}^{n}a_{ni}\mathrm{A}_{ni}
@@ -657,7 +663,7 @@
 																				\vdots&\ddots&\vdots\\
 																				a_{1n}&\dotsb&a_{nn}\\
 																			\end{pmatrix}\]
-																			
+																						
 	Поскольку \(B\) содержит две одинаковые строки, то \(|B|=0\). С другой стороны, разложив \(|B|\) по \(k\text{--ой}\) строке, получим \(\displaystyle |B|=\sum_{j=1}^{n}b_{kj}\mathrm{B}_{kj}=\sum_{j=1}^{n}a_{lj}\mathrm{A}_{kj}=0\)\end{proof}
 	\chapter{Произведение матриц}
 	\section{Свойства произведения матриц}
@@ -727,7 +733,7 @@
 		\underset{m\times n}{A}\cdot\underset{n\times n}{E}&=\underset{m\times n}{C}\\
 														\left(\forall i=\overline{1,m},\forall j =\overline{1,n}\right)c_{ij}&=\sum_{t=1}^{n}a_{it}\updelta_{tj}=0+0+\dotsb+a_{ij}\updelta_{jj}=a_{ij}\implies C = A
 	\end{align*}\end{proof}
-	\section[Теорема об определителе произведения матриц \textit{(без доказательства)}]{Теорема об определителе произведения матриц \textit{(без доказательства)}\footnote[1]{Полное доказательство можно обнаружить в упомянутом в аннотации учебнике Л.И. Головиной\\(Глава III. Линейные операторы / \S2. Действия над линейными операторами / Теорема 3).}}
+	\section[Теорема об определителе произведения матриц \textit{(без доказательства)}]{Теорема об определителе произведения матриц \textit{(без доказательства)}\footnote[1]{Полное доказательство можно обнаружить в упомянутом в аннотации учебнике Л.И.~Головиной\\(Глава III. Линейные операторы / \S2. Действия над линейными операторами / Теорема 3).}}
 	\tm{Если \(\boldsymbol{A}\) и \(\boldsymbol{B}\) --- квадратные матрицы одного порядка, то \(\boldsymbol{\left|A\cdot B\right|=|A|\cdot|B|}\)}
 	\section{Обратная матрица}
 	\subsection{Определение обратной матрицы}
@@ -818,10 +824,10 @@
 	
 	\ex
 
-	\(A=\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}\oversymbolnoref[k=2]{l=1}{\sim}\begin{pmatrix}4&5&6\\1&2&3\\7&8&9\end{pmatrix}\)
-	\medskip
+	\[A=\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}\oversymbolnoref[k=2]{l=1}{\sim}\begin{pmatrix}4&5&6\\1&2&3\\7&8&9\end{pmatrix}\]
 	
-	\(B=\begin{pmatrix}0&1&0\\1&0&0\\0&0&1\end{pmatrix}\implies B\cdot A = \begin{pmatrix}0&1&0\\1&0&0\\0&0&1\end{pmatrix}\cdot\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\begin{pmatrix}4&5&6\\1&2&3\\7&8&9\end{pmatrix}\)
+	\[B=\begin{pmatrix}0&1&0\\1&0&0\\0&0&1\end{pmatrix}\implies B\cdot A = \begin{pmatrix}0&1&0\\1&0&0\\0&0&1\end{pmatrix}\cdot\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\begin{pmatrix}4&5&6\\1&2&3\\7&8&9\end{pmatrix}\]
+	
 	\subsubsection{Добавление к \(\boldsymbol{k}\)--ой строке \(\boldsymbol{l}\)--ую, умноженную на \(\boldsymbol{\upalpha\in\mathbb{R}}\)}
 	\lm{Соответствует левостороннему домножению на \(\boldsymbol{{B\left\{b_{ij}\right\}_{i,j=1}^{n}}}\), \(\boldsymbol{{b_{ij}=\begin{cases}\upalpha+\updelta_{kl},&i=k\text{ и } j=l\\\updelta_{ij},&i\neq k\text{ или }j\neq l\end{cases}}}\)}
 	
@@ -838,22 +844,18 @@
 	Таким образом, \(c_{ij}=\begin{cases}a_{kj}+\upalpha a_{lj},&i=k,\,j=\overline{1,n}\\a_{ij},&i\neq k,\,j=\overline{1,n}\end{cases}\)\end{proof}
 	\ex
 	
-	\(A=\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}\oversymbolnoref[k=2]{l=1}{\sim}\begin{pmatrix}1&2&3\\4+\upalpha&5+2\upalpha&6+3\upalpha\\7&8&9\end{pmatrix}\)
-	\medskip
+	\(\begin{aligned} &A=\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}\oversymbolnoref[k=2]{l=1}{\sim}\begin{pmatrix}1&2&3\\4+\upalpha&5+2\upalpha&6+3\upalpha\\7&8&9\end{pmatrix}\\
+	&B=\begin{pmatrix}1&0&0\\\upalpha+\updelta_{21}&1&0\\0&0&1\end{pmatrix}\implies B\cdot A=\begin{pmatrix}1&0&0\\\upalpha&1&0\\0&0&1\end{pmatrix}\cdot\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\begin{pmatrix}1&2&3\\4+\upalpha&5+2\upalpha&6+3\upalpha\\7&8&9\end{pmatrix}\end{aligned}\)
 	
-	\(B=\begin{pmatrix}1&0&0\\\upalpha+\updelta_{21}&1&0\\0&0&1\end{pmatrix}\implies B\cdot A=\begin{pmatrix}1&0&0\\\upalpha&1&0\\0&0&1\end{pmatrix}\cdot\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\begin{pmatrix}1&2&3\\4+\upalpha&5+2\upalpha&6+3\upalpha\\7&8&9\end{pmatrix}\)
+	\ex
 	
-	\newpage\ex
+	\[A=\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}\oversymbolnoref[k=3]{l=3}{\sim}\begin{pmatrix}1&2&3\\4&5&6\\7+7\upalpha&8+8\upalpha&9+9\upalpha\end{pmatrix}\]
 	
-	\(A=\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}\oversymbolnoref[k=3]{l=3}{\sim}\begin{pmatrix}1&2&3\\4&5&6\\7+7\upalpha&8+8\upalpha&9+9\upalpha\end{pmatrix}\)
-	\medskip
-	
-	\(B=\begin{pmatrix}1&0&0\\0&1&0\\0&0&\upalpha+\updelta_{33}\end{pmatrix}\implies B\cdot A=\begin{pmatrix}1&0&0\\0&1&0\\0&0&\upalpha+1\end{pmatrix}\cdot\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\begin{pmatrix}1&2&3\\4&5&6\\7(\upalpha+1)&8(\upalpha+1)&9(\upalpha+1)\end{pmatrix}\)
-	\bigskip
+	\[\begin{split}B=\begin{pmatrix}1&0&0\\0&1&0\\0&0&\upalpha+\updelta_{33}\end{pmatrix}\implies B\cdot A&=\begin{pmatrix}1&0&0\\0&1&0\\0&0&\upalpha+1\end{pmatrix}\cdot\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\\&=\begin{pmatrix}1&2&3\\4&5&6\\7(\upalpha+1)&8(\upalpha+1)&9(\upalpha+1)\end{pmatrix}\end{split}\]
 	
 	Таким образом, последовательное применение ЭП строк к матрице \(A\) эквивалентно последовательному домножению слева матрицы \(A\) на соответствующую матрицу \(B_{i}\).
 	
-	\subsubsection{Метод элементарных преобразований строк}\leavevmode
+	\subsubsection{Метод элементарных преобразований строк}
 	
 	Пусть имеется некая квадратная матрица \(A\). Изобразим её и единичную матрицу: \[\begin{pmatrix}[c|c]A&E\end{pmatrix}\]
 	
@@ -867,14 +869,11 @@
 	\end{enumerate}\end{proof}
 	\ex
 	
-	\(A=\begin{pmatrix}1&2\\1&3\end{pmatrix}\)
-	\medskip
+	\[\begin{split}&A=\begin{pmatrix}1&2\\1&3\end{pmatrix}\\ &\begin{pmatrix}[cc|cc]1&2&1&0\\1&3&0&1\end{pmatrix}\sim\begin{pmatrix}[cc|rr]1&2&1&0\\0&1&-1&1\end{pmatrix}\sim\begin{pmatrix}[cc|rr]1&0&3&-2\\0&1&-1&1\end{pmatrix}\end{split}\]
 	
-	\(\begin{pmatrix}[cc|cc]1&2&1&0\\1&3&0&1\end{pmatrix}\sim\begin{pmatrix}[cc|cc]1&2&1&0\\0&1&-1&1\end{pmatrix}\sim\begin{pmatrix}[cc|cc]1&0&3&-2\\0&1&-1&1\end{pmatrix}\)
+	Таким образом, \(A^{-1}=\begin{pmatrix}3&-2\\-1&1\end{pmatrix}\)
 	
-	\bigskip Таким образом, \(A^{-1}=\begin{pmatrix}3&-2\\-1&1\end{pmatrix}\)
-	
-	\bigskip\(A\cdot A^{-1}=\begin{pmatrix}1&2\\1&3\end{pmatrix}\cdot\begin{pmatrix}3&-2\\-1&1\end{pmatrix}=\begin{pmatrix}3-2&-2+2\\3-3&-2+3\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}=E\)
+	\[A\cdot A^{-1}=\begin{pmatrix}1&2\\1&3\end{pmatrix}\cdot\begin{pmatrix}3&-2\\-1&1\end{pmatrix}=\begin{pmatrix}3-2&-2+2\\3-3&-2+3\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}=E\]
 	
 	\chapter{Ранг матрицы}
 	\section{Определение ранга матрицы}
@@ -1207,7 +1206,16 @@
 	\end{array}\right.\]
 
 	\[A=\begin{pmatrix}a_{11}&\cdots&a_{1n}\\ a_{21}&\cdots&a_{2n}\\ \hcdotsfor{3} \\ a_{m1}&\cdots&a_{mn}\end{pmatrix},\,\augm{A}=\begin{pmatrix}[ccc|c]a_{11}&\cdots&a_{1n}&b_{1}\\ a_{21}&\cdots&a_{2n}&b_{2}\\ \hcdotsfor{4}\\ a_{m1}&\cdots&a_{mn}&b_{n}\end{pmatrix}\]
-	\begin{proof}\(\left< \Rightarrow \right>\) Предположим противное: система совместна, но \(\rank A<\rank\augm{A}\).\end{proof}
+	\begin{proof}\(\left< \Rightarrow \right>\) Предположим противное: система совместна, но \(\rank A<\rank\augm{A}\).
+	
+	Пусть \(\rank{A}=r\). Без потери общности предположим, что \(a_{11}\neq 0\) и. Приведём матрицу \(\augm{A}\) к верхнетреугольному (ступенчатому) виду.
+
+	Получим \(\augm{A}\sim\begin{pmatrix}[ccccc|l]
+										 a_{11}&\hcdotsfor{3}&a_{1n}	   &b_{1}		 \\
+										 0	   &a'_{22}		 &\hcdotsfor{2}&a_{2n}&b'_{2}\\
+									 	 \hcdotsfor{6}\\
+								 	 	 0	   &\cdots       &a'_{rr}      &\cdots&a'_{rn}&b'_{r}\\
+							 	 	 	 0	   &\cdots		 &0			   &\cdots&0	  &b'_{r+1}\end{pmatrix}\), где \(b'_{r+1}\neq 0\), т.к. \(\rank\augm{A}>\rank A\).\end{proof}
 	%TODO: fix/check periods at the end of math structures
 	%TODO: fix proof* and proof** (see \vect??)
 	%TODO: fix/check newpages, "--" or "---"
