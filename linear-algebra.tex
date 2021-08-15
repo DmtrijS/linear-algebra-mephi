@@ -73,7 +73,7 @@
 	\usetikzlibrary{cd, matrix, fit}
 \newcommand\encircle[1]{\tikz[baseline=(X.base)]\node(X)[draw, shape=circle, inner sep=2pt] {#1};}
 \newcommand\ensq[1]{\tikz[baseline=(X.base)]\node(X)[draw, shape=rectangle, inner sep=3pt] {#1};}
-\newcommand{\tikzmark}[2]{\tikz[remember picture,baseline=-2pt]\node[circle, dashed,black,draw,text=black,anchor=center,inner sep=1pt] (#1) {$#2$};}
+\newcommand{\tikzmark}[2]{\tikz[remember picture,baseline=(#1.base)]\node[circle, dashed,black,draw,text=black,anchor=center,inner sep=1pt] (#1) {$#2$};}
 \newcommand{\tikzmarkempty}[2]{\tikz[overlay,remember picture,baseline=-2pt] \node [anchor=center, inner sep=0] (#1) {$#2$};}
 \newcommand{\tikzmarkemptyX}[2]{\tikz[overlay,remember picture,baseline=(#1.base)] \node [inner sep=1pt] (#1) {$#2$};}
 %--------------------------------------------------------------------------------------------------------------------------
@@ -319,7 +319,7 @@
 	\[
 	\begin{pmatrix} i_1&i_2&\cdots&\tikzmark{a}{i_k}&i_{k+1}&\cdots&i_{l-1}&\tikzmark{b}{i_l}&\cdots&i_n\end{pmatrix}
 	\begin{tikzpicture}[overlay, remember picture]
-		\draw[<->, black] (a) to [out=340, in=200](b);
+		\draw[LaTeX-LaTeX] (a.north east) to [out=20, in=160](b.north west);
 	\end{tikzpicture}
 	\]
 	
@@ -357,7 +357,7 @@
 	
 	Пусть дана матрица $\underset{2\times 2}{M}=\begin{pmatrix} a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix}$. 
 	
-	Тогда её определитель $\displaystyle \det\underset{2\times 2}{M}=\sum_{\substack{(1\,\,2)\\(2\,\,1)}}(-1)^{\upsigma(i_1\,\,i_2)}a_{1i_1}a_{2i_2}=(-1)^{\upsigma(1\,\,2)}a_{11}a_{22}+(-1)^{\upsigma(2\,\,1)}a_{12}a_{21}=\\=a_{11}a_{22}-a_{12}a_{21}$.
+	Тогда её определитель $\displaystyle \det\underset{2\times 2}{M}=\sum_{\substack{(1\,\,2)\\(2\,\,1)}}(-1)^{\upsigma(i_1\,\,i_2)}a_{1i_1}a_{2i_2}=(-1)^{\upsigma(1\,\,2)}a_{11}a_{22}+{}\\{}+(-1)^{\upsigma(2\,\,1)}a_{12}a_{21}=a_{11}a_{22}-a_{12}a_{21}$.
 	\section{Теорема об определителе транспонированной матрицы}
 	\subsection{Транспонированная матрица}
 	\df[Транспонированная матрица]
@@ -436,13 +436,13 @@
 	
 	Поскольку $|A|=\left|A^{\mathrm{T}}\right|$, то свойство верно и для столбцов.
 	
-	\newpage \section{Вычисление определителя треугольной матрицы}
+	\section{Вычисление определителя треугольной матрицы}
 	\subsection{Треугольный вид матрицы}
 	\df[Верхнетреугольная матрица]
 	
-	\begin{tabbing}\indent Матрица $A\left\{a_{ij}\right\}_{i,j=1}^{n}$ имеет верхнетреугольный вид, \=если\\\>\({\left(\forall j =\overline{1,n},\, \forall i =\overline{2,n}\colon i>j\right) a_{ij} = 0}\).\end{tabbing}
+	 Матрица $A\left\{a_{ij}\right\}_{i,j=1}^{n}$ имеет верхнетреугольный вид, если\\\({\left(\forall j =\overline{1,n},\, \forall i =\overline{2,n}\colon i>j\right) a_{ij} = 0}\).
 	\[
-	\begin{pmatrix} 
+	A=\begin{pmatrix} 
 	a_{11}&a_{12}&\dotsb&a_{1(n-1)}&a_{1n}\\
 	0&a_{22}&\cdots&a_{2(n-1)}&a_{2n}\\
 	0&0&\cdots&a_{3(n-1)}&a_{3n}\\
@@ -489,14 +489,14 @@
 					\item Занулим элементы, стоящие под $a_{i_0 j_0}$, поочерёдно вычтя из второй по $(m+1)$--ю строки первую, умноженную на соответственно: $\dfrac{a_{21}^{\star}}{a_{i_0 j_0}}$,~$\dfrac{a_{31}^{\star}}{a_{i_0 j_0}}$,~$\dotsc$,~$\dfrac{a_{(m+1)1}^{\star}}{a_{i_0 j_0}}$
 					\[
 					\begin{pmatrix}
-						a_{i_0 j_0} & \cdots & a_{1(m+1)}^{\star}\\
-						0 &~&\tikzmarkempty{Od}{~~~~~~~}\\
-						0 &~&~\\
-						\vdots &~&~\\
-						0 &\tikzmarkempty{O}{~~~~~~~}&~\\
+						a_{i_0 j_0} &\cdots& a_{1(m+1)}^{\star}\\
+						0 &\tikz[overlay, remember picture, baseline=(Od.base)]\node (Od){\(\phantom{\cdots}\)};&\phantom{a_{1(m+1)}^{\star}}\\
+						0 &\phantom{\cdots}&\phantom{a_{1(m+1)}^{\star}}\\
+						\vdots &\phantom{\cdots}&\phantom{a_{1(m+1)}^{\star}}\\
+						0 &\phantom{\cdots}&\tikz[overlay, remember picture, baseline=(O.base)]\node (O) {\(\phantom{0_{m+1}}\)};
 					\end{pmatrix}
 					\begin{tikzpicture}[overlay, remember picture]
-						\draw (O.south west) rectangle (Od.north east) node [midway, align=center] {Матрица\\размером\\$m\times m$};
+						\draw[fill=green!20, thick, rounded corners] (Od.north west) rectangle (O.east) node [midway, align=center] {Матрица\\размером\\$m\times m$};
 					\end{tikzpicture}
 					\]
 					\item По предположению индукции можем привести матрицу размером $m\times m$ к верхнетреугольному виду.
@@ -511,16 +511,13 @@
 	
 	\ex
 	
-	$\displaystyle 
-	\underset{3\times 3}{A}=\begin{pmatrix}
+	\(\begin{aligned}\displaystyle 
+	&\underset{3\times 3}{A}=\begin{pmatrix}
 		a_{11}&a_{12}&a_{13}\\
 		a_{21}&a_{22}&a_{23}\\
 		a_{31}&a_{32}&a_{33}\\
-	\end{pmatrix}
-	$
-	\medskip
-	
-	$\mathrm{M}_{22}\Big(\underset{3\times 3}{A}\Big)=
+	\end{pmatrix}\\
+	&\mathrm{M}_{22}\Big(\underset{3\times 3}{A}\Big)=
 	\begin{vmatrix}
 		a_{11}&\tikzmarkempty{A}{a_{12}}&a_{13}\\
 		\tikzmarkempty{C}{a_{21}}&a_{22}&\tikzmarkempty{D}{a_{23}}\\
@@ -533,13 +530,13 @@
 	\begin{tikzpicture}[overlay, remember picture]
 		\draw[red, very thick] (A.north) to (B.south);
 		\draw[red, very thick] (C.west) to (D.east);
-	\end{tikzpicture}
-	$
+	\end{tikzpicture}\end{aligned}\)
 	
 	\df[Алгебраическое дополнение]
 	
-	Алгебраическое дополнение, соответствующее элементу $a_{kl}$, равно $\mathrm{A}_{kl}=(-1)^{k+l}\mathrm{M}_{kl}$
-	\newpage \subsection{Лемма I}\label{2.5.2}
+	Алгебраическое дополнение, соответствующее элементу $a_{kl}$, равно\\$\mathrm{A}_{kl}=(-1)^{k+l}\mathrm{M}_{kl}$
+	
+	\subsection{Лемма I}\label{2.5.2}
 	
 	\lm{Если в матрице $\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}$, $\boldsymbol{\left(\forall j=\overline{1,n-1}\right)a_{nj}=0}$, то $\boldsymbol{|A|=a_{nn}\mathrm{A}_{nn}}$}
 	\begin{proof}
@@ -552,10 +549,10 @@
 			a_{\substack{(n-1)\\1}}&a_{\substack{(n-1)\\2}}&\cdots&a_{\substack{(n-1)\\(n-1)}}&a_{\substack{(n-1)\\n}}\\
 			0&0&\cdots&0&a_{nn}\\
 			\end{pmatrix}
-		\\[35pt]
-		|A| &= \sum_{(\inlineperm{1}{n-1}\,\,i_n)}(-1)^{\upsigma({\inlineperm{1}{n-1}\,\, i_n})}a_{1i_1}a_{2i_2}\cdots a_{ni_n}=\\[5pt]
-		&=0+0+0+\dotsb+0+\smashoperator[l]{\sum_{(\inlineperm{1}{n-1}\,\,n)}}(-1)^{\upsigma(\inlineperm{1}{n-1}\,\,n)}a_{1i_1}a_{2i_2}\cdots a_{\substack{(n-1)\\i_{n-1}}}a_{nn}=\\[5pt]
-		&=a_{nn}\cdot\smashoperator[l]{\sum_{(\inlineperm{1}{n-1})}}(-1)^{\upsigma(\inlineperm{1}{n-1})}a_{1i_1}a_{2i_2}\cdots a_{\substack{(n-1)\\i_{n-1}}}=\\[5pt]
+		\\[\baselineskip]
+		|A| &= \sum_{(\inlineperm{1}{n-1}\,\,i_n)}(-1)^{\upsigma({\inlineperm{1}{n-1}\,\, i_n})}a_{1i_1}a_{2i_2}\cdots a_{ni_n}=\\
+		&=0+0+0+\dotsb+0+\smashoperator[l]{\sum_{(\inlineperm{1}{n-1}\,\,n)}}(-1)^{\upsigma(\inlineperm{1}{n-1}\,\,n)}a_{1i_1}a_{2i_2}\cdots a_{\substack{(n-1)\\i_{n-1}}}a_{nn}=\\
+		&=a_{nn}\cdot\smashoperator[l]{\sum_{(\inlineperm{1}{n-1})}}(-1)^{\upsigma(\inlineperm{1}{n-1})}a_{1i_1}a_{2i_2}\cdots a_{\substack{(n-1)\\i_{n-1}}}=\\
 		&=a_{nn}\mathrm{M}_{nn}=a_{nn}\cdot (-1)^{n+n}\mathrm{M}_{nn}=a_{nn}\mathrm{A}_{nn}
 	\end{align*}
 	\end{gather}\end{proof}
@@ -579,11 +576,11 @@
 								\vdots&\vdots&\vdots&\ddots&\vdots&\vdots&\vdots\\
 								0&\cdots&0&0&\cdots&0&a_{nl}\\
 							\end{vmatrix}
-		\oversymbol{\nameref{2.5.2}}{=}(-1)^{n-l}\cdot a_{nl}\mathrm{M}_{nl}=\\[5pt]
+		\oversymbol{\nameref{2.5.2}}{=}(-1)^{n-l}\cdot a_{nl}\mathrm{M}_{nl}=\\
 		&=\Big\langle(-1)^{n-l}=(-1)^{n+l}\Big\rangle=a_{nl}\cdot (-1)^{n+l}\mathrm{M}_{nl}=a_{nl}\mathrm{A}_{nl}
 	\end{align*}\end{proof}
 	
-	\newpage \subsection{Лемма III}\label{2.5.4}
+	\subsection{Лемма III}\label{2.5.4}
 	
 	\lm{Определитель матрицы \(\boldsymbol{A\left\{a_{ij}\right\}_{i,j=1}^{n}}\) равен \(\displaystyle\boldsymbol{ |A|=\sum_{i=1}^{n}a_{ni}\mathrm{A}_{ni}}\)}
 	\begin{proof}
@@ -614,14 +611,14 @@
 						\vdots&\ddots&\vdots\\
 						a_{\substack{(k-1)\\1}}&\cdots&a_{\substack{(k-1)\\n}}\\
 						a_{\substack{(k+1)\\1}}&\cdots&a_{\substack{(k+1)\\n}}\\
-						\vdots&\ddots&\vdots&\\
+						\vdots&\ddots&\vdots\\
 						a_{n1}&\cdots&a_{nn}\\
-						\tikzmarkempty{Ak1}{a_{k1}}&\cdots&a_{kn}\\
-						\end{vmatrix}\oversymbol{\nameref{2.5.4}}{=}(-1)^{n-k}\cdot\sum_{i=1}^{n}a_{ki}\mathrm{A}_{ki}=\\[5pt]
-			&=(-1)^{n-k}\sum_{i=1}^{n}(-1)^{n+i}a_{ki}\mathrm{M}_{ki}=\sum_{i=1}^{n}(-1)^{2n-k+i}a_{ki}\mathrm{M}_{ki}=\\[5pt]
+						\tikz[overlay, remember picture, baseline=(Ak1.base)]\node (Ak1){\(a_{k1}\)};&\cdots&a_{kn}\\
+						\end{vmatrix}\oversymbol{\nameref{2.5.4}}{=}(-1)^{n-k}\cdot\sum_{i=1}^{n}a_{ki}\mathrm{A}_{ki}=\\
+			&=(-1)^{n-k}\sum_{i=1}^{n}(-1)^{n+i}a_{ki}\mathrm{M}_{ki}=\sum_{i=1}^{n}(-1)^{2n-k+i}a_{ki}\mathrm{M}_{ki}=\\
 			&=\sum_{i=1}^{n}(-1)^{k+i}a_{ki}\mathrm{M}_{ki}=\sum_{i=1}^{n}a_{ki}\mathrm{A}_{ki}
 		\begin{tikzpicture}[overlay, remember picture]
-			\draw [LaTeX-, thick] (Ak1.west) ++(-10pt, 0) to ++(-25pt, 0) node [align=center] {\scriptsize\(\big\langle n\text{--я строка}\big\rangle\)\hspace{52pt}};
+			\draw [LaTeX-, thick] (Ak1.west) ++(-.5em, 0) to ++(-2em, 0) node [align=right, left, fill=green!20, outer sep=.05em, inner sep=.1em, rounded corners] {\scriptsize\(\big\langle n\text{--я строка}\big\rangle\)};
 		\end{tikzpicture}
 	\end{align*}\end{proof}
 	\section{Фальшивое разложение определителя}
@@ -717,21 +714,18 @@
 	В общем случае \(A\cdot B\neq B\cdot A\)
 	\ex
 	
-	\(A=\begin{pmatrix}3&1\\-1&4\end{pmatrix}\), \(B=\begin{pmatrix}2&1\\-3&0\end{pmatrix}\)
-	\medskip
+	\(\begin{aligned}&A=\begin{pmatrix}[rr]3&1\\-1&4\end{pmatrix},~B=\begin{pmatrix}[rr]2&1\\-3&0\end{pmatrix}\\
+	&\begin{drcases}
+	A\cdot B = \begin{pmatrix}[rr]3&1\\-1&4\end{pmatrix}\cdot\begin{pmatrix}[rr]2&1\\-3&0\end{pmatrix}=\begin{pmatrix}[rr]3&3\\-14&-1\end{pmatrix}\\
+	B\cdot A=\begin{pmatrix}[rr]2&1\\-3&0\end{pmatrix}\cdot\begin{pmatrix}[rr]3&1\\-1&4\end{pmatrix}=\begin{pmatrix}[rr]5&6\\-9&-3\end{pmatrix}
+	\end{drcases}\implies A\cdot B\neq B\cdot A\end{aligned}\)
 	
-	\[ 
-	\begin{drcases}
-	A\cdot B = \begin{pmatrix}3&1\\-1&4\end{pmatrix}\cdot\begin{pmatrix}2&1\\-3&0\end{pmatrix}=\begin{pmatrix}3&3\\-14&-1\end{pmatrix}\\[10pt]
-	B\cdot A=\begin{pmatrix}2&1\\-3&0\end{pmatrix}\cdot\begin{pmatrix}3&1\\-1&4\end{pmatrix}=\begin{pmatrix}5&6\\-9&-3\end{pmatrix}
-	\end{drcases}\implies A\cdot B\neq B\cdot A
-	\]
 	\section{Единичная матрица}
 	\df[Единичная матрица]
 	
-	Единичная матрица --- матрица \(E\left\{e_{ij}\right\}_{i,j=1}^{n}\), \(\left(\forall i =\overline{1,n},\forall j =\overline{1,n}\right)e_{ij}=\tikzmark{K}{\updelta_{ij}}=\begin{cases}1,&i=j\\0,&i\neq j\end{cases}
+	Единичная матрица --- матрица \(E\left\{e_{ij}\right\}_{i,j=1}^{n}\), \(\left(\forall i =\overline{1,n},\forall j =\overline{1,n}\right)\\e_{ij}=\tikzmark{K}{\updelta_{ij}}=\begin{cases}1,&i=j\\0,&i\neq j\end{cases}
 		\begin{tikzpicture}[overlay, remember picture]
-			\draw [LaTeX-, thick] (K.north) [out=90, in=-90] to ++(20pt, 25pt) node [align=center] {\scriptsize\(\big\langle\)Символ Кронекера\(\big\rangle\)\\} ;
+			\draw [LaTeX-, thick] (K.south) [out=-115, in=85] to ++(-1.5em, -2em) node [align=center, below] {\scriptsize\(\big\langle\)Символ Кронекера\(\big\rangle\)} ;
 		\end{tikzpicture}
 	\)
 	
@@ -766,11 +760,12 @@
 			\end{align*}
 				\item Докажем, что если \(|A|\neq 0\), то \(\exists A^{-1}=\dfrac{1}{|A|}\big(A^{*}\big)^{\mathrm{T}}\), где \(A=\left\{a_{ij}\right\}_{i,j=1}^{n},\,A^{*}=\left\{\mathrm{A}_{ij}\right\}_{i,j=1}^{n}\).
 			
-			Рассмотрим \(B=\dfrac{1}{|A|}\big(A^{*}\big)^{\mathrm{T}}\) и докажем, что \(A\cdot B=B\cdot A=E\):\\[6pt]
+			Рассмотрим \(B=\dfrac{1}{|A|}\big(A^{*}\big)^{\mathrm{T}}\) и докажем, что \(A\cdot B=B\cdot A=E\).
+			
 			\(\underset{n\times n}{A}\cdot\underset{n\times n}{B}=\underset{n\times n}{C}\), \(|A| = \Updelta\)
 			\begin{align*}
-				c_{ij}&=\sum_{t=1}^{n}a_{it}b_{tj}=\sum_{t=1}^{n}a_{it}\cdot\dfrac{1}{\Updelta}\mathrm{A}_{jt}=\dfrac{1}{\Updelta}\sum_{t=1}^{n}a_{it}\mathrm{A}_{jt}=\\[5pt]
-					&=\begin{cases}\dfrac{1}{\Updelta}\cdot\Updelta,&i=j\\[10pt]0,&i\neq j\end{cases}=\begin{cases}1,&i=j\\[10pt]0,&i\neq j\end{cases}=\updelta_{ij}\implies\\
+				c_{ij}&=\sum_{t=1}^{n}a_{it}b_{tj}=\sum_{t=1}^{n}a_{it}\cdot\dfrac{1}{\Updelta}\mathrm{A}_{jt}=\dfrac{1}{\Updelta}\sum_{t=1}^{n}a_{it}\mathrm{A}_{jt}=\\
+					&=\begin{cases}\dfrac{1}{\Updelta}\cdot\Updelta,&i=j\\0,&i\neq j\end{cases}=\begin{cases}1,&i=j\\0,&i\neq j\end{cases}\equiv\updelta_{ij}\implies\\
 					&\implies C=E
 			\end{align*}
 			
@@ -778,7 +773,8 @@
 			\end{itemize}
 		\item Единственность:
 		
-			 Пусть для матрицы \(A\) существуют матрицы \(B\) и \(C\) такие, что \(\begin{cases}A\cdot B=B\cdot A = E\\A\cdot C=C\cdot A= E\\ B\neq C\end{cases}\)\\
+			 Пусть для матрицы \(A\) существуют матрицы \(B\) и \(C\) такие, что \(\begin{cases}A\cdot B=B\cdot A = E\\A\cdot C=C\cdot A= E\\ B\neq C\end{cases}\)
+			 
 			Тогда, \(\begin{rcases}C\cdot A\cdot B=\big(C\cdot A\big)\cdot B=E\cdot B=B\\C\cdot A\cdot B=C\cdot\big(A\cdot B\big)=C\cdot E= C\end{rcases}\implies B=C\implies\skull\)
 		\end{enumerate}
 	\end{proof}
@@ -1191,7 +1187,9 @@
 	
 	\begin{flushleft}\encircle{\textbf{3}} \textbf{Любое решение системы \hyperref[HSOQm]{\(\boldsymbol{(1)}\)} можно получить как линейную комбинацию системы } \(\boldsymbol{\Big\{}\vect[c]{X}{}^{\boldsymbol{(1)}}\boldsymbol{,\dotsc\,,}\vect[c]{X}{}^{\boldsymbol{(n-r)}}\boldsymbol{\Big\}}\)\end{flushleft}
 	
-	\begin{proof}Пусть \(\vect[c]{Y}{}=\begin{pmatrix}y_{1}\\ \vdots\\ y_{n}\end{pmatrix}\) --- какое-нибудь решение системы \eqref{HSOQm}.
+	\begin{proof}
+	
+	Пусть \(\vect[c]{Y}{}=\begin{pmatrix}y_{1}\\ \vdots\\ y_{n}\end{pmatrix}\) --- какое-нибудь решение системы \eqref{HSOQm}.
 	
 	Рассмотрим \(\displaystyle \vect[c]{Z}{}=\sum_{i=1}^{n-r}y_{r+i}\vect[c]{X}{}=\left(\begin{smallmatrix}z_{1}\\[1pt] \myvdots\\[1pt] z_{r}\\[2pt]y_{r+1}\\[1pt] \myvdots\\[1pt] y_{n}\end{smallmatrix}\right)\) --- решение системы \eqref{HSOQ} согласно утверждению \hyperref[5.4 S2]{\color{MMagenta}\encircle{\textbf{2}}}, а,\nolinebreak[4] соответственно, и системы \eqref{HSOQm}.
 
