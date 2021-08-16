@@ -74,7 +74,7 @@
 \newcommand\encircle[1]{\tikz[baseline=(X.base)]\node(X)[draw, shape=circle, inner sep=2pt] {#1};}
 \newcommand\ensq[1]{\tikz[baseline=(X.base)]\node(X)[draw, shape=rectangle, inner sep=3pt] {#1};}
 \newcommand{\tikzmark}[2]{\tikz[remember picture,baseline=(#1.base)]\node[circle, dashed,black,draw,text=black,anchor=center,inner sep=1pt] (#1) {$#2$};}
-\newcommand{\tikzmarkempty}[2]{\tikz[overlay,remember picture,baseline=-2pt] \node [anchor=center, inner sep=0] (#1) {$#2$};}
+\newcommand{\tikzmarkempty}[2]{\tikz[overlay,remember picture,baseline=(#1.base)] \node (#1) {$#2$};}
 \newcommand{\tikzmarkemptyX}[2]{\tikz[overlay,remember picture,baseline=(#1.base)] \node [inner sep=1pt] (#1) {$#2$};}
 %--------------------------------------------------------------------------------------------------------------------------
 \newcommand{\df}[1][]{\begin{flushleft}\textbf{\underline{Опр} \textcolor{Plum}{#1}}\end{flushleft}}
@@ -202,14 +202,6 @@
 \setlength{\parindent}{1.25cm} %ГОСТ 7.32
 \binoppenalty=\maxdimen
 \relpenalty=\maxdimen
-
-\tolerance 1414
-\hbadness 1414
-\emergencystretch 1.5em
-\hfuzz 0.3pt
-\widowpenalty=10000
-\vfuzz \hfuzz
-\raggedbottom
 \begin{document}
 \setlength{\jot}{.5\baselineskip}
 	\title{
@@ -994,8 +986,8 @@
  						a_{r1}&\cdots&\tikzmarkempty{B}{a_{rr}}&\cdots&\tikzmarkempty{C}{a_{rn}}\\
  						\vdots&\ddots&\vdots&\ddots&\vdots\\
  						a_{m1}&\hcdotsfor{3}&a_{mn} \end{pmatrix}\begin{tikzpicture}[overlay, remember picture]
- 						\draw[rounded corners=1.5pt, blue, fill=blue!5, fill opacity=0.4, ultra thin] (A.north west) rectangle (C.south east);
- 						\draw[dashed, red, very thin] (A.north west) rectangle (B.south east);
+ 						\draw[rounded corners=1.5pt, blue, fill=blue!5, fill opacity=0.4, very thin] (A.north west) rectangle (C.south east);
+ 						\draw[dashed, red, thin] (A.north west) rectangle (B.south east);
  						\end{tikzpicture}\]
 	 
 	 Предположим противное: одна из этих строк (пусть \(r\)--я) является линейной комбинацией других.
@@ -1012,21 +1004,23 @@
  	\begin{proof}Приведём эту матрицу к ступенчатому виду. Найдутся \(l_{1},\dotsc,l_{m}\) и \(k_{1},\dotsc,k_{m}\) -- ненулевые строки и столбцы соответственно. Таким образом, ранг матрицы \(A\) равен \(m\) и нужный минор имеет вид \(\mathrm{M}_{_{l_{1}\dotsb l_{m}}}^{^{k_{1}\dotsb k_{m}}}=\mathrm{M}^{m}\big(A\big)\neq 0\).
  	\end{proof}
  
- 	\bigskip Далее будем пользоваться следующими обозначениями: 
+  	Далее будем пользоваться следующими обозначениями:
  	\begin{align*}
  	\vect[l]{A}{}=\begin{pmatrix}a_{1}&\cdots&a_{n}\end{pmatrix}&\text{ -- вектор-строка}
- 	\\[3.5pt]	
+ 	\\	
  	\vect[c]{X}{}=\begin{pmatrix}x_{1}\\\vdots\\x_{n}\end{pmatrix}&\text{ -- вектор-столбец}
- 	\\[3.5pt]
+ 	\\
  	\vect{b}{}&\text{ -- любой вектор (вектор-строка ИЛИ вектор-столбец)}
  	\end{align*}
  
  	\df[Линейная оболочка системы векторов]
  	
- 	Линейной оболочкой данной системы векторов \(\{\vect{a}{1},\dotsc,\vect{a}{n}\}\) называется множество \[L\big(\vect{a}{1}\dotsb\vect{a}{n}\big)=\Bigg\{\vect{x}{}~\bigg|~\exists\{\uplambda_{i}\}_{i=1}^{n}\subset\mathbb{R}: \vect{x}{}=\sum_{i=1}^{n}\uplambda_{i}\vect{a}{i}\Bigg\}\] 
+ 	Линейной оболочкой данной системы векторов \(\{\vect{a}{1},\dotsc,\vect{a}{n}\}\) называется множество
+ 	
+ 	\[L\big(\vect{a}{1}\dotsb\vect{a}{n}\big)=\Bigg\{\vect{x}{}~\bigg|~\exists\{\uplambda_{i}\}_{i=1}^{n}\subset\mathbb{R}: \vect{x}{}=\sum_{i=1}^{n}\uplambda_{i}\vect{a}{i}\Bigg\}\] 
  	
  	\lm[3]{Если система векторов \(\boldsymbol{\{}\vect{a}{\bm{1}}\boldsymbol{,}\boldsymbol{\dotsc}\,\boldsymbol{,}\vect{a}{\bm{k}}\boldsymbol{\}}\) -- линейно независима, а \(\boldsymbol{\{}\vect{a}{\bm{1}}\boldsymbol{,\dotsc\,,}\vect{a}{\bm{k}}\boldsymbol{\}}\boldsymbol{\cup}\boldsymbol{\{}\vect{b}{}\boldsymbol{\}}\)\nolinebreak[4] --\nolinebreak[4] линейно зависима, то \(\vect{b}{}\boldsymbol{\in} \boldsymbol{L\big(}\vect{a}{\bm{1}}\boldsymbol{\dotsb}\,\vect{a}{\bm{k}}\bm{\big)}\)}\label{4.4 L3}
- 	\begin{proof}\(\{\vect{a}{1},\dotsc,\vect{a}{k},\vect{b}{}\}\) -- линейно зависимы\(\displaystyle\iff\exists\{\uplambda_i\}_{i=1}^{k},\upmu:\sum_{i=1}^{k}|\uplambda_i|+|\upmu|\neq 0\) и \(\displaystyle\sum_{i=1}^{k}\uplambda_{i}\vect{a}{i}+\upmu\vect{b}{}=\vect{0}{}\)
+ 	\begin{proof}\(\{\vect{a}{1},\dotsc,\vect{a}{k},\vect{b}{}\}\) -- линейно зависимы\(\displaystyle\iff\exists\{\uplambda_i\}_{i=1}^{k},\upmu:\begin{aligned}[t]&\sum_{i=1}^{k}|\uplambda_i|+|\upmu|\neq 0\text{ и }\\ &\sum_{i=1}^{k}\uplambda_{i}\vect{a}{i}+\upmu\vect{b}{}=\vect{0}{}\end{aligned}\)
  	\begin{enumerate}[1)]\item Если \(\upmu=0\), то \(\{\vect{a}{1},\dotsc,\vect{a}{k}\}\) -- линейно зависимы, что противоречит условию. \item Если \(\upmu\neq 0\), то, поделив сумму на \(\upmu\neq 0\), получим \(\vect{b}{}\in L\big(\vect{a}{1}\dotsb\vect{a}{k}\big)\).\end{enumerate}\end{proof}
  	
  	\tm[2]{Если \(\vect[l*]{A}{\boldsymbol{m_1}}\boldsymbol{,\dotsc\,,}\vect[l*]{A}{\boldsymbol{m_r}}\) --- строки, входящие в базисный минор матрицы \(\boldsymbol{A}\) (т.е.\nolinebreak[4] \(\boldsymbol{\rank A = r}\)), то \(\boldsymbol{\big(\forall k\neq m_{i},\, i=\overline{1,r}\big)}\vect[l*]{A}{\boldsymbol{k}}\boldsymbol{\in} \boldsymbol{L\Big(}\vect[l*]{A}{\boldsymbol{m_1}}\boldsymbol{\dotsb}\,\vect[l*]{A}{\boldsymbol{m_r}}\boldsymbol{\Big)}\)}
@@ -1034,7 +1028,7 @@
  		
  	Предположим противное: тогда имеем в матрице \(A\) \((r+1)\) штук линейно независимых строк. По \hyperref[4.4 L2]{\color{MMagenta}\(\mathbf{\Big[\textbf{Л}^2\Big]}\)} можно найти минор \(\mathrm{M}^{r+1}\big(A\big)\neq 0\), т.е. \(\rank A\neq r\implies\skull\).
  
-	Следовательно, \(\Big\{\vect[l*]{A}{m_1},\dotsc,\vect[l*]{A}{m_r}\Big\}\bigcup\Big\{\vect[l*]{A}{k}\Big\}\) --- лин. зав., но из \hyperref[4.4 Th1]{\color{MMagenta}\(\mathbf{\Big[\textbf{Th}^1\Big]}\)} \(\Big\{\vect[l*]{A}{m_1},\dotsc,\vect[l*]{A}{m_r}\Big\}\) --- лин. нез. Значит, по \hyperref[4.4 L3]{\color{MMagenta}\(\mathbf{\Big[\textbf{Л}^3\Big]}\)} \(\vect[l*]{A}{k}\in L\Big(\vect[l*]{A}{m_1}\dotsb\,\vect[l*]{A}{m_r}\Big)\).\end{proof}
+	Следовательно, \(\Big\{\vect[l*]{A}{m_1},\dotsc,\vect[l*]{A}{m_r}\Big\}\bigcup\Big\{\vect[l*]{A}{k}\Big\}\) --- лин. зав., но из \hyperref[4.4 Th1]{\color{MMagenta}\(\mathbf{\Big[\textbf{Th}^1\Big]}\)} \(\Big\{\vect[l*]{A}{m_1},\dotsc,\vect[l*]{A}{m_r}\Big\}\)~---~лин.~нез. Значит, по \hyperref[4.4 L3]{\color{MMagenta}\(\mathbf{\Big[\textbf{Л}^3\Big]}\)} \(\vect[l*]{A}{k}\in L\Big(\vect[l*]{A}{m_1}\dotsb\,\vect[l*]{A}{m_r}\Big)\).\end{proof}
 
 	\chapter{Системы линейных алгебраических уравнений}
 	\[\left\{\begin{array}{@{}l@{}}a_{11}x_{1}+a_{12}x_{2}+\dotsb+a_{1n}x_{n}=b_{1},\\[3pt]
@@ -1086,7 +1080,7 @@
 				   	   \hcdotsfor{3}\\
 			   	   	   a_{n1}&\cdots&a_{nn}\end{pmatrix},\, \vect[c]{X}{}=\begin{pmatrix}x_{1}\\\vdots\\x_{n}\end{pmatrix},\,\vect[c]{B}{}=\begin{pmatrix}b_1\\\vdots\\b_n\end{pmatrix}\]
 	\begin{proof}Введём \(\Updelta_{i}\):
-	\begin{align*} \Updelta_{1}&=\begin{vmatrix}\vect[c]{B}{}&\vect[c]{A}{2}&\cdots&\vect[c]{A}{n}\end{vmatrix}=\begin{vmatrix}b_{1}&a_{12}&\tikzmarkempty{A}{\phantom{b_{22}}}&a_{1n}\\ \vdots&\vdots&\phantom{\vdots}&\vdots\\b_{n}&a_{n2}&\tikzmarkempty{B}{\phantom{b_{22}}}&a_{nn}\end{vmatrix},\\[10pt]
+	\begin{align*} \Updelta_{1}&=\begin{vmatrix}\vect[c]{B}{}&\vect[c]{A}{2}&\cdots&\vect[c]{A}{n}\end{vmatrix}=\begin{vmatrix}b_{1}&a_{12}&\tikzmarkempty{A}{\phantom{a_{22}}}&a_{1n}\\ \vdots&\vdots&\phantom{\vdots}&\vdots\\b_{n}&a_{n2}&\tikzmarkempty{B}{\phantom{a_{22}}}&a_{nn}\end{vmatrix},\\[10pt]
 	\cdots\\[10pt]
 	\Updelta_{i}&=\begin{vmatrix}\vect[c]{A}{1}&\cdots&\vect[c]{A}{i-1}&\vect[c]{B}{}&\vect[c]{A}{i+1}&\cdots&\vect[c]{A}{n}\end{vmatrix}=\begin{vmatrix}a_{11}&\tikzmarkempty{D}{\phantom{a_{12}}}&a_{1(i-1)}&b_{1}&a_{1(i+1)}&\tikzmarkempty{C}{\phantom{a_{12}}}&a_{1n}\\
 				\vdots&\phantom{\vdots}&\vdots&\vdots&\vdots&\phantom{\vdots}&\vdots\\
@@ -1115,7 +1109,7 @@
 		{}+{}&\tikzmarkempty{As2}{}\phantom{\mathrm{A}_{3p}\cdot (x_{1}a_{31}+\dotsb+x_{n}a_{3n})}\tikzmarkempty{Bs2}{}{}+{}\\
 		{}+{}&\mathrm{A}_{np}\cdot(x_{1}a_{n1}+\dotsb+x_{n}a_{nn})
 		\begin{tikzpicture}[overlay, remember picture]
-		\draw[line width=1.157pt, line cap=round, dash pattern=on 0pt off 3.5\pgflinewidth] (As1.north) -- (Bs1.north);
+		\draw[line width=1.157pt, line cap=round, dash pattern=on 0pt off 3.5\pgflinewidth] (As1.center) -- (Bs1.center);
 		\draw[line width=1.157pt, line cap=round, dash pattern=on 0pt off 3.5\pgflinewidth] (As2.north) -- (Bs2.north);
 		\end{tikzpicture}\end{aligned}=\begin{aligned}&\mathrm{A}_{1p}b_{1}+{}\\
 												 {}+{}&\mathrm{A}_{2p}b_{2}+{}\\
@@ -1224,4 +1218,5 @@
 	%TODO: fix proof* and proof** (see \vect??)
 	%TODO: fix/check newpages, "--" or "---"
 	%TODO: fix spacing, and smth??
+	%TODO: FIX FUCKING EVERYTHING THAT HAS BROKEN AS A RESULT OF REDEFINING MARGINS AND TIKZMARKEMPTY, ETC
 \end{document}
