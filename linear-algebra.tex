@@ -752,7 +752,7 @@
 			\end{align*}
 				\item Докажем, что если \(|A|\neq 0\), то \(\exists A^{-1}=\dfrac{1}{|A|}\big(A^{*}\big)^{\mathrm{T}}\), где \(A=\left\{a_{ij}\right\}_{i,j=1}^{n},\,A^{*}=\left\{\mathrm{A}_{ij}\right\}_{i,j=1}^{n}\).
 			
-			Рассмотрим \(B=\dfrac{1}{|A|}\big(A^{*}\big)^{\mathrm{T}}\) и докажем, что \(A\cdot B=B\cdot A=E\).
+			Рассмотрим \(B=\dfrac{1}{|A|}\big(A^{*}\big)^{\mathrm{T}}\) и докажем, что \(A\cdot B=B\cdot A=E\).\\
 			
 			\(\underset{n\times n}{A}\cdot\underset{n\times n}{B}=\underset{n\times n}{C}\), \(|A| = \Updelta\)
 			\begin{align*}
@@ -845,7 +845,7 @@
 	\ex
 	
 	\(\begin{aligned}&A=\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}\oversymbolnoref[k=3]{l=3}{\sim}\begin{pmatrix}1&2&3\\4&5&6\\7+7\upalpha&8+8\upalpha&9+9\upalpha\end{pmatrix}\\
-	&B=\begin{pmatrix}1&0&0\\0&1&0\\0&0&\upalpha+\updelta_{33}\end{pmatrix}\implies B\cdot A=\begin{pmatrix}1&0&0\\0&1&0\\0&0&\upalpha+1\end{pmatrix}\cdot\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\begin{pmatrix}1&2&3\\4&5&6\\7(\upalpha+1)&8(\upalpha+1)&9(\upalpha+1)\end{pmatrix}\end{aligned}\)
+	&B=\begin{pmatrix}1&0&0\\0&1&0\\0&0&\upalpha+\updelta_{33}\end{pmatrix}\implies B\cdot A=\begin{pmatrix}1&0&0\\0&1&0\\0&0&\upalpha+1\end{pmatrix}\cdot\begin{pmatrix}1&2&3\\4&5&6\\7&8&9\end{pmatrix}=\begin{pmatrix}1&2&3\\4&5&6\\7(\upalpha+1)&8(\upalpha+1)&9(\upalpha+1)\end{pmatrix}\end{aligned}\)\\
 	
 	Таким образом, последовательное применение ЭП строк к матрице \(A\) эквивалентно последовательному домножению слева матрицы \(A\) на соответствующую матрицу \(B_{i}\).
 	
@@ -863,11 +863,11 @@
 	\end{enumerate}\end{proof}
 	\ex
 	
-	\[\begin{split}&A=\begin{pmatrix}1&2\\1&3\end{pmatrix}\\ &\begin{pmatrix}[cc|cc]1&2&1&0\\1&3&0&1\end{pmatrix}\sim\begin{pmatrix}[cc|rr]1&2&1&0\\0&1&-1&1\end{pmatrix}\sim\begin{pmatrix}[cc|rr]1&0&3&-2\\0&1&-1&1\end{pmatrix}\end{split}\]
+	\(\begin{aligned}[b]&A=\begin{pmatrix}1&2\\1&3\end{pmatrix}\\ &\begin{pmatrix}[cc|cc]1&2&1&0\\1&3&0&1\end{pmatrix}\sim\begin{pmatrix}[cc|rr]1&2&1&0\\0&1&-1&1\end{pmatrix}\sim\begin{pmatrix}[cc|rr]1&0&3&-2\\0&1&-1&1\end{pmatrix}\end{aligned}\)\\
 	
-	Таким образом, \(A^{-1}=\begin{pmatrix}3&-2\\-1&1\end{pmatrix}\)
+	Таким образом, \(A^{-1}=\begin{pmatrix*}[r]3&-2\\-1&1\end{pmatrix*}\)\\
 	
-	\[A\cdot A^{-1}=\begin{pmatrix}1&2\\1&3\end{pmatrix}\cdot\begin{pmatrix}3&-2\\-1&1\end{pmatrix}=\begin{pmatrix}3-2&-2+2\\3-3&-2+3\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}=E\]
+	\(A\cdot A^{-1}=\begin{pmatrix}1&2\\1&3\end{pmatrix}\cdot\begin{pmatrix*}[r]3&-2\\-1&1\end{pmatrix*}=\begin{pmatrix}3-2&-2+2\\3-3&-2+3\end{pmatrix}=\begin{pmatrix}1&0\\0&1\end{pmatrix}=E\)
 	
 	\chapter{Ранг матрицы}
 	\section{Определение ранга матрицы}
@@ -1024,9 +1024,9 @@
  	\begin{enumerate}[1)]\item Если \(\upmu=0\), то \(\{\vect{a}{1},\dotsc,\vect{a}{k}\}\) -- линейно зависимы, что противоречит условию. \item Если \(\upmu\neq 0\), то, поделив сумму на \(\upmu\neq 0\), получим \(\vect{b}{}\in L\big(\vect{a}{1}\dotsb\vect{a}{k}\big)\).\end{enumerate}\end{proof}
  	
  	\tm[2]{Если \(\vect[l*]{A}{\boldsymbol{m_1}}\boldsymbol{,\dotsc\,,}\vect[l*]{A}{\boldsymbol{m_r}}\) --- строки, входящие в базисный минор матрицы \(\boldsymbol{A}\) (т.е.\nolinebreak[4] \(\boldsymbol{\rank A = r}\)), то \(\boldsymbol{\big(\forall k\neq m_{i},\, i=\overline{1,r}\big)}\vect[l*]{A}{\boldsymbol{k}}\boldsymbol{\in} \boldsymbol{L\Big(}\vect[l*]{A}{\boldsymbol{m_1}}\boldsymbol{\dotsb}\,\vect[l*]{A}{\boldsymbol{m_r}}\boldsymbol{\Big)}\)}
- 	\begin{proof}Докажем, что \(\Big\{\vect[l*]{A}{m_1},\dotsc,\vect[l*]{A}{m_r},\vect[l*]{A}{k}\Big\}\) --- линейно зависимая система. 
+ 	\begin{proof}Докажем, что \(\Big\{\vect[l*]{A}{m_1},\dotsc,\vect[l*]{A}{m_r},\vect[l*]{A}{k}\Big\}\) --- линейно зависимая система.\\
  		
- 	Предположим противное: тогда имеем в матрице \(A\) \((r+1)\) штук линейно независимых строк. По \hyperref[4.4 L2]{\color{MMagenta}\(\mathbf{\Big[\textbf{Л}^2\Big]}\)} можно найти минор \(\mathrm{M}^{r+1}\big(A\big)\neq 0\), т.е. \(\rank A\neq r\implies\skull\).
+ 	Предположим противное: тогда имеем в матрице \(A\) \((r+1)\) штук линейно независимых строк. По \hyperref[4.4 L2]{\color{MMagenta}\(\mathbf{\Big[\textbf{Л}^2\Big]}\)} можно найти минор \(\mathrm{M}^{r+1}\big(A\big)\neq 0\), т.е. \(\rank A\neq r\implies\skull\).\\
  
 	Следовательно, \(\Big\{\vect[l*]{A}{m_1},\dotsc,\vect[l*]{A}{m_r}\Big\}\bigcup\Big\{\vect[l*]{A}{k}\Big\}\) --- лин. зав., но из \hyperref[4.4 Th1]{\color{MMagenta}\(\mathbf{\Big[\textbf{Th}^1\Big]}\)} \(\Big\{\vect[l*]{A}{m_1},\dotsc,\vect[l*]{A}{m_r}\Big\}\)~---~лин.~нез. Значит, по \hyperref[4.4 L3]{\color{MMagenta}\(\mathbf{\Big[\textbf{Л}^3\Big]}\)} \(\vect[l*]{A}{k}\in L\Big(\vect[l*]{A}{m_1}\dotsb\,\vect[l*]{A}{m_r}\Big)\).\end{proof}
 
@@ -1120,7 +1120,7 @@
 										 	 	\begin{tikzpicture}[overlay, remember picture]
 										 	 		\draw[line width=1.157pt, line cap=round, dash pattern=on 0pt off 3.5\pgflinewidth] (Ai1.north) -- (Bi1.north);
 										 	 		\draw[line width=1.157pt, line cap=round, dash pattern=on 0pt off 3.5\pgflinewidth] (Ai2.north) -- (Bi2.north);
-									 	 	\end{tikzpicture}\end{aligned}\)
+									 	 	\end{tikzpicture}\end{aligned}\)\\
 	
 	То есть преобразование выше можно рассматривать как ЭП--ия \(p\)--ой строки, а именно: умножение её на \(\mathrm{A}_{pp}\), затем прибавление к ней всех остальных строк, умноженных на \(\mathrm{A}_{tp}\) соответственно (\(t=\overline{1,n},\,t\neq p\)).
 	
@@ -1172,7 +1172,7 @@
 
 	\begin{flushleft}\encircle{\textbf{2}} \(\displaystyle \vect[c]{X}{}=\boldsymbol{\sum_{i=1}^{n-r}}\boldsymbol{\uplambda_{i}}\vect[c]{X}{}^{\boldsymbol{(i)}}\)\textbf{ --- решение системы \hyperref[HSOQ]{\(\boldsymbol{(2)}\)} при любом наборе \(\boldsymbol{\{\uplambda_j\}_{j=1}^{n-r}}\)}\end{flushleft}\label{5.4 S2}
 	
-	\begin{proof} \(\vect[c]{X}{}=\begin{pmatrix}x_{1}\\\vdots\\ x_{r}\\x_{r+1}\\x_{r+2}\\\vdots\\x_{n}\end{pmatrix}=\displaystyle \sum_{i=1}^{n-r}\uplambda_{i}\vect[c]{X}{}^{(i)}=\begin{pmatrix}\displaystyle \sum_{i=1}^{n-r}\uplambda_{i} x_{1}^{(i)}\\ \vdots\\\displaystyle \sum_{i=1}^{n-r}\uplambda_{i} x_{r}^{(i)}\\ \uplambda_{1}\\ \uplambda_{2}\\\vdots\\\uplambda_{n-r}\end{pmatrix}\implies\left\{\begin{array}{@{}l@{}}x_{1}=\displaystyle\sum_{i=1}^{n-r}\uplambda_{i} x_{1}^{(i)},\\ \hcdotsfor{1}\\ \displaystyle x_{r}=\sum_{i=1}^{n-r}\uplambda_{i}x_{r}^{(i)},\\ x_{r+1}=\uplambda_{1},\\ x_{r+2}=\uplambda_{2},\\ \hcdotsfor{1}\\ x_{n}=\uplambda_{n-r}. \end{array}\right.\)
+	\begin{proof} \(\vect[c]{X}{}=\begin{pmatrix}x_{1}\\\vdots\\ x_{r}\\x_{r+1}\\x_{r+2}\\\vdots\\x_{n}\end{pmatrix}=\displaystyle \sum_{i=1}^{n-r}\uplambda_{i}\vect[c]{X}{}^{(i)}=\begin{pmatrix}\displaystyle \sum_{i=1}^{n-r}\uplambda_{i} x_{1}^{(i)}\\ \vdots\\\displaystyle \sum_{i=1}^{n-r}\uplambda_{i} x_{r}^{(i)}\\ \uplambda_{1}\\ \uplambda_{2}\\\vdots\\\uplambda_{n-r}\end{pmatrix}\implies\left\{\begin{array}{@{}l@{}}x_{1}=\displaystyle\sum_{i=1}^{n-r}\uplambda_{i} x_{1}^{(i)},\\ \hcdotsfor{1}\\ \displaystyle x_{r}=\sum_{i=1}^{n-r}\uplambda_{i}x_{r}^{(i)},\\ x_{r+1}=\uplambda_{1},\\ x_{r+2}=\uplambda_{2},\\ \hcdotsfor{1}\\ x_{n}=\uplambda_{n-r}. \end{array}\right.\)\\
 	
 	Подставим значения неизвестных в, например, \(k\)--ое (\(1\leq k\leq r\)) уравнение системы \eqref{HSOQ*}, которая эквивалентна системе \eqref{HSOQ}.
 	\begin{align*}\sum_{j=1}^{r}a_{kj}x_{j}&\mathbin{\oversymbolnoref{\:\boldsymbol{?}\:}{=}}-\sum_{j=r+1}^{n}a_{kj}x_{j}\\[5pt] \sum_{j=1}^{r}a_{kj}\sum_{i=1}^{n-r}\uplambda_{i}x_{j}^{(i)}&\mathbin{\oversymbolnoref{\:\boldsymbol{?}\:}{=}}-\sum_{t=1}^{n-r}a_{k(r+t)}\uplambda_{t}\\[5pt] \sum_{i=1}^{n-r}\uplambda_{i}\sum_{j=1}^{r}a_{kj}x_{j}^{(i)}&\mathbin{\oversymbolnoref{\:\boldsymbol{?}\:}{=}}-\sum_{t=1}^{n-r}a_{k(r+t)}\uplambda_{t}\end{align*}
@@ -1189,7 +1189,7 @@
 
 	Поскольку \(\vect[c]{Y}{}\) и \(\vect[c]{Z}{}\) оба являются решениями системы \eqref{HSOQm}, и \(\vect[c]{Z}{}\) совпадает с \(\vect[c]{Y}{}\) в разрядах от \((r+1)\)--го до \(n\)--го, то, подставив их в систему \eqref{HSOQ*}, можем приравнять левые части полученных выражений. Получим систему Крамера (СЛАУ, удовлетворяющую теореме Крамера) относительно \(\{z_{1},\dotsc,z_{r}\}\).
 	\[\left\{\begin{array}{@{}l@{}}a_{11}z_{1}+\dotsb+a_{1r}z_{r}=a_{11}y_{1}+\dotsb+a_{1r}y_{r},\\ \hcdotsfor{1}\\ a_{r1}z_{1}+\dotsb+a_{rr}z_{r}=a_{r1}y_{1}+\dotsb+a_{rr}y_{r}.\end{array}\right.\]
-	Она имеет единственное решение, которое выглядит как \(\left\{\begin{array}{@{}l@{}}z_{1}=y_{1},\\z_{2}=y_{2},\\ \hcdotsfor{1}\\ z_{r}=y_{r}.\end{array}\right.\) Отсюда, \(\vect[c]{Y}{}=\vect[c]{Z}{}\).
+	Она имеет единственное решение, которое выглядит как \(\left\{\begin{array}{@{}l@{}}z_{1}=y_{1},\\z_{2}=y_{2},\\ \hcdotsfor{1}\\ z_{r}=y_{r}.\end{array}\right.\) Отсюда, \(\vect[c]{Y}{}=\vect[c]{Z}{}\).\\
 
 	Следовательно, \(\vect[c]{Y}{}\in L\Big(\vect[c]{X}{}^{(1)},\dotsc,\vect[c]{X}{}^{(n-r)}\Big)\) и система \(\Big\{\vect[c]{X}{}^{(1)},\dotsc,\vect[c]{X}{}^{(n-r)}\Big\}\) называется \emph{фундаментальной системой решений} (ФСР) СЛАУ \eqref{HSOQm}. \end{proof}
 
